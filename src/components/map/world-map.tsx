@@ -1,6 +1,7 @@
 "use client";
 
-import { zones } from "@/lib/data";
+import { HUB, zones } from "@/lib/data";
+import { motion } from "framer-motion";
 import { MapConnections } from "./map-connections";
 import { MapNode } from "./map-node";
 
@@ -10,9 +11,24 @@ export function WorldMap() {
       {/* Desktop: interactive map */}
       <div
         className="relative hidden flex-1 md:block"
-        style={{ minHeight: "65vh" }}
+        style={{ minHeight: "68vh" }}
       >
         <MapConnections />
+
+        {/* Hub central ◎ */}
+        <motion.div
+          className="absolute -translate-x-1/2 -translate-y-1/2"
+          style={{ left: `${HUB.x}%`, top: `${HUB.y}%` }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.3 }}
+        >
+          <div className="relative flex h-4 w-4 items-center justify-center">
+            <div className="h-2 w-2 rounded-full bg-cyan-400 opacity-60" />
+            <div className="absolute h-4 w-4 animate-ping rounded-full bg-cyan-400 opacity-10" />
+          </div>
+        </motion.div>
+
         {zones.map((zone, index) => (
           <MapNode key={zone.id} {...zone} index={index} />
         ))}

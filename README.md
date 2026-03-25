@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Randy World
 
-## Getting Started
+Portfolio interactif de Randy Rimbault — développeur fullstack freelance.
 
-First, run the development server:
+> Lisible comme un site classique, vécu comme une expérience.
+
+**Site :** [randy-code.dev](https://randy-code.dev)
+
+---
+
+## Stack
+
+- **Framework :** Next.js 16 (App Router)
+- **Langage :** TypeScript
+- **Style :** Tailwind CSS v4
+- **Animations :** Framer Motion 12
+- **UI :** shadcn/ui
+- **Email :** Resend
+- **Déploiement :** Vercel
+
+## Structure
+
+```
+app/
+  page.tsx              # Home — world map interactive
+  about/                # About Base
+  apps/                 # Apps Station
+  blog/                 # Knowledge Base (listing + articles)
+  contact/              # Formulaire de contact (Resend)
+  lab/                  # Lab Zone
+  projects/             # Projects City
+  seo/                  # SEO District
+  opengraph-image.tsx   # OG card dynamique
+
+content/posts/          # Articles de blog (un fichier par article)
+src/
+  components/
+    map/                # WorldMap, MapConnections, MapNode
+    layout/             # PageShell
+  lib/
+    blog.ts             # Registry des articles + utilitaires
+    data.ts             # Zones, connexions, HUB
+```
+
+## Développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Ajouter un article
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Créer `content/posts/[slug].ts` en suivant le modèle existant
+2. L'importer dans `src/lib/blog.ts`
+3. Le temps de lecture est calculé automatiquement

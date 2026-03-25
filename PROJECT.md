@@ -1,346 +1,150 @@
-# 🎮 Randy World — Interactive Portfolio
+# Randy World — Interactive Portfolio
 
-## 🧠 Vision
+## Vision
 
-Randy World est un portfolio interactif sous forme de **jeu exploratoire**, combiné à un **site optimisé SEO**.
+Portfolio interactif façon jeu exploratoire, combiné à un site optimisé SEO.
 
-Objectifs :
+> Lisible comme un site classique, vécu comme une expérience.
 
-- Créer une expérience mémorable (type jeu)
-- Rester lisible et professionnel
-- Générer des opportunités (clients, collabs)
-- Être indexable et performant SEO
+**Objectifs :** expérience mémorable · professionnel · indexable · générateur d'opportunités
 
 ---
 
-## 🎯 Positionnement
+## Positionnement
 
-Ce site ne présente pas simplement un développeur.
-
-> Il montre un créateur de produits, capable de construire des applications concrètes, utiles et performantes.
+> Randy World ne présente pas un développeur — il montre un créateur de produits capable de construire des applications concrètes, utiles et performantes.
 
 ---
 
-## 🗺️ Concept principal
+## Structure des zones
 
-Le site est une **carte interactive (world map)**.
+```
+              +-------------------+
+              |    Apps Station   |
+              |   SaaS / Produits |
+              +---------+---------+
+                        |
+  +------------+        |        +------------------+
+  |  Lab Zone  +--------+--------+   SEO District   |
+  | Experiments|        *        |   SEO/Vitrines   |
+  +------------+        |        +------------------+
+                        |
+              +---------+---------+
+              |   Projects City   |
+              | Projets concrets  |
+              +----+---------+----+
+                   |         |
+   +---------------+         +-------------------+
+   |   About Base  |         |   Knowledge Base  |
+   | Profil/Contact|         |  Articles/Guides  |
+   +---------------+         +-------------------+
+```
 
-Chaque zone représente :
+### Routes
 
-- une thématique
-- une page SEO réelle
-- un univers visuel
-
----
-
-## 🌍 Structure globale
-
-### Routes principales
-
-/ → Hub (map principale)
-/projects → Projects City
-/apps → Apps Station
-/seo → SEO District
-/lab → Lab Zone
-/about → About Base
-/blog/... → contenu SEO
-
----
-
-## 🎮 Zones du jeu
-
-### 🏠 Central Hub (`/`)
-
-Point d’entrée.
-
-Contenu :
-
-- H1 clair SEO
-- phrase d’accroche
-- CTA
-- map interactive
+| Route         | Zone                    | Couleur           |
+| ------------- | ----------------------- | ----------------- |
+| `/`           | Hub central (world map) | —                 |
+| `/projects`   | Projects City           | `#22d3ee` cyan    |
+| `/apps`       | Apps Station            | `#8b5cf6` purple  |
+| `/seo`        | SEO District            | `#10b981` emerald |
+| `/lab`        | Lab Zone                | `#f59e0b` amber   |
+| `/about`      | About Base              | `#ec4899` pink    |
+| `/blog`       | Blog                    | `#f97316` orange  |
+| `/seo/[city]` | Pages SEO locales       | —                 |
 
 ---
 
-### 🏙️ Projects City (`/projects`)
+## Hero text — rotation au refresh
 
-Projets concrets.
+Tirage aléatoire côté serveur (`React.cache()` + `force-dynamic`), fixe pendant le rendu. Pas de sessionStorage, pas de JS client.
 
-Contenu :
+**Variant 1 — Équilibrée (SEO)**
 
-- projets clients
-- études de cas
-- structure :
-  - problème
-  - solution
-  - résultat
+- Headline : _Développeur web — SaaS, SEO local & applications sur mesure_
+- SEO title : _Ce que je construis_
 
----
+**Variant 2 — Produit**
 
-### 🚀 Apps Station (`/apps`)
+- Headline : _Je conçois des applications web utiles et des sites qui génèrent des résultats_
+- SEO title : _Ce que je fais_
 
-Applications / SaaS.
+**Variant 3 — Client**
 
-Contenu :
-
-- Liflow
-- architecture
-- Stripe / multi-tenant
-- logique produit
+- Headline : _Création de sites web et d'applications sur mesure_
+- SEO title : _Ce que je peux faire pour vous_
 
 ---
 
-### 🌐 SEO District (`/seo`)
+## Direction artistique
 
-SEO local et sites vitrines.
+**Ambiance :** sombre · moderne · futuriste · UI jeu + dashboard
 
-Contenu :
+**Palette :**
 
-- stratégie SEO
-- pages locales (ex: /seo/perpignan)
-- création de sites artisan
+- Background : `#09090b`
+- Surface : `#111827`
+- Accent 1 : `#22d3ee` (cyan)
+- Accent 2 : `#8b5cf6` (purple)
+- Texte : blanc cassé
 
----
-
-### 🧪 Lab Zone (`/lab`)
-
-Expérimentations.
-
-Contenu :
-
-- IA
-- tests techniques
-- prototypes
-- idées
-
-Format :
-"Expérience #01"
+**Typographie :** Geist Sans (intégré Next.js)
 
 ---
 
-### 🧑‍💼 About Base (`/about`)
+## Stack technique
 
-Profil + contact.
-
-Contenu :
-
-- parcours
-- vision
-- méthode
-- lien contact
-
----
-
-## 🎨 Direction artistique
-
-### Ambiance
-
-- sombre
-- moderne
-- légèrement futuriste
-- inspirée UI jeu + dashboard
-
----
-
-### Palette
-
-- background: #09090b / #0f172a
-- surface: #111827 / #18181b
-- accent: #22d3ee / #8b5cf6
-- texte: clair (blanc cassé)
-
----
-
-### Typographie
-
-- Inter ou Geist
-- hiérarchie claire (H1, H2, body)
-
----
-
-## 🧩 UI / UX
-
-### Map
-
-- zones flottantes
-- layout asymétrique
-- connexions via lignes (SVG)
-- hover + glow
-- clic → navigation
-
----
-
-### Animations
-
-Utiliser Framer Motion :
-
-- fade in
-- scale
-- hover feedback
-- transitions entre pages
-
----
-
-### Interactions
-
-- hover → preview zone
-- clic → entrée
-- possible navigation clavier (optionnel)
-
----
-
-## ⚙️ Stack technique
-
-- Next.js (App Router)
+- Next.js 16 (App Router)
 - TypeScript
-- Tailwind CSS
-- Framer Motion
-- éventuellement SVG pour connexions
+- Tailwind CSS v4
+- Framer Motion 12
+- shadcn/ui
+- Resend (formulaire de contact → randy.rcode@gmail.com)
 
 ---
 
-## 📁 Structure projet
+## Règles SEO
 
-/app
-/(marketing)
-page.tsx
-projects/page.tsx
-apps/page.tsx
-seo/page.tsx
-lab/page.tsx
-about/page.tsx
-
-/components
-/map
-world-map.tsx
-map-node.tsx
-map-connections.tsx
-
-/ui
-button.tsx
-card.tsx
-
-/lib
-data.ts
-
----
-
-## 🧠 Règles SEO
-
-IMPORTANT :
-
-- contenu visible sans JS
+- Contenu visible sans JS (Server Components)
 - H1 unique par page
 - H2 structurés
-- texte réel (pas uniquement visuel)
 - URLs propres
-- contenu utile et lisible
+- Pages SEO locales : `/seo/perpignan`, `/seo/montpellier`…
 
 ---
 
-## 📈 Objectifs SEO
+## Pages SEO à créer
 
-Cibler :
-
-- création site artisan
-- SEO local
-- SaaS Next.js
-- développeur freelance
+- `/seo/perpignan` — SEO local Perpignan
+- `/seo/montpellier` — SEO local Montpellier
+- `/creation-site-artisan`
+- `/developpeur-freelance-nextjs`
 
 ---
 
-## 🎯 Pages SEO importantes
+## Features à venir
 
-- /seo/perpignan
-- /creation-site-artisan
-- /saas-nextjs
-- /developpeur-freelance
-
----
-
-## 🤖 IA / Assistant (optionnel)
-
-Feature :
-
-- assistant intégré
-- permet de naviguer
-- ex :
-  - "montre les projets"
-  - "c’est quoi Liflow"
+- Assistant IA intégré (Claude API) — navigation vocale / textuelle
+- Bouton "Zone aléatoire"
+- Easter eggs
+- Stats dynamiques (nb projets, stack)
 
 ---
 
-## ⚡ Features bonus
+## À éviter
 
-- bouton “Explorer aléatoire”
-- progression (zones découvertes)
-- easter eggs
-- stats (projets, stack)
-
----
-
-## 📱 Responsive
-
-### Desktop
-
-- map complète
-- expérience immersive
-
-### Mobile
-
-- version simplifiée
-- layout vertical
-- navigation claire
+- Canvas-only (mauvais SEO)
+- Contenu caché ou JS-only
+- Surcharge visuelle
+- Navigation confuse
 
 ---
 
-## 🧭 Workflow de dev
+## Guidelines IA
 
-1. Setup projet
-2. Design global (palette, layout)
-3. Implémentation map (home)
-4. Création pages SEO
-5. Ajout animations
-6. Ajout features fun
-7. optimisation SEO
-
----
-
-## 🚫 À éviter
-
-- canvas-only (mauvais SEO)
-- contenu caché
-- design trop complexe
-- surcharge visuelle
-- navigation confuse
-
----
-
-## 💡 Règle principale
-
-Le site doit être :
-
-> lisible comme un site classique  
-> mais vécu comme une expérience
-
----
-
-## 🎯 Résultat attendu
-
-Un portfolio qui :
-
-- attire l’attention immédiatement
-- montre des compétences concrètes
-- donne envie d’explorer
-- génère des opportunités
-
----
-
-## 🧠 Guideline pour IA
-
-Toujours :
-
-- privilégier lisibilité + SEO
-- garder une structure simple
-- ajouter du style via animations
-- ne jamais sacrifier le contenu pour l’effet visuel
+- Toujours privilégier lisibilité + SEO
+- Garder une structure simple
+- Ajouter du style via animations (pas l'inverse)
+- Ne jamais sacrifier le contenu pour l'effet visuel
+- Passer les icônes Lucide comme strings (`icon="building2"`) dans PageShell — pas comme composants React (contrainte Server/Client boundary)
+- Les connexions SVG utilisent uniquement une animation `opacity` (pas `pathLength`) — Framer Motion `pathLength` entre en conflit avec `strokeDasharray` et rend les traits invisibles

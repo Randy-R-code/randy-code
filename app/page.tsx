@@ -1,24 +1,24 @@
+import { HeroText, SeoBlock, heroVariants } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
+import { cache } from "react";
+
+// Force-dynamic : nouveau tirage à chaque requête serveur
+export const dynamic = "force-dynamic";
+
+// React.cache isole l'appel impure hors du corps du composant
+const getVariantIndex = cache(() =>
+  Math.floor(Math.random() * heroVariants.length),
+);
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col px-6 pt-12 pb-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
-        {/* Hero — H1 visible pour SEO */}
-        <header className="mb-10">
-          <p className="mb-2 text-xs font-medium uppercase tracking-widest text-zinc-500">
-            Développeur Fullstack Freelance
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
-            Randy World
-          </h1>
-          <p className="mt-3 max-w-md text-base text-zinc-400">
-            Un portfolio interactif. Choisissez une zone pour explorer projets,
-            apps, SEO ou me contacter.
-          </p>
-        </header>
+  const variantIndex = getVariantIndex();
 
+  return (
+    <main className="flex min-h-screen flex-col px-6 pt-12 pb-16">
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
+        <HeroText variantIndex={variantIndex} />
         <WorldMap />
+        <SeoBlock variantIndex={variantIndex} />
       </div>
     </main>
   );

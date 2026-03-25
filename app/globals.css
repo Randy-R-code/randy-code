@@ -80,3 +80,62 @@
     @apply font-sans;
   }
 }
+
+/* Blog prose styles */
+.prose-blog {
+  color: oklch(0.75 0 0);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+.prose-blog p {
+  margin-bottom: 1.25rem;
+}
+.prose-blog h2 {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-blog h3 {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-blog a {
+  color: #22d3ee;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog ul,
+.prose-blog ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.prose-blog li {
+  margin-bottom: 0.25rem;
+}
+.prose-blog code {
+  background: oklch(0.18 0.012 252);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+  color: #22d3ee;
+}
+.prose-blog pre {
+  background: oklch(0.11 0.01 252);
+  border: 1px solid oklch(1 0 0 / 8%);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+.prose-blog blockquote {
+  border-left: 3px solid #22d3ee;
+  padding-left: 1rem;
+  color: oklch(0.6 0 0);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
+  BookOpen,
   Building2,
   FlaskConical,
   Globe,
@@ -17,6 +18,7 @@ const iconMap = {
   globe: Globe,
   flask: FlaskConical,
   user: User,
+  bookOpen: BookOpen,
 } as const;
 
 export type PageIcon = keyof typeof iconMap;
