@@ -68,11 +68,10 @@ export default function AboutPage() {
           }}
         >
           <p className="text-sm leading-relaxed text-zinc-300">
-            Le développement web n&apos;est pas ma première profession,
-            c&apos;est celle que j&apos;ai choisie. Reconverti dans le
-            développement, j&apos;ai progressé de JavaScript/React vers
-            l&apos;écosystème TypeScript/Next.js en construisant des projets
-            réels dès le départ.
+            Autodidacte en développement web, j&apos;ai appris à coder en
+            parallèle de mon activité professionnelle — en partant de
+            JavaScript/React, puis en me spécialisant sur TypeScript et Next.js
+            à travers des projets concrets dès le départ.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-zinc-400">
             Je travaille sur des applications web complètes — des sites vitrines

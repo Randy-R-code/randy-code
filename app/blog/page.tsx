@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog — Randy World",
+  title: "Knowledge Base — Randy World",
   description:
     "Articles sur le développement web, le SEO local et la création de SaaS par Randy Rimbault.",
 };

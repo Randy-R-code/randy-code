@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Randy World — Portfolio Interactif",
+  title: "Randy Rimbault — Développeur Fullstack Freelance",
   description:
-    "Portfolio de Randy, développeur fullstack freelance. Projets clients, apps SaaS, SEO local — explorez l'univers.",
+    "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
 };
 
 export default function RootLayout({

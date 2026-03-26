@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 const experiments = [
   {
     id: "01",
-    title: "Assistant portfolio IA",
+    title: "Automatisation avec OpenClaw",
     status: "En cours",
     statusColor: "#f59e0b",
-    tags: ["Claude API", "Next.js", "Streaming"],
-    desc: 'Un assistant intégré qui permet de naviguer dans le portfolio à la voix ou en texte. "Montre-moi les projets SEO", "C\'est quoi Liflow".',
+    tags: ["OpenClaw", "Automation", "Claude API"],
+    desc: "Mise en place d'OpenClaw pour automatiser des tâches répétitives : génération de contenu, workflows de développement, pipelines de traitement. L'objectif est de gagner du temps sur les tâches à faible valeur ajoutée.",
   },
   {
     id: "02",
@@ -26,11 +26,11 @@ const experiments = [
   },
   {
     id: "03",
-    title: "Composants UI animés",
-    status: "Terminé",
-    statusColor: "#10b981",
-    tags: ["Framer Motion", "Tailwind", "shadcn"],
-    desc: "Bibliothèque de composants avec des animations soignées pour les dashboards SaaS. World map, graphiques temps réel, transitions de pages.",
+    title: "Assistant portfolio IA",
+    status: "En réflexion",
+    statusColor: "#94a3b8",
+    tags: ["Claude API", "Next.js", "Streaming"],
+    desc: 'Un assistant intégré qui permet de naviguer dans le portfolio en langage naturel. "Montre-moi les projets SEO", "C\'est quoi Liflow".',
   },
 ];
 
@@ -97,14 +97,13 @@ export default function LabPage() {
       {/* Idées en attente */}
       <section className="mt-10">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500">
-          Dans le backlog
+          Sur le radar
         </h2>
         <div className="flex flex-wrap gap-2">
           {[
             "RAG sur documentation technique",
             "CLI pour scaffolding Next.js",
             "Dashboard analytics léger",
-            "Plugin VSCode pour snippets",
             "Générateur de contrats freelance",
           ].map((idea) => (
             <span

@@ -28,7 +28,7 @@ export async function sendContact(
   try {
     await resend.emails.send({
       from: "Randy World <onboarding@resend.dev>",
-      to: "randy.rcode@gmail.com",
+      to: process.env.CONTACT_EMAIL ?? "randy.rcode@gmail.com",
       replyTo: email,
       subject: `[Randy World] Message de ${name}`,
       text: `Nom : ${name}\nEmail : ${email}\n\n${message}`,

@@ -2,56 +2,47 @@
 
 ## Vision
 
-Portfolio interactif façon jeu exploratoire, combiné à un site optimisé SEO.
+Portfolio thématique avec navigation par carte du monde. Chaque zone correspond à un domaine de compétence, toutes reliées à un hub central.
 
-> Lisible comme un site classique, vécu comme une expérience.
+> Mémorable visuellement, professionnel dans le fond.
 
-**Objectifs :** expérience mémorable · professionnel · indexable · générateur d'opportunités
+**Objectifs :** différenciation · lisibilité · SEO · génération d'opportunités
 
 ---
 
 ## Positionnement
 
-> Randy World ne présente pas un développeur — il montre un créateur de produits capable de construire des applications concrètes, utiles et performantes.
+> Randy World présente un développeur fullstack freelance avec un parcours technique terrain — des produits concrets, utiles et durables.
 
 ---
 
 ## Structure des zones
 
+7 zones en ellipse autour d'un hub central (`*`), toutes reliées par des tirets animés.
+
 ```
-              +-------------------+
-              |    Apps Station   |
-              |   SaaS / Produits |
-              +---------+---------+
-                        |
-  +------------+        |        +------------------+
-  |  Lab Zone  +--------+--------+   SEO District   |
-  | Experiments|        *        |   SEO/Vitrines   |
-  +------------+        |        +------------------+
-                        |
-              +---------+---------+
-              |   Projects City   |
-              | Projets concrets  |
-              +----+---------+----+
-                   |         |
-   +---------------+         +-------------------+
-   |   About Base  |         |   Knowledge Base  |
-   | Profil/Contact|         |  Articles/Guides  |
-   +---------------+         +-------------------+
+                   [ Apps Station ]
+                          |
+      [ Lab Zone ] -------*------- [ SEO District ]
+                       /     \
+               [ About ]     [ Projects City ]
+                   |                 |
+            [ Background ]   [ Knowledge Base ]
 ```
 
 ### Routes
 
-| Route         | Zone                    | Couleur           |
-| ------------- | ----------------------- | ----------------- |
-| `/`           | Hub central (world map) | —                 |
-| `/projects`   | Projects City           | `#22d3ee` cyan    |
-| `/apps`       | Apps Station            | `#8b5cf6` purple  |
-| `/seo`        | SEO District            | `#10b981` emerald |
-| `/lab`        | Lab Zone                | `#f59e0b` amber   |
-| `/about`      | About Base              | `#ec4899` pink    |
-| `/blog`       | Blog                    | `#f97316` orange  |
-| `/seo/[city]` | Pages SEO locales       | —                 |
+| Route          | Zone                    | Couleur           |
+| -------------- | ----------------------- | ----------------- |
+| `/`            | Hub central (world map) | —                 |
+| `/apps`        | Apps Station            | `#8b5cf6` purple  |
+| `/seo`         | SEO District            | `#10b981` emerald |
+| `/projects`    | Projects City           | `#22d3ee` cyan    |
+| `/lab`         | Lab Zone                | `#f59e0b` amber   |
+| `/about`       | About Base              | `#ec4899` pink    |
+| `/blog`        | Knowledge Base          | `#f97316` orange  |
+| `/background`  | Background              | `#94a3b8` slate   |
+| `/blog/[slug]` | Article de blog         | —                 |
 
 ---
 
@@ -99,7 +90,7 @@ Tirage aléatoire côté serveur (`React.cache()` + `force-dynamic`), fixe penda
 - Tailwind CSS v4
 - Framer Motion 12
 - shadcn/ui
-- Resend (formulaire de contact → randy.rcode@gmail.com)
+- Resend (formulaire de contact → `CONTACT_EMAIL`)
 
 ---
 
@@ -109,14 +100,13 @@ Tirage aléatoire côté serveur (`React.cache()` + `force-dynamic`), fixe penda
 - H1 unique par page
 - H2 structurés
 - URLs propres
-- Pages SEO locales : `/seo/perpignan`, `/seo/montpellier`…
+- Sitemap auto-généré (`app/sitemap.ts`)
 
 ---
 
-## Pages SEO à créer
+## Pages à créer (roadmap)
 
-- `/seo/perpignan` — SEO local Perpignan
-- `/seo/montpellier` — SEO local Montpellier
+- `/seo/[city]` — pages SEO locales par ville
 - `/creation-site-artisan`
 - `/developpeur-freelance-nextjs`
 
@@ -124,10 +114,9 @@ Tirage aléatoire côté serveur (`React.cache()` + `force-dynamic`), fixe penda
 
 ## Features à venir
 
-- Assistant IA intégré (Claude API) — navigation vocale / textuelle
-- Bouton "Zone aléatoire"
-- Easter eggs
-- Stats dynamiques (nb projets, stack)
+- Pages SEO locales dynamiques (`/seo/[city]`)
+- Assistant IA intégré (Claude API)
+- Stats dynamiques (nb projets, articles)
 
 ---
 

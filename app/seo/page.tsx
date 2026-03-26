@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "SEO District — Randy World",
   description:
-    "Référencement local et création de sites vitrines par Randy, développeur freelance. Spécialiste SEO à Perpignan et en France.",
+    "Référencement local et création de sites vitrines pour artisans et PME partout en France. Audit SEO, Google Maps, sites performants.",
 };
 
 const services = [
@@ -35,22 +35,22 @@ const services = [
   },
 ];
 
-const zones = [
-  {
-    city: "Perpignan",
-    slug: "perpignan",
-    desc: "Référencement local et création de sites à Perpignan",
-  },
-  {
-    city: "Montpellier",
-    slug: "montpellier",
-    desc: "SEO et sites vitrines pour artisans à Montpellier",
-  },
-  {
-    city: "Toulouse",
-    slug: "toulouse",
-    desc: "Référencement local à Toulouse",
-  },
+const cities = [
+  "Paris",
+  "Lyon",
+  "Marseille",
+  "Toulouse",
+  "Bordeaux",
+  "Nantes",
+  "Lille",
+  "Strasbourg",
+  "Rennes",
+  "Montpellier",
+  "Nice",
+  "Perpignan",
+  "Grenoble",
+  "Dijon",
+  "Rouen",
 ];
 
 export default function SeoPage() {
@@ -91,60 +91,62 @@ export default function SeoPage() {
 
       {/* Zones géographiques */}
       <section className="mb-12">
-        <h2 className="mb-4 text-xl font-semibold text-white">
-          Zones couvertes
+        <h2 className="mb-1 text-xl font-semibold text-white">
+          Toute la France
         </h2>
-        <div className="flex flex-wrap gap-3">
-          {zones.map((zone) => (
-            <a
-              key={zone.slug}
-              href={`/seo/${zone.slug}`}
-              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors hover:border-emerald-500/30"
+        <p className="mb-4 text-sm text-zinc-400">
+          Je travaille en 100&nbsp;% remote — peu importe où vous êtes en
+          France.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {cities.map((city) => (
+            <span
+              key={city}
+              className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs"
               style={{
                 borderColor: "#10b98120",
                 background: "oklch(0.13 0.012 252)",
+                color: "#a1a1aa",
               }}
             >
-              <MapPin size={12} style={{ color: "#10b981" }} />
-              <span className="font-medium text-white">{zone.city}</span>
-              <span className="text-xs text-zinc-500">{zone.desc}</span>
-            </a>
+              <MapPin size={10} style={{ color: "#10b981" }} />
+              {city}
+            </span>
           ))}
         </div>
-        <p className="mt-3 text-xs text-zinc-600">
-          Intervention possible partout en France en remote.
-        </p>
       </section>
 
-      {/* Stats */}
+      {/* Approche */}
       <section className="mb-12">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid gap-4 sm:grid-cols-3">
           {[
             {
-              value: "Top 3",
-              label: "positions obtenues sur les requêtes cibles",
+              title: "Technique d'abord",
+              desc: "Structure propre, temps de chargement optimisé, balisage sémantique correct. Les bases que Google récompense.",
             },
             {
-              value: "95+",
-              label: "score Lighthouse moyen sur les sites livrés",
+              title: "Contenu ciblé",
+              desc: "Pages pensées pour les requêtes réelles de vos clients, pas pour faire du volume.",
             },
             {
-              value: "3 mois",
-              label: "pour observer les premiers résultats SEO",
+              title: "Résultats durables",
+              desc: "Le SEO bien fait prend du temps mais construit une visibilité qui ne disparaît pas du jour au lendemain.",
             },
-          ].map((stat) => (
+          ].map((item) => (
             <div
-              key={stat.label}
-              className="rounded-xl border p-4 text-center"
+              key={item.title}
+              className="rounded-xl border p-5"
               style={{
                 borderColor: "#10b98118",
                 background: "oklch(0.13 0.012 252)",
               }}
             >
-              <p className="text-2xl font-bold" style={{ color: "#10b981" }}>
-                {stat.value}
+              <p className="mb-1.5 text-sm font-semibold text-white">
+                {item.title}
               </p>
-              <p className="mt-1 text-xs text-zinc-500">{stat.label}</p>
+              <p className="text-xs leading-relaxed text-zinc-400">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>

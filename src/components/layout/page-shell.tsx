@@ -7,6 +7,7 @@ import {
   Building2,
   FlaskConical,
   Globe,
+  HardHat,
   Rocket,
   User,
 } from "lucide-react";
@@ -19,6 +20,7 @@ const iconMap = {
   flask: FlaskConical,
   user: User,
   bookOpen: BookOpen,
+  hardHat: HardHat,
 } as const;
 
 export type PageIcon = keyof typeof iconMap;

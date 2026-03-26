@@ -5,10 +5,30 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Projects City — Randy World",
   description:
-    "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, portfolio multilingue et projets clients.",
+    "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, sites clients et applications sur mesure.",
 };
 
 const projects = [
+  {
+    title: "Site vitrine — Spécialiste automobile",
+    tags: ["Next.js", "TypeScript", "SEO local", "Perpignan"],
+    problem:
+      "Artisan spécialisé en reprogrammation de clés, calculateurs ECU et recharge de climatisation, sans présence web pour capter des clients locaux.",
+    solution:
+      "Site vitrine optimisé SEO local avec pages de services dédiées, fiche Google Maps et structure pensée pour le référencement sur les requêtes métier.",
+    result: "Site terminé, mise en ligne imminente.",
+    link: null,
+  },
+  {
+    title: "Liflow",
+    tags: ["Next.js", "TypeScript", "Stripe", "Mistral AI", "Prisma"],
+    problem:
+      "Pas d'outil simple pour centraliser ses idées, notes, fichiers et todos au même endroit, avec chiffrement et accès multi-utilisateurs.",
+    solution:
+      "Application SaaS complète avec auth, abonnements Stripe, chiffrement de bout en bout et IA intégrée via Mistral pour enrichir le contenu.",
+    result: "Application en développement actif, disponible sur liflow.app.",
+    link: "https://liflow.app",
+  },
   {
     title: "InfraLens",
     tags: ["Next.js", "TypeScript", "Node.js", "Vercel"],
@@ -18,26 +38,6 @@ const projects = [
       "Application web qui centralise l'analyse complète d'une URL : DNS, headers HTTP et paramètres TLS en un seul endroit.",
     result: "Outil utilisé au quotidien, disponible sur infralens.dev.",
     link: "https://infralens.dev",
-  },
-  {
-    title: "Portfolio multilingue",
-    tags: ["Next.js", "TypeScript", "next-intl", "Resend"],
-    problem:
-      "Besoin d'un portfolio professionnel accessible en français et en anglais, avec un formulaire de contact fonctionnel.",
-    solution:
-      "Site Next.js avec routing i18n via next-intl, formulaire validé avec Zod, emails envoyés via Resend.",
-    result:
-      "Site live sur randy-code.dev, support EN/FR avec switch dynamique.",
-    link: "https://randy-code.dev",
-  },
-  {
-    title: "Projet client — à venir",
-    tags: ["Client", "Next.js"],
-    problem: "Cette section sera mise à jour avec des études de cas clients.",
-    solution:
-      "Des projets réels avec contexte, choix techniques et résultats mesurables.",
-    result: "À venir.",
-    link: null,
   },
 ];
 
