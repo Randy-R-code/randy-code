@@ -2,10 +2,8 @@ import { HeroText, SeoBlock, heroVariants } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
 import { cache } from "react";
 
-// Force-dynamic : nouveau tirage à chaque requête serveur
 export const dynamic = "force-dynamic";
 
-// React.cache isole l'appel impure hors du corps du composant
 const getVariantIndex = cache(() =>
   Math.floor(Math.random() * heroVariants.length),
 );

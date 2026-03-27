@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.5.0] — 2026-03-27
+
+### Ajouts
+
+- **`app/robots.ts`** — directives de crawl explicites pour tous les robots + référence au sitemap
+- **Schema JSON-LD `Person`** dans `app/layout.tsx` — entité Google : nom, métier, compétences (TypeScript, Next.js, SEO local, SaaS, React, Prisma)
+- **Schema JSON-LD `Article`** dans `app/blog/[slug]/page.tsx` — chaque article est éligible aux résultats enrichis Google (titre, description, date, auteur, URL canonique)
+- **Twitter Cards** dans `app/layout.tsx` — partage optimisé sur X et LinkedIn avec `summary_large_image`
+
+### Améliorations
+
+- **Connexions world map** — refonte complète : tirets animés → éclairs statiques (zigzag 4% d'amplitude, blanc 15% d'opacité). Apparition synchronisée avec le stagger des cards. Au hover d'une card : trait plus épais + couleur de la zone avec transition 0.2s
+- **Hub central** — point cyan remplacé par un dot blanc discret avec halo
+- **OG image** — suppression du logo/monogramme, ajout de 3 blocs de services (Sites vitrines / cyan, Applications SaaS / violet, SEO local / vert) avec accents colorés
+
+### Corrections
+
+- Hydration mismatch sur `MapConnections` — `dims` initialisé à `null`, paths rendus uniquement côté client après `ResizeObserver`
+- Branches des éclairs déplacées vers les cards (15% depuis la zone) au lieu du hub — supprime l'artefact étoile au centre
+- `MapNode` — ajout de `onHoverStart`/`onHoverEnd` pour remonter l'état hover au `WorldMap`
+
+---
+
 ## [0.4.0] — 2026-03-26
 
 ### Ajouts

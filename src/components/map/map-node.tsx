@@ -6,9 +6,11 @@ import Link from "next/link";
 
 interface MapNodeProps extends Zone {
   index: number;
+  onHover: (id: string | null) => void;
 }
 
 export function MapNode({
+  id,
   label,
   tagline,
   route,
@@ -16,6 +18,7 @@ export function MapNode({
   color,
   position,
   index,
+  onHover,
 }: MapNodeProps) {
   return (
     <motion.div
@@ -42,6 +45,8 @@ export function MapNode({
             boxShadow: `0 0 24px ${color}30`,
           }}
           transition={{ duration: 0.18 }}
+          onHoverStart={() => onHover(id)}
+          onHoverEnd={() => onHover(null)}
         >
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2">

@@ -2,10 +2,13 @@
 
 import { HUB, zones } from "@/lib/data";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { MapConnections } from "./map-connections";
 import { MapNode } from "./map-node";
 
 export function WorldMap() {
+  const [hoveredZone, setHoveredZone] = useState<string | null>(null);
+
   return (
     <>
       {/* Desktop: interactive map */}
@@ -13,9 +16,9 @@ export function WorldMap() {
         className="relative hidden flex-1 md:block"
         style={{ minHeight: "68vh" }}
       >
-        <MapConnections />
+        <MapConnections hoveredZone={hoveredZone} />
 
-        {/* Hub central ◎ */}
+        {/* Hub central — crosshair */}
         <motion.div
           className="absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${HUB.x}%`, top: `${HUB.y}%` }}
@@ -24,13 +27,18 @@ export function WorldMap() {
           transition={{ delay: 0.3, duration: 0.3 }}
         >
           <div className="relative flex h-4 w-4 items-center justify-center">
-            <div className="h-2 w-2 rounded-full bg-cyan-400 opacity-60" />
-            <div className="absolute h-4 w-4 animate-ping rounded-full bg-cyan-400 opacity-10" />
+            <div className="h-2 w-2 rounded-full bg-white/80" />
+            <div className="absolute h-4 w-4 rounded-full bg-white/10 blur-sm" />
           </div>
         </motion.div>
 
         {zones.map((zone, index) => (
-          <MapNode key={zone.id} {...zone} index={index} />
+          <MapNode
+            key={zone.id}
+            {...zone}
+            index={index}
+            onHover={setHoveredZone}
+          />
         ))}
       </div>
 

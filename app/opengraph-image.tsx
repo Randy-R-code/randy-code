@@ -6,14 +6,29 @@ export const alt = "Randy Rimbault — Développeur Fullstack Freelance";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const services = [
+  {
+    title: "Sites vitrines",
+    desc: "Rapides, SEO-ready et\nconçus pour convertir",
+    color: "#22d3ee",
+  },
+  {
+    title: "Applications SaaS",
+    desc: "Auth, paiement, IA —\nde l'idée à la prod",
+    color: "#8b5cf6",
+  },
+  {
+    title: "SEO local",
+    desc: "Google Maps, pages locales\noptimisées — toute la France",
+    color: "#10b981",
+  },
+];
+
 export default async function Image() {
-  const [logoData, fontBold, fontRegular] = await Promise.all([
-    readFile(join(process.cwd(), "public/logo-r.png"), "base64"),
+  const [fontBold, fontRegular] = await Promise.all([
     readFile(join(process.cwd(), "assets/Inter-Bold.woff")),
     readFile(join(process.cwd(), "assets/Inter-Regular.woff")),
   ]);
-
-  const logoSrc = `data:image/png;base64,${logoData}`;
 
   return new ImageResponse(
     <div
@@ -25,7 +40,7 @@ export default async function Image() {
         position: "relative",
       }}
     >
-      {/* Grid pattern overlay */}
+      {/* Grid pattern */}
       <div
         style={{
           position: "absolute",
@@ -47,22 +62,22 @@ export default async function Image() {
           height: 560,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(37,99,235,0.22) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(37,99,235,0.20) 0%, transparent 70%)",
           display: "flex",
         }}
       />
 
-      {/* Blue radial glow — bottom right */}
+      {/* Cyan glow — bottom right */}
       <div
         style={{
           position: "absolute",
-          bottom: -100,
-          right: -100,
-          width: 400,
-          height: 400,
+          bottom: -80,
+          right: -80,
+          width: 360,
+          height: 360,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%)",
           display: "flex",
         }}
       />
@@ -85,112 +100,114 @@ export default async function Image() {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "center",
           width: "100%",
           height: "100%",
-          padding: "72px 80px 72px 88px",
-          gap: 72,
+          padding: "64px 80px 64px 88px",
+          gap: 0,
         }}
       >
-        {/* Logo */}
+        {/* Eyebrow */}
         <div
           style={{
             display: "flex",
-            flexShrink: 0,
-            width: 180,
-            height: 180,
-            borderRadius: 28,
-            overflow: "hidden",
-            boxShadow: "0 0 60px rgba(59,130,246,0.35)",
+            fontSize: 16,
+            fontFamily: "Inter",
+            fontWeight: 400,
+            color: "#3b82f6",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            marginBottom: 20,
           }}
         >
-          {}
-          <img
-            src={logoSrc}
-            alt=""
-            width={180}
-            height={180}
-            style={{ display: "flex" }}
-          />
+          RANDY RIMBAULT
         </div>
 
-        {/* Text content */}
+        {/* Title */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            gap: 20,
+            fontSize: 64,
+            fontFamily: "Inter",
+            fontWeight: 700,
+            color: "#ffffff",
+            lineHeight: 1.05,
+            letterSpacing: "-0.02em",
+            marginBottom: 16,
           }}
         >
-          {/* Eyebrow */}
-          <div
-            style={{
-              display: "flex",
-              fontSize: 18,
-              fontFamily: "Inter",
-              fontWeight: 400,
-              color: "#3b82f6",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            RANDY RIMBAULT
-          </div>
+          Développeur Fullstack Freelance
+        </div>
 
-          {/* Title */}
-          <div
-            style={{
-              display: "flex",
-              fontSize: 58,
-              fontFamily: "Inter",
-              fontWeight: 700,
-              color: "#ffffff",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Développeur Fullstack Freelance
-          </div>
+        {/* Tagline */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 22,
+            fontFamily: "Inter",
+            fontWeight: 400,
+            color: "#64748b",
+            marginBottom: 52,
+          }}
+        >
+          SaaS · SEO local · Outils sur mesure — des produits pensés pour être
+          utiles et durables.
+        </div>
 
-          {/* Tagline */}
-          <div
-            style={{
-              display: "flex",
-              fontSize: 26,
-              fontFamily: "Inter",
-              fontWeight: 400,
-              color: "#94a3b8",
-              lineHeight: 1.4,
-              maxWidth: 560,
-            }}
-          >
-            SaaS · SEO local · Outils sur mesure — des produits pensés pour être
-            utiles et durables.
-          </div>
-
-          {/* Tags */}
-          <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-            {["Next.js", "TypeScript", "SaaS", "SEO"].map((tag) => (
+        {/* Service blocks */}
+        <div style={{ display: "flex", gap: 20 }}>
+          {services.map((service) => (
+            <div
+              key={service.title}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: 14,
+                padding: "24px 28px",
+                gap: 10,
+              }}
+            >
+              {/* Color accent */}
               <div
-                key={tag}
                 style={{
                   display: "flex",
-                  padding: "6px 18px",
-                  borderRadius: 8,
+                  width: 32,
+                  height: 3,
+                  borderRadius: 2,
+                  background: service.color,
+                  marginBottom: 4,
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  fontSize: 22,
+                  fontFamily: "Inter",
+                  fontWeight: 700,
+                  color: "#f1f5f9",
+                }}
+              >
+                {service.title}
+              </div>
+              <div
+                style={{
+                  display: "flex",
                   fontSize: 16,
                   fontFamily: "Inter",
                   fontWeight: 400,
-                  color: "#64748b",
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "#475569",
+                  lineHeight: 1.5,
+                  whiteSpace: "pre-line",
                 }}
               >
-                {tag}
+                {service.desc}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -198,13 +215,13 @@ export default async function Image() {
       <div
         style={{
           position: "absolute",
-          bottom: 40,
+          bottom: 36,
           right: 80,
           display: "flex",
-          fontSize: 18,
+          fontSize: 16,
           fontFamily: "Inter",
           fontWeight: 400,
-          color: "#334155",
+          color: "#1e293b",
           letterSpacing: "0.05em",
         }}
       >

@@ -26,8 +26,31 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPost(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Randy Rimbault",
+      url: "https://randy-code.dev",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Randy Rimbault",
+      url: "https://randy-code.dev",
+    },
+    url: `https://randy-code.dev/blog/${post.slug}`,
+  };
+
   return (
     <main className="min-h-screen pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Hero image + overlay */}
       <div className="relative h-72 w-full overflow-hidden md:h-96">
         {/* Grid pattern background */}
