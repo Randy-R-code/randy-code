@@ -10,6 +10,16 @@
 - **Cohérence UI** — actions en français partout ("Explorer →", "Retour à la carte") ; noms de zones restent anglais (noms propres)
 - **Renommage** — repo `randy-world` → `randy-code`, toutes les métadonnées mises à jour ("Randy World" → "Randy Code")
 
+### Sécurité
+
+- **HTTP security headers** — ajout de `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` et `Permissions-Policy` sur toutes les routes via `next.config.mjs`
+- **`X-Powered-By` supprimé** — `poweredByHeader: false` pour ne plus exposer la stack serveur
+- **`security.txt`** — ajout de `public/.well-known/security.txt` (contact email, expiration)
+
+### Nettoyage
+
+- **`next.config.ts` supprimé** — doublon non utilisé (Next.js chargeait `next.config.mjs` en priorité)
+
 ---
 
 ## [0.5.0] — 2026-03-27
