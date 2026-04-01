@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.2] — 2026-04-01
+
+### Améliorations
+
+- **Service worker** — ajout de `sw.js` (cache-first) et `ServiceWorkerRegistration` dans le layout : active l'installation en WebAPK standalone sur Android
+- **PWA icons** — `icon-192.png` passe de `purpose: "maskable"` à `"any"` : supprime le masque circulaire appliqué par Android
+- **iOS** — `appleWebApp` (`capable`, `statusBarStyle: "black-translucent"`) et export `viewport` avec `themeColor` (convention Next.js 14+)
+
+---
+
 ## [0.5.1] — 2026-03-29
 
 ### Améliorations

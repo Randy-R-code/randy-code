@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ServiceWorkerRegistration from "./components/service-worker-registration";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,7 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+};
+
 export const metadata: Metadata = {
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "R-code",
+  },
   title: "Randy Rimbault — Développeur Fullstack Freelance",
   description:
     "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
@@ -58,6 +68,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>
