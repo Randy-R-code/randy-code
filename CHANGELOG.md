@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.3] — 2026-04-03
+
+### Corrections
+
+- **Formulaire de contact** — l'email n'était jamais envoyé : l'erreur Resend était silencieuse (le SDK retourne `{ error }` au lieu de lever une exception). Ajout de la vérification du retour `resend.emails.send()`.
+- **Formulaire de contact** — adresse `from` corrigée : `onboarding@resend.dev` → `noreply@randy-code.dev` (domaine vérifié requis pour envoyer à des destinataires externes)
+
+### Dépendances
+
+- `next` 16.2.1 → 16.2.2
+- `eslint-config-next` 16.2.1 → 16.2.2
+- `lucide-react` 1.5.0 → 1.7.0
+- `resend` 6.9.4 → 6.10.0
+- `shadcn` 4.1.0 → 4.1.2
+
+---
+
 ## [0.5.2] — 2026-04-01
 
 ### Améliorations

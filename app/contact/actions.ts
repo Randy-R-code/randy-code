@@ -25,17 +25,17 @@ export async function sendContact(
     return { error: "Adresse email invalide." };
   }
 
-  try {
-    await resend.emails.send({
-      from: "Randy Code <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL ?? "randy.rcode@gmail.com",
-      replyTo: email,
-      subject: `[Randy Code] Message de ${name}`,
-      text: `Nom : ${name}\nEmail : ${email}\n\n${message}`,
-    });
+  const { error: resendError } = await resend.emails.send({
+    from: "Randy Code <noreply@randy-code.dev>",
+    to: process.env.CONTACT_EMAIL ?? "randy.rcode@gmail.com",
+    replyTo: email,
+    subject: `[Randy Code] Message de ${name}`,
+    text: `Nom : ${name}\nEmail : ${email}\n\n${message}`,
+  });
 
-    return { success: true };
-  } catch {
+  if (resendError) {
     return { error: "Une erreur est survenue. Réessayez plus tard." };
   }
+
+  return { success: true };
 }
