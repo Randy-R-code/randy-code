@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.5.5] — 2026-04-20
+
+### Nettoyage
+
+- **`AGENTS.md` supprimé** — contenu fusionné dans `CLAUDE.md`
+- **`PROJECT.md` supprimé** — doc de planification interne non référencée
+- **`package-lock.json` supprimé** — doublon npm ; projet sur pnpm ; ajouté au `.gitignore`
+- **`CLAUDE.md` ajouté au `.gitignore`** — instructions IA non pertinentes pour un repo public
+
+### Dépendances
+
+- `next` 16.2.2 → 16.2.4
+- `eslint-config-next` 16.2.2 → 16.2.4
+- `react` / `react-dom` 19.2.4 → 19.2.5
+- `typescript` 5.9.3 → 6.0.3
+- `@types/node` 20.19.37 → 25.6.0
+- `lucide-react` 1.7.0 → 1.8.0
+- `resend` 6.10.0 → 6.12.0
+- `shadcn` 4.1.2 → 4.3.1
+
+---
+
 ## [0.5.4] — 2026-04-06
 
 ### Corrections

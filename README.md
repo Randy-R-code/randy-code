@@ -25,6 +25,7 @@ app/
   page.tsx              # Home — world map interactive
   about/                # About Base
   apps/                 # Apps Station
+  background/           # Background Zone
   blog/                 # Knowledge Base (listing + articles)
   contact/              # Formulaire de contact (Resend)
   lab/                  # Lab Zone
@@ -45,7 +46,7 @@ src/
 ## Développement
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Ouvrir [http://localhost:3000](http://localhost:3000).
