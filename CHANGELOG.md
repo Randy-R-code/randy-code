@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.5.6] — 2026-05-16
+
+### Contenu
+
+- **Liflow — Apps Station** — description, features cards et metadata entièrement reécrits pour refléter la vraie nature de l'app (souvenirs familiaux, Daily Memory, récits IA)
+- **Liflow — Projects City** — problème, solution et tags mis à jour en cohérence
+- **Nouvel article** — "J'ai complètement repensé Liflow" (`liflow-refonte-souvenirs-familiaux`)
+- **Image de couverture** — `ilja-tulit-CoREQIuk1qM-unsplash.jpg` intégrée sous le bon slug
+
+### Corrections
+
+- **LCP warning** — `priority={i === 0}` sur le premier post de la liste blog : supprime l'avertissement Next.js sur l'image LCP sans eager-loader inutile sur les suivantes
+
+### Stack
+
+- **About & Apps Station** — `Redis` → `Upstash`, `Mux` ajouté
+
+---
+
 ## [0.5.5] — 2026-04-20
 
 ### Nettoyage

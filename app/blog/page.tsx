@@ -21,7 +21,7 @@ export default function BlogPage() {
       icon="bookOpen"
     >
       <div className="grid gap-6 sm:grid-cols-2">
-        {posts.map((post) => (
+        {posts.map((post, i) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
             <article
               className="flex h-full flex-col overflow-hidden rounded-xl border transition-shadow duration-300 group-hover:shadow-xl"
@@ -40,6 +40,7 @@ export default function BlogPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={i === 0}
                   />
                 ) : (
                   <div

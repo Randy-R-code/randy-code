@@ -2,6 +2,7 @@ import beauSite from "../../content/posts/beau-site-web-seo-google";
 import liflow from "../../content/posts/creer-application-saas-retour-experience-liflow";
 import aiDev from "../../content/posts/ia-developpement-web-workflow-coder-sans-perdre-controle";
 import infralens from "../../content/posts/infralens-outil-open-source-analyse-performance-web";
+import liflowRefonte from "../../content/posts/liflow-refonte-souvenirs-familiaux";
 import rebuilding from "../../content/posts/nextjs-16-recommencer-application-saas-zero";
 import prixSite from "../../content/posts/prix-site-web-2026";
 
@@ -27,6 +28,7 @@ function computeReadingTime(html: string): number {
 
 // Pour ajouter un article : créer content/posts/[slug].ts et l'importer ici
 const rawPosts: PostData[] = [
+  liflowRefonte,
   prixSite,
   beauSite,
   infralens,

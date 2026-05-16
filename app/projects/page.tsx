@@ -21,11 +21,11 @@ const projects = [
   },
   {
     title: "Liflow",
-    tags: ["Next.js", "TypeScript", "Stripe", "Mistral AI", "Prisma"],
+    tags: ["Next.js", "TypeScript", "Mistral AI", "Mux", "Upstash"],
     problem:
-      "Pas d'outil simple pour centraliser ses idées, notes, fichiers et todos au même endroit, avec chiffrement et accès multi-utilisateurs.",
+      "Aucun outil simple pour capturer et retrouver les souvenirs familiaux sans friction, sans algorithme et sans réseau social.",
     solution:
-      "Application SaaS complète avec auth, abonnements Stripe, chiffrement de bout en bout et IA intégrée via Mistral pour enrichir le contenu.",
+      "Application mobile-first avec timeline chronologique privée, Daily Memory automatique et récits générés par IA via Mistral.",
     result: "Application en développement actif, disponible sur liflow.app.",
     link: "https://liflow.app",
   },

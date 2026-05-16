@@ -1,33 +1,33 @@
 import { PageShell } from "@/components/layout/page-shell";
-import { Brain, CreditCard, ExternalLink, Lock, Users } from "lucide-react";
+import { AlarmClock, Brain, ExternalLink, Lock, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Apps Station — Randy Code",
   description:
-    "Applications SaaS développées par Randy Rimbault. Liflow et InfraLens — produits construits avec Next.js, TypeScript et Stripe.",
+    "Applications SaaS développées par Randy Rimbault. Liflow et InfraLens — produits construits avec Next.js, TypeScript et Mistral AI.",
 };
 
 const liflowFeatures = [
   {
-    icon: Users,
-    label: "Multi-tenant",
-    desc: "Chaque utilisateur a son espace isolé",
-  },
-  {
-    icon: CreditCard,
-    label: "Stripe",
-    desc: "Abonnements, trials et invoices",
+    icon: Zap,
+    label: "Capture rapide",
+    desc: "Un souvenir ajouté en moins de 10 secondes",
   },
   {
     icon: Lock,
-    label: "E2E chiffré",
-    desc: "RGPD compliant, données protégées",
+    label: "100 % privé",
+    desc: "Aucun contenu public, zéro algorithme",
+  },
+  {
+    icon: AlarmClock,
+    label: "Daily Memory",
+    desc: "Un souvenir du passé remonté chaque matin",
   },
   {
     icon: Brain,
-    label: "IA intégrée",
-    desc: "Mistral AI pour enrichir le contenu",
+    label: "Récits IA",
+    desc: "Histoires auto-générées par Mistral AI",
   },
 ];
 
@@ -73,9 +73,10 @@ export default function AppsPage() {
 
             <h2 className="text-2xl font-bold text-white">Liflow</h2>
             <p className="mt-2 max-w-lg text-sm text-zinc-400">
-              Assistant collaboratif pour organiser ses idées, souvenirs et
-              projets. Gestion centralisée d&apos;événements, fichiers, notes et
-              todos — avec IA et chiffrement de bout en bout.
+              Application mobile-first pour capturer et revivre les souvenirs
+              familiaux. Timeline privée et chronologique, rappels automatiques
+              du passé, récits générés par IA — sans algorithme ni réseau
+              social.
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -107,7 +108,8 @@ export default function AppsPage() {
                 "Better Auth",
                 "Prisma",
                 "PostgreSQL",
-                "Redis",
+                "Upstash",
+                "Mux",
                 "Mistral AI",
                 "Stripe",
                 "Scaleway",
