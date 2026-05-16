@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.7] — 2026-05-16
+
+### Corrections
+
+- **PWA icons** — `icon-192.png`, `icon-512.png` et `apple-touch-icon.png` remplacés pour corriger le rognage de l'icône sur le launcher Samsung
+
+---
+
 ## [0.5.6] — 2026-05-16
 
 ### Contenu
