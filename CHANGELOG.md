@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.1] — 2026-08-02
+
+### Dépendances
+
+- `next` 16.2.4 → 16.2.12, `eslint-config-next` idem
+- `react` / `react-dom` 19.2.5 → 19.2.8
+- `framer-motion` 12.38.0 → 12.43.0, `lucide-react` 1.8.0 → 1.28.0, `radix-ui` 1.4.3 → 1.6.7, `resend` 6.12.0 → 6.18.1, `shadcn` 4.3.1 → 4.16.1, `tailwind-merge` 3.5.0 → 3.6.0
+- `tailwindcss` / `@tailwindcss/postcss` 4.2.2 → 4.3.3
+- `@types/react` 19.2.14 → 19.2.18, `@types/react-dom` 19.2.3 → 19.2.4, `@types/node` 25.6.0 → 26.1.2
+- **Volontairement non bumpées** : `typescript` (reste `^6.0.3`) — `typescript-eslint@8.65.0` (dernière version) ne supporte que `typescript >=4.8.4 <6.1.0`, TS 7 casserait le lint ; `eslint` (reste `^9.39.5`) — `eslint-plugin-react` (via `eslint-config-next`) plante sous ESLint 10 (`context.getFilename` supprimé, `TypeError` confirmée)
+
+---
+
 ## [0.6.0] — 2026-08-02
 
 ### Contenu
