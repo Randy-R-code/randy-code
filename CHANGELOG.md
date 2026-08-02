@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.2] — 2026-08-02
+
+### Corrections
+
+- **`metadataBase` manquant** — `app/layout.tsx` exportait `metadata` sans `metadataBase` : Next.js retombait sur `http://localhost:3000` pour résoudre l'image OG et la Twitter card en production, cassant les aperçus de lien sur les réseaux sociaux. Ajout de `metadataBase: new URL("https://randy-code.dev")`.
+
+### Contenu
+
+- **OG card** (`app/opengraph-image.tsx`) — 4ème tuile "Applications mobiles" (Expo & React Native, backend temps réel) ajoutée aux 3 tuiles existantes ; taille réduite pour garder les 4 lisibles ; tagline mise à jour ("SaaS · Mobile · SEO local") ; `randy-code.dev` en bas de carte éclairci et passé en gras (`#1e293b` → `#94a3b8`), quasi invisible avant
+
+---
+
 ## [0.6.1] — 2026-08-02
 
 ### Dépendances

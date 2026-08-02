@@ -9,7 +9,7 @@ export const contentType = "image/png";
 const services = [
   {
     title: "Sites vitrines",
-    desc: "Rapides, SEO-ready et\nconçus pour convertir",
+    desc: "Rapides, SEO-ready,\npensés pour convertir",
     color: "#22d3ee",
   },
   {
@@ -18,8 +18,13 @@ const services = [
     color: "#8b5cf6",
   },
   {
+    title: "Applications mobiles",
+    desc: "Expo & React Native,\nbackend temps réel",
+    color: "#3b82f6",
+  },
+  {
     title: "SEO local",
-    desc: "Google Maps, pages locales\noptimisées — toute la France",
+    desc: "Google Maps, pages\nlocales optimisées",
     color: "#10b981",
   },
 ];
@@ -151,12 +156,12 @@ export default async function Image() {
             marginBottom: 52,
           }}
         >
-          SaaS · SEO local · Outils sur mesure — des produits pensés pour être
-          utiles et durables.
+          SaaS · Mobile · SEO local — des produits pensés pour être utiles et
+          durables.
         </div>
 
         {/* Service blocks */}
-        <div style={{ display: "flex", gap: 20 }}>
+        <div style={{ display: "flex", gap: 16 }}>
           {services.map((service) => (
             <div
               key={service.title}
@@ -167,25 +172,25 @@ export default async function Image() {
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.07)",
                 borderRadius: 14,
-                padding: "24px 28px",
-                gap: 10,
+                padding: "20px 20px",
+                gap: 8,
               }}
             >
               {/* Color accent */}
               <div
                 style={{
                   display: "flex",
-                  width: 32,
+                  width: 28,
                   height: 3,
                   borderRadius: 2,
                   background: service.color,
-                  marginBottom: 4,
+                  marginBottom: 2,
                 }}
               />
               <div
                 style={{
                   display: "flex",
-                  fontSize: 22,
+                  fontSize: 19,
                   fontFamily: "Inter",
                   fontWeight: 700,
                   color: "#f1f5f9",
@@ -196,7 +201,7 @@ export default async function Image() {
               <div
                 style={{
                   display: "flex",
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: "Inter",
                   fontWeight: 400,
                   color: "#475569",
@@ -220,8 +225,8 @@ export default async function Image() {
           display: "flex",
           fontSize: 16,
           fontFamily: "Inter",
-          fontWeight: 400,
-          color: "#1e293b",
+          fontWeight: 700,
+          color: "#94a3b8",
           letterSpacing: "0.05em",
         }}
       >

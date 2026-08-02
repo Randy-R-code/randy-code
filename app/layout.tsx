@@ -18,6 +18,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://randy-code.dev"),
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
