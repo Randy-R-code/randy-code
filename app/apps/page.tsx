@@ -59,7 +59,7 @@ export default function AppsPage() {
                 className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
                 style={{ backgroundColor: "#8b5cf620", color: "#8b5cf6" }}
               >
-                Projet en cours
+                Disponible
               </span>
               <a
                 href="https://liflow.app"
@@ -73,10 +73,10 @@ export default function AppsPage() {
 
             <h2 className="text-2xl font-bold text-white">Liflow</h2>
             <p className="mt-2 max-w-lg text-sm text-zinc-400">
-              Application mobile-first pour capturer et revivre les souvenirs
-              familiaux. Timeline privée et chronologique, rappels automatiques
-              du passé, récits générés par IA — sans algorithme ni réseau
-              social.
+              Application pour capturer et revivre les souvenirs familiaux, en
+              accès libre. Timeline privée et chronologique, rappels
+              automatiques du passé, récits mensuels générés par IA, partage et
+              réactions en famille — sans algorithme ni réseau social.
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -113,6 +113,8 @@ export default function AppsPage() {
                 "Mistral AI",
                 "Stripe",
                 "Scaleway",
+                "Inngest",
+                "Resend",
               ].map((tech) => (
                 <span
                   key={tech}

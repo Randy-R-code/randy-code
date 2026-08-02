@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.6.0] — 2026-08-02
+
+### Contenu
+
+- **Lab Zone** — OpenClaw passe de "En cours" à "Usage quotidien" (automatisation mails, rendez-vous et rappels partagés, listes, assistant IA au quotidien) ; génération de pages SEO locales mise en pause (reprise avec le site vitrine auto) ; deux nouvelles expériences "Boilerplate SaaS — Convex" et "Boilerplate mobile — Expo & Convex" ; liste triée par maturité de statut (quotidien → en cours → en pause → en réflexion) au lieu de l'ordre de création
+- **Apps Station — Liflow** — statut "Projet en cours" → "Disponible" (application en accès libre, phase post-lancement) ; stack complétée (`Inngest`, `Resend`)
+- **Projects City — Liflow** — résultat mis à jour pour refléter le lancement public
+- **About** — `Inngest` ajouté à la stack technique
+
+### Outillage
+
+- **Skill `portfolio-audit`** ajouté sous `.claude/skills/` — audit read-only des statuts périmés, liens morts, cadence blog, metadata/SEO et sanité PWA/build
+- **`.claude/` ajouté au `.gitignore`** — même logique que `CLAUDE.md`, non pertinent pour un repo public
+
+---
+
 ## [0.5.7] — 2026-05-16
 
 ### Corrections

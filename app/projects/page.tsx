@@ -26,7 +26,8 @@ const projects = [
       "Aucun outil simple pour capturer et retrouver les souvenirs familiaux sans friction, sans algorithme et sans réseau social.",
     solution:
       "Application mobile-first avec timeline chronologique privée, Daily Memory automatique et récits générés par IA via Mistral.",
-    result: "Application en développement actif, disponible sur liflow.app.",
+    result:
+      "Application live et disponible sur liflow.app, en phase de croissance post-lancement.",
     link: "https://liflow.app",
   },
   {

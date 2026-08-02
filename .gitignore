@@ -42,4 +42,5 @@ next-env.d.ts
 
 # ai
 CLAUDE.md
+.claude/
 package-lock.json

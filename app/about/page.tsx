@@ -20,6 +20,7 @@ const stack = [
   "PostgreSQL",
   "Upstash",
   "Mux",
+  "Inngest",
   "Better Auth",
   "Zod",
   "Resend",
