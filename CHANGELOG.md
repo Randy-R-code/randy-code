@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.6.3] — 2026-08-06
+
+### Corrections
+
+- **Injection CRLF dans le formulaire de contact** — `app/contact/actions.ts` interpolait `name` tel quel dans le sujet de l'email sortant (`resend.emails.send`) sans filtrer les caractères de contrôle ; un `name` contenant `\r\n` pouvait injecter des en-têtes email arbitraires. Ajout d'un filtre `noControlChars`, même faille déjà corrigée dans `r-code`/`r-code-marketing`.
+
+### Outillage
+
+- **Tests unitaires (Vitest)** — 0 → 10 tests : `src/lib/__tests__/blog.test.ts` (tri par date, champs requis, slugs uniques, `getPost`/`formatDate`), `src/lib/__tests__/json-ld.test.ts`. Le JSON-LD, jusqu'ici inline dans `app/layout.tsx` et `app/blog/[slug]/page.tsx`, est extrait vers `src/lib/json-ld.ts` (`buildPersonSchema()`, `buildArticleSchema()`) pour être testable.
+- **Tests e2e (Playwright)** — `e2e/smoke.spec.ts` (9 tests) : accueil, navigation vers les 5 zones (projects/apps/lab/about/blog), formulaire de contact, page de blog, 404 brandée.
+- **CI GitHub Actions** (`.github/workflows/ci.yml`) — jobs `lint`/`typecheck`/`test`/`build` en parallèle puis `e2e`, `pnpm/action-setup` épinglé à `10.7.0` (jamais `latest`), `permissions: contents: read` et `concurrency`, patron `cleperformance`/`r-code-marketing`.
+- **`package.json`** — scripts `typecheck`, `test`, `e2e`, `check` ajoutés ; `packageManager: pnpm@10.7.0` épinglé pour que Corepack matche la CI.
+- **5 skills de maintenance** ajoutées sous `.claude/skills/` (non trackées, `.claude/` reste dans `.gitignore`) — `doctor`, `check-launch`, `ship-release`, `verify`, `dependabot-sync`, portées et adaptées depuis `r-code-marketing`.
+
+---
+
 ## [0.6.2] — 2026-08-02
 
 ### Corrections

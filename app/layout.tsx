@@ -1,3 +1,4 @@
+import { buildPersonSchema } from "@/lib/json-ld";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ServiceWorkerRegistration from "./components/service-worker-registration";
@@ -35,25 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Randy Rimbault",
-  jobTitle: "Développeur Fullstack Freelance",
-  url: "https://randy-code.dev",
-  description:
-    "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local.",
-  knowsAbout: [
-    "TypeScript",
-    "Next.js",
-    "SEO local",
-    "SaaS",
-    "Développement web",
-    "React",
-    "Prisma",
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,7 +49,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(buildPersonSchema()),
+          }}
         />
         <ServiceWorkerRegistration />
         {children}

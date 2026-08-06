@@ -4,6 +4,11 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// `name` is interpolated into the outbound email's Subject header below —
+// CRLF in that value could inject extra headers. `email` is already safe
+// (its regex below has no \s allowance).
+const noControlChars = /^[^\r\n\0]*$/;
+
 export interface ContactState {
   success?: boolean;
   error?: string;
@@ -19,6 +24,10 @@ export async function sendContact(
 
   if (!name || !email || !message) {
     return { error: "Tous les champs sont obligatoires." };
+  }
+
+  if (!noControlChars.test(name)) {
+    return { error: "Caractères invalides dans le nom." };
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

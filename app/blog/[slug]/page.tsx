@@ -1,4 +1,5 @@
 import { formatDate, getPost, posts } from "@/lib/blog";
+import { buildArticleSchema } from "@/lib/json-ld";
 import { ArrowLeft, Clock, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -26,30 +27,13 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPost(slug);
   if (!post) notFound();
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    author: {
-      "@type": "Person",
-      name: "Randy Rimbault",
-      url: "https://randy-code.dev",
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Randy Rimbault",
-      url: "https://randy-code.dev",
-    },
-    url: `https://randy-code.dev/blog/${post.slug}`,
-  };
-
   return (
     <main className="min-h-screen pb-20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildArticleSchema(post)),
+        }}
       />
       {/* Hero image + overlay */}
       <div className="relative h-72 w-full overflow-hidden md:h-96">
