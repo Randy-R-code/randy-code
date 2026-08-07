@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0] — 2026-08-07
+
+### Outillage
+
+- **Documents de source de vérité pour la refonte** (`PORTFOLIO_REDESIGN_MASTER_PLAN.md`, `RANDY_CODE_BRANDING_PLAN.md`, `RANDY_CODE_ECOSYSTEM_VISION.md`) — plan de refonte progressive du portfolio (architecture de l'information, phases 0-13), système visuel bleu-vert (phases B0-B7) et vision long terme de l'écosystème Randy Code.
+- **`docs/audits/baseline.md`** — audit Phase 0 (inventaire routes/composants/contenus, occurrences Liflow/InfraLens, `pnpm lint`/`typecheck`/`test`/`build`/`e2e`, `pnpm audit`, Lighthouse, sitemap/robots, liens internes), avec rapports Lighthouse (`docs/audits/lighthouse/`) et captures desktop/mobile (`docs/audits/screenshots/`).
+- **`docs/roadmap.md`** — synthèse consolidée des 3 documents ci-dessus recoupée avec les écarts réels constatés par l'audit, séquencement des phases master plan × branding et liste des décisions humaines bloquantes.
+
 ## [0.6.3] — 2026-08-06
 
 ### Corrections
