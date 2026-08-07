@@ -1,54 +1,25 @@
-export const heroVariants = [
-  {
-    headline: "Développeur web — SaaS, SEO local & applications sur mesure",
-    tagline:
-      "Je conçois des sites et des applications utiles, pensés pour être rapides, clairs et réellement utilisés.",
-    seoTitle: "Ce que je construis",
-    seoItems: [
-      "Sites web optimisés pour le SEO local (artisans, indépendants, PME)",
-      "Applications SaaS avec authentification, paiement et gestion multi-utilisateurs",
-      "Outils sur mesure pour simplifier des besoins concrets",
-    ],
-    seoClose:
-      "Je travaille principalement avec Next.js, TypeScript et Prisma pour créer des projets fiables, évolutifs et performants.",
-  },
-  {
-    headline:
-      "Je conçois des applications web utiles et des sites qui génèrent des résultats",
-    tagline: "SaaS, SEO local et outils sur mesure pour des besoins concrets.",
-    seoTitle: "Ce que je fais",
-    seoItems: [
-      "Création d'applications SaaS complètes (authentification, paiement, multi-tenant)",
-      "Développement de sites web pensés pour être visibles (SEO local)",
-      "Conception d'outils simples pour résoudre des problèmes réels",
-    ],
-    seoClose:
-      "Objectif : construire des produits efficaces, pas seulement du code.",
-  },
-  {
-    headline: "Création de sites web et d'applications sur mesure",
-    tagline:
-      "SEO local, SaaS et outils adaptés aux besoins des indépendants et PME.",
-    seoTitle: "Ce que je peux faire pour vous",
-    seoItems: [
-      "Créer un site web visible sur Google",
-      "Développer une application adaptée à votre activité",
-      "Mettre en place des solutions simples et efficaces",
-    ],
-    seoClose: "Chaque projet est pensé pour être utile, performant et durable.",
-  },
-];
+const heroContent = {
+  eyebrow: "Développeur TypeScript",
+  headline:
+    "Développeur TypeScript, je construis des applications web et des outils métier pensés pour des usages réels.",
+  tagline: "React, Next.js et TypeScript — du prototype au produit déployé.",
+  seoTitle: "Ce que je construis",
+  seoItems: [
+    "Applications SaaS complètes — authentification, paiement, multi-tenant",
+    "Applications mobiles avec Expo & React Native, connectées au même backend",
+    "Outils web utiles et outils métier fondés sur des besoins réels",
+    "Interfaces soignées, du prototype au produit déployé",
+  ],
+  seoClose:
+    "Je travaille principalement avec Next.js, TypeScript et Tailwind CSS pour construire des projets fiables et évolutifs.",
+};
 
-interface HeroTextProps {
-  variantIndex: number;
-}
-
-export function HeroText({ variantIndex }: HeroTextProps) {
-  const { headline, tagline } = heroVariants[variantIndex];
+export function HeroText() {
+  const { eyebrow, headline, tagline } = heroContent;
   return (
     <header className="mb-10">
       <p className="mb-2 text-xs font-medium uppercase tracking-widest text-zinc-500">
-        Développeur Fullstack Freelance
+        {eyebrow}
       </p>
       <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white md:text-5xl">
         {headline}
@@ -58,12 +29,8 @@ export function HeroText({ variantIndex }: HeroTextProps) {
   );
 }
 
-interface SeoBlockProps {
-  variantIndex: number;
-}
-
-export function SeoBlock({ variantIndex }: SeoBlockProps) {
-  const { seoTitle, seoItems, seoClose } = heroVariants[variantIndex];
+export function SeoBlock() {
+  const { seoTitle, seoItems, seoClose } = heroContent;
   return (
     <section
       className="mt-12 border-t pt-10"

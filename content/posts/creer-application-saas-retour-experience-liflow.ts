@@ -9,6 +9,7 @@ const post: PostData = {
   tags: ["SaaS", "développement web", "retour d'expérience"],
   coverImage: "/blog/creer-application-saas-retour-experience-liflow.jpg",
   content: `
+<p><em>Note : cet article date de novembre 2025 et décrit une version antérieure de Liflow, centrée sur le partage par capsules. Le produit a depuis été entièrement repensé — voir <a href="/blog/liflow-refonte-souvenirs-familiaux">l'article de mai 2026</a> pour la version actuelle, recentrée sur la timeline de souvenirs familiaux.</em></p>
 <p>Liflow est né d'un besoin très concret : j'avais envie d'un outil de partage simple, clair, et réellement utile au quotidien.</p>
 <p>Pour collaborer avec mes proches ou quelques personnes, je me retrouvais sans cesse à jongler avec plusieurs outils : WhatsApp pour discuter, Discord pour certains groupes, Google Drive pour les fichiers, parfois un calendrier à côté… Tout était dispersé, difficile à retrouver, et rarement pensé comme un ensemble cohérent.</p>
 <p>J'avais envie de tout regrouper au même endroit, sans bruit inutile.</p>

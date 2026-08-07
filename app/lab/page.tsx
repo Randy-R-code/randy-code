@@ -14,7 +14,7 @@ const experiments = [
     status: "Usage quotidien",
     statusColor: "#10b981",
     tags: ["OpenClaw", "Automation", "Assistant IA"],
-    desc: "OpenClaw automatise mes tâches répétitives au quotidien : gestion des mails, prise de rendez-vous et rappels partagés, listes. Au-delà de l'automatisation, il fait aussi office d'assistant IA au jour le jour.",
+    desc: "OpenClaw lit et trie mes mails automatiquement à heure fixe, gère un calendrier partagé, envoie des rappels et tient des listes. Deux fois par jour, il relit l'historique de nos conversations pour mettre sa mémoire à jour tout seul — au-delà de l'automatisation, c'est un assistant IA à part entière dans mon quotidien.",
   },
   {
     id: "02",
@@ -22,7 +22,7 @@ const experiments = [
     status: "En cours",
     statusColor: "#f59e0b",
     tags: ["Convex", "TanStack Start", "SaaS Boilerplate"],
-    desc: "Starter interne pour lancer un SaaS rapidement : Convex remplace Prisma/PostgreSQL pour la base de données et le temps réel, avec auth, facturation, uploads et analytics déjà câblés.",
+    desc: "Starter interne pour lancer un SaaS rapidement, réutilisé sur mes projets clients et produits : Convex remplace Prisma/PostgreSQL pour la base de données et le temps réel, avec auth, facturation, uploads et analytics déjà câblés.",
   },
   {
     id: "03",
@@ -30,23 +30,7 @@ const experiments = [
     status: "En cours",
     statusColor: "#f59e0b",
     tags: ["Expo", "React Native", "Convex", "Better Auth"],
-    desc: "Deuxième starter interne, pensé mobile : React Native (Expo) sur le même socle Convex/Better Auth que le boilerplate web, pour lancer une app aussi vite qu'un SaaS.",
-  },
-  {
-    id: "04",
-    title: "Génération de pages SEO locales",
-    status: "En pause",
-    statusColor: "#94a3b8",
-    tags: ["LLM", "Next.js", "ISR"],
-    desc: "Pipeline pour générer automatiquement des pages SEO locales à partir d'une base de données de villes et de métiers. En pause — reprendra avec le site vitrine automobile quand ce projet redémarrera.",
-  },
-  {
-    id: "05",
-    title: "Assistant portfolio IA",
-    status: "En réflexion",
-    statusColor: "#94a3b8",
-    tags: ["Claude API", "Next.js", "Streaming"],
-    desc: 'Un assistant intégré qui permet de naviguer dans le portfolio en langage naturel. "Montre-moi les projets SEO", "C\'est quoi Liflow".',
+    desc: "Deuxième starter interne, pensé mobile et réutilisé sur les mêmes projets : React Native (Expo) sur le même socle Convex/Better Auth que le boilerplate web, pour lancer une app aussi vite qu'un SaaS.",
   },
 ];
 
@@ -121,6 +105,7 @@ export default function LabPage() {
             "CLI pour scaffolding Next.js",
             "Dashboard analytics léger",
             "Générateur de contrats freelance",
+            "Assistant portfolio IA (langage naturel)",
           ].map((idea) => (
             <span
               key={idea}

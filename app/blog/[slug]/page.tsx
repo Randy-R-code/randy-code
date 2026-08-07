@@ -112,9 +112,7 @@ export default async function BlogPostPage({ params }: Props) {
             background: "oklch(0.13 0.012 252)",
           }}
         >
-          <p className="mb-4 text-sm font-semibold text-white">
-            Mes projets en cours
-          </p>
+          <p className="mb-4 text-sm font-semibold text-white">Mes projets</p>
           <div className="flex flex-wrap gap-3">
             <a
               href="https://liflow.app"

@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.7.1] — 2026-08-07
+
+### Contenu
+
+- **Homepage** (`app/page.tsx`, `src/components/hero-text.tsx`) — le H1, la tagline et le bloc "Ce que je construis" étaient tirés aléatoirement côté serveur parmi 3 variantes à chaque requête (`force-dynamic`). Fixés sur une seule version stable, alignée sur la proposition de valeur du plan de refonte (développeur TypeScript, applications web et outils métier, mention des apps mobiles Expo/React Native) ; `force-dynamic` retiré, `/` repasse en rendu statique.
+- **Lab Zone** (`app/lab/page.tsx`) — 5 → 3 expériences : "Génération de pages SEO locales" (en pause, sans preuve exploitable) retirée ; "Assistant portfolio IA" déplacé de carte Expérience vers la liste "Sur le radar" (simple idée, pas de prototype). OpenClaw et les 2 boilerplates internes étoffés (fonctionnement réel d'OpenClaw détaillé ; stack réutilisée sur plusieurs projets clients/produits mentionnée), sans exposer repo ni chiffres internes.
+- **`content/posts/creer-application-saas-retour-experience-liflow.ts`** — note éditoriale ajoutée : l'article (nov. 2025) décrit une version antérieure de Liflow (partage par capsules), périmée depuis le pivot de mai 2026 vers la timeline de souvenirs familiaux ; lien ajouté vers l'article à jour.
+
+### Corrections
+
+- **`app/blog/[slug]/page.tsx`** — "Mes projets en cours" contredisait le statut "Disponible" affiché partout ailleurs pour Liflow/InfraLens ; corrigé en "Mes projets".
+
+### Outillage
+
+- **`docs/roadmap.md`** — Phase 1 (correction du contenu et cohérence produit) du plan de refonte marquée terminée ; les 4 décisions humaines bloquantes tranchées (SEO District → intégré, InfraLens → rewrite sous `randy-code.dev/tools/infralens`, retrait `infralens.dev` à court terme, séquencement conservé tel quel côté master plan).
+
 ## [0.7.0] — 2026-08-07
 
 ### Outillage
