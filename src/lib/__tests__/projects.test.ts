@@ -22,6 +22,15 @@ describe("projects", () => {
     const slugs = projects.map((p) => p.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
   });
+
+  it("each project's case study (when present) has non-empty fields", () => {
+    for (const project of projects) {
+      if (!project.caseStudy) continue;
+      for (const [key, value] of Object.entries(project.caseStudy)) {
+        expect(value, `${project.slug}.caseStudy.${key}`).toBeTruthy();
+      }
+    }
+  });
 });
 
 describe("getProject", () => {

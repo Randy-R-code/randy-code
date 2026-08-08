@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.5] — 2026-08-08
+
+### Contenu
+
+- **Étude de cas Liflow** (`src/lib/projects.ts`, `app/projects/[slug]/page.tsx`) — `/projects/liflow` passe de 3 sections génériques (Problème/Solution/Résultat) à 11 (contexte, problème, objectifs, rôle, solution, architecture, choix techniques, difficultés, sécurité et confidentialité, résultat, enseignements), via un nouveau champ optionnel `caseStudy` sur `Project`. Sourcé sur l'article de blog à jour (mai 2026, post-refonte) et sur le dépôt Liflow réel en local pour confirmer l'architecture — multi-tenant par organisation, Better Auth, Prisma/PostgreSQL, stockage S3 présigné, Mux, Inngest, Stripe présent dans le code mais non activé publiquement. Les projets sans `caseStudy` (InfraLens, site client) gardent l'affichage léger existant.
+
 ## [0.7.4] — 2026-08-08
 
 ### Contenu

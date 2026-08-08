@@ -74,11 +74,32 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Contenu */}
         <div className="flex flex-col gap-6">
-          {[
-            { label: "Problème", text: project.problem },
-            { label: "Solution", text: project.solution },
-            { label: "Résultat", text: project.result },
-          ].map(({ label, text }) => (
+          {(project.caseStudy
+            ? [
+                { label: "Contexte", text: project.caseStudy.context },
+                { label: "Problème", text: project.problem },
+                { label: "Objectifs", text: project.caseStudy.objectives },
+                { label: "Rôle", text: project.caseStudy.role },
+                { label: "Solution", text: project.caseStudy.solution },
+                { label: "Architecture", text: project.caseStudy.architecture },
+                {
+                  label: "Choix techniques",
+                  text: project.caseStudy.technicalChoices,
+                },
+                { label: "Difficultés", text: project.caseStudy.difficulties },
+                {
+                  label: "Sécurité et confidentialité",
+                  text: project.caseStudy.security,
+                },
+                { label: "Résultat", text: project.result },
+                { label: "Enseignements", text: project.caseStudy.learnings },
+              ]
+            : [
+                { label: "Problème", text: project.problem },
+                { label: "Solution", text: project.solution },
+                { label: "Résultat", text: project.result },
+              ]
+          ).map(({ label, text }) => (
             <section
               key={label}
               className="rounded-xl border p-6"

@@ -1,3 +1,15 @@
+export interface ProjectCaseStudy {
+  context: string;
+  objectives: string;
+  role: string;
+  solution: string;
+  architecture: string;
+  technicalChoices: string;
+  difficulties: string;
+  security: string;
+  learnings: string;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -12,6 +24,7 @@ export interface Project {
   repositoryUrl?: string;
   image?: string;
   featured: boolean;
+  caseStudy?: ProjectCaseStudy;
 }
 
 export const projects: Project[] = [
@@ -31,6 +44,25 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Mistral AI", "Mux", "Upstash"],
     projectUrl: "https://liflow.app",
     featured: true,
+    caseStudy: {
+      context:
+        'Liflow a démarré comme un SaaS de partage classique, pensé autour de "capsules" (notes, fichiers, événements partagés par groupe). En devenant père, je me suis retrouvé avec des centaines de photos et de souvenirs dispersés, jamais revisités — ce changement personnel a déclenché une refonte complète du produit, avec la sortie de Next.js 16 comme fenêtre technique pour tout reconstruire.',
+      objectives:
+        "Recentrer Liflow sur une idée unique : garder les moments qui comptent. Pas de dashboard, pas de modules, pas d'options cachées — une application qu'on a envie d'ouvrir, pensée pour l'émotion plutôt que pour la fonctionnalité.",
+      role: "Je conçois, développe et maintiens Liflow seul, de l'architecture à l'interface, y compris la refonte complète du produit.",
+      solution:
+        "Liflow organise la vie de famille autour du Moment (date, titre, texte, photos ou vidéos), regroupés dans une timeline privée par mois. Chaque jour, un Daily Memory fait remonter un souvenir passé au hasard. Un récit mensuel est généré automatiquement par IA (Mistral) à partir des moments du mois, diffusé en streaming. Les moments peuvent être partagés via un lien public révocable, retrouvés par recherche floue (Cmd+K) ou par tags, et commentés/réagis en famille. Notifications push et préférences email tiennent chacun informé sans être intrusif.",
+      architecture:
+        "Next.js (App Router) et TypeScript, Prisma et PostgreSQL pour les données. Photos et fichiers sur un stockage compatible S3, servis via des URLs présignées. Vidéos via Mux (HLS, tokens signés). Authentification par Better Auth, en mode multi-tenant. Tâches différées (email de bienvenue, diffusion des notifications push) sur Inngest, emails transactionnels via Resend. Le paiement (Stripe) est prêt dans le code, mais Liflow reste gratuit pour l'instant.",
+      technicalChoices:
+        "Modèle multi-tenant par organisation : chaque organisation représente une famille, avec des rôles (propriétaire, admin, contributeur, membre) et un cloisonnement strict des données. Plusieurs membres d'une même famille collaborent sur la même timeline sans qu'aucune donnée ne fuite vers une autre famille.",
+      difficulties:
+        'La première version était trop ambitieuse (capsules, partage multi-usage, IA un peu partout) — le produit devenait une plateforme complète, pas une expérience. J\'ai dû "jeter la moitié" du SaaS existant pour recentrer sur une idée forte : ajouter des fonctionnalités est facile, construire une expérience simple et cohérente est bien plus difficile.',
+      security:
+        "Privé par défaut : aucun contenu public, aucun algorithme de recommandation, aucun réseau social. Données isolées par organisation. Seul mécanisme de partage externe : un lien public révocable par moment, désactivable à tout moment par son créateur.",
+      learnings:
+        "Cette refonte m'a appris à ralentir : prendre le temps de réfléchir à l'architecture et à l'utilité réelle d'une fonctionnalité avant de coder. Elle a confirmé mon goût pour la construction de projets de A à Z, seul, en soignant les détails plutôt qu'en livrant quelque chose de bancal.",
+    },
   },
   {
     slug: "infralens",
