@@ -64,7 +64,7 @@ Rappelées pour mémoire, à ne pas anticiper : refonte InfraLens (dépôt sépa
 
 ## 5. Prochaine étape
 
-Phases 0 à 6 et 9 à 12 (côté randy-code) terminées. Côté branding, **B0 à B4 sont terminées** (voir section 8), **B5 (logo) en cours** (voir section 9) — reste à finir B5 (variante R-code, image Open Graph) puis **B6 (intégration InfraLens)** et **B7 (QA finale branding)**, plus les 2 phases InfraLens explicitement repoussées (7 et 8).
+Phases 0 à 6 et 9 à 12 (côté randy-code) terminées. Côté branding, **B0 à B5 et B7 sont terminées** (voir sections 8-10) — B5 a un tout petit reste non bloquant (alignement fin du footer, explicitement repoussé par Randy). Tout ce qui reste maintenant touche InfraLens, un dépôt séparé : **B6** (signature InfraLens, cross-repo), **Phase 7** (intégration `/tools/infralens`, cross-repo) et **Phase 8** (durcissement sécurité InfraLens dont le SSRF actif, uniquement côté InfraLens). Phase 13 (mise en ligne/suivi) reste sans tâche de code, opérationnelle.
 
 **À ne pas oublier une fois la Phase 8 terminée (côté InfraLens)** : revenir écrire l'article "Sécuriser un analyseur d'URL contre le SSRF" (section 11.2/19) — seulement à ce moment-là, une fois les protections réellement en place (voir section 6).
 
@@ -123,6 +123,23 @@ Randy a ensuite fourni ses propres fichiers, déjà propres (canal alpha réel, 
 - **Bug corrigé** : `public/sw.js` référençait encore `/apple-touch-icon.png`, supprimé plus tôt dans ce même chantier — cassait l'installation du service worker (`cache.addAll` échoue si une des URLs répond 404). Corrigé vers `/apple-icon.png` (convention Next.js réelle), `CACHE_NAME` passé à `v2` pour invalider le cache existant des visiteurs déjà passés.
 - **Incident de session relevé pour mémoire** : un serveur de production zombie (`next start` lancé plus tôt dans la session, jamais correctement arrêté) est resté actif sur le port 3000 pendant une bonne partie de cette passe, servant un build figé — a causé une confusion prolongée sur un problème d'alignement dans le footer qui semblait ne jamais se corriger. Nettoyé (process tué, port libéré). Alignement du footer (léger écart vertical entre les liens avec icône et les liens texte simple) laissé de côté pour une prochaine session, à vérifier sur un vrai serveur.
 
-**Pas encore fait** : variante "R-code" (nom secondaire/historique, Randy la prépare séparément), image Open Graph statique (`opengraph-brand.svg` du plan section 9 — `app/opengraph-image.tsx` reste la version dynamique actuelle, non touchée), alignement fin du footer (voir incident ci-dessus). B5 sera clos une fois ces éléments traités.
+**Troisième incrément (2026-08-08) — image Open Graph** (`app/opengraph-image.tsx`) recolorée sur `brand.ts` (plus aucune trace de l'ancienne palette violet/cyan/vert isolée) ; eyebrow "RANDY RIMBAULT" → "RANDY CODE" (cohérent avec le reste du site) ; titre "Développeur Fullstack Freelance" → "Développeur Fullstack TypeScript" (le mot "Freelance" ne correspondait plus au positionnement de marque construit depuis B1) ; nom personnel replacé dans le tagline ("Randy Rimbault · SaaS · Mobile · SEO local..."). Décision : pas de logo sur cette card — à l'échelle d'un aperçu de partage, un logo pas encore connu n'apporte pas de reconnaissance, le texte porte déjà l'identité. Rendu vérifié en générant le PNG réel depuis `.next/server/app/opengraph-image.body`, pas juste le code source.
+
+**Note pour plus tard — la variante "R-code" n'est PAS pour le footer** : `public/brand/logo-rcode-horizontal.png` a été essayé un temps dans le footer (à la place du lien GitHub) puis retiré sur instruction explicite de Randy — ce lockup est réservé à l'intégration InfraLens (B6), pas au portfolio. Le fichier reste disponible dans `public/brand/` sans être branché nulle part ici.
+
+**Pas encore fait** : alignement fin du footer (léger écart vertical entre les liens avec icône et les liens texte simple, diagnostic brouillé par un serveur zombie — voir incident ci-dessus, explicitement repoussé par Randy "on verra plus tard"). En dehors de ça, B5 est fonctionnellement complet côté randy-code.
 
 **Vérifications** : `pnpm check`/`test`(18)/`e2e`(15) tous verts après chaque incrément. Lighthouse accessibilité 100/100 sur accueil (mobile + desktop), `/about` et `/projects/liflow` après le correctif de contraste — rapports dans `docs/audits/lighthouse/*-phaseB1-B4.report.{html,json}`. `robots-txt` signalé en échec par le run Lighthouse homepage desktop (SEO 92) — vérifié manuellement (`curl`, 200, contenu valide) : artefact du fetch headless, pas une régression réelle.
+
+## 10. Branding B7 — QA finale (2026-08-08)
+
+Passe de vérification sur tout ce qui ne dépend pas d'InfraLens (B6 exclu, cross-repo).
+
+- **Couleurs obsolètes** : grep exhaustif sur `app`/`src` — zéro trace des 5 anciennes couleurs de zone, zéro `oklch` non migré, zéro `#09090b`. Tout hex restant correspond aux nuances légitimes de `src/lib/brand.ts`.
+- **Reduced-motion** : `MotionConfig reducedMotion="user"` (`app/layout.tsx`) couvre toutes les animations framer-motion (carte, `PageShell`) ; `AppBackground` a sa propre règle CSS défensive (`@media (prefers-reduced-motion: reduce)`), même si rien n'y anime actuellement.
+- **Flash de thème** : `viewport.themeColor`, `manifest.background_color`/`theme_color` et `:root --background` pointent tous vers `#070b10` — aucune incohérence possible. Site dark-only, pas de bascule de thème donc pas de risque de flash lié à ça.
+- **Régression de contraste trouvée et corrigée** : Lighthouse a détecté `text-zinc-500` (contraste 4.08:1, sous le seuil 4.5:1) réintroduit dans le nouveau footer (copyright + 3 labels de colonne) — exactement la même classe de bug déjà corrigée site-wide en B1-B4, réintroduite sans y penser en construisant le footer. Corrigé en `text-zinc-400`, revérifié à 100/100.
+- **Lighthouse** : accessibilité 100/100 sur accueil (mobile + desktop), `/about` — best-practices et SEO à 100 aussi sur desktop. Rapports dans `docs/audits/lighthouse/*-phaseB7.report.{html,json}`.
+- **Responsive** : footer vérifié sur mobile (390px) — 3 colonnes empilées en liste verticale comme prévu, wordmark visible. Menu mobile du header vérifié — Lab bien présent parmi les 7 items, logo net.
+
+B7 terminé côté randy-code. Reste hors-scope de cette phase : B6 (signature InfraLens, cross-repo) et les Phases 7/8 du master plan (intégration + sécurité InfraLens, toujours différées).

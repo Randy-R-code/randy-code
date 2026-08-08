@@ -34,12 +34,12 @@ export function SiteFooter() {
             Développeur fullstack TypeScript — sites vitrines, SaaS, apps
             mobiles.
           </p>
-          <p className="text-xs text-zinc-500">© {year} Randy Code</p>
+          <p className="text-xs text-zinc-400">© {year} Randy Code</p>
         </div>
 
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
           <nav aria-label="Explorer">
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               Explorer
             </p>
             <ul className="flex flex-col gap-2">
@@ -57,7 +57,7 @@ export function SiteFooter() {
           </nav>
 
           <nav aria-label="Site">
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               Site
             </p>
             <ul className="flex flex-col gap-2">
@@ -75,7 +75,7 @@ export function SiteFooter() {
           </nav>
 
           <div>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               Liens
             </p>
             <ul className="flex flex-col gap-2">

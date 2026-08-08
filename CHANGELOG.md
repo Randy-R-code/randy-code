@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.7.14] — 2026-08-08
+
+### Contenu
+
+- **Image Open Graph** (`app/opengraph-image.tsx`) — recolorée sur `brand.ts` (fin de l'ancienne palette isolée violet/cyan/vert) ; eyebrow "RANDY RIMBAULT" → "RANDY CODE" ; titre "Développeur Fullstack Freelance" → "Développeur Fullstack TypeScript" (le mot "Freelance" ne correspondait plus au positionnement construit depuis B1) ; nom personnel replacé dans le tagline. Pas de logo sur cette card — à cette échelle il n'apporte pas de reconnaissance et la card est déjà dense.
+
+### Corrections
+
+- **Contraste du footer** — `text-zinc-500` (4.08:1, sous le seuil AA) réintroduit sans y penser dans le nouveau footer (copyright + 3 labels de colonne), détecté par Lighthouse. Corrigé en `text-zinc-400`, même correctif que B1-B4, revérifié à 100/100.
+
+### Nettoyage
+
+- **`docs/roadmap.md`** — Phase B7 (QA finale branding) close : couleurs obsolètes (zéro trouvée), reduced-motion, flash de thème, responsive mobile (footer + menu) tous vérifiés. B5 documenté comme fonctionnellement complet (reste un alignement mineur du footer, explicitement repoussé par Randy).
+
 ## [0.7.13] — 2026-08-08
 
 ### Contenu

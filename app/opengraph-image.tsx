@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Randy Rimbault — Développeur Fullstack Freelance";
+export const alt = "Randy Code — Développeur Fullstack TypeScript";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,22 +10,22 @@ const services = [
   {
     title: "Sites vitrines",
     desc: "Rapides, SEO-ready,\npensés pour convertir",
-    color: "#22d3ee",
+    color: "#4AA7FF",
   },
   {
     title: "Applications SaaS",
     desc: "Auth, paiement, IA —\nde l'idée à la prod",
-    color: "#8b5cf6",
+    color: "#14B894",
   },
   {
     title: "Applications mobiles",
     desc: "Expo & React Native,\nbackend temps réel",
-    color: "#3b82f6",
+    color: "#2388F2",
   },
   {
     title: "SEO local",
     desc: "Google Maps, pages\nlocales optimisées",
-    color: "#10b981",
+    color: "#35D3AD",
   },
 ];
 
@@ -41,7 +41,7 @@ export default async function Image() {
         width: "100%",
         height: "100%",
         display: "flex",
-        background: "#0a0d16",
+        background: "#070B10",
         position: "relative",
       }}
     >
@@ -52,7 +52,7 @@ export default async function Image() {
           inset: 0,
           display: "flex",
           backgroundImage:
-            "linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(74,167,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(74,167,255,0.04) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -67,12 +67,12 @@ export default async function Image() {
           height: 560,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(37,99,235,0.20) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(35,136,242,0.20) 0%, transparent 70%)",
           display: "flex",
         }}
       />
 
-      {/* Cyan glow — bottom right */}
+      {/* Green glow — bottom right */}
       <div
         style={{
           position: "absolute",
@@ -82,7 +82,7 @@ export default async function Image() {
           height: 360,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(53,211,173,0.08) 0%, transparent 70%)",
           display: "flex",
         }}
       />
@@ -96,7 +96,7 @@ export default async function Image() {
           bottom: 0,
           width: 5,
           background:
-            "linear-gradient(180deg, #3b82f6 0%, #2563eb 60%, transparent 100%)",
+            "linear-gradient(180deg, #4AA7FF 0%, #2388F2 60%, transparent 100%)",
           display: "flex",
         }}
       />
@@ -120,13 +120,13 @@ export default async function Image() {
             fontSize: 16,
             fontFamily: "Inter",
             fontWeight: 400,
-            color: "#3b82f6",
+            color: "#4AA7FF",
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             marginBottom: 20,
           }}
         >
-          RANDY RIMBAULT
+          RANDY CODE
         </div>
 
         {/* Title */}
@@ -136,13 +136,13 @@ export default async function Image() {
             fontSize: 64,
             fontFamily: "Inter",
             fontWeight: 700,
-            color: "#ffffff",
+            color: "#F4F8FC",
             lineHeight: 1.05,
             letterSpacing: "-0.02em",
             marginBottom: 16,
           }}
         >
-          Développeur Fullstack Freelance
+          Développeur Fullstack TypeScript
         </div>
 
         {/* Tagline */}
@@ -152,12 +152,12 @@ export default async function Image() {
             fontSize: 22,
             fontFamily: "Inter",
             fontWeight: 400,
-            color: "#64748b",
+            color: "#A9B8C7",
             marginBottom: 52,
           }}
         >
-          SaaS · Mobile · SEO local — des produits pensés pour être utiles et
-          durables.
+          Randy Rimbault · SaaS · Mobile · SEO local — des produits pensés pour
+          être utiles et durables.
         </div>
 
         {/* Service blocks */}
@@ -170,7 +170,7 @@ export default async function Image() {
                 flexDirection: "column",
                 flex: 1,
                 background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                border: "1px solid rgba(148,163,184,0.12)",
                 borderRadius: 14,
                 padding: "20px 20px",
                 gap: 8,
@@ -193,7 +193,7 @@ export default async function Image() {
                   fontSize: 19,
                   fontFamily: "Inter",
                   fontWeight: 700,
-                  color: "#f1f5f9",
+                  color: "#F4F8FC",
                 }}
               >
                 {service.title}
@@ -204,7 +204,7 @@ export default async function Image() {
                   fontSize: 14,
                   fontFamily: "Inter",
                   fontWeight: 400,
-                  color: "#475569",
+                  color: "#74879A",
                   lineHeight: 1.5,
                   whiteSpace: "pre-line",
                 }}
@@ -226,7 +226,7 @@ export default async function Image() {
           fontSize: 16,
           fontFamily: "Inter",
           fontWeight: 700,
-          color: "#94a3b8",
+          color: "#A9B8C7",
           letterSpacing: "0.05em",
         }}
       >
