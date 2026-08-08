@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Knowledge Base — Randy Code",
   description:
     "Articles sur le développement web, le SEO local et la création de SaaS par Randy Rimbault.",
+  alternates: { canonical: "/articles" },
 };
 
 export default function BlogPage() {

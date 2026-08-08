@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Tools Station — Randy Code",
   description:
     "Outils développeur créés par Randy Rimbault. InfraLens, l'analyseur technique de sites web open source.",
+  alternates: { canonical: "/tools" },
 };
 
 export default function ToolsPage() {

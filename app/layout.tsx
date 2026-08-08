@@ -23,6 +23,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://randy-code.dev"),
   alternates: {
+    canonical: "/",
     types: {
       "application/rss+xml": "/rss.xml",
     },
@@ -35,6 +36,15 @@ export const metadata: Metadata = {
   title: "Randy Rimbault — Développeur Fullstack Freelance",
   description:
     "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
+  openGraph: {
+    title: "Randy Rimbault — Développeur Fullstack Freelance",
+    description:
+      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
+    url: "/",
+    siteName: "Randy Code",
+    locale: "fr_FR",
+    type: "website",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Randy Rimbault — Développeur Fullstack Freelance",

@@ -1,8 +1,11 @@
+import { buildSoftwareApplicationSchema } from "@/lib/json-ld";
 import { getProject, projects, statusLabel } from "@/lib/projects";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+const SOFTWARE_APPLICATION_SLUGS = new Set(["liflow", "infralens"]);
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.name} — Randy Code`,
     description: project.tagline,
+    alternates: { canonical: `/projects/${project.slug}` },
   };
 }
 
@@ -29,6 +33,14 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <main className="flex-1 px-6 pt-8 pb-16">
+      {SOFTWARE_APPLICATION_SLUGS.has(project.slug) && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(buildSoftwareApplicationSchema(project)),
+          }}
+        />
+      )}
       <div className="mx-auto w-full max-w-3xl">
         {/* Breadcrumbs */}
         <nav

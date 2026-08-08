@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.11] — 2026-08-08
+
+### Contenu
+
+- **`openGraph` et `alternates.canonical`** — champ `openGraph` explicite ajouté à `app/layout.tsx` (seul `twitter` l'était) ; `alternates.canonical` ajouté sur les 11 pages du site (aucune n'en avait avant).
+- **JSON-LD `SoftwareApplication`** (`src/lib/json-ld.ts`) — nouveau schéma, appliqué uniquement à `/projects/liflow` et `/projects/infralens` (les 2 produits nommés par le plan de refonte, pas le site client).
+
+### Outillage
+
+- **Content-Security-Policy** (`next.config.mjs`) — nouveau header, vérifié sans violation sur 11 routes + interactions (menu mobile), y compris avec throttling CPU. Un écart Lighthouse `best-practices` (100→92) causé par la CSP est documenté et expliqué dans `docs/roadmap.md` (section 7) — artefact de l'environnement de mesure, pas un problème reproductible pour un visiteur réel ; pas d'affaiblissement de la CSP pour ce score.
+- **`docs/roadmap.md`** — Phases 11 et 12 marquées terminées, Phase 13 notée sans tâche de code concrète pour l'instant.
+
 ## [0.7.10] — 2026-08-08
 
 ### Contenu

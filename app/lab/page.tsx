@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Lab Zone — Randy Code",
   description:
     "Expérimentations techniques de Randy : IA, prototypes, idées en cours. Un espace pour tester sans contraintes.",
+  alternates: { canonical: "/lab" },
 };
 
 const experiments = [

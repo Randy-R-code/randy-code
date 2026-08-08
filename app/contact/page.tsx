@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contact — Randy Code",
   description:
     "Contactez Randy Rimbault, développeur fullstack TypeScript freelance, pour discuter d'un projet.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

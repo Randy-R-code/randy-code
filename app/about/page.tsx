@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "About Base — Randy Code",
   description:
     "Randy Rimbault, développeur fullstack TypeScript freelance. Parcours, vision, stack technique et contact.",
+  alternates: { canonical: "/about" },
 };
 
 const stackTiers = [

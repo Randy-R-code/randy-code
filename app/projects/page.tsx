@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Projects City — Randy Code",
   description:
     "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, sites clients et applications sur mesure.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

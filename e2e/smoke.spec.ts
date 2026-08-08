@@ -53,6 +53,16 @@ test("a project case study page renders", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("security headers include a content security policy", async ({
+  request,
+}) => {
+  const response = await request.get("/");
+
+  expect(response.headers()["content-security-policy"]).toContain(
+    "default-src 'self'",
+  );
+});
+
 test("rss feed is valid and lists articles", async ({ request }) => {
   const response = await request.get("/rss.xml");
 
