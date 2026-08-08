@@ -1,6 +1,7 @@
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
 import { primaryNav } from "@/lib/nav";
+import { getFeaturedProjects, statusLabel } from "@/lib/projects";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
@@ -8,26 +9,7 @@ const altNavItems = primaryNav.filter(
   (item) => item.href !== "/" && item.href !== "/contact",
 );
 
-const featuredProjects = [
-  {
-    name: "Liflow",
-    status: "Disponible",
-    tagline:
-      "Une timeline familiale privée pour capturer, organiser, partager et redécouvrir les souvenirs qui comptent.",
-    stack: ["Next.js", "TypeScript", "Mistral AI"],
-    productUrl: "https://liflow.app",
-    caseStudyUrl: "/projects",
-  },
-  {
-    name: "InfraLens",
-    status: "Disponible",
-    tagline:
-      "Un outil open source qui rassemble les principaux signaux techniques d'un site dans un rapport lisible.",
-    stack: ["Next.js", "TypeScript", "Node.js"],
-    productUrl: "https://infralens.dev",
-    caseStudyUrl: "/projects",
-  },
-];
+const featuredProjects = getFeaturedProjects();
 
 const color = "#22d3ee";
 
@@ -65,7 +47,7 @@ export default function Home() {
           <div className="grid gap-4 sm:grid-cols-2">
             {featuredProjects.map((project) => (
               <div
-                key={project.name}
+                key={project.slug}
                 className="flex flex-col rounded-xl border p-6"
                 style={{
                   borderColor: `${color}20`,
@@ -76,14 +58,14 @@ export default function Home() {
                   className="mb-3 inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
                   style={{ backgroundColor: `${color}18`, color }}
                 >
-                  {project.status}
+                  {statusLabel(project.status)}
                 </span>
                 <h3 className="text-lg font-bold text-white">{project.name}</h3>
                 <p className="mt-2 flex-1 text-sm text-zinc-400">
                   {project.tagline}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
+                  {project.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="rounded-md px-2 py-0.5 text-[10px] font-medium text-zinc-300"
@@ -95,19 +77,21 @@ export default function Home() {
                 </div>
                 <div className="mt-5 flex items-center gap-4">
                   <Link
-                    href={project.caseStudyUrl}
+                    href={`/projects/${project.slug}`}
                     className="text-xs font-medium text-zinc-300 hover:text-white"
                   >
                     Étude de cas →
                   </Link>
-                  <a
-                    href={project.productUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium text-zinc-300 hover:text-white"
-                  >
-                    Voir le produit <ExternalLink size={10} />
-                  </a>
+                  {project.projectUrl && (
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-zinc-300 hover:text-white"
+                    >
+                      Voir le produit <ExternalLink size={10} />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

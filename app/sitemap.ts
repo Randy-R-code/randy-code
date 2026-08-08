@@ -1,4 +1,5 @@
 import { posts } from "@/lib/blog";
+import { projects } from "@/lib/projects";
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://randy-code.dev";
@@ -56,5 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${BASE_URL}/projects/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...articleRoutes, ...projectRoutes];
 }

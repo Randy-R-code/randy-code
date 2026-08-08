@@ -44,6 +44,15 @@ test("an article page renders", async ({ page }) => {
   );
 });
 
+test("a project case study page renders", async ({ page }) => {
+  await page.goto("/projects/liflow");
+
+  await expect(page.locator("h1")).toHaveText("Liflow");
+  await expect(
+    page.getByRole("link", { name: /voir le produit/i }),
+  ).toBeVisible();
+});
+
 test("404 page is branded", async ({ page }) => {
   await page.goto("/page-qui-nexiste-pas");
 

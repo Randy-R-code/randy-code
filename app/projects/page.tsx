@@ -1,46 +1,14 @@
 import { PageShell } from "@/components/layout/page-shell";
+import { projects, statusLabel } from "@/lib/projects";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projects City — Randy Code",
   description:
     "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, sites clients et applications sur mesure.",
 };
-
-const projects = [
-  {
-    title: "Site vitrine — Spécialiste automobile",
-    tags: ["Next.js", "TypeScript", "SEO local", "Perpignan"],
-    problem:
-      "Artisan spécialisé en reprogrammation de clés, calculateurs ECU et recharge de climatisation, sans présence web pour capter des clients locaux.",
-    solution:
-      "Site vitrine optimisé SEO local avec pages de services dédiées, fiche Google Maps et structure pensée pour le référencement sur les requêtes métier.",
-    result: "Site terminé, mise en ligne imminente.",
-    link: null,
-  },
-  {
-    title: "Liflow",
-    tags: ["Next.js", "TypeScript", "Mistral AI", "Mux", "Upstash"],
-    problem:
-      "Aucun outil simple pour capturer et retrouver les souvenirs familiaux sans friction, sans algorithme et sans réseau social.",
-    solution:
-      "Application mobile-first avec timeline chronologique privée, Daily Memory automatique et récits générés par IA via Mistral.",
-    result:
-      "Application live et disponible sur liflow.app, en phase de croissance post-lancement.",
-    link: "https://liflow.app",
-  },
-  {
-    title: "InfraLens",
-    tags: ["Next.js", "TypeScript", "Node.js", "Vercel"],
-    problem:
-      "Les développeurs et DevOps doivent jongler entre plusieurs outils pour inspecter DNS, headers HTTP et TLS d'un site.",
-    solution:
-      "Application web qui centralise l'analyse complète d'une URL : DNS, headers HTTP et paramètres TLS en un seul endroit.",
-    result: "Outil utilisé au quotidien, disponible sur infralens.dev.",
-    link: "https://infralens.dev",
-  },
-];
 
 export default function ProjectsPage() {
   return (
@@ -54,27 +22,36 @@ export default function ProjectsPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <article
-            key={project.title}
+            key={project.slug}
             className="flex flex-col gap-4 rounded-xl border p-6"
             style={{
               borderColor: "#22d3ee18",
               background: "oklch(0.13 0.012 252)",
             }}
           >
+            <div className="flex items-center justify-between gap-2">
+              <span
+                className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                style={{ backgroundColor: "#22d3ee18", color: "#22d3ee" }}
+              >
+                {statusLabel(project.status)}
+              </span>
+            </div>
+
             <div className="flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => (
+              {project.technologies.map((tech) => (
                 <span
-                  key={tag}
+                  key={tech}
                   className="rounded-md px-2 py-0.5 text-[10px] font-medium"
                   style={{ backgroundColor: "#22d3ee12", color: "#22d3ee" }}
                 >
-                  {tag}
+                  {tech}
                 </span>
               ))}
             </div>
 
             <h2 className="text-base font-semibold text-white">
-              {project.title}
+              {project.name}
             </h2>
 
             <div className="flex flex-col gap-2.5 text-sm">
@@ -100,17 +77,26 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1 text-xs font-medium"
+            <div className="mt-auto flex items-center gap-4">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="text-xs font-medium"
                 style={{ color: "#22d3ee" }}
               >
-                Voir le projet <ExternalLink size={11} />
-              </a>
-            )}
+                Étude de cas →
+              </Link>
+              {project.projectUrl && (
+                <a
+                  href={project.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-medium"
+                  style={{ color: "#22d3ee" }}
+                >
+                  Voir le projet <ExternalLink size={11} />
+                </a>
+              )}
+            </div>
           </article>
         ))}
       </div>

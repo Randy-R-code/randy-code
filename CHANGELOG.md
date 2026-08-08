@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.7.4] — 2026-08-08
+
+### Contenu
+
+- **`src/lib/projects.ts`** — source unique pour les 3 projets (Liflow, InfraLens, site client automobile), remplace les deux tableaux littéraux divergents qui vivaient jusqu'ici dans `app/projects/page.tsx` et le `featuredProjects` de la homepage (Phase 3). Type `Project`, `getProject`, `getFeaturedProjects`, `statusLabel`.
+- **`app/projects/[slug]/page.tsx`** — template générique d'étude de cas (3 pages statiques : `/projects/liflow`, `/projects/infralens`, `/projects/specialiste-automobile`). Volontairement léger (fil d'Ariane, statut, Problème/Solution/Résultat, stack, lien produit) — la structure complète à 17 sections du plan de refonte est réservée aux Phases 5/6, une fois le contenu narratif réel écrit.
+- **`app/projects/page.tsx`** et **homepage** — consomment maintenant `src/lib/projects.ts` ; badge de statut ajouté sur `/projects` (absent avant) ; les liens "Étude de cas" pointent vers `/projects/${slug}` au lieu du placeholder `/projects`.
+
+### Nettoyage
+
+- Le tag "Perpignan" (mélangé avec la stack technique sur l'ancienne fiche du site client automobile) n'apparaît plus — le nouveau champ `technologies: string[]` ne mélange plus techno et localisation. Pas une perte de contenu, juste un tag décoratif qui n'a pas sa place dans le nouveau modèle de données.
+
+### Outillage
+
+- **`src/lib/__tests__/projects.test.ts`** — slugs uniques, champs requis, `getProject`/`getFeaturedProjects`.
+- **`app/sitemap.ts`** — entrées `/projects/${slug}` ajoutées.
+- **`e2e/smoke.spec.ts`** — test "a project case study page renders" ajouté (13 tests).
+
 ## [0.7.3] — 2026-08-08
 
 ### Contenu
