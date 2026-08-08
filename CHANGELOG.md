@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.7] — 2026-08-08
+
+### Contenu
+
+- **Étude de cas InfraLens** (`src/lib/projects.ts`) — `/projects/infralens` passe de 3 sections génériques à 8 (contexte, objectifs, rôle, solution, architecture, choix techniques, sécurité, enseignements ; "Difficultés" volontairement omise, aucun contenu narratif source pour cette section). Sourcé sur le dépôt InfraLens réel (18 checks/6 catégories, scoring pondéré, architecture Server Actions) et son propre plan maître pour les formulations de positionnement à éviter.
+
 ## [0.7.6] — 2026-08-08
 
 ### Contenu

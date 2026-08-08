@@ -79,6 +79,23 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Node.js", "Vercel"],
     projectUrl: "https://infralens.dev",
     featured: true,
+    caseStudy: {
+      context:
+        "InfraLens est né du besoin de vérifier rapidement la configuration technique d'un site (DNS, sécurité, headers) sans jongler entre plusieurs outils différents. Conçu et maintenu en solo, en parallèle de projets clients, comme outil gratuit et open source plutôt que comme produit commercial.",
+      objectives:
+        "Donner une vue lisible et rapide de la configuration technique publique d'un site, sans devenir un scanner de sécurité certifié, un outil de pentest ou une plateforme de monitoring commerciale. Rester gratuit, sans compte, open source.",
+      role: "Je conçois, développe et maintiens InfraLens seul, du moteur d'analyse à l'interface.",
+      solution:
+        "InfraLens exécute 18 checks indépendants répartis en 6 catégories (HTTP & Sécurité, Réseau & DNS, Infrastructure, Structure du site, Métadonnées & Stack, Signaux de performance), tous en parallèle côté serveur. Chaque check a un statut (OK/Warning/Error), un score pondéré par catégorie et une note globale de A à E. Résultats exportables en JSON, historique des 10 dernières analyses conservé localement, application installable en PWA avec support hors ligne.",
+      architecture:
+        "Next.js 16 (App Router), TypeScript strict. Chaque check est un module indépendant et testable implémentant une interface commune, exécuté via Server Action avec un timeout de 8 secondes — l'échec d'un check n'interrompt pas les autres. Résolution DNS native (Node.js dns/promises) avec cache en mémoire, extraction de liens via Cheerio, lookup IP/ASN optionnel via ipapi.co. Interface en Tailwind CSS et shadcn/ui.",
+      technicalChoices:
+        "Scoring pondéré par catégorie (25 points HTTP & Sécurité, 20 Réseau & DNS, 20 Infrastructure, 15 Structure, 10 Métadonnées, 10 Performance), avec des multiplicateurs de statut (100% du poids si OK, 60% si Warning, 0% si Error) — transparent plutôt que boîte noire. Rate limiting (1 analyse par IP toutes les 30 secondes) pour protéger le service et les résolveurs DNS.",
+      security:
+        "Analyse passive uniquement, aucune exploitation ni scan intrusif. Pas de compte utilisateur, aucune donnée personnelle collectée. Historique stocké uniquement en local, pas de backend de stockage.",
+      learnings:
+        "Garder InfraLens simple, gratuit et transparent demande de la discipline : résister à la tentation d'ajouter des fonctionnalités qui le feraient glisser vers un SaaS ou un outil de pentest commercial, alors que ce n'est ni son objectif ni son positionnement.",
+    },
   },
   {
     slug: "specialiste-automobile",
