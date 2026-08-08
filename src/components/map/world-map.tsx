@@ -62,7 +62,7 @@ export function WorldMap() {
             </div>
             <div>
               <p className="text-sm font-semibold text-white">{zone.label}</p>
-              <p className="text-xs text-zinc-500">{zone.tagline}</p>
+              <p className="text-xs text-zinc-400">{zone.tagline}</p>
             </div>
             <span className="ml-auto text-xs" style={{ color: zone.color }}>
               →

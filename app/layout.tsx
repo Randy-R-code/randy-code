@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { buildPersonSchema } from "@/lib/json-ld";
+import { MotionConfig } from "framer-motion";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ServiceWorkerRegistration from "./components/service-worker-registration";
@@ -56,7 +57,7 @@ export default function RootLayout({
         />
         <SiteHeader />
         <ServiceWorkerRegistration />
-        {children}
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </body>
     </html>
   );

@@ -61,7 +61,7 @@ export function MapNode({
               </span>
             </div>
 
-            <p className="text-[11px] leading-snug text-zinc-500">{tagline}</p>
+            <p className="text-[11px] leading-snug text-zinc-400">{tagline}</p>
 
             <div
               className="flex items-center gap-1 text-[10px] font-medium"

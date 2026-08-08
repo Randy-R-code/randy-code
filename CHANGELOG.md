@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.7.3] — 2026-08-08
+
+### Contenu
+
+- **Homepage** (`app/page.tsx`, `src/components/hero-text.tsx`) — structure complétée selon le plan de refonte (section 5) : CTA sous le hero ("Voir mes projets", "Me contacter", lien GitHub), grille d'accès alternatif sous la carte (Projets/Outils/Articles/À propos), section "Projets phares" (Liflow + InfraLens — statut, phrase de valeur, stack, liens produit/étude de cas ; pas de capture, aucune n'existe encore), profil synthétique avec lien vers `/about`, CTA final. Le bloc "Ce que je construis" (ajouté en Phase 1) est retiré, redondant avec la nouvelle section Projets phares.
+
+### Corrections
+
+- **Contraste** (Lighthouse, relevé en Phase 0) — eyebrow du hero, tagline des zones sur la carte (desktop `map-node.tsx` et liste mobile `world-map.tsx`, deux endroits distincts), lien GitHub du hero : `text-zinc-500` → `text-zinc-400`. Accessibilité Lighthouse 95→100 (mobile et desktop).
+
+### Outillage
+
+- **`prefers-reduced-motion`** (`app/layout.tsx`) — `<MotionConfig reducedMotion="user">` autour de `{children}` : respecte le réglage système pour toutes les animations Framer Motion du site en un seul point, aucune garde n'existait jusqu'ici malgré un usage important de Framer Motion.
+- **`e2e/smoke.spec.ts`** — assertions sur la présence des CTA du hero ajoutées au test homepage existant.
+- **`docs/audits/lighthouse/`** et **`docs/audits/screenshots/`** — nouveaux rapports/captures homepage (suffixe `-phase3`), anciens fichiers Phase 0 conservés pour comparaison avant/après.
+
 ## [0.7.2] — 2026-08-08
 
 ### Contenu

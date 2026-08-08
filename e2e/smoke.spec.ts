@@ -5,6 +5,10 @@ test("home page loads with title", async ({ page }) => {
 
   await expect(page).toHaveTitle(/./);
   await expect(page.locator("h1").first()).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /voir mes projets/i }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: /me contacter/i })).toBeVisible();
 });
 
 for (const route of [
