@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.9] — 2026-08-08
+
+### Contenu
+
+- **Liens articles → études de cas** (`app/articles/[slug]/page.tsx`) — le bloc "Mes projets" en pied de chaque article pointait directement vers `liflow.app`/`infralens.dev` en externe ; pointe maintenant vers `/projects/liflow` et `/projects/infralens` en interne. Les études de cas gardent déjà les liens produit externes, rien n'est perdu.
+
 ## [0.7.8] — 2026-08-08
 
 ### Contenu

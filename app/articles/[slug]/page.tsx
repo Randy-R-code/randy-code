@@ -1,6 +1,6 @@
 import { formatDate, getPost, posts } from "@/lib/blog";
 import { buildArticleSchema } from "@/lib/json-ld";
-import { ArrowLeft, Clock, ExternalLink } from "lucide-react";
+import { ArrowLeft, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -132,10 +132,8 @@ export default async function BlogPostPage({ params }: Props) {
         >
           <p className="mb-4 text-sm font-semibold text-white">Mes projets</p>
           <div className="flex flex-wrap gap-3">
-            <a
-              href="https://liflow.app"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/projects/liflow"
               className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
               style={{
                 backgroundColor: "#ffffff0d",
@@ -143,12 +141,10 @@ export default async function BlogPostPage({ params }: Props) {
                 border: "1px solid #ffffff18",
               }}
             >
-              Découvrir Liflow <ExternalLink size={12} />
-            </a>
-            <a
-              href="https://infralens.dev"
-              target="_blank"
-              rel="noopener noreferrer"
+              Découvrir Liflow →
+            </Link>
+            <Link
+              href="/projects/infralens"
               className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
               style={{
                 backgroundColor: "#ffffff0d",
@@ -156,8 +152,8 @@ export default async function BlogPostPage({ params }: Props) {
                 border: "1px solid #ffffff18",
               }}
             >
-              Découvrir InfraLens <ExternalLink size={12} />
-            </a>
+              Découvrir InfraLens →
+            </Link>
           </div>
         </div>
       </div>
