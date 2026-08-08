@@ -1,4 +1,5 @@
 import { AppBackground } from "@/components/layout/app-background";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { brand } from "@/lib/brand";
 import { buildPersonSchema } from "@/lib/json-ld";
@@ -33,15 +34,15 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "R-code",
+    title: "Randy Code",
   },
   title: "Randy Rimbault — Développeur Fullstack Freelance",
   description:
-    "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
+    "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local — des produits pensés pour être utiles et durables.",
   openGraph: {
     title: "Randy Rimbault — Développeur Fullstack Freelance",
     description:
-      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local — des produits pensés pour être utiles et durables.",
+      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local — des produits pensés pour être utiles et durables.",
     url: "/",
     siteName: "Randy Code",
     locale: "fr_FR",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Randy Rimbault — Développeur Fullstack Freelance",
     description:
-      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local.",
+      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local.",
   },
 };
 
@@ -76,6 +77,7 @@ export default function RootLayout({
         <SiteHeader />
         <ServiceWorkerRegistration />
         <MotionConfig reducedMotion="user">{children}</MotionConfig>
+        <SiteFooter />
       </body>
     </html>
   );

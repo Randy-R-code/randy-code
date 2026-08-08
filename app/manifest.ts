@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Randy Rimbault — Développeur Fullstack Freelance",
-    short_name: "R-code",
+    name: "Randy Code — Développeur Fullstack Freelance",
+    short_name: "Randy Code",
     description:
       "Portfolio interactif de Randy Rimbault, développeur fullstack freelance TypeScript / Next.js.",
     start_url: "/",
     display: "standalone",
-    background_color: "#09090b",
-    theme_color: "#09090b",
+    background_color: "#070b10",
+    theme_color: "#070b10",
     orientation: "any",
     icons: [
       {

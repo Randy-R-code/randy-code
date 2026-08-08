@@ -1,14 +1,9 @@
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
 import { brand } from "@/lib/brand";
-import { primaryNav } from "@/lib/nav";
 import { getFeaturedProjects, statusLabel } from "@/lib/projects";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-
-const altNavItems = primaryNav.filter(
-  (item) => item.href !== "/" && item.href !== "/contact",
-);
 
 const featuredProjects = getFeaturedProjects();
 
@@ -20,25 +15,6 @@ export default function Home() {
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
         <HeroText />
         <WorldMap />
-
-        {/* Accès alternatif */}
-        <section className="mt-12">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {altNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-xl border px-4 py-3 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-white/30 hover:text-white"
-                style={{
-                  borderColor: "var(--border-subtle)",
-                  background: brand.colors.surface[2],
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </section>
 
         {/* Projets phares */}
         <section className="mt-16">
@@ -88,9 +64,15 @@ export default function Home() {
                       href={project.projectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-medium text-zinc-300 hover:text-white"
+                      className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:brightness-125"
+                      style={{
+                        borderColor: `${color}30`,
+                        backgroundColor: `${color}0d`,
+                        color,
+                      }}
                     >
-                      Voir le produit <ExternalLink size={10} />
+                      <ExternalLink size={11} />
+                      Voir le produit
                     </a>
                   )}
                 </div>

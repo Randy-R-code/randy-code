@@ -2,6 +2,7 @@
 
 import { primaryNav } from "@/lib/nav";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -23,8 +24,16 @@ export function SiteHeader() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-white"
+          className="flex items-center gap-2 text-sm font-semibold tracking-tight text-white"
         >
+          <Image
+            src="/brand/logo-symbol.png"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7"
+            priority
+          />
           Randy Code
         </Link>
 

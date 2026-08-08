@@ -64,7 +64,7 @@ Rappelées pour mémoire, à ne pas anticiper : refonte InfraLens (dépôt sépa
 
 ## 5. Prochaine étape
 
-Phases 0 à 6 et 9 à 12 (côté randy-code) terminées. Côté branding, **B0 à B4 sont terminées** (voir section 8) — reste **B5 (logo)**, **B6 (intégration InfraLens)** et **B7 (QA finale branding)**, plus les 2 phases InfraLens explicitement repoussées (7 et 8).
+Phases 0 à 6 et 9 à 12 (côté randy-code) terminées. Côté branding, **B0 à B4 sont terminées** (voir section 8), **B5 (logo) en cours** (voir section 9) — reste à finir B5 (variante R-code, image Open Graph) puis **B6 (intégration InfraLens)** et **B7 (QA finale branding)**, plus les 2 phases InfraLens explicitement repoussées (7 et 8).
 
 **À ne pas oublier une fois la Phase 8 terminée (côté InfraLens)** : revenir écrire l'article "Sécuriser un analyseur d'URL contre le SSRF" (section 11.2/19) — seulement à ce moment-là, une fois les protections réellement en place (voir section 6).
 
@@ -102,4 +102,27 @@ Quatre phases groupées en un seul chantier, comme demandé (pause avant B5 — 
 - **Correctif de contrast réel détecté par Lighthouse (pas anticipé par l'audit B0)** : le texte `blue-500` sur son propre fond teinté à 18% (pattern badge/chip utilisé partout) tombait à 4.24:1 (sous le seuil AA 4.5:1) — vérifié par calcul WCAG direct, pas une supposition. Corrigé en déplaçant la teinte de "texte/identité" de `blue-500` vers `blue-400` (`brand.colors.blue[400]`) dans les 11 fichiers concernés + `data.ts` ; `green-500` ne posait pas ce problème (5.8:1+) et reste inchangé. Les 25 occurrences `text-zinc-500/600` (relevées en B0) corrigées en `text-zinc-400` au passage, comme prévu.
 - **CSP assouplie en dev uniquement** (`next.config.mjs`) : `'unsafe-eval'` ajouté à `script-src` seulement quand `NODE_ENV === "development"`, pour supprimer le bruit console React (eval() dev-only, jamais en production — déjà documenté section 7). La CSP de production reste strictement identique, vérifiée par le test e2e dédié qui tourne contre `pnpm start`.
 
-**Vérifications** : `pnpm check`/`test`(18)/`e2e`(15) tous verts. Lighthouse accessibilité 100/100 sur accueil (mobile + desktop), `/about` et `/projects/liflow` après le correctif de contraste — rapports dans `docs/audits/lighthouse/*-phaseB1-B4.report.{html,json}`. `robots-txt` signalé en échec par le run Lighthouse homepage desktop (SEO 92) — vérifié manuellement (`curl`, 200, contenu valide) : artefact du fetch headless, pas une régression réelle.
+## 9. Branding B5 — logo (en cours, 2026-08-08)
+
+**Deux tentatives de dessiner le R en SVG à la main ont échoué** (jugées "dessins d'enfants" par Randy) et ont été abandonnées — voir mémoire `project_portfolio_branding_2026` pour le détail, ne pas retenter cette approche. **Une tentative d'extraction/recadrage pixel depuis des maquettes PNG a aussi échoué** (icône 512px mal centrée, livrée sans vérification à la résolution finale) et a été entièrement annulée (`git checkout`, suppression des fichiers créés).
+
+Randy a ensuite fourni ses propres fichiers, déjà propres (canal alpha réel, bien centrés — vérifié par calcul de bounding box avant tout redimensionnement) :
+
+- `public/brand/logo-symbol.png` (ex `randycode-icon-color.png`, 900×900) — le R seul, dégradé bleu→vert.
+- `public/brand/logo-horizontal.png` (ex `randycode-horizontal-lockup-color.png`, 1000×1000) — R + "RANDY CODE" côte à côte.
+- `public/brand/logo-vertical.png` (ex `randycode-vertical-lockup.png`, 1000×1000) — R au-dessus de "RANDY CODE".
+
+**Intégré** : `app/icon.png` (32×32), `app/apple-icon.png` (180×180), `public/icon-192.png`, `public/icon-512.png` régénérés depuis `logo-symbol.png` par simple redimensionnement uniforme (source déjà carrée et centrée, aucun recadrage nécessaire). Header (`site-header.tsx`) : logo affiché à côté du texte "Randy Code" existant (texte HTML conservé, pas rasterisé). `app/manifest.ts` : `name`/`short_name` enfin mis à jour ("Randy Code", plus l'ancien "R-code"/nom personnel), `background_color`/`theme_color` alignés sur le token `--background`. `app/layout.tsx` : `appleWebApp.title` passé de "R-code" à "Randy Code".
+
+**Second incrément (2026-08-08)** — création du footer (n'existait pas du tout, écart entre le plan de branding qui suppose son existence en B3 et la réalité — voir décision de ne pas l'inventer sans validation, tranché ensuite avec Randy) :
+
+- `src/components/layout/site-footer.tsx` (nouveau) — 3 colonnes de liens (Explorer : Projets/Outils/Lab ; Site : Articles/À propos/Contact ; Liens : GitHub/Liflow), liste verticale sur mobile, logo vertical + description + copyright à gauche, wordmark en filigrane pleine largeur en bas (opacité 6%, fondu vertical). Icône GitHub remplacée par un SVG dédié (`src/components/github-icon.tsx`, réutilisé aussi dans le hero) — `Github` n'existe plus dans cette version de lucide-react (icônes de marque retirées).
+- `src/lib/nav.ts` : Lab Zone ajoutée à `primaryNav` — elle n'était accessible que via la carte interactive, un vrai trou de navigation, corrigé.
+- `app/page.tsx` : grille "Accès alternatif" retirée (redondante avec le header et la carte, doublement redondante sur mobile où la carte bascule déjà en liste). Bouton "Voir le produit" des projets phares retravaillé (icône à gauche, style bouton avec hover `brightness-125`, distinct du lien "Étude de cas").
+- Meta descriptions (`app/layout.tsx`) et headline du hero (`hero-text.tsx`) mis à jour pour mentionner les apps mobiles (cohérent avec le boilerplate Expo du Lab).
+- **Bug corrigé** : `public/sw.js` référençait encore `/apple-touch-icon.png`, supprimé plus tôt dans ce même chantier — cassait l'installation du service worker (`cache.addAll` échoue si une des URLs répond 404). Corrigé vers `/apple-icon.png` (convention Next.js réelle), `CACHE_NAME` passé à `v2` pour invalider le cache existant des visiteurs déjà passés.
+- **Incident de session relevé pour mémoire** : un serveur de production zombie (`next start` lancé plus tôt dans la session, jamais correctement arrêté) est resté actif sur le port 3000 pendant une bonne partie de cette passe, servant un build figé — a causé une confusion prolongée sur un problème d'alignement dans le footer qui semblait ne jamais se corriger. Nettoyé (process tué, port libéré). Alignement du footer (léger écart vertical entre les liens avec icône et les liens texte simple) laissé de côté pour une prochaine session, à vérifier sur un vrai serveur.
+
+**Pas encore fait** : variante "R-code" (nom secondaire/historique, Randy la prépare séparément), image Open Graph statique (`opengraph-brand.svg` du plan section 9 — `app/opengraph-image.tsx` reste la version dynamique actuelle, non touchée), alignement fin du footer (voir incident ci-dessus). B5 sera clos une fois ces éléments traités.
+
+**Vérifications** : `pnpm check`/`test`(18)/`e2e`(15) tous verts après chaque incrément. Lighthouse accessibilité 100/100 sur accueil (mobile + desktop), `/about` et `/projects/liflow` après le correctif de contraste — rapports dans `docs/audits/lighthouse/*-phaseB1-B4.report.{html,json}`. `robots-txt` signalé en échec par le run Lighthouse homepage desktop (SEO 92) — vérifié manuellement (`curl`, 200, contenu valide) : artefact du fetch headless, pas une régression réelle.

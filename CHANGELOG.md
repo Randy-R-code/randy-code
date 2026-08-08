@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.7.13] — 2026-08-08
+
+### Contenu
+
+- **Logo Randy Code** (`public/brand/logo-symbol.png`, `logo-horizontal.png`, `logo-vertical.png`) — premier jeu d'assets définitif (monogramme R, dégradé bleu→vert), fourni par Randy après deux tentatives de dessin manuel non concluantes. Intégré dans le header (à côté du texte "Randy Code" existant), et régénéré en `app/icon.png`, `app/apple-icon.png`, `public/icon-192.png`, `public/icon-512.png` par simple redimensionnement (source déjà carrée et centrée).
+- **`app/manifest.ts`** — `name`/`short_name` enfin resynchronisés avec la marque "Randy Code" (portaient encore le nom personnel et l'ancien "R-code"), `background_color`/`theme_color` alignés sur le token de fond de marque.
+- **`app/layout.tsx`** — `appleWebApp.title` passé de "R-code" à "Randy Code".
+- **Footer** (`src/components/layout/site-footer.tsx`, nouveau — le site n'en avait aucun) — 3 colonnes de liens (Explorer, Site, Liens), logo + description + copyright, wordmark en filigrane pleine largeur. Icône GitHub en SVG dédié (`src/components/github-icon.tsx`), réutilisée dans le hero à la place de l'icône générique précédente.
+- **Navigation** (`src/lib/nav.ts`) — Lab Zone ajoutée, elle n'était accessible que via la carte interactive.
+- **Homepage** (`app/page.tsx`) — grille "Accès alternatif" retirée (redondante avec le header et la carte) ; bouton "Voir le produit" des projets phares retravaillé (icône à gauche, style bouton).
+- **Mentions "apps mobiles"** ajoutées aux meta descriptions et au headline du hero, cohérent avec le boilerplate mobile du Lab.
+
+### Corrections
+
+- **`public/sw.js`** — référençait encore `/apple-touch-icon.png`, supprimé plus tôt dans ce chantier, ce qui cassait l'installation du service worker (`cache.addAll` échoue sur une 404). Corrigé vers `/apple-icon.png`, `CACHE_NAME` passé à `v2` pour invalider le cache des visiteurs déjà passés.
+
+### Nettoyage
+
+- **`docs/roadmap.md`** — Phase B5 (logo) documentée en cours, avec le détail des tentatives de dessin/extraction manuelles abandonnées et un incident de session (serveur de production zombie ayant faussé une partie du diagnostic).
+
+### Connu — reste à faire
+
+- Léger écart d'alignement vertical dans le footer entre les liens avec icône et les liens texte simple, pas encore résolu (diagnostic brouillé par le serveur zombie mentionné ci-dessus, à reprendre avec un environnement propre).
+- Variante "R-code" et image Open Graph statique toujours en attente pour clore B5.
+
 ## [0.7.12] — 2026-08-08
 
 ### Contenu

@@ -1,9 +1,9 @@
-const CACHE_NAME = "randy-code-v1";
+const CACHE_NAME = "randy-code-v2";
 const STATIC_ASSETS = [
   "/icon-192.png",
   "/icon-512.png",
   "/favicon.ico",
-  "/apple-touch-icon.png",
+  "/apple-icon.png",
 ];
 
 self.addEventListener("install", (event) => {

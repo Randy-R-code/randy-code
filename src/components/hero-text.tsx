@@ -1,10 +1,10 @@
-import { ExternalLink } from "lucide-react";
+import { GitHubIcon } from "@/components/github-icon";
 import Link from "next/link";
 
 const heroContent = {
   eyebrow: "Développeur TypeScript",
   headline:
-    "Développeur TypeScript, je construis des applications web et des outils métier pensés pour des usages réels.",
+    "Développeur TypeScript, je construis des applications web, mobiles et des outils métier pensés pour des usages réels.",
   tagline: "React, Next.js et TypeScript — du prototype au produit déployé.",
 };
 
@@ -40,7 +40,7 @@ export function HeroText() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
         >
-          <ExternalLink size={11} />
+          <GitHubIcon size={11} />
           GitHub
         </a>
       </div>
