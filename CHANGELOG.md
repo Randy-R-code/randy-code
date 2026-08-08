@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.6] — 2026-08-08
+
+### Contenu
+
+- **Étude de cas — site client automobile** (`src/lib/projects.ts`) — courte extension (Contexte/Rôle/Architecture) sourcée sur le dépôt réel du projet. Le client reste anonymisé sur le portfolio tant que le site n'est pas en ligne, comme aujourd'hui.
+
+### Outillage
+
+- **`ProjectCaseStudy`** (`src/lib/projects.ts`) — tous les champs passent en optionnels pour permettre des études de cas partielles quand le contenu source ne couvre pas toutes les sections. `app/projects/[slug]/page.tsx` ne rend plus que les sections réellement renseignées (repli sur `project.solution` si `caseStudy.solution` est absent).
+
 ## [0.7.5] — 2026-08-08
 
 ### Contenu

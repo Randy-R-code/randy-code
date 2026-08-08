@@ -80,7 +80,10 @@ export default async function ProjectPage({ params }: Props) {
                 { label: "Problème", text: project.problem },
                 { label: "Objectifs", text: project.caseStudy.objectives },
                 { label: "Rôle", text: project.caseStudy.role },
-                { label: "Solution", text: project.caseStudy.solution },
+                {
+                  label: "Solution",
+                  text: project.caseStudy.solution ?? project.solution,
+                },
                 { label: "Architecture", text: project.caseStudy.architecture },
                 {
                   label: "Choix techniques",
@@ -93,7 +96,9 @@ export default async function ProjectPage({ params }: Props) {
                 },
                 { label: "Résultat", text: project.result },
                 { label: "Enseignements", text: project.caseStudy.learnings },
-              ]
+              ].filter((section): section is { label: string; text: string } =>
+                Boolean(section.text),
+              )
             : [
                 { label: "Problème", text: project.problem },
                 { label: "Solution", text: project.solution },

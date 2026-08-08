@@ -1,13 +1,13 @@
 export interface ProjectCaseStudy {
-  context: string;
-  objectives: string;
-  role: string;
-  solution: string;
-  architecture: string;
-  technicalChoices: string;
-  difficulties: string;
-  security: string;
-  learnings: string;
+  context?: string;
+  objectives?: string;
+  role?: string;
+  solution?: string;
+  architecture?: string;
+  technicalChoices?: string;
+  difficulties?: string;
+  security?: string;
+  learnings?: string;
 }
 
 export interface Project {
@@ -94,6 +94,13 @@ export const projects: Project[] = [
     result: "Site terminé, mise en ligne imminente.",
     technologies: ["Next.js", "TypeScript", "SEO local"],
     featured: false,
+    caseStudy: {
+      context:
+        "Un artisan itinérant, sans présence web, alors que ses clients potentiels cherchent d'abord sur Google avant d'appeler — une grande partie de la demande locale lui échappait faute d'être trouvable en ligne.",
+      role: "Conception et développement du site de A à Z, en autonomie complète, du cahier des charges à la mise en production.",
+      architecture:
+        "Next.js avec rendu statique (SSG) pour la vitesse de chargement et le référencement, Prisma et PostgreSQL pour le contenu des pages de service, déploiement sur Vercel, formulaire de contact via Resend.",
+    },
   },
 ];
 
