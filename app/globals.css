@@ -40,33 +40,78 @@
 }
 
 :root {
-  --background: oklch(0.085 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.13 0.012 252);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.13 0.012 252);
-  --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.793 0.129 206);
-  --primary-foreground: oklch(0.085 0 0);
-  --secondary: oklch(0.18 0.012 252);
-  --secondary-foreground: oklch(0.97 0 0);
-  --muted: oklch(0.18 0.012 252);
-  --muted-foreground: oklch(0.55 0 0);
-  --accent: oklch(0.18 0.012 252);
-  --accent-foreground: oklch(0.97 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.793 0.129 206);
+  /* Randy Code — brand tokens (RANDY_CODE_BRANDING_PLAN.md section 4) */
+  --background: #070b10;
+  --foreground: var(--text-primary);
+  --background-elevated: #0b1118;
+  --surface-1: #0e1620;
+  --surface-2: #121d29;
+  --surface-3: #182534;
+
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-default: rgba(148, 163, 184, 0.2);
+  --border-strong: rgba(148, 163, 184, 0.32);
+
+  --text-primary: #f4f8fc;
+  --text-secondary: #a9b8c7;
+  --text-muted: #74879a;
+  --text-disabled: #536372;
+
+  --blue-50: #eff8ff;
+  --blue-100: #dceeff;
+  --blue-200: #b9ddff;
+  --blue-300: #86c6ff;
+  --blue-400: #4aa7ff;
+  --blue-500: #2388f2;
+  --blue-600: #176dce;
+  --blue-700: #1757a5;
+  --blue-800: #184a86;
+  --blue-900: #193f6e;
+  --blue-950: #102847;
+
+  --green-50: #edfff9;
+  --green-100: #d3fbef;
+  --green-200: #aaf5df;
+  --green-300: #71e9c8;
+  --green-400: #35d3ad;
+  --green-500: #14b894;
+  --green-600: #0c9478;
+  --green-700: #0d765f;
+  --green-800: #0f5e4d;
+  --green-900: #104d40;
+  --green-950: #072f28;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #38bdf8;
+
+  /* shadcn/Tailwind mapping — kept in sync with the tokens above */
+  --card: var(--surface-2);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--blue-500);
+  --primary-foreground: var(--text-primary);
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-3);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--surface-3);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--danger);
+  --border: var(--border-subtle);
+  --input: var(--border-default);
+  --ring: var(--blue-500);
   --radius: 0.625rem;
-  --sidebar: oklch(0.11 0.012 252);
-  --sidebar-foreground: oklch(0.97 0 0);
-  --sidebar-primary: oklch(0.793 0.129 206);
-  --sidebar-primary-foreground: oklch(0.085 0 0);
-  --sidebar-accent: oklch(0.18 0.012 252);
-  --sidebar-accent-foreground: oklch(0.97 0 0);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.793 0.129 206);
+  --sidebar: var(--surface-1);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--blue-500);
+  --sidebar-primary-foreground: var(--text-primary);
+  --sidebar-accent: var(--surface-3);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border-subtle);
+  --sidebar-ring: var(--blue-500);
 }
 
 @layer base {
@@ -105,7 +150,7 @@
   margin-bottom: 0.5rem;
 }
 .prose-blog a {
-  color: #22d3ee;
+  color: var(--blue-400);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -123,24 +168,89 @@
   padding-left: 0.25rem;
 }
 .prose-blog code {
-  background: oklch(0.18 0.012 252);
+  background: var(--surface-3);
   border-radius: 0.25rem;
   padding: 0.1em 0.4em;
   font-size: 0.875em;
-  color: #22d3ee;
+  color: var(--blue-400);
 }
 .prose-blog pre {
-  background: oklch(0.11 0.01 252);
-  border: 1px solid oklch(1 0 0 / 8%);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
   overflow-x: auto;
   margin-bottom: 1.25rem;
 }
 .prose-blog blockquote {
-  border-left: 3px solid #22d3ee;
+  border-left: 3px solid var(--blue-400);
   padding-left: 1rem;
   color: oklch(0.6 0 0);
   font-style: italic;
   margin-bottom: 1.25rem;
+}
+
+/* Global decorative background (RANDY_CODE_BRANDING_PLAN.md section 6) */
+.app-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.app-background__glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+}
+.app-background__glow--blue {
+  top: -15%;
+  left: 8%;
+  width: 55%;
+  height: 45%;
+  background: var(--blue-600);
+  opacity: 0.22;
+}
+.app-background__glow--green {
+  bottom: -12%;
+  right: 4%;
+  width: 32%;
+  height: 30%;
+  background: var(--green-600);
+  opacity: 0.13;
+}
+.app-background__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100, 160, 220, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 160, 220, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    black 30%,
+    transparent 75%
+  );
+}
+.app-background__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 30%,
+    transparent 55%,
+    var(--background) 100%
+  );
+}
+
+@media (max-width: 640px) {
+  .app-background__glow {
+    filter: blur(50px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-background * {
+    animation: none !important;
+    transform: none !important;
+  }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { brand } from "@/lib/brand";
 import { connections, HUB, zones } from "@/lib/data";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -76,7 +77,7 @@ export function MapConnections({
           const from = toPx(fromId);
           const to = toPx("__hub__");
           const hovered = hoveredZone === fromId;
-          const color = zoneMap[fromId]?.color ?? "#ffffff";
+          const color = zoneMap[fromId]?.color ?? brand.colors.blue[300];
           const d = boltPath(from.x, from.y, to.x, to.y, i);
           return (
             <motion.path
@@ -84,10 +85,10 @@ export function MapConnections({
               d={d}
               strokeWidth={hovered ? 0.8 : 0.5}
               fill="none"
-              initial={{ opacity: 0, stroke: "#ffffff" }}
+              initial={{ opacity: 0, stroke: brand.colors.blue[300] }}
               animate={{
                 opacity: hovered ? 0.5 : 0.15,
-                stroke: hovered ? color : "#ffffff",
+                stroke: hovered ? color : brand.colors.blue[300],
               }}
               transition={
                 ready

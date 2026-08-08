@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.7.12] — 2026-08-08
+
+### Contenu
+
+- **`src/lib/brand.ts`** — nouvelle source de vérité des tokens de marque (palette bleu/vert, neutres, couleurs fonctionnelles, valeurs exactes du plan de branding). Les 5 couleurs de zone historiques (violet/cyan/orange/rose/ambre) sont remplacées : bleu dominant partout, vert réservé à Tools Station/InfraLens et à des accents ponctuels (libellés "Résultat", succès du formulaire de contact).
+- **`src/components/layout/app-background.tsx`** — nouveau fond décoratif global (grille technique, halo bleu, halo vert, vignette), monté une fois dans `app/layout.tsx`. Composition simplifiée en direct pendant l'implémentation (lignes topographiques et calque "réseau" retirés après retour visuel).
+- **Surfaces et bordures harmonisées** — 3 fonds de carte historiques remplacés par des tokens `surface-1/2/3` ; 5 suffixes d'opacité de bordure incohérents ramenés à 3 rôles fixes ; bordures neutres migrées vers des tokens `--border-subtle/default`. Hover de la carte interactive retravaillé (légère remontée au lieu d'un zoom).
+- **25 occurrences `text-zinc-500`/`text-zinc-600`** (11 fichiers, jamais testées par Lighthouse) corrigées en `text-zinc-400`, même correctif que la Phase 3 homepage.
+
+### Corrections
+
+- **Contraste `blue-500` sur fond teinté** — le texte des badges/chips (motif `${color}18` utilisé partout) tombait à 4.24:1, sous le seuil AA 4.5:1, avec la nouvelle couleur de marque. Détecté par Lighthouse, corrigé en déplaçant la teinte de texte/identité de `blue-500` vers `blue-400` (11 fichiers + `src/lib/data.ts`) ; `green-500` ne posait pas ce problème.
+
+### Outillage
+
+- **CSP assouplie en développement uniquement** (`next.config.mjs`) — `'unsafe-eval'` ajouté à `script-src` seulement quand `NODE_ENV === "development"`, pour supprimer un avertissement console React (eval() dev-only, jamais utilisé en production). La CSP de production reste inchangée, vérifiée par le test e2e dédié qui tourne contre `pnpm start`.
+- **`docs/roadmap.md`** — Phases B0 à B4 du chantier branding marquées terminées (section 8).
+
 ## [0.7.11] — 2026-08-08
 
 ### Contenu

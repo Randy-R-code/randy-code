@@ -1,4 +1,5 @@
 import { PageShell } from "@/components/layout/page-shell";
+import { brand } from "@/lib/brand";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -15,21 +16,24 @@ export default function ToolsPage() {
       label="Tools Station"
       title="Outils"
       tagline="Des outils réellement utilisables, pas des démonstrations."
-      color="#8b5cf6"
+      color={brand.colors.green[500]}
       icon="wrench"
     >
       <section className="mb-12">
         <div
           className="rounded-2xl border p-8"
           style={{
-            borderColor: "#8b5cf630",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.green[500]}30`,
+            background: brand.colors.surface[2],
           }}
         >
           <div className="mb-4 flex items-center justify-between">
             <span
               className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-              style={{ backgroundColor: "#8b5cf620", color: "#8b5cf6" }}
+              style={{
+                backgroundColor: `${brand.colors.green[500]}18`,
+                color: brand.colors.green[500],
+              }}
             >
               Disponible
             </span>
@@ -37,7 +41,7 @@ export default function ToolsPage() {
               href="https://infralens.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+              className="inline-flex items-center gap-1 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
             >
               infralens.dev <ExternalLink size={10} />
             </a>
@@ -49,7 +53,7 @@ export default function ToolsPage() {
             TLS, headers HTTP et sécurité, infrastructure, robots.txt et
             sitemap, en un seul rapport lisible.
           </p>
-          <p className="mt-4 text-xs text-zinc-500">
+          <p className="mt-4 text-xs text-zinc-400">
             Aujourd&apos;hui disponible sur infralens.dev. Une intégration
             directe sur randy-code.dev/tools/infralens est prévue dans une phase
             ultérieure.

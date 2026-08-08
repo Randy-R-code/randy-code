@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/contact-form";
 import { PageShell } from "@/components/layout/page-shell";
+import { brand } from "@/lib/brand";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -16,7 +17,7 @@ export default function ContactPage() {
       label="Contact"
       title="Me contacter"
       tagline="Un projet, une question ou juste envie d'échanger ? Je réponds vite."
-      color="#ec4899"
+      color={brand.colors.blue[400]}
       icon="mail"
     >
       <ContactForm />
@@ -25,7 +26,7 @@ export default function ContactPage() {
           href="https://github.com/Randy-R-code"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+          className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
         >
           <ExternalLink size={11} />
           GitHub — Randy-R-code

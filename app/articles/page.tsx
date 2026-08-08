@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/page-shell";
 import { formatDate, posts } from "@/lib/blog";
+import { brand } from "@/lib/brand";
 import { BookOpen, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function BlogPage() {
       label="Knowledge Base"
       title="Articles & ressources"
       tagline="Développement web, SEO local et logique produit — des retours d'expérience concrets."
-      color="#f97316"
+      color={brand.colors.blue[400]}
       icon="bookOpen"
     >
       <div className="grid gap-6 sm:grid-cols-2">
@@ -31,8 +32,8 @@ export default function BlogPage() {
             <article
               className="flex h-full flex-col overflow-hidden rounded-xl border transition-shadow duration-300 group-hover:shadow-xl"
               style={{
-                borderColor: "#f9731618",
-                background: "oklch(0.13 0.012 252)",
+                borderColor: `${brand.colors.blue[400]}18`,
+                background: brand.colors.surface[2],
                 boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
               }}
             >
@@ -50,11 +51,11 @@ export default function BlogPage() {
                 ) : (
                   <div
                     className="flex h-full w-full items-center justify-center"
-                    style={{ background: "oklch(0.11 0.01 252)" }}
+                    style={{ background: brand.colors.surface[1] }}
                   >
                     <BookOpen
                       size={32}
-                      style={{ color: "#f97316" }}
+                      style={{ color: brand.colors.blue[400] }}
                       className="opacity-30"
                     />
                   </div>
@@ -69,23 +70,26 @@ export default function BlogPage() {
                     <span
                       key={tag}
                       className="rounded-md px-2 py-0.5 text-[10px] font-medium"
-                      style={{ backgroundColor: "#f9731615", color: "#f97316" }}
+                      style={{
+                        backgroundColor: `${brand.colors.blue[400]}18`,
+                        color: brand.colors.blue[400],
+                      }}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h2 className="text-sm font-semibold leading-snug text-white transition-colors group-hover:text-orange-300">
+                <h2 className="text-sm font-semibold leading-snug text-white transition-colors group-hover:text-blue-300">
                   {post.title}
                 </h2>
 
-                <p className="flex-1 text-xs leading-relaxed text-zinc-500">
+                <p className="flex-1 text-xs leading-relaxed text-zinc-400">
                   {post.description}
                 </p>
 
                 {/* Meta */}
-                <div className="flex items-center gap-3 text-[11px] text-zinc-600">
+                <div className="flex items-center gap-3 text-[11px] text-zinc-400">
                   <span>{formatDate(post.date)}</span>
                   <span>·</span>
                   <span className="flex items-center gap-1">

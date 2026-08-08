@@ -1,4 +1,5 @@
 import { PageShell } from "@/components/layout/page-shell";
+import { brand } from "@/lib/brand";
 import { Code2, Lightbulb, Package, Wrench, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -124,7 +125,7 @@ export default function AboutPage() {
       label="About Base"
       title="Randy Rimbault"
       tagline="Développeur fullstack TypeScript. Je construis des produits qui fonctionnent."
-      color="#ec4899"
+      color={brand.colors.blue[400]}
       icon="user"
     >
       {/* Bio */}
@@ -132,8 +133,8 @@ export default function AboutPage() {
         <div
           className="rounded-xl border p-6"
           style={{
-            borderColor: "#ec489918",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.blue[400]}18`,
+            background: brand.colors.surface[2],
           }}
         >
           <p className="text-sm leading-relaxed text-zinc-300">
@@ -167,15 +168,15 @@ export default function AboutPage() {
               key={title}
               className="rounded-xl border p-5"
               style={{
-                borderColor: "#ec489918",
-                background: "oklch(0.13 0.012 252)",
+                borderColor: `${brand.colors.blue[400]}18`,
+                background: brand.colors.surface[2],
               }}
             >
               <div
                 className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg"
-                style={{ backgroundColor: "#ec489918" }}
+                style={{ backgroundColor: `${brand.colors.blue[400]}18` }}
               >
-                <Icon size={14} style={{ color: "#ec4899" }} />
+                <Icon size={14} style={{ color: brand.colors.blue[400] }} />
               </div>
               <h3 className="mb-1.5 text-sm font-semibold text-white">
                 {title}
@@ -194,8 +195,8 @@ export default function AboutPage() {
         <div
           className="mb-6 rounded-xl border p-6"
           style={{
-            borderColor: "#ec489918",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.blue[400]}18`,
+            background: brand.colors.surface[2],
           }}
         >
           <p className="text-sm leading-relaxed text-zinc-300">
@@ -225,20 +226,20 @@ export default function AboutPage() {
               key={title}
               className="rounded-xl border p-5"
               style={{
-                borderColor: "#ec489918",
-                background: "oklch(0.13 0.012 252)",
+                borderColor: `${brand.colors.blue[400]}18`,
+                background: brand.colors.surface[2],
               }}
             >
               <div className="mb-3 flex items-center gap-3">
                 <div
                   className="flex h-9 w-9 items-center justify-center rounded-lg"
-                  style={{ backgroundColor: "#ec489918" }}
+                  style={{ backgroundColor: `${brand.colors.blue[400]}18` }}
                 >
-                  <Icon size={16} style={{ color: "#ec4899" }} />
+                  <Icon size={16} style={{ color: brand.colors.blue[400] }} />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-white">{title}</h3>
-                  <p className="text-xs text-zinc-500">{tagline}</p>
+                  <p className="text-xs text-zinc-400">{tagline}</p>
                 </div>
               </div>
               <p className="mb-4 text-xs leading-relaxed text-zinc-400">
@@ -250,7 +251,7 @@ export default function AboutPage() {
                     key={point}
                     className="flex items-start gap-2 text-xs text-zinc-400"
                   >
-                    <span className="mt-0.5 text-zinc-600">—</span>
+                    <span className="mt-0.5 text-zinc-400">—</span>
                     {point}
                   </li>
                 ))}
@@ -262,8 +263,8 @@ export default function AboutPage() {
         <div
           className="mt-4 rounded-xl border p-6"
           style={{
-            borderColor: "#ec489918",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.blue[400]}18`,
+            background: brand.colors.surface[2],
           }}
         >
           <h3 className="mb-3 text-sm font-semibold text-white">
@@ -275,7 +276,7 @@ export default function AboutPage() {
                 key={lesson}
                 className="flex items-start gap-2 text-sm text-zinc-300"
               >
-                <span className="mt-0.5 text-zinc-600">—</span>
+                <span className="mt-0.5 text-zinc-400">—</span>
                 {lesson}
               </li>
             ))}
@@ -291,7 +292,7 @@ export default function AboutPage() {
         <div className="flex flex-col gap-4">
           {stackTiers.map((tier) => (
             <div key={tier.label}>
-              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
                 {tier.label}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -300,8 +301,8 @@ export default function AboutPage() {
                     key={tech}
                     className="rounded-lg border px-3 py-1.5 text-xs font-medium text-zinc-300"
                     style={{
-                      borderColor: "#ec489918",
-                      background: "oklch(0.13 0.012 252)",
+                      borderColor: `${brand.colors.blue[400]}18`,
+                      background: brand.colors.surface[2],
                     }}
                   >
                     {tech}
@@ -323,9 +324,9 @@ export default function AboutPage() {
           href="/contact"
           className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
           style={{
-            backgroundColor: "#ec489918",
-            color: "#ec4899",
-            border: "1px solid #ec489930",
+            backgroundColor: `${brand.colors.blue[400]}18`,
+            color: brand.colors.blue[400],
+            border: `1px solid ${brand.colors.blue[400]}30`,
           }}
         >
           Écrivez-moi →

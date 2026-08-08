@@ -1,3 +1,4 @@
+import { brand } from "@/lib/brand";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -7,20 +8,20 @@ export default function NotFound() {
       <div className="text-center">
         <p
           className="mb-4 font-mono text-7xl font-bold"
-          style={{ color: "#22d3ee" }}
+          style={{ color: brand.colors.blue[400] }}
         >
           404
         </p>
         <h1 className="mb-2 text-2xl font-bold text-white">Page introuvable</h1>
-        <p className="mb-8 text-sm text-zinc-500">
+        <p className="mb-8 text-sm text-zinc-400">
           Cette page n&apos;existe pas ou a été déplacée.
         </p>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-cyan-500/30 hover:text-white"
+          className="inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-blue-500/30 hover:text-white"
           style={{
-            borderColor: "#22d3ee20",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.blue[400]}30`,
+            background: brand.colors.surface[2],
           }}
         >
           <ArrowLeft size={14} />

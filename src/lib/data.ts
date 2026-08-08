@@ -1,3 +1,4 @@
+import { brand } from "@/lib/brand";
 import type { LucideIcon } from "lucide-react";
 import { BookOpen, Building2, FlaskConical, User, Wrench } from "lucide-react";
 
@@ -21,7 +22,7 @@ export const zones: Zone[] = [
     tagline: "Outils utilisables immédiatement",
     route: "/tools",
     Icon: Wrench,
-    color: "#8b5cf6",
+    color: brand.colors.green[500],
     position: { x: 50, y: 12 },
   },
   {
@@ -30,7 +31,7 @@ export const zones: Zone[] = [
     tagline: "Projets clients & études de cas",
     route: "/projects",
     Icon: Building2,
-    color: "#22d3ee",
+    color: brand.colors.blue[400],
     position: { x: 80, y: 37 },
   },
   {
@@ -39,7 +40,7 @@ export const zones: Zone[] = [
     tagline: "Articles, guides & ressources",
     route: "/articles",
     Icon: BookOpen,
-    color: "#f97316",
+    color: brand.colors.blue[400],
     position: { x: 69, y: 77 },
   },
   {
@@ -48,7 +49,7 @@ export const zones: Zone[] = [
     tagline: "Parcours, vision & contact",
     route: "/about",
     Icon: User,
-    color: "#ec4899",
+    color: brand.colors.blue[400],
     position: { x: 31, y: 77 },
   },
   {
@@ -57,7 +58,7 @@ export const zones: Zone[] = [
     tagline: "IA, prototypes & expérimentations",
     route: "/lab",
     Icon: FlaskConical,
-    color: "#f59e0b",
+    color: brand.colors.blue[400],
     position: { x: 20, y: 37 },
   },
 ];

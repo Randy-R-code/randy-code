@@ -1,5 +1,6 @@
 "use client";
 
+import { brand } from "@/lib/brand";
 import type { Zone } from "@/lib/data";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -36,11 +37,11 @@ export function MapNode({
         <motion.div
           className="relative w-40 cursor-pointer rounded-xl border p-4"
           style={{
-            background: "oklch(0.13 0.012 252)",
+            background: brand.colors.surface[2],
             borderColor: `${color}30`,
           }}
           whileHover={{
-            scale: 1.06,
+            y: -3,
             borderColor: `${color}90`,
             boxShadow: `0 0 24px ${color}30`,
           }}

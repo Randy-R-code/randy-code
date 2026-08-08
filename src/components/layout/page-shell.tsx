@@ -53,7 +53,7 @@ export function PageShell({
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
           >
             <ArrowLeft size={12} />
             Retour à la carte

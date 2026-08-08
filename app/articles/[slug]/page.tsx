@@ -1,4 +1,5 @@
 import { formatDate, getPost, posts } from "@/lib/blog";
+import { brand } from "@/lib/brand";
 import { buildArticleSchema } from "@/lib/json-ld";
 import { ArrowLeft, Clock } from "lucide-react";
 import type { Metadata } from "next";
@@ -42,9 +43,9 @@ export default async function BlogPostPage({ params }: Props) {
         <div
           className="absolute inset-0"
           style={{
-            background: "oklch(0.085 0 0)",
+            background: brand.colors.background,
             backgroundImage:
-              "linear-gradient(oklch(1 0 0 / 3%) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 3%) 1px, transparent 1px)",
+              "linear-gradient(rgba(100, 160, 220, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 160, 220, 0.035) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
@@ -67,7 +68,10 @@ export default async function BlogPostPage({ params }: Props) {
                 <span
                   key={tag}
                   className="rounded-md px-2 py-0.5 text-[10px] font-medium"
-                  style={{ backgroundColor: "#f9731620", color: "#f97316" }}
+                  style={{
+                    backgroundColor: `${brand.colors.blue[400]}18`,
+                    color: brand.colors.blue[400],
+                  }}
                 >
                   {tag}
                 </span>
@@ -93,7 +97,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Breadcrumbs */}
         <nav
           aria-label="Fil d'Ariane"
-          className="mb-4 flex items-center gap-1.5 text-xs text-zinc-500"
+          className="mb-4 flex items-center gap-1.5 text-xs text-zinc-400"
         >
           <Link href="/" className="hover:text-zinc-300">
             Accueil
@@ -111,7 +115,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Back nav */}
         <Link
           href="/articles"
-          className="mb-8 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+          className="mb-8 inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
         >
           <ArrowLeft size={12} />
           Tous les articles
@@ -127,8 +131,8 @@ export default async function BlogPostPage({ params }: Props) {
         <div
           className="mt-16 rounded-xl border p-6"
           style={{
-            borderColor: "#f9731620",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: `${brand.colors.blue[400]}30`,
+            background: brand.colors.surface[2],
           }}
         >
           <p className="mb-4 text-sm font-semibold text-white">Mes projets</p>

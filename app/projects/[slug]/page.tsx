@@ -1,3 +1,4 @@
+import { brand } from "@/lib/brand";
 import { buildSoftwareApplicationSchema } from "@/lib/json-ld";
 import { getProject, projects, statusLabel } from "@/lib/projects";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -9,7 +10,7 @@ const SOFTWARE_APPLICATION_SLUGS = new Set(["liflow", "infralens"]);
 
 type Props = { params: Promise<{ slug: string }> };
 
-const color = "#22d3ee";
+const color = brand.colors.blue[400];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -45,7 +46,7 @@ export default async function ProjectPage({ params }: Props) {
         {/* Breadcrumbs */}
         <nav
           aria-label="Fil d'Ariane"
-          className="mb-4 flex items-center gap-1.5 text-xs text-zinc-500"
+          className="mb-4 flex items-center gap-1.5 text-xs text-zinc-400"
         >
           <Link href="/" className="hover:text-zinc-300">
             Accueil
@@ -62,7 +63,7 @@ export default async function ProjectPage({ params }: Props) {
 
         <Link
           href="/projects"
-          className="mb-8 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
+          className="mb-8 inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
         >
           <ArrowLeft size={12} />
           Tous les projets
@@ -116,31 +117,42 @@ export default async function ProjectPage({ params }: Props) {
                 { label: "Solution", text: project.solution },
                 { label: "Résultat", text: project.result },
               ]
-          ).map(({ label, text }) => (
-            <section
-              key={label}
-              className="rounded-xl border p-6"
-              style={{
-                borderColor: `${color}18`,
-                background: "oklch(0.13 0.012 252)",
-              }}
-            >
-              <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-zinc-500">
-                {label}
-              </h2>
-              <p className="text-sm leading-relaxed text-zinc-300">{text}</p>
-            </section>
-          ))}
+          ).map(({ label, text }) => {
+            const isResult = label === "Résultat";
+            const sectionColor = isResult ? brand.colors.green[500] : color;
+            return (
+              <section
+                key={label}
+                className="rounded-xl border p-6"
+                style={{
+                  borderColor: `${sectionColor}18`,
+                  background: brand.colors.surface[2],
+                }}
+              >
+                <h2
+                  className={
+                    isResult
+                      ? "mb-2 text-sm font-semibold uppercase tracking-wider"
+                      : "mb-2 text-sm font-semibold uppercase tracking-wider text-zinc-400"
+                  }
+                  style={isResult ? { color: sectionColor } : undefined}
+                >
+                  {label}
+                </h2>
+                <p className="text-sm leading-relaxed text-zinc-300">{text}</p>
+              </section>
+            );
+          })}
         </div>
 
         {/* Stack */}
         <div className="mt-6 flex flex-wrap items-center gap-2">
-          <span className="text-xs text-zinc-500">Stack :</span>
+          <span className="text-xs text-zinc-400">Stack :</span>
           {project.technologies.map((tech) => (
             <span
               key={tech}
               className="rounded-md px-2 py-0.5 text-[10px] font-medium text-zinc-300"
-              style={{ background: "oklch(0.18 0.012 252)" }}
+              style={{ background: brand.colors.surface[3] }}
             >
               {tech}
             </span>

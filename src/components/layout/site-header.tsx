@@ -16,7 +16,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b" style={{ borderColor: "oklch(1 0 0 / 8%)" }}>
+    <header
+      className="border-b"
+      style={{ borderColor: "var(--border-subtle)" }}
+    >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
@@ -68,7 +71,7 @@ export function SiteHeader() {
           id="mobile-nav"
           aria-label="Navigation principale (mobile)"
           className="border-t md:hidden"
-          style={{ borderColor: "oklch(1 0 0 / 8%)" }}
+          style={{ borderColor: "var(--border-subtle)" }}
         >
           <ul className="flex flex-col gap-1 px-6 py-4">
             {primaryNav.map((item) => {

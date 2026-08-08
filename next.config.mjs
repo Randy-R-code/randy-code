@@ -51,6 +51,15 @@ const nextConfig = {
     ];
   },
   async headers() {
+    // React utilise eval() en mode dev pour reconstruire les call stacks
+    // (jamais en production — cf. son propre avertissement console). On
+    // assouplit script-src uniquement ici pour retirer le bruit console en
+    // local, sans toucher à la CSP réellement servie en production.
+    const scriptSrc =
+      process.env.NODE_ENV === "development"
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+        : "script-src 'self' 'unsafe-inline'";
+
     return [
       {
         source: "/:path*",
@@ -64,8 +73,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+            value: `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`,
           },
         ],
       },

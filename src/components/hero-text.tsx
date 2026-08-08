@@ -30,7 +30,7 @@ export function HeroText() {
         <Link
           href="/contact"
           className="inline-flex items-center gap-1.5 rounded-lg border px-4 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:border-white/30 hover:text-white"
-          style={{ borderColor: "oklch(1 0 0 / 14%)" }}
+          style={{ borderColor: "var(--border-default)" }}
         >
           Me contacter
         </Link>

@@ -1,5 +1,6 @@
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
+import { brand } from "@/lib/brand";
 import { primaryNav } from "@/lib/nav";
 import { getFeaturedProjects, statusLabel } from "@/lib/projects";
 import { ExternalLink } from "lucide-react";
@@ -11,7 +12,7 @@ const altNavItems = primaryNav.filter(
 
 const featuredProjects = getFeaturedProjects();
 
-const color = "#22d3ee";
+const color = brand.colors.blue[400];
 
 export default function Home() {
   return (
@@ -29,8 +30,8 @@ export default function Home() {
                 href={item.href}
                 className="rounded-xl border px-4 py-3 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-white/30 hover:text-white"
                 style={{
-                  borderColor: "oklch(1 0 0 / 8%)",
-                  background: "oklch(0.13 0.012 252)",
+                  borderColor: "var(--border-subtle)",
+                  background: brand.colors.surface[2],
                 }}
               >
                 {item.label}
@@ -50,8 +51,8 @@ export default function Home() {
                 key={project.slug}
                 className="flex flex-col rounded-xl border p-6"
                 style={{
-                  borderColor: `${color}20`,
-                  background: "oklch(0.13 0.012 252)",
+                  borderColor: `${color}30`,
+                  background: brand.colors.surface[2],
                 }}
               >
                 <span
@@ -69,7 +70,7 @@ export default function Home() {
                     <span
                       key={tech}
                       className="rounded-md px-2 py-0.5 text-[10px] font-medium text-zinc-300"
-                      style={{ background: "oklch(0.18 0.012 252)" }}
+                      style={{ background: brand.colors.surface[3] }}
                     >
                       {tech}
                     </span>
@@ -101,7 +102,7 @@ export default function Home() {
         {/* Profil synthétique */}
         <section
           className="mt-16 border-t pt-10"
-          style={{ borderColor: "oklch(1 0 0 / 6%)" }}
+          style={{ borderColor: "var(--border-subtle)" }}
         >
           <p className="max-w-2xl text-sm leading-relaxed text-zinc-400">
             Développeur TypeScript autodidacte, je construis des applications
@@ -122,8 +123,8 @@ export default function Home() {
         <section
           className="mt-16 rounded-2xl border p-8 text-center"
           style={{
-            borderColor: "oklch(1 0 0 / 8%)",
-            background: "oklch(0.13 0.012 252)",
+            borderColor: "var(--border-default)",
+            background: brand.colors.surface[2],
           }}
         >
           <h2 className="text-lg font-semibold text-white">

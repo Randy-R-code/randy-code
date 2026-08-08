@@ -1,4 +1,5 @@
 import { PageShell } from "@/components/layout/page-shell";
+import { brand } from "@/lib/brand";
 import { projects, statusLabel } from "@/lib/projects";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
@@ -17,7 +18,7 @@ export default function ProjectsPage() {
       label="Projects City"
       title="Projets réalisés"
       tagline="Des problèmes réels, des solutions concrètes, des résultats mesurables."
-      color="#22d3ee"
+      color={brand.colors.blue[400]}
       icon="building2"
     >
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -26,14 +27,17 @@ export default function ProjectsPage() {
             key={project.slug}
             className="flex flex-col gap-4 rounded-xl border p-6"
             style={{
-              borderColor: "#22d3ee18",
-              background: "oklch(0.13 0.012 252)",
+              borderColor: `${brand.colors.blue[400]}18`,
+              background: brand.colors.surface[2],
             }}
           >
             <div className="flex items-center justify-between gap-2">
               <span
                 className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                style={{ backgroundColor: "#22d3ee18", color: "#22d3ee" }}
+                style={{
+                  backgroundColor: `${brand.colors.blue[400]}18`,
+                  color: brand.colors.blue[400],
+                }}
               >
                 {statusLabel(project.status)}
               </span>
@@ -44,7 +48,10 @@ export default function ProjectsPage() {
                 <span
                   key={tech}
                   className="rounded-md px-2 py-0.5 text-[10px] font-medium"
-                  style={{ backgroundColor: "#22d3ee12", color: "#22d3ee" }}
+                  style={{
+                    backgroundColor: `${brand.colors.blue[400]}18`,
+                    color: brand.colors.blue[400],
+                  }}
                 >
                   {tech}
                 </span>
@@ -57,19 +64,22 @@ export default function ProjectsPage() {
 
             <div className="flex flex-col gap-2.5 text-sm">
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
                   Problème
                 </span>
                 <p className="mt-0.5 text-zinc-400">{project.problem}</p>
               </div>
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
                   Solution
                 </span>
                 <p className="mt-0.5 text-zinc-400">{project.solution}</p>
               </div>
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-wider"
+                  style={{ color: brand.colors.green[500] }}
+                >
                   Résultat
                 </span>
                 <p className="mt-0.5 font-medium text-zinc-300">
@@ -82,7 +92,7 @@ export default function ProjectsPage() {
               <Link
                 href={`/projects/${project.slug}`}
                 className="text-xs font-medium"
-                style={{ color: "#22d3ee" }}
+                style={{ color: brand.colors.blue[400] }}
               >
                 Étude de cas →
               </Link>
@@ -92,7 +102,7 @@ export default function ProjectsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs font-medium"
-                  style={{ color: "#22d3ee" }}
+                  style={{ color: brand.colors.blue[400] }}
                 >
                   Voir le projet <ExternalLink size={11} />
                 </a>
@@ -104,7 +114,7 @@ export default function ProjectsPage() {
 
       <div
         className="mt-12 rounded-xl border p-6"
-        style={{ borderColor: "#22d3ee20" }}
+        style={{ borderColor: `${brand.colors.blue[400]}30` }}
       >
         <h2 className="text-lg font-semibold text-white">
           Un projet en tête ?
@@ -117,9 +127,9 @@ export default function ProjectsPage() {
           href="/contact"
           className="mt-4 inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
           style={{
-            backgroundColor: "#22d3ee18",
-            color: "#22d3ee",
-            border: "1px solid #22d3ee30",
+            backgroundColor: `${brand.colors.blue[400]}18`,
+            color: brand.colors.blue[400],
+            border: `1px solid ${brand.colors.blue[400]}30`,
           }}
         >
           Me contacter →

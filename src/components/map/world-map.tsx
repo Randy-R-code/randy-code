@@ -1,5 +1,6 @@
 "use client";
 
+import { brand } from "@/lib/brand";
 import { HUB, zones } from "@/lib/data";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -50,8 +51,8 @@ export function WorldMap() {
             href={zone.route}
             className="flex items-center gap-4 rounded-xl border p-4 transition-colors"
             style={{
-              borderColor: `${zone.color}25`,
-              background: "oklch(0.13 0.012 252)",
+              borderColor: `${zone.color}30`,
+              background: brand.colors.surface[2],
             }}
           >
             <div

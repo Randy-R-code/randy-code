@@ -1,4 +1,6 @@
+import { AppBackground } from "@/components/layout/app-background";
 import { SiteHeader } from "@/components/layout/site-header";
+import { brand } from "@/lib/brand";
 import { buildPersonSchema } from "@/lib/json-ld";
 import { MotionConfig } from "framer-motion";
 import type { Metadata, Viewport } from "next";
@@ -17,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: brand.colors.background,
 };
 
 export const metadata: Metadata = {
@@ -70,6 +72,7 @@ export default function RootLayout({
             __html: JSON.stringify(buildPersonSchema()),
           }}
         />
+        <AppBackground />
         <SiteHeader />
         <ServiceWorkerRegistration />
         <MotionConfig reducedMotion="user">{children}</MotionConfig>

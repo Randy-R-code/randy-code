@@ -1,5 +1,6 @@
 "use client";
 
+import { brand } from "@/lib/brand";
 import { sendContact, type ContactState } from "@app/contact/actions";
 import { useActionState } from "react";
 
@@ -13,8 +14,8 @@ export function ContactForm() {
       <div
         className="rounded-xl border p-6 text-center"
         style={{
-          borderColor: "#ec489930",
-          background: "oklch(0.13 0.012 252)",
+          borderColor: `${brand.colors.green[500]}30`,
+          background: brand.colors.surface[2],
         }}
       >
         <p className="text-sm font-medium text-white">Message envoyé ✓</p>
@@ -38,12 +39,12 @@ export function ContactForm() {
             type="text"
             required
             placeholder="Randy Rimbault"
-            className="rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1"
+            className="rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-1"
             style={
               {
-                background: "oklch(0.11 0.01 252)",
-                borderColor: "#ec489918",
-                "--tw-ring-color": "#ec489960",
+                background: brand.colors.surface[1],
+                borderColor: `${brand.colors.blue[400]}18`,
+                "--tw-ring-color": `${brand.colors.blue[400]}60`,
               } as React.CSSProperties
             }
           />
@@ -58,12 +59,12 @@ export function ContactForm() {
             type="email"
             required
             placeholder="vous@exemple.com"
-            className="rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1"
+            className="rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-1"
             style={
               {
-                background: "oklch(0.11 0.01 252)",
-                borderColor: "#ec489918",
-                "--tw-ring-color": "#ec489960",
+                background: brand.colors.surface[1],
+                borderColor: `${brand.colors.blue[400]}18`,
+                "--tw-ring-color": `${brand.colors.blue[400]}60`,
               } as React.CSSProperties
             }
           />
@@ -80,12 +81,12 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Décrivez votre projet ou votre question..."
-          className="resize-none rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1"
+          className="resize-none rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-1"
           style={
             {
-              background: "oklch(0.11 0.01 252)",
-              borderColor: "#ec489918",
-              "--tw-ring-color": "#ec489960",
+              background: brand.colors.surface[1],
+              borderColor: `${brand.colors.blue[400]}18`,
+              "--tw-ring-color": `${brand.colors.blue[400]}60`,
             } as React.CSSProperties
           }
         />
@@ -98,9 +99,9 @@ export function ContactForm() {
         disabled={pending}
         className="self-start rounded-lg px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-50"
         style={{
-          backgroundColor: "#ec489920",
-          color: "#ec4899",
-          border: "1px solid #ec489930",
+          backgroundColor: `${brand.colors.blue[400]}20`,
+          color: brand.colors.blue[400],
+          border: `1px solid ${brand.colors.blue[400]}30`,
         }}
       >
         {pending ? "Envoi en cours…" : "Envoyer le message →"}
