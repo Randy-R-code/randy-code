@@ -53,6 +53,16 @@ test("a project case study page renders", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("rss feed is valid and lists articles", async ({ request }) => {
+  const response = await request.get("/rss.xml");
+
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/rss+xml");
+  const body = await response.text();
+  expect(body).toContain("<rss");
+  expect(body).toContain("liflow-refonte-souvenirs-familiaux");
+});
+
 test("404 page is branded", async ({ page }) => {
   await page.goto("/page-qui-nexiste-pas");
 

@@ -22,6 +22,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://randy-code.dev"),
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",

@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.10] — 2026-08-08
+
+### Contenu
+
+- **Flux RSS** (`app/rss.xml/route.ts`) — génère un flux RSS 2.0 depuis les articles existants (`src/lib/blog.ts`), rendu statique, découvrable via `alternates.types` dans `app/layout.tsx`.
+
+### Outillage
+
+- **`docs/roadmap.md`** — Phase 10 marquée terminée côté randy-code. Note de sécurité ajoutée sur un point à corriger côté InfraLens avant de publier l'article SSRF prévu par le plan — volontairement sans détail technique dans ce fichier public, suivi détaillé conservé en privé.
+
 ## [0.7.9] — 2026-08-08
 
 ### Contenu
