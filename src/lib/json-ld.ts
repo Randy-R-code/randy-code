@@ -38,6 +38,6 @@ export function buildArticleSchema(post: BlogPost) {
       name: "Randy Rimbault",
       url: "https://randy-code.dev",
     },
-    url: `https://randy-code.dev/blog/${post.slug}`,
+    url: `https://randy-code.dev/articles/${post.slug}`,
   };
 }

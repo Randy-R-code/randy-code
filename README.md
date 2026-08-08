@@ -24,23 +24,22 @@ Portfolio interactif de Randy Rimbault — développeur fullstack freelance.
 app/
   page.tsx              # Home — world map interactive
   about/                # About Base
-  apps/                 # Apps Station
-  background/           # Background Zone
-  blog/                 # Knowledge Base (listing + articles)
-  contact/              # Formulaire de contact (Resend)
+  articles/             # Knowledge Base (listing + articles)
+  contact/              # Contact Base (page + formulaire, Resend)
   lab/                  # Lab Zone
   projects/             # Projects City
-  seo/                  # SEO District
+  tools/                # Tools Station
   opengraph-image.tsx   # OG card dynamique
 
 content/posts/          # Articles de blog (un fichier par article)
 src/
   components/
     map/                # WorldMap, MapConnections, MapNode
-    layout/             # PageShell
+    layout/             # PageShell, SiteHeader
   lib/
     blog.ts             # Registry des articles + utilitaires
     data.ts             # Zones, connexions, HUB
+    nav.ts              # Navigation principale
 ```
 
 ## Développement

@@ -127,7 +127,7 @@ export default function ProjectsPage() {
           transformer des idées en produits qui fonctionnent.
         </p>
         <a
-          href="/about"
+          href="/contact"
           className="mt-4 inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
           style={{
             backgroundColor: "#22d3ee18",

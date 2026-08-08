@@ -28,7 +28,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen pb-20">
+    <main className="flex-1 pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -89,9 +89,27 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Content */}
       <div className="mx-auto max-w-3xl px-6 pt-10">
+        {/* Breadcrumbs */}
+        <nav
+          aria-label="Fil d'Ariane"
+          className="mb-4 flex items-center gap-1.5 text-xs text-zinc-500"
+        >
+          <Link href="/" className="hover:text-zinc-300">
+            Accueil
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/articles" className="hover:text-zinc-300">
+            Articles
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page" className="text-zinc-400">
+            {post.title}
+          </span>
+        </nav>
+
         {/* Back nav */}
         <Link
-          href="/blog"
+          href="/articles"
           className="mb-8 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
         >
           <ArrowLeft size={12} />

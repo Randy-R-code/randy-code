@@ -12,22 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/apps`,
+      url: `${BASE_URL}/tools`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${BASE_URL}/lab`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/seo`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
     },
     {
       url: `${BASE_URL}/projects`,
@@ -42,25 +36,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/background`,
+      url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    {
+      url: `${BASE_URL}/articles`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
-  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
+  const articleRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${BASE_URL}/articles/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...articleRoutes];
 }

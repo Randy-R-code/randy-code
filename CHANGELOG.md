@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.7.2] — 2026-08-08
+
+### Contenu
+
+- **Navigation principale** (`src/lib/nav.ts`, `src/components/layout/site-header.tsx`) — le site n'avait aucune navigation globale, seulement la carte interactive et un lien "retour à la carte" par page. Ajout d'un header desktop/mobile explicite (Accueil, Projets, Outils, Articles, À propos, Contact), navigable au clavier avec focus visible.
+- **`app/contact/page.tsx`** — nouvelle route dédiée ; le formulaire de contact n'était monté que sur `/about`, sans page `/contact` routable malgré l'existence de la server action.
+- **`app/tools/page.tsx`** — nouvelle route listant InfraLens, prépare l'espace Outils avant l'intégration profonde (phase ultérieure).
+- **`/apps` et `/seo` supprimées** — contenu déjà couvert par `/projects` ; `/seo` retiré sans activité commerciale active derrière (décision actée dans `docs/roadmap.md`).
+- **`/background` fusionné dans `/about`** — nouvelle section "Parcours & expérience terrain" (mécanique, électricité, logistique, développement web), au lieu d'une zone à part.
+- **`/blog` renommé `/articles`** — fil d'Ariane ajouté sur les pages d'article ; contenu inchangé.
+- **`src/lib/data.ts`** — la carte passe de 7 à 5 zones (Tools/Projects/Articles/About/Lab), repositionnées ; type `ZoneId` ajouté pour que `pnpm typecheck` détecte une désynchronisation entre `zones` et `connections`.
+
+### Corrections
+
+- **`app/projects/page.tsx`** — le CTA "Me contacter" pointait vers `/about` ; repointé vers `/contact` maintenant que le formulaire y vit.
+- **`src/components/layout/site-header.tsx`** — classes Tailwind `focus-visible:outline-2` dupliquées sur les 3 liens de nav, corrigées.
+
+### Outillage
+
+- **Redirections permanentes** (`next.config.mjs`) — `/apps`, `/seo`, `/background`, `/blog` et les 7 slugs d'articles vers leurs nouvelles destinations (HTTP 308). Liste énumérée plutôt qu'un wildcard `/blog/:slug*`, qui serait entré en collision avec les images statiques `public/blog/*.jpg`.
+- **`src/lib/__tests__/data.test.ts`** — nouveau test vérifiant que `connections` et `zones` restent dans le même ordre (invariant requis par l'animation d'entrée de la carte, non gardé jusqu'ici).
+- **`e2e/smoke.spec.ts`** — routes mises à jour (`/tools`, `/contact`, `/articles`), test du formulaire déplacé sur `/contact`, 2 tests de redirection ajoutés (9 → 12 tests).
+- **`min-h-screen` → `flex-1`** sur 4 fichiers (`app/page.tsx`, `page-shell.tsx`, `app/not-found.tsx`, `app/articles/[slug]/page.tsx`) — nécessaire suite à l'ajout du header pour éviter un espace vide en bas de chaque page.
+
 ## [0.7.1] — 2026-08-07
 
 ### Contenu

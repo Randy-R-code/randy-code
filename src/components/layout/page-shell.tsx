@@ -6,21 +6,19 @@ import {
   BookOpen,
   Building2,
   FlaskConical,
-  Globe,
-  HardHat,
-  Rocket,
+  Mail,
   User,
+  Wrench,
 } from "lucide-react";
 import Link from "next/link";
 
 const iconMap = {
   building2: Building2,
-  rocket: Rocket,
-  globe: Globe,
+  wrench: Wrench,
   flask: FlaskConical,
   user: User,
   bookOpen: BookOpen,
-  hardHat: HardHat,
+  mail: Mail,
 } as const;
 
 export type PageIcon = keyof typeof iconMap;
@@ -45,7 +43,7 @@ export function PageShell({
   const Icon = iconMap[icon];
 
   return (
-    <main className="min-h-screen px-6 pt-8 pb-16">
+    <main className="flex-1 px-6 pt-8 pb-16">
       <div className="mx-auto w-full max-w-5xl">
         {/* Back nav */}
         <motion.div

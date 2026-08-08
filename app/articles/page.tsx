@@ -22,7 +22,11 @@ export default function BlogPage() {
     >
       <div className="grid gap-6 sm:grid-cols-2">
         {posts.map((post, i) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+          <Link
+            key={post.slug}
+            href={`/articles/${post.slug}`}
+            className="group"
+          >
             <article
               className="flex h-full flex-col overflow-hidden rounded-xl border transition-shadow duration-300 group-hover:shadow-xl"
               style={{

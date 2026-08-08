@@ -1,3 +1,4 @@
+import { SiteHeader } from "@/components/layout/site-header";
 import { buildPersonSchema } from "@/lib/json-ld";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -53,6 +54,7 @@ export default function RootLayout({
             __html: JSON.stringify(buildPersonSchema()),
           }}
         />
+        <SiteHeader />
         <ServiceWorkerRegistration />
         {children}
       </body>

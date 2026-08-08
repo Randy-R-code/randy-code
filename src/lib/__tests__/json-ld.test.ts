@@ -30,7 +30,7 @@ describe("buildArticleSchema", () => {
     expect(schema["@type"]).toBe("Article");
     expect(schema.headline).toBe(post.title);
     expect(schema.datePublished).toBe(post.date);
-    expect(schema.url).toBe(`https://randy-code.dev/blog/${post.slug}`);
+    expect(schema.url).toBe(`https://randy-code.dev/articles/${post.slug}`);
     expect(schema.author["@type"]).toBe("Person");
   });
 
