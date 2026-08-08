@@ -9,28 +9,31 @@ export const metadata: Metadata = {
     "Randy Rimbault, développeur fullstack TypeScript freelance. Parcours, vision, stack technique et contact.",
 };
 
-const stack = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "shadcn/ui",
-  "Node.js",
-  "Prisma",
-  "PostgreSQL",
-  "Upstash",
-  "Mux",
-  "Inngest",
-  "Better Auth",
-  "Zod",
-  "Resend",
-  "Stripe",
-  "Vercel",
-  "Scaleway",
-  "Neon",
-  "OpenAI",
-  "Mistral",
-  "Anthropic",
+const stackTiers = [
+  {
+    label: "Principal",
+    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    label: "Backend et données",
+    items: ["Node.js", "Prisma", "PostgreSQL", "Neon", "Upstash", "Zod"],
+  },
+  {
+    label: "Produit et infrastructure",
+    items: [
+      "Better Auth",
+      "Stripe",
+      "Resend",
+      "Mux",
+      "Inngest",
+      "Vercel",
+      "Scaleway",
+    ],
+  },
+  {
+    label: "Expérimentations",
+    items: ["OpenAI", "Mistral", "Anthropic"],
+  },
 ];
 
 const values = [
@@ -284,18 +287,27 @@ export default function AboutPage() {
         <h2 className="mb-4 text-xl font-semibold text-white">
           Stack technique
         </h2>
-        <div className="flex flex-wrap gap-2">
-          {stack.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-lg border px-3 py-1.5 text-xs font-medium text-zinc-300"
-              style={{
-                borderColor: "#ec489918",
-                background: "oklch(0.13 0.012 252)",
-              }}
-            >
-              {tech}
-            </span>
+        <div className="flex flex-col gap-4">
+          {stackTiers.map((tier) => (
+            <div key={tier.label}>
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                {tier.label}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {tier.items.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-lg border px-3 py-1.5 text-xs font-medium text-zinc-300"
+                    style={{
+                      borderColor: "#ec489918",
+                      background: "oklch(0.13 0.012 252)",
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>

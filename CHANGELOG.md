@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.8] — 2026-08-08
+
+### Contenu
+
+- **Stack technique** (`app/about/page.tsx`) — passe d'une liste plate de 21 technologies à 4 niveaux hiérarchisés (Principal, Backend et données, Produit et infrastructure, Expérimentations), conformément au master plan (section 10.2). Mêmes 21 technologies, aucune ajoutée ni retirée — pure réorganisation.
+
 ## [0.7.7] — 2026-08-08
 
 ### Contenu
