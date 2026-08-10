@@ -5,6 +5,7 @@ import infralens from "../../content/posts/infralens-outil-open-source-analyse-p
 import liflowRefonte from "../../content/posts/liflow-refonte-souvenirs-familiaux";
 import rebuilding from "../../content/posts/nextjs-16-recommencer-application-saas-zero";
 import prixSite from "../../content/posts/prix-site-web-2026";
+import ssrf from "../../content/posts/securiser-analyseur-url-contre-ssrf";
 
 export interface BlogPost {
   slug: string;
@@ -28,6 +29,7 @@ function computeReadingTime(html: string): number {
 
 // Pour ajouter un article : créer content/posts/[slug].ts et l'importer ici
 const rawPosts: PostData[] = [
+  ssrf,
   liflowRefonte,
   prixSite,
   beauSite,

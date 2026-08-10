@@ -1,6 +1,6 @@
 # Baseline — Phase 0 : Audit local et baseline
 
-> Généré le 2026-08-07. Source de vérité : `PORTFOLIO_REDESIGN_MASTER_PLAN.md` (section 19, Phase 0).
+> Généré le 2026-08-07. Source de vérité : `RANDY_CODE_MASTER_PLAN.md` (section 19, Phase 0).
 > Ce document est un audit **read-only** : aucun fichier source (`app/`, `src/`, `content/`, `public/`, config) n'a été modifié pour le produire.
 > Version du repo au moment de l'audit : `package.json` → `0.6.3`, dernier commit `ae49c8f` (branche `main`).
 

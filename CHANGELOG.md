@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.7.15] — 2026-08-10
+
+### Contenu
+
+- **Article "Sécuriser un analyseur d'URL contre le SSRF"** (`content/posts/securiser-analyseur-url-contre-ssrf.ts`) — gelé depuis la Phase 10 en attendant que les protections décrites existent vraiment ; publié maintenant que le correctif est en place et testé côté InfraLens (Phase 2 InfraLens, 2026-08-09). Décrit le mécanisme de protection (classification IP, DNS rebinding, revalidation des redirections) sans détail exploitable.
+- **Phase 7 (Espace Outils), partie randy-code** — proxy `next.config.mjs` (`rewrites()`) exposant `/tools/infralens/*` vers le déploiement InfraLens (`INFRALENS_ORIGIN`, `infralens.dev` par défaut) ; `/tools` mis à jour avec un lien interne vers l'outil et un lien vers l'étude de cas, à la place du lien externe et de la mention "intégration prévue".
+
+### Nettoyage
+
+- **`PORTFOLIO_REDESIGN_MASTER_PLAN.md` renommé `RANDY_CODE_MASTER_PLAN.md`** pour cohérence avec les deux autres documents de source de vérité (`RANDY_CODE_BRANDING_PLAN.md`, `RANDY_CODE_ECOSYSTEM_VISION.md`). Références mises à jour dans `docs/roadmap.md`, `RANDY_CODE_BRANDING_PLAN.md`, `docs/audits/baseline.md` ; les mentions historiques dans ce changelog restent inchangées.
+
+### Connu — reste à faire
+
+- **Côté InfraLens de la Phase 7 volontairement non traité depuis ce dépôt** (`basePath`, `serverActions.allowedOrigins`, `manifest.json` préfixé, redirection de `infralens.dev` vers le nouveau chemin, désactivation du service worker embarqué) — à appliquer depuis le dépôt InfraLens directement. `/tools/infralens` reste en 404 tant que ce n'est pas fait (vérifié en vivant : le proxy atteint bien InfraLens, qui répond 404 faute de route à ce chemin).
+- `INFRALENS_ORIGIN` pointe sur `infralens.dev` — à rebasculer vers l'URL de déploiement Vercel sous-jacente avant que ce domaine ne soit retiré.
+
 ## [0.7.14] — 2026-08-08
 
 ### Contenu

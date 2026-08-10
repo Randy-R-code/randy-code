@@ -2,7 +2,7 @@
 
 > Document de référence à lire avant tout refactor visuel du portfolio.
 >
-> Ce fichier complète `PORTFOLIO_REDESIGN_MASTER_PLAN.md`.
+> Ce fichier complète `RANDY_CODE_MASTER_PLAN.md`.
 > En cas de conflit :
 >
 > 1. la structure, le contenu et les objectifs produit restent définis par le master plan ;
@@ -754,7 +754,7 @@ Le chantier branding est terminé lorsque :
 
 ```text
 Lis intégralement :
-- PORTFOLIO_REDESIGN_MASTER_PLAN.md
+- RANDY_CODE_MASTER_PLAN.md
 - RANDY_CODE_BRANDING_PLAN.md
 
 Considère le premier comme source de vérité pour la structure et le contenu, et le second comme source de vérité pour l’identité visuelle.

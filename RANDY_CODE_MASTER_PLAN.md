@@ -1900,7 +1900,7 @@ Règles :
 # 23. Prompt de démarrage recommandé pour l’IA
 
 ```text
-Lis intégralement PORTFOLIO_REDESIGN_MASTER_PLAN.md et considère-le comme la source de vérité.
+Lis intégralement RANDY_CODE_MASTER_PLAN.md et considère-le comme la source de vérité.
 
 Travaille uniquement sur la phase indiquée. Ne commence aucune phase suivante. Commence par auditer le code réellement présent et compare-le aux objectifs de la phase. Présente ensuite un plan précis des fichiers à modifier, puis implémente les changements de manière minimale et cohérente.
 
@@ -1923,7 +1923,7 @@ Phase à réaliser : [NUMÉRO ET NOM DE LA PHASE]
 # 24. Prompt pour audit d’une phase
 
 ```text
-Audite la phase [NUMÉRO] du document PORTFOLIO_REDESIGN_MASTER_PLAN.md sans modifier le code.
+Audite la phase [NUMÉRO] du document RANDY_CODE_MASTER_PLAN.md sans modifier le code.
 
 Retourne :
 1. l’état actuel ;
@@ -1943,7 +1943,7 @@ N’invente aucune information absente du dépôt.
 # 25. Prompt pour revue de fin de phase
 
 ```text
-Effectue une revue complète de la phase [NUMÉRO] par rapport à PORTFOLIO_REDESIGN_MASTER_PLAN.md.
+Effectue une revue complète de la phase [NUMÉRO] par rapport à RANDY_CODE_MASTER_PLAN.md.
 
 Vérifie :
 - conformité fonctionnelle ;
