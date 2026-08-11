@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.0] — 2026-08-11
+
+### Contenu
+
+- **InfraLens recoloré avec la vraie palette Randy Code** — `.infralens-scope` (`app/globals.css`) ne redéfinit plus tout un thème shadcn zinc en dur. Fond, surfaces, bordures et texte héritent désormais directement des tokens Randy Code (`--surface-1/2/3`, `--border-subtle`, `--text-primary/secondary`) via la cascade CSS normale — un seul bloc de 11 lignes ne fait plus qu'overrider ce qui doit rester distinct (le vert `--primary`/`--ring` d'InfraLens). Rendu possible par la Phase 5 : tous les composants lisant déjà les classes sémantiques au lieu du zinc brut, ce changement se propage automatiquement sans retoucher un seul fichier de composant. Couleurs de statut (Pass/Warning/Fail/Info/Unavailable/Error) inchangées — vérifié en vivant + 25/25 E2E dont accessibilité, aucune régression de contraste.
+
 ## [0.9.1] — 2026-08-11
 
 ### Nettoyage
