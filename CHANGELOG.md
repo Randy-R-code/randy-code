@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.2] — 2026-08-11
+
+### Nettoyage
+
+- **Section "How results are presented" retirée de la landing InfraLens** — faisait doublon avec l'exemple de rapport juste au-dessus (`results-preview.tsx`), et affichait en plus un vocabulaire de statut obsolète ("OK" au lieu de "Pass", un badge "Error" utilisant l'icône/couleur de "Fail") jamais mis à jour depuis le renommage des statuts. Rien d'unique à en récupérer.
+
 ## [0.8.1] — 2026-08-11
 
 ### Corrections
