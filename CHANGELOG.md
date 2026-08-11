@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.3] — 2026-08-11
+
+### Corrections
+
+- **Badge de statut coupé net sur mobile** (`CheckResultCard`) — la ligne titre+badges était un `flex` sans `flex-wrap`, et `Card` a `overflow-hidden` : quand le titre + "+N pts" + badge de statut ne tenaient pas sur une largeur mobile, le badge se faisait couper net par le bord arrondi de la card au lieu de passer à la ligne. Signalé par toi via une capture d'écran. Ajout de `flex-wrap` : le badge descend proprement sous le titre quand ça ne tient pas.
+
 ## [0.10.2] — 2026-08-11
 
 ### Corrections

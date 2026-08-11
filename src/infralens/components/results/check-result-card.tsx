@@ -87,7 +87,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
     <Card className="border-border bg-background/50">
       <Collapsible open={open} onOpenChange={setOpen}>
         <CardHeader>
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <CardTitle className="text-lg flex items-center gap-1.5 min-w-0">
               <span className="truncate">{result.label}</span>
               <CopyButton
