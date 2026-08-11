@@ -13,10 +13,8 @@ import { runInfraChecks } from "../../../app/tools/infralens/actions/run-checks"
 
 export function HomeClient({
   landingSections,
-  footer,
 }: {
   landingSections: ReactNode;
-  footer: ReactNode;
 }) {
   const [results, setResults] = useState<ChecksResponse | undefined>();
   const [isLoading, setIsLoading] = useState(false);
@@ -125,8 +123,6 @@ export function HomeClient({
           <CTA onAnalyze={runAnalysis} isLoading={isLoading} />
         </>
       )}
-
-      {footer}
     </main>
   );
 }

@@ -4,6 +4,7 @@ export const siteConfig = {
   parentBrand: "Randy Code",
   parentBrandUrl: "https://randy-code.dev",
   canonicalUrl: "https://randy-code.dev/tools/infralens",
-  repositoryUrl: "https://github.com/Randy-R-code/infralens",
-  licenseUrl: "https://github.com/Randy-R-code/infralens/blob/main/LICENSE",
+  repositoryUrl: "https://github.com/Randy-R-code/randy-code",
+  licenseUrl:
+    "https://github.com/Randy-R-code/randy-code/blob/main/docs/infralens/LICENSE",
 } as const;

@@ -26,7 +26,7 @@ export const MAX_RESPONSE_BYTES = 2 * 1024 * 1024; // 2 MB
 export const TLS_INSPECTION_TIMEOUT_MS = 5000;
 
 export const USER_AGENT =
-  "InfraLens/1.0 (+https://github.com/Randy-R-code/infralens)";
+  "InfraLens/1.0 (+https://randy-code.dev/tools/infralens)";
 export const IPAPI_BASE_URL = "https://ipapi.co";
 
 /** IP/ASN/hosting info changes far less often than DNS records, so this outlives `DNS_CACHE_TTL_MS` (master plan §32 Phase 7: "mettre en cache raisonnablement") — also reduces load on ipapi.co's free-tier rate limit. */

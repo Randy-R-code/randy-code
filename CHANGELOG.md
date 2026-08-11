@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.8.0] — 2026-08-11
+
+### Contenu
+
+- **Clôture de l'ère "refonte 0.7.x"** — l'intégration native d'InfraLens (`v0.7.16`) était le dernier chantier de cette ligne ; cette version ouvre un nouveau chapitre pour le portfolio.
+
+### Corrections
+
+- **Double footer sur `/tools/infralens`** — InfraLens avait son propre footer (logo, watermark, bloc d'attribution) rendu en plus du footer global Randy Code. Retiré, remplacé par un lien "Retour aux outils" (`src/components/layout/tool-back-link.tsx`, même style que "Retour à la carte" de `PageShell` — réutilisable tel quel par les futurs outils), et les liens Documentation/Privacy/License/GitHub regroupés dans le hero au lieu d'un second bandeau.
+- **3 liens morts vers `github.com/Randy-R-code/infralens`** — le repo source va être supprimé. `site-config.ts` (`repositoryUrl`/`licenseUrl`), le User-Agent envoyé par l'outil à chaque analyse (`constants.ts`), et les instructions de signalement de vulnérabilité (`docs/infralens/SECURITY.md`) repointés vers `randy-code` et l'email de contact.
+- **Titre d'onglet "Développeur Fullstack Freelance"** — laissé de côté par la recoloration de l'image OG en v0.7.14, qui n'avait touché que le visuel. `app/layout.tsx`, `app/manifest.ts`, `src/lib/json-ld.ts` alignés sur "Fullstack TypeScript".
+
+### Nettoyage
+
+- **`INFRALENS_TO_RANDY_CODE_MIGRATION_MASTER_PLAN.md`** déplacé de la racine vers `docs/infralens/` — la migration étant terminée, le document n'avait plus sa place parmi les sources de vérité actives du portfolio.
+
 ## [0.7.16] — 2026-08-10
 
 ### Contenu

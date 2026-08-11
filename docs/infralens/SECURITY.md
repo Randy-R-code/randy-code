@@ -10,7 +10,7 @@ Only the latest version on `main` / the latest published release is supported. T
 
 **Please do not open a public GitHub issue for a security vulnerability.**
 
-Use GitHub's private reporting instead: go to the [Security tab](https://github.com/Randy-R-code/infralens/security) of this repository and select **"Report a vulnerability"**. This opens a private advisory visible only to the maintainer until it's resolved.
+Please email **randy.rcode@gmail.com** instead, with a clear subject line (e.g. "InfraLens security report"). InfraLens now ships as part of the [randy-code](https://github.com/Randy-R-code/randy-code) repository; email is the reliable channel until private vulnerability reporting is enabled there.
 
 Please include:
 

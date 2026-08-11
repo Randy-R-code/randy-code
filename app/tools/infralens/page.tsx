@@ -1,5 +1,4 @@
 import { HomeClient } from "@infralens-components/home-client";
-import { Footer } from "@infralens-components/landing/footer";
 import { HowResults } from "@infralens-components/landing/how-results";
 import { OpenSource } from "@infralens-components/landing/open-source";
 import { ResultsPreview } from "@infralens-components/landing/results-preview";
@@ -16,7 +15,6 @@ export default function Home() {
           <OpenSource />
         </>
       }
-      footer={<Footer />}
     />
   );
 }

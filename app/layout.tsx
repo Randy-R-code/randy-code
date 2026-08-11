@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Randy Code",
   },
-  title: "Randy Rimbault — Développeur Fullstack Freelance",
+  title: "Randy Rimbault — Développeur Fullstack TypeScript",
   description:
     "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local — des produits pensés pour être utiles et durables.",
   openGraph: {
-    title: "Randy Rimbault — Développeur Fullstack Freelance",
+    title: "Randy Rimbault — Développeur Fullstack TypeScript",
     description:
       "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local — des produits pensés pour être utiles et durables.",
     url: "/",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Randy Rimbault — Développeur Fullstack Freelance",
+    title: "Randy Rimbault — Développeur Fullstack TypeScript",
     description:
       "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, apps mobiles, SEO local.",
   },

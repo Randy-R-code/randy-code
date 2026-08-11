@@ -1,5 +1,11 @@
 # Changelog
 
+> **Archived 2026-08-11.** This is InfraLens's changelog from its life as a
+> standalone product, frozen at the point it was migrated natively into
+> `randy-code` (`src/infralens/`, `app/tools/infralens/`). It is no longer
+> updated — changes to InfraLens since are logged in the root
+> [`CHANGELOG.md`](../../CHANGELOG.md) alongside the rest of the portfolio.
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),

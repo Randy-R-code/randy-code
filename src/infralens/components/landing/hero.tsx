@@ -7,7 +7,7 @@ import { Input } from "@infralens-components/ui/input";
 import { siteConfig } from "@infralens-config/site-config";
 import { parseAnalysisError } from "@infralens-lib/checks/parse-error";
 import { ChecksResponse } from "@infralens-lib/checks/types";
-import { BookOpen, Search } from "lucide-react";
+import { BookOpen, Scale, Search, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { runInfraChecks } from "../../../../app/tools/infralens/actions/run-checks";
@@ -151,6 +151,22 @@ export function Hero({
           >
             <BookOpen className="size-4" />
             Read the documentation
+          </Link>
+          <Link
+            href="/tools/infralens/privacy"
+            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+          >
+            <ShieldCheck className="size-4" />
+            Privacy
+          </Link>
+          <Link
+            href={siteConfig.licenseUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+          >
+            <Scale className="size-4" />
+            License
           </Link>
         </div>
 
