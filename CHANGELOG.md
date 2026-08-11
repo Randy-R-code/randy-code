@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0] — 2026-08-11
+
+### Contenu
+
+- **Exemple de rapport et carte OG d'InfraLens reconstruits pour refléter le vrai produit** — l'exemple sur la landing (`results-preview.tsx`) n'affichait qu'un badge de statut nu et 3 checks non repliables limités à 2 statuts sur 6, sans le bandeau hostname/URL/score ni le "At a glance" ("Worth fixing first" / "Working well") pourtant devenus le cœur visuel du vrai rapport depuis son redesign. Reconstruit en réutilisant directement les vrais composants `PrioritySummary` et `CheckResultCard` (au lieu d'une réimplémentation parallèle avec son propre badge de statut, qui avait déjà dérivé — vocabulaire "OK" et mapping icône/couleur incorrect trouvés en passant, corrigés en Phase 2). La carte OG partage désormais la même source de données (`src/infralens/lib/mock-report.ts`) au lieu d'une deuxième copie séparée qui pouvait diverger silencieusement.
+
 ## [0.8.3] — 2026-08-11
 
 ### Nettoyage

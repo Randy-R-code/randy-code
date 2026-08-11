@@ -1,4 +1,9 @@
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
+import {
+  MOCK_CHECKS,
+  MOCK_HOSTNAME,
+  MOCK_SCORE,
+} from "@infralens-lib/mock-report";
 import { readFileSync } from "fs";
 import { ImageResponse } from "next/og";
 import { join } from "path";
@@ -8,20 +13,18 @@ export const alt = "InfraLens — Website inspection tool";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Same mock report as src/components/landing/results-preview.tsx (§6.3) —
-// keep both surfaces showing the exact same example so a visitor who saw
-// this card doesn't see a different-looking "example" on the site.
-const MOCK_CATEGORIES = [
-  { category: "http-security", score: 21, maxScore: 25 },
-  { category: "network-dns", score: 17, maxScore: 20 },
-  { category: "infrastructure", score: 20, maxScore: 20 },
-  { category: "website-structure", score: 12, maxScore: 15 },
-  { category: "metadata-stack", score: 8, maxScore: 10 },
-  { category: "performance", score: 6, maxScore: 10 },
-] as const;
-const MOCK_SCORE = 84;
-const MOCK_GRADE = "B";
-const MOCK_GRADE_COLOR = "#a3e635"; // lime-400, matches ScoreBadge's grade-color mapping
+// Sourced from src/infralens/lib/mock-report.ts — the same example shown
+// in results-preview.tsx on the landing, so a visitor who saw this card
+// never sees a different-looking "example" once they click through.
+// next/og (satori) can't render the real React components or read CSS
+// custom properties, so the two mini check rows below are picked by id
+// from MOCK_CHECKS and MOCK_GRADE_COLOR is a plain hex tied to grade "B"
+// (matches ScoreBadge's grade-color mapping) rather than computed.
+const MOCK_GRADE_COLOR = "#a3e635"; // lime-400 — update if MOCK_SCORE.grade ever changes
+const OG_CHECK_IDS = ["https-tls", "security-headers"] as const;
+const ogChecks = OG_CHECK_IDS.map(
+  (id) => MOCK_CHECKS.find((check) => check.id === id)!,
+);
 
 export default async function OgImage() {
   const fontBold = readFileSync(
@@ -164,14 +167,11 @@ export default async function OgImage() {
               real CheckResultCard, so this mirrors an actual check instead
               of a generic category tag. */}
           <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
-            {[
-              { label: "HTTPS & TLS", status: "pass" as const },
-              { label: "HTTP Security Headers", status: "warning" as const },
-            ].map((check) => {
+            {ogChecks.map((check) => {
               const color = check.status === "pass" ? "#10b981" : "#f59e0b";
               return (
                 <div
-                  key={check.label}
+                  key={check.id}
                   style={{ display: "flex", alignItems: "center", gap: 10 }}
                 >
                   <span
@@ -257,7 +257,7 @@ export default async function OgImage() {
           <span
             style={{ color: "#52525b", fontSize: 13, fontWeight: 600, flex: 1 }}
           >
-            example.com
+            {MOCK_HOSTNAME}
           </span>
           {/* Score badge — mirrors ScoreBadge's grade-color mapping */}
           <div
@@ -278,12 +278,12 @@ export default async function OgImage() {
                 color: MOCK_GRADE_COLOR,
               }}
             >
-              {MOCK_GRADE}
+              {MOCK_SCORE.grade}
             </span>
             <span
               style={{ fontSize: 12, color: MOCK_GRADE_COLOR, opacity: 0.75 }}
             >
-              {MOCK_SCORE} / 100
+              {MOCK_SCORE.score} / 100
             </span>
           </div>
         </div>
@@ -298,7 +298,7 @@ export default async function OgImage() {
             marginTop: 6,
           }}
         >
-          {MOCK_CATEGORIES.map((c) => (
+          {MOCK_SCORE.categories.map((c) => (
             <div
               key={c.category}
               style={{
