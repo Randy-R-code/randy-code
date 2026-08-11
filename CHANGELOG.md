@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.1] — 2026-08-11
+
+### Corrections
+
+- **`logo-symbol.png` préchargé sur chaque page InfraLens sans jamais être utilisé** — signalé par toi via un warning console. Diagnostiqué en isolant la source par test empirique : Next.js précharge tout asset statique référencé dans `not-found.tsx` sur l'ensemble des pages du segment (pour un rendu instantané en cas de 404), même si la page 404 n'est presque jamais affichée. Retiré, remplacé par le seul texte "InfraLens" — plus de préchargement inutile sur aucune route.
+- **`not-found.tsx` avait échappé à la retokenisation de la Phase 5** — seul fichier oublié du balayage (classes zinc brutes). Retokenisé au passage.
+- **Accord grammatical dans "At a glance"** — `"1 check ... aren't counted"` (devrait être _isn't_ au singulier) corrigé en `priority-summary.tsx`, trouvé lors de la vérification visuelle de la Phase 4.
+
 ## [0.10.0] — 2026-08-11
 
 ### Contenu

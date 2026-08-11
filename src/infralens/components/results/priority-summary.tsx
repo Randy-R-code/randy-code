@@ -81,8 +81,9 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
           <p className="flex items-center gap-2 text-xs text-muted-foreground">
             <CircleSlash className="size-3.5 shrink-0" aria-hidden="true" />
             {unavailableCount} check{unavailableCount === 1 ? "" : "s"} above{" "}
-            aren&apos;t counted here (informational, unavailable, or a technical
-            error) — see the categories below.
+            {unavailableCount === 1 ? "isn't" : "aren't"} counted here
+            (informational, unavailable, or a technical error) — see the
+            categories below.
           </p>
         )}
         <p className="text-xs text-muted-foreground">
