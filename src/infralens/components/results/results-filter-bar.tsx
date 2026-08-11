@@ -36,8 +36,8 @@ export function ResultsFilterBar({
             className={cn(
               "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors",
               isActive
-                ? "bg-zinc-100 text-zinc-900 border-zinc-100"
-                : "bg-transparent text-zinc-400 border-zinc-800 hover:text-zinc-200 hover:border-zinc-700",
+                ? "bg-foreground text-background border-foreground"
+                : "bg-transparent text-muted-foreground border-border hover:text-foreground hover:border-border",
             )}
           >
             {FILTER_LABELS[filter]} ({count})

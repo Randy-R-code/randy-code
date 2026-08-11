@@ -20,19 +20,19 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
         <Button
           variant="ghost"
           size="sm"
-          className="text-xs text-zinc-400 underline-offset-4 hover:underline hover:text-zinc-300"
+          className="text-xs text-muted-foreground underline-offset-4 hover:underline hover:text-foreground"
         >
           Why this score?
         </Button>
       </DialogTrigger>
-      <DialogContent className="border-zinc-800 bg-zinc-900 text-zinc-100">
+      <DialogContent className="border-border bg-background text-foreground">
         <DialogHeader>
           <DialogTitle>How the Score is Calculated</DialogTitle>
-          <DialogDescription className="text-zinc-400">
+          <DialogDescription className="text-muted-foreground">
             Understanding InfraLens scoring system
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 text-sm text-zinc-300">
+        <div className="space-y-4 text-sm text-foreground">
           <p>
             The score is calculated based on a weighted set of infrastructure
             checks: points earned ÷ points applicable to checks that actually
@@ -43,8 +43,8 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
             Network…). Each category contributes differently to the final score.
           </p>
           <div className="space-y-2">
-            <p className="font-semibold text-zinc-200">Category Weights:</p>
-            <ul className="list-disc list-inside space-y-1 text-zinc-400">
+            <p className="font-semibold text-foreground">Category Weights:</p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
               <li>HTTP & Security: 25 points</li>
               <li>Network & DNS: 20 points</li>
               <li>Infrastructure: 20 points</li>
@@ -54,8 +54,8 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
             </ul>
           </div>
           <div className="space-y-2">
-            <p className="font-semibold text-zinc-200">Status Points:</p>
-            <ul className="list-disc list-inside space-y-1 text-zinc-400">
+            <p className="font-semibold text-foreground">Status Points:</p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
               <li>Pass: 100% of category weight</li>
               <li>Warning: 60% of category weight</li>
               <li>Fail: 0% of category weight</li>
@@ -66,9 +66,9 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
               </li>
             </ul>
           </div>
-          <div className="space-y-1 rounded border border-zinc-800 bg-zinc-900/50 p-3">
-            <p className="font-semibold text-zinc-200">This analysis:</p>
-            <p className="text-zinc-400">
+          <div className="space-y-1 rounded border border-border bg-background/50 p-3">
+            <p className="font-semibold text-foreground">This analysis:</p>
+            <p className="text-muted-foreground">
               {score.scoredCount} check{score.scoredCount === 1 ? "" : "s"}{" "}
               counted toward the score
               {score.excludedCount > 0 &&
@@ -76,7 +76,7 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
               .
             </p>
             {score.strongestCategory && (
-              <p className="text-zinc-400">
+              <p className="text-muted-foreground">
                 Strongest area:{" "}
                 {CATEGORY_LABELS[score.strongestCategory] ??
                   score.strongestCategory}
@@ -84,7 +84,7 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
               </p>
             )}
             {score.topPriorityCategory && (
-              <p className="text-zinc-400">
+              <p className="text-muted-foreground">
                 Most worth improving:{" "}
                 {CATEGORY_LABELS[score.topPriorityCategory] ??
                   score.topPriorityCategory}
@@ -92,18 +92,18 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
               </p>
             )}
           </div>
-          <p className="text-zinc-400">
+          <p className="text-muted-foreground">
             Limits: checks rely on what a site publicly exposes and can miss
             context only the site owner would know. See the{" "}
             <Link
               href="/tools/infralens/docs"
-              className="underline underline-offset-4 hover:text-zinc-200"
+              className="underline underline-offset-4 hover:text-foreground"
             >
               documentation
             </Link>{" "}
             for how each check works.
           </p>
-          <p className="pt-2 text-zinc-400">
+          <p className="pt-2 text-muted-foreground">
             The final score represents an overall infrastructure health
             indicator, not a security certification.
           </p>

@@ -38,7 +38,7 @@ const statusConfig = {
   fail: {
     icon: CircleX,
     label: "Fail",
-    className: "text-red-500 border-red-500/20 bg-red-500/10",
+    className: "text-red-400 border-red-400/20 bg-red-400/10",
   },
   info: {
     icon: Info,
@@ -48,7 +48,8 @@ const statusConfig = {
   unavailable: {
     icon: CircleSlash,
     label: "Unavailable",
-    className: "text-zinc-400 border-zinc-500/20 bg-zinc-500/10",
+    className:
+      "text-muted-foreground border-muted-foreground/20 bg-muted-foreground/10",
   },
   error: {
     icon: CircleAlert,
@@ -63,7 +64,8 @@ const statusConfig = {
 const unknownStatusConfig = {
   icon: CircleHelp,
   label: "Unknown",
-  className: "text-zinc-400 border-zinc-500/20 bg-zinc-500/10",
+  className:
+    "text-muted-foreground border-muted-foreground/20 bg-muted-foreground/10",
 };
 
 function hasDetail(result: CheckResult): boolean {
@@ -82,7 +84,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
   const expandable = hasDetail(result);
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/50">
+    <Card className="border-border bg-background/50">
       <Collapsible open={open} onOpenChange={setOpen}>
         <CardHeader>
           <div className="flex items-center justify-between gap-2">
@@ -96,7 +98,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
             <div className="flex items-center gap-2 shrink-0">
               {result.scored &&
                 typeof result.scoreContribution === "number" && (
-                  <span className="text-xs text-zinc-400 font-mono">
+                  <span className="text-xs text-muted-foreground font-mono">
                     +{result.scoreContribution} pts
                   </span>
                 )}
@@ -113,10 +115,12 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
         </CardHeader>
         <CardContent>
           {result.summary && (
-            <p className="text-sm text-zinc-400 mb-2">{result.summary}</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              {result.summary}
+            </p>
           )}
           {result.durationMs > 0 && (
-            <p className="text-xs text-zinc-400 mb-2">
+            <p className="text-xs text-muted-foreground mb-2">
               Completed in {result.durationMs}ms
             </p>
           )}
@@ -124,7 +128,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
           {expandable && (
             <>
               <CollapsibleTrigger
-                className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
+                className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                 aria-label={open ? "Hide details" : "Show details"}
               >
                 <ChevronDown
@@ -139,7 +143,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
               <CollapsibleContent className="space-y-4 pt-3 overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
                 {result.evidence && result.evidence.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wide">
+                    <p className="text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wide">
                       Evidence
                     </p>
                     <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs">
@@ -147,8 +151,10 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
                         .filter((item) => !item.sensitive)
                         .map((item, i) => (
                           <div key={i} className="contents">
-                            <dt className="text-zinc-400">{item.label}:</dt>
-                            <dd className="text-zinc-300 wrap-break-word">
+                            <dt className="text-muted-foreground">
+                              {item.label}:
+                            </dt>
+                            <dd className="text-foreground wrap-break-word">
                               <RenderValue value={item.value} />
                             </dd>
                           </div>
@@ -161,7 +167,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
                   result.data !== null &&
                   Object.keys(result.data as object).length > 0 && (
                     <div>
-                      <p className="text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wide">
+                      <p className="text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wide">
                         Details
                       </p>
                       <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-xs">
@@ -169,10 +175,10 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
                           .filter(([, v]) => v !== undefined && v !== null)
                           .map(([key, value]) => (
                             <div key={key} className="contents">
-                              <dt className="text-zinc-400">
+                              <dt className="text-muted-foreground">
                                 {humanizeKey(key)}:
                               </dt>
-                              <dd className="text-zinc-300">
+                              <dd className="text-foreground">
                                 <RenderValue value={value} />
                               </dd>
                             </div>
@@ -183,10 +189,10 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
 
                 {result.limitations && result.limitations.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wide">
+                    <p className="text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wide">
                       Limitations
                     </p>
-                    <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400">
+                    <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
                       {result.limitations.map((limitation, i) => (
                         <li key={i}>{limitation}</li>
                       ))}

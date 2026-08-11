@@ -91,7 +91,7 @@ export function HomeClient({
   const hasResults = !isLoading && !!results;
 
   return (
-    <main className="min-h-screen flex flex-col bg-zinc-900 text-zinc-100">
+    <main className="min-h-screen flex flex-col bg-background text-foreground">
       <Hero
         onResults={handleResults}
         onAnalysisStart={() => {

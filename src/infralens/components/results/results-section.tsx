@@ -22,7 +22,7 @@ function LoadingState({ onCancel }: { onCancel?: () => void }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-zinc-400" aria-live="polite">
+        <p className="text-sm text-muted-foreground" aria-live="polite">
           Analyzing…
         </p>
         {onCancel && (
@@ -30,14 +30,14 @@ function LoadingState({ onCancel }: { onCancel?: () => void }) {
             variant="outline"
             size="sm"
             onClick={onCancel}
-            className="border-zinc-800 text-zinc-400 hover:text-zinc-300"
+            className="border-border text-muted-foreground hover:text-foreground"
           >
             <XCircle className="size-4 sm:mr-2" />
             <span className="hidden sm:inline">Cancel</span>
           </Button>
         )}
       </div>
-      <Card className="border-zinc-800 bg-zinc-900/50">
+      <Card className="border-border bg-background/50">
         <CardContent className="space-y-4">
           <div className="flex items-center gap-4">
             <Skeleton className="size-10 rounded" />
@@ -50,7 +50,7 @@ function LoadingState({ onCancel }: { onCancel?: () => void }) {
         </CardContent>
       </Card>
       {[1, 2].map((i) => (
-        <Card key={i} className="border-zinc-800 bg-zinc-900/50">
+        <Card key={i} className="border-border bg-background/50">
           <CardContent className="space-y-3">
             <div className="flex items-center justify-between">
               <Skeleton className="h-5 w-40" />
@@ -71,7 +71,7 @@ function CategoryQuickNav({ results }: { results: ChecksResponse }) {
         <a
           key={c.category}
           href={`#category-${c.category}`}
-          className="px-2.5 py-1 rounded-full border border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700 transition-colors"
+          className="px-2.5 py-1 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors"
         >
           {CATEGORY_LABELS[c.category]}
         </a>
@@ -130,7 +130,7 @@ export function ResultsSection({
               </div>
 
               {filteredChecks.length === 0 ? (
-                <p className="text-sm text-zinc-400 text-center py-8">
+                <p className="text-sm text-muted-foreground text-center py-8">
                   No checks match this filter.
                 </p>
               ) : (
@@ -140,7 +140,7 @@ export function ResultsSection({
                 />
               )}
 
-              <div className="text-xs text-zinc-400 text-center">
+              <div className="text-xs text-muted-foreground text-center">
                 Analysis completed in {results.totalDurationMs}ms
               </div>
             </>

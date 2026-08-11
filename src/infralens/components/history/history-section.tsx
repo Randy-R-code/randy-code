@@ -69,9 +69,9 @@ function getGradeStyles(grade: string): {
       };
     default:
       return {
-        text: "text-zinc-400",
-        bg: "bg-zinc-400/10",
-        border: "border-zinc-400/30",
+        text: "text-muted-foreground",
+        bg: "bg-muted-foreground/10",
+        border: "border-muted-foreground/30",
       };
   }
 }
@@ -91,8 +91,8 @@ export function HistorySection({
       <div className="max-w-4xl mx-auto space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <History className="size-4 text-zinc-500" />
-            <h2 className="text-sm font-medium text-zinc-400">
+            <History className="size-4 text-muted-foreground" />
+            <h2 className="text-sm font-medium text-muted-foreground">
               Recent analyses
             </h2>
           </div>
@@ -101,7 +101,7 @@ export function HistorySection({
             variant="ghost"
             size="sm"
             onClick={onClear}
-            className="h-7 px-2 text-xs text-zinc-500 hover:text-red-400"
+            className="h-7 px-2 text-xs text-muted-foreground hover:text-red-400"
           >
             <Trash2 className="size-3 mr-1" />
             Clear all
@@ -116,9 +116,9 @@ export function HistorySection({
                 key={entry.id}
                 type="button"
                 onClick={() => onSelect(entry)}
-                className="group relative flex flex-col items-start sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 cursor-pointer transition-all"
+                className="group relative flex flex-col items-start sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-lg border border-border bg-background/50 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 cursor-pointer transition-all"
               >
-                <span className="text-sm text-zinc-200 font-medium group-hover:text-zinc-100 -mt-0.5">
+                <span className="text-sm text-foreground font-medium group-hover:text-foreground -mt-0.5">
                   {entry.results.hostname}
                 </span>
                 <div className="flex items-center gap-2">
@@ -132,10 +132,10 @@ export function HistorySection({
                   >
                     {entry.results.score.grade}
                   </span>
-                  <span className="text-xs text-zinc-500 group-hover:text-zinc-400">
+                  <span className="text-xs text-muted-foreground group-hover:text-muted-foreground">
                     {formatDate(entry.timestamp)}
                   </span>
-                  <ExternalLink className="size-3.5 text-zinc-600 group-hover:text-brand-secondary-hover transition-colors" />
+                  <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-brand-secondary-hover transition-colors" />
                 </div>
                 <span
                   role="button"
@@ -150,7 +150,7 @@ export function HistorySection({
                       onRemove(entry.id);
                     }
                   }}
-                  className="absolute top-3 right-3 size-5 flex items-center justify-center rounded opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-red-400 hover:bg-zinc-700/50 transition-all"
+                  className="absolute top-3 right-3 size-5 flex items-center justify-center rounded opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-red-400 hover:bg-accent/50 transition-all"
                   aria-label={`Remove ${entry.results.hostname}`}
                 >
                   <X className="size-3.5" />

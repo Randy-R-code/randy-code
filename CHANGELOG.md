@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.1] — 2026-08-11
+
+### Nettoyage
+
+- **Classes zinc brutes retokenisées vers les classes sémantiques Randy Code** — 210 occurrences dans 22 fichiers InfraLens (`bg-zinc-900`→`bg-background`, `text-zinc-400`→`text-muted-foreground`, `border-zinc-800`→`border-border`, etc.) ; changement de valeurs nul pour l'instant (`.infralens-scope` garde ses valeurs actuelles), seulement les noms de classes changent — prépare la recoloration réelle sans retoucher ces fichiers une seconde fois.
+- **Card `/tools` d'InfraLens** — CTA redondant "Lancer l'outil" supprimé, "Ouvrir InfraLens" renommé "Ouvrir l'outil" (générique, réutilisable pour les futurs outils), logo ajouté, classes zinc remplacées par les tokens Randy Code natifs (ce fichier vit hors `.infralens-scope`).
+- **Back-link tripliqué sur docs/privacy/compare** — chaque page avait son propre "← Back to home" identique, en plus du lien global "Retour aux outils". Remplacé par un composant `LocalNav` partagé ("Analyze · Compare · Documentation"), qui donne une vraie navigation latérale au lieu d'un retour dupliqué.
+
+### Corrections
+
+- **Contraste insuffisant sur le badge "Fail"** (`text-red-500` sur `bg-red-500/10`, 4.1:1 au lieu de 4.5:1 requis) — préexistant, jamais détecté car aucun exemple "Fail" n'était jusqu'ici scanné par les tests d'accessibilité (corrigé en trouvant l'exemple de rapport, v0.9.0). Aligné sur `-400` comme les statuts `info`/`error` déjà conformes.
+
 ## [0.9.0] — 2026-08-11
 
 ### Contenu

@@ -15,7 +15,7 @@ export default function InfraLensLayout({
 }>) {
   return (
     <div className="infralens-scope">
-      <div className="bg-zinc-900 px-6 pt-4 sm:px-8 md:px-12">
+      <div className="bg-background px-6 pt-4 sm:px-8 md:px-12">
         <div className="mx-auto max-w-4xl">
           <ToolBackLink />
         </div>

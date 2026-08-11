@@ -48,7 +48,7 @@ const categories = [
 
 export function WhatItChecks() {
   return (
-    <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12 bg-zinc-900/50">
+    <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12 bg-background/50">
       <div className="max-w-6xl mx-auto space-y-8 md:space-y-10 lg:space-y-12">
         <div className="text-center space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -62,7 +62,7 @@ export function WhatItChecks() {
             return (
               <Card
                 key={category.title}
-                className="border-zinc-800 bg-zinc-900/50"
+                className="border-border bg-background/50"
               >
                 <CardHeader>
                   <div className="flex items-center gap-3">
@@ -73,14 +73,14 @@ export function WhatItChecks() {
                       <CardTitle className="text-lg">
                         {category.title}
                       </CardTitle>
-                      <CardDescription className="text-zinc-400 text-xs mt-0.5">
+                      <CardDescription className="text-muted-foreground text-xs mt-0.5">
                         {category.count} check{category.count > 1 ? "s" : ""}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-zinc-400">
+                  <CardDescription className="text-muted-foreground">
                     {category.description}
                   </CardDescription>
                 </CardContent>

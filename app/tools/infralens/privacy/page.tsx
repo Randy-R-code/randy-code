@@ -5,8 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { LocalNav } from "@infralens-components/local-nav";
 import { siteConfig } from "@infralens-config/site-config";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -17,22 +17,16 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-zinc-900 text-zinc-100">
+    <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 md:px-12 py-8 md:py-12 lg:py-16">
         <div className="space-y-8 md:space-y-12">
           <div className="space-y-4">
-            <Link
-              href="/tools/infralens"
-              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-300 transition-colors"
-            >
-              <ArrowLeft className="size-4" />
-              Back to home
-            </Link>
+            <LocalNav />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
                 Privacy
               </h1>
-              <p className="text-zinc-400">
+              <p className="text-muted-foreground">
                 {siteConfig.name} has no account, no billing, and no ad
                 tracking. This page explains exactly what data moves where — in
                 plain terms, matching what the{" "}
@@ -49,17 +43,17 @@ export default function PrivacyPage() {
             </div>
           </div>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What gets sent when you run an analysis
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 The URL you type is sent to InfraLens&apos;s own server, which
                 performs the checks itself — not your browser.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 Checks (DNS lookups, HTTP requests, TLS handshakes) have to run
                 server-side: your browser can&apos;t make most of these requests
@@ -74,17 +68,17 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 Rate limiting and your IP
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Yes, your IP address is used — only to enforce a per-IP request
                 limit, and only for a few seconds.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 Each analysis request is checked against a short-lived,
                 in-memory counter keyed by your IP address, to prevent abuse
@@ -104,20 +98,20 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 Third-party services contacted
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 One: a public IP-info lookup, about the site you&apos;re
                 analyzing — never about you.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 The Hosting &amp; IP check queries{" "}
-                <span className="text-zinc-300">ipapi.co</span> with the
+                <span className="text-foreground">ipapi.co</span> with the
                 resolved IP address of the site being analyzed, to report its
                 hosting provider and network (ASN). That result is cached
                 server-side for 15 minutes to avoid repeat lookups. Your own IP
@@ -129,22 +123,22 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What&apos;s stored locally
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Your last 10 analyses, in your browser only — nothing on
                 InfraLens&apos;s servers.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 InfraLens keeps no server-side record of any analysis once the
                 report is returned to your browser. Instead, up to 10 recent
                 reports are cached in your browser&apos;s{" "}
-                <span className="text-zinc-300">localStorage</span> so you can
+                <span className="text-foreground">localStorage</span> so you can
                 revisit them — this never leaves your device and no other page
                 or site can read it.
               </p>
@@ -158,16 +152,16 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What the analyzed site can see
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Its own server logs, exactly as for any other visitor.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 Running an analysis makes real DNS, HTTP, and TLS connections to
                 the target from InfraLens&apos;s server. The site being analyzed
@@ -180,11 +174,11 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-xl">No tracking, by design</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-400">
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>
                 No analytics scripts, no ad trackers, no cookies used for
                 identification, no account system, no persistent server-side

@@ -64,7 +64,7 @@ export function ReportHeader({
   };
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/50">
+    <Card className="border-border bg-background/50">
       <CardContent className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div className="flex items-start gap-4">
           {favicon && (
@@ -80,15 +80,15 @@ export function ReportHeader({
           )}
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <h2 className="text-xl font-semibold text-zinc-100 truncate">
+              <h2 className="text-xl font-semibold text-foreground truncate">
                 {results.hostname}
               </h2>
               <CopyButton value={results.hostname} label="Copy hostname" />
             </div>
-            <p className="text-sm text-zinc-400 truncate max-w-md">
+            <p className="text-sm text-muted-foreground truncate max-w-md">
               {finalUrl}
             </p>
-            <p className="text-xs text-zinc-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               {date.toLocaleString()} · {results.totalDurationMs}ms
             </p>
           </div>
@@ -100,13 +100,13 @@ export function ReportHeader({
             <CopyButton
               value={buildSummaryText(results)}
               label="Copy summary"
-              className="border border-zinc-800"
+              className="border border-border"
             />
             <Button
               variant="outline"
               size="sm"
               onClick={handleExportJson}
-              className="border-zinc-800 text-zinc-400 hover:text-zinc-300"
+              className="border-border text-muted-foreground hover:text-foreground"
               title="Export JSON"
             >
               <Download className="size-4 sm:mr-2" />
@@ -116,7 +116,7 @@ export function ReportHeader({
               variant="outline"
               size="sm"
               onClick={handleExportMarkdown}
-              className="border-zinc-800 text-zinc-400 hover:text-zinc-300"
+              className="border-border text-muted-foreground hover:text-foreground"
               title="Export Markdown"
             >
               <FileText className="size-4 sm:mr-2" />
@@ -126,7 +126,7 @@ export function ReportHeader({
               asChild
               variant="outline"
               size="sm"
-              className="border-zinc-800 text-zinc-400 hover:text-zinc-300"
+              className="border-border text-muted-foreground hover:text-foreground"
               title="Compare with another report"
             >
               <Link href="/tools/infralens/compare">
@@ -139,7 +139,7 @@ export function ReportHeader({
                 variant="outline"
                 size="sm"
                 onClick={onNewAnalysis}
-                className="border-zinc-800 text-zinc-400 hover:text-zinc-300"
+                className="border-border text-muted-foreground hover:text-foreground"
                 title="New Analysis"
               >
                 <RefreshCw className="size-4 sm:mr-2" />

@@ -28,14 +28,15 @@ export function RenderValue({ value }: { value: unknown }): ReactNode {
   }
 
   if (Array.isArray(value)) {
-    if (value.length === 0) return <span className="text-zinc-400">—</span>;
+    if (value.length === 0)
+      return <span className="text-muted-foreground">—</span>;
     if (value.every((v) => typeof v === "string" || typeof v === "number")) {
       return (
         <div className="flex flex-wrap gap-1">
           {value.map((v, i) => (
             <span
               key={i}
-              className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-xs font-mono"
+              className="px-2 py-0.5 rounded bg-card text-foreground text-xs font-mono"
             >
               {String(v)}
             </span>
@@ -58,13 +59,14 @@ export function RenderValue({ value }: { value: unknown }): ReactNode {
     const entries = Object.entries(value).filter(
       ([, v]) => v !== undefined && v !== null,
     );
-    if (entries.length === 0) return <span className="text-zinc-400">—</span>;
+    if (entries.length === 0)
+      return <span className="text-muted-foreground">—</span>;
     return (
       <dl className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-xs">
         {entries.map(([k, v]) => (
           <Fragment key={k}>
-            <dt className="text-zinc-400">{humanizeKey(k)}:</dt>
-            <dd className="text-zinc-300">
+            <dt className="text-muted-foreground">{humanizeKey(k)}:</dt>
+            <dd className="text-foreground">
               <RenderValue value={v} />
             </dd>
           </Fragment>

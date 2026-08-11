@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { LocalNav } from "@infralens-components/local-nav";
 import Link from "next/link";
 
 export const metadata = {
@@ -17,23 +17,17 @@ export const metadata = {
 
 export default function DocsPage() {
   return (
-    <main className="min-h-screen bg-zinc-900 text-zinc-100">
+    <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 md:px-12 py-8 md:py-12 lg:py-16">
         <div className="space-y-8 md:space-y-12">
           {/* Header */}
           <div className="space-y-4">
-            <Link
-              href="/tools/infralens"
-              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-300 transition-colors"
-            >
-              <ArrowLeft className="size-4" />
-              Back to home
-            </Link>
+            <LocalNav />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
                 Documentation
               </h1>
-              <p className="text-zinc-400">
+              <p className="text-muted-foreground">
                 Comprehensive documentation for all InfraLens checks. Each check
                 is executed server-side using Next.js server actions, designed
                 to be fast, non-intrusive, read-only, and safe for production
@@ -43,10 +37,10 @@ export default function DocsPage() {
           </div>
 
           {/* Overview */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Overview</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 InfraLens performs 18 independent checks across 6 categories to
                 analyze the technical exposure and configuration of a website.
                 Each check is modular, type-safe, and focuses on a specific
@@ -55,10 +49,10 @@ export default function DocsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Check Status
                 </h3>
-                <div className="space-y-2 text-sm text-zinc-400">
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Badge
                       variant="outline"
@@ -98,7 +92,7 @@ export default function DocsPage() {
                   <div className="flex items-center gap-2">
                     <Badge
                       variant="outline"
-                      className="border-zinc-600 text-zinc-400"
+                      className="border-muted-foreground/40 text-muted-foreground"
                     >
                       Unavailable
                     </Badge>
@@ -125,25 +119,25 @@ export default function DocsPage() {
           </Card>
 
           {/* Network & DNS */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Network & DNS</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 DNS records, security, and hosting information
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   DNS Records
                 </h3>
-                <p className="text-sm text-zinc-400 mb-3">
+                <p className="text-sm text-muted-foreground mb-3">
                   InfraLens uses Node.js native DNS resolution to retrieve and
                   analyze common DNS records. Results are cached in-memory to
                   optimize performance. This provides visibility into hosting
                   setup, email configuration, and domain delegation.
                 </p>
-                <div className="space-y-2 text-sm text-zinc-400">
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <p>
                     <strong>A / AAAA:</strong> Map domain names to IPv4/IPv6
                     addresses
@@ -170,13 +164,13 @@ export default function DocsPage() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   DNS Security
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   This check focuses on email and domain security signals:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>
                     <strong>SPF:</strong> Sender Policy Framework for email
                     authentication — also flags multiple SPF records, which RFC
@@ -201,16 +195,16 @@ export default function DocsPage() {
                     such rather than implied absent
                   </li>
                 </ul>
-                <p className="text-sm text-zinc-400 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   Missing SPF/DMARC records may expose the domain to spoofing or
                   delivery issues.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   IP & Hosting Information
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   InfraLens uses the ipapi.co API (optional) to identify public
                   IP address, Autonomous System Number (ASN), hosting provider,
                   geographic location, and IPv6 availability. This provides a
@@ -223,19 +217,19 @@ export default function DocsPage() {
           </Card>
 
           {/* HTTP & Security */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">HTTP & Security</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Security headers and HTTPS/TLS configuration
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Security Headers
                 </h3>
-                <p className="text-sm text-zinc-400 mb-3">
+                <p className="text-sm text-muted-foreground mb-3">
                   InfraLens checks six recommended HTTP security headers — not
                   just whether they&apos;re present, but whether their value is
                   actually safe (e.g. a Content-Security-Policy that still
@@ -244,9 +238,9 @@ export default function DocsPage() {
                   value; missing or weak headers trigger actionable
                   recommendations.
                 </p>
-                <div className="space-y-2 text-sm text-zinc-400">
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       Content-Security-Policy
                     </Badge>
                     Prevents XSS attacks by controlling which resources can be
@@ -254,34 +248,34 @@ export default function DocsPage() {
                     unsafe-eval, or a wildcard source
                   </p>
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       X-Frame-Options / frame-ancestors
                     </Badge>
                     Prevents clickjacking by controlling iframe embedding —
                     either header is accepted
                   </p>
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       Strict-Transport-Security (HSTS)
                     </Badge>
                     Forces HTTPS connections and prevents downgrade attacks —
                     flagged as weak below a 300-second max-age
                   </p>
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       X-Content-Type-Options
                     </Badge>
                     Prevents MIME type sniffing attacks
                   </p>
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       Referrer-Policy
                     </Badge>
                     Controls how much referrer information is sent with requests
                     — flagged as weak on unsafe-url
                   </p>
                   <p>
-                    <Badge variant="outline" className="mr-2 border-zinc-700">
+                    <Badge variant="outline" className="mr-2 border-border">
                       Permissions-Policy
                     </Badge>
                     Restricts which browser features and APIs the page can use
@@ -289,16 +283,16 @@ export default function DocsPage() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   HTTPS & TLS
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   This check verifies whether HTTPS is properly enforced and
                   opens its own raw TLS connection to inspect the certificate —
                   an invalid certificate fails the check, and one expiring
                   within 30 days triggers a warning:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>HTTPS availability</li>
                   <li>HTTP to HTTPS redirection</li>
                   <li>Negotiated TLS protocol version</li>
@@ -307,10 +301,10 @@ export default function DocsPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Redirect Behavior
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   InfraLens follows redirect chains (up to 10 redirects) to
                   detect misconfigurations, including excessive redirects,
                   redirect loops, and a chain that downgrades from HTTPS back to
@@ -322,16 +316,16 @@ export default function DocsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   security.txt
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   InfraLens checks for the presence of a security.txt file
                   according to RFC 9116. This file provides security researchers
                   with contact information and vulnerability disclosure
                   policies. The check verifies:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>
                     Presence at /.well-known/security.txt or /security.txt
                   </li>
@@ -345,7 +339,7 @@ export default function DocsPage() {
                     Other optional fields (Encryption, Acknowledgments, etc.)
                   </li>
                 </ul>
-                <p className="text-sm text-zinc-400 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   A properly configured security.txt helps security researchers
                   report vulnerabilities responsibly.
                 </p>
@@ -354,19 +348,19 @@ export default function DocsPage() {
           </Card>
 
           {/* Infrastructure */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Infrastructure</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Firewall detection and network analysis
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Firewall / WAF Detection
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   This check looks for known header fingerprints (Cloudflare,
                   Fastly, Akamai, AWS CloudFront, Sucuri, and similar) that
                   suggest a WAF or CDN may be in front of the site. This is
@@ -380,17 +374,19 @@ export default function DocsPage() {
           </Card>
 
           {/* Website Structure */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Website Structure</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 robots.txt, sitemaps, and link analysis
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">robots.txt</h3>
-                <p className="text-sm text-zinc-400">
+                <h3 className="font-semibold text-foreground mb-2">
+                  robots.txt
+                </h3>
+                <p className="text-sm text-muted-foreground">
                   InfraLens checks for the presence of robots.txt, HTTP status,
                   and basic syntax validity, and reports whether it disallows
                   all crawlers under User-agent: * (an indexing signal, not a
@@ -399,8 +395,8 @@ export default function DocsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">Sitemap</h3>
-                <p className="text-sm text-zinc-400">
+                <h3 className="font-semibold text-foreground mb-2">Sitemap</h3>
+                <p className="text-sm text-muted-foreground">
                   This check tries the Sitemap: URL declared in robots.txt
                   first, then falls back to /sitemap.xml and /sitemap_index.xml
                   — at most 3 locations, never recursing into a sitemap
@@ -409,10 +405,10 @@ export default function DocsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Linked Pages
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   InfraLens extracts links from the initial HTML document with
                   lightweight regex-based parsing and categorizes them as
                   internal or external. Up to 10 links are checked with HEAD
@@ -424,39 +420,39 @@ export default function DocsPage() {
           </Card>
 
           {/* Metadata & Stack */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">
                 Metadata & Technology Stack
               </CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 HTML metadata, social tags, and technology detection
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   HTML Metadata
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   Checks for title, meta description, charset, and viewport.
                   Missing metadata affects accessibility and SEO.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Social Tags
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   InfraLens inspects Open Graph tags, Twitter Card metadata, and
                   social preview images.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Stack Detection
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   InfraLens analyzes HTTP headers and HTML content to detect
                   frontend frameworks, CMS platforms, analytics tools, and CDN
                   providers — every finding is labeled with a confidence level
@@ -470,10 +466,10 @@ export default function DocsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Server Headers
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   This check looks for X-Powered-By exposure and other unusual
                   headers, and flags the Server header only when its value
                   discloses an actual version number (e.g. nginx/1.18.0) — a
@@ -482,15 +478,15 @@ export default function DocsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Accessibility Hints
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   This is a lightweight static check, not a complete
                   accessibility audit — it looks at a handful of observable HTML
                   signals that affect screen readers and assistive technologies:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>
                     <strong>lang attribute:</strong> Presence on the HTML
                     element
@@ -512,7 +508,7 @@ export default function DocsPage() {
                     links
                   </li>
                 </ul>
-                <p className="text-sm text-zinc-400 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   These are basic checks and do not replace comprehensive
                   accessibility audits, but they help identify common issues
                   that impact users with disabilities.
@@ -522,25 +518,25 @@ export default function DocsPage() {
           </Card>
 
           {/* Performance Signals */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Performance Signals</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 Lightweight performance metrics and reachability
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Response Metrics
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   InfraLens collects performance signals from the server side —
                   it doesn&apos;t replace Lighthouse, WebPageTest, or field Core
                   Web Vitals, and never fabricates a metric it can&apos;t
                   actually measure:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>
                     Total response time (DNS + connect + TTFB + download
                     combined — connection setup and TTFB aren&apos;t separately
@@ -556,17 +552,17 @@ export default function DocsPage() {
                     the Cache-Control header
                   </li>
                 </ul>
-                <p className="text-sm text-zinc-400 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   These are indicative signals from a single request, not
                   comprehensive performance audits. Results may vary based on
                   network conditions and server load.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Reachability Snapshot
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   InfraLens checks the response already collected to verify
                   reachability, HTTP status code, and timeout handling. This
                   represents a single point-in-time snapshot of the
@@ -578,19 +574,19 @@ export default function DocsPage() {
           </Card>
 
           {/* Scoring */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Scoring System</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 How InfraLens calculates scores
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Category Weights
                 </h3>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>HTTP & Security: 25 points</li>
                   <li>Network & DNS: 20 points</li>
                   <li>Infrastructure: 20 points</li>
@@ -600,10 +596,10 @@ export default function DocsPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Status Points
                 </h3>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>Pass: 100% of category weight</li>
                   <li>Warning: 60% of category weight</li>
                   <li>Fail: 0% of category weight</li>
@@ -614,14 +610,14 @@ export default function DocsPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-200 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   Final Grade
                 </h3>
-                <p className="text-sm text-zinc-400 mb-2">
+                <p className="text-sm text-muted-foreground mb-2">
                   Grades (A–E) are visual aids only, not security
                   certifications:
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>90–100: A (Strong configuration signals)</li>
                   <li>75–89: B (Good, with improvements available)</li>
                   <li>60–74: C (Mixed configuration)</li>
@@ -635,15 +631,15 @@ export default function DocsPage() {
           </Card>
 
           {/* Comparing reports */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Comparing Reports</CardTitle>
-              <CardDescription className="text-zinc-400">
+              <CardDescription className="text-muted-foreground">
                 See what changed between two analyses
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-zinc-400">
+              <p className="text-sm text-muted-foreground">
                 The{" "}
                 <Link
                   href="/tools/infralens/compare"
@@ -663,12 +659,12 @@ export default function DocsPage() {
           </Card>
 
           {/* Notes */}
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardHeader>
               <CardTitle className="text-2xl">Notes & Limitations</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="text-sm text-zinc-400 space-y-2 list-disc list-inside">
+              <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
                 <li>
                   <strong>Read-only:</strong> InfraLens performs passive
                   analysis only—no exploitation, intrusive scanning, or

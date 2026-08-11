@@ -34,7 +34,7 @@ export function RecommendationCard({
   const Icon = config.icon;
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/50">
+    <Card className="border-border bg-background/50">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg">{recommendation.title}</CardTitle>
@@ -45,19 +45,23 @@ export function RecommendationCard({
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-zinc-400">{recommendation.description}</p>
+        <p className="text-sm text-muted-foreground">
+          {recommendation.description}
+        </p>
 
         <div>
-          <p className="text-sm font-semibold text-zinc-300 mb-1">Impact:</p>
-          <p className="text-sm text-zinc-400">{recommendation.impact}</p>
+          <p className="text-sm font-semibold text-foreground mb-1">Impact:</p>
+          <p className="text-sm text-muted-foreground">
+            {recommendation.impact}
+          </p>
         </div>
 
         {recommendation.howTo && recommendation.howTo.length > 0 && (
           <div>
-            <p className="text-sm font-semibold text-zinc-300 mb-2">
+            <p className="text-sm font-semibold text-foreground mb-2">
               How to fix:
             </p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-zinc-400">
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
               {recommendation.howTo.map((step, index) => (
                 <li key={index}>{step}</li>
               ))}
@@ -67,7 +71,7 @@ export function RecommendationCard({
 
         {recommendation.references && recommendation.references.length > 0 && (
           <div>
-            <p className="text-sm font-semibold text-zinc-300 mb-2">
+            <p className="text-sm font-semibold text-foreground mb-2">
               References:
             </p>
             <ul className="space-y-1">

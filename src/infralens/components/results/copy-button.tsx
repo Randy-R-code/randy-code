@@ -33,7 +33,7 @@ export function CopyButton({
       onClick={handleClick}
       title={label}
       aria-label={copied ? `${label} — copied` : label}
-      className={cn("text-zinc-500 hover:text-zinc-300", className)}
+      className={cn("text-muted-foreground hover:text-foreground", className)}
     >
       {copied ? (
         <Check className="size-3.5 text-emerald-500" aria-hidden="true" />

@@ -78,32 +78,36 @@ function ReportSlot({
 
   if (slot.status === "loaded") {
     return (
-      <Card className="border-zinc-800 bg-zinc-900/50">
+      <Card className="border-border bg-background/50">
         <CardContent className="p-4 space-y-2">
           <div className="flex items-start justify-between gap-2">
-            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {label}
             </p>
             <button
               type="button"
               onClick={() => onChange({ status: "empty" })}
               aria-label={`Remove ${label}`}
-              className="text-zinc-500 hover:text-red-400 transition-colors"
+              className="text-muted-foreground hover:text-red-400 transition-colors"
             >
               <X className="size-4" />
             </button>
           </div>
-          <p className="font-semibold text-zinc-100 truncate">
+          <p className="font-semibold text-foreground truncate">
             {slot.data.url}
           </p>
-          <p className="text-xs text-zinc-400 truncate">{slot.fileName}</p>
+          <p className="text-xs text-muted-foreground truncate">
+            {slot.fileName}
+          </p>
           <div className="flex items-center gap-2 pt-1">
             <span
-              className={`text-lg font-bold ${GRADE_COLOR[slot.data.grade] ?? "text-zinc-300"}`}
+              className={`text-lg font-bold ${GRADE_COLOR[slot.data.grade] ?? "text-foreground"}`}
             >
               {slot.data.grade}
             </span>
-            <span className="text-sm text-zinc-400">{slot.data.score}/100</span>
+            <span className="text-sm text-muted-foreground">
+              {slot.data.score}/100
+            </span>
           </div>
         </CardContent>
       </Card>
@@ -112,7 +116,7 @@ function ReportSlot({
 
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-2">
+      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
         {label}
       </p>
       <button
@@ -131,11 +135,11 @@ function ReportSlot({
         className={`w-full flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-6 text-center transition-colors ${
           dragOver
             ? "border-brand-secondary/60 bg-brand-secondary/10"
-            : "border-zinc-800 hover:border-zinc-700"
+            : "border-border hover:border-border"
         }`}
       >
-        <Upload className="size-5 text-zinc-500" />
-        <span className="text-sm text-zinc-400">
+        <Upload className="size-5 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">
           Drop a JSON export, or click to browse
         </span>
         {slot.status === "error" && (
@@ -173,14 +177,18 @@ const KIND_CONFIG: Record<
   changed: {
     title: "Other changes",
     icon: RefreshCw,
-    className: "text-zinc-400",
+    className: "text-muted-foreground",
   },
   added: {
     title: "New in B",
     icon: Plus,
     className: "text-brand-secondary-hover",
   },
-  removed: { title: "No longer in B", icon: Minus, className: "text-zinc-400" },
+  removed: {
+    title: "No longer in B",
+    icon: Minus,
+    className: "text-muted-foreground",
+  },
 };
 
 function TransitionSection({
@@ -195,19 +203,19 @@ function TransitionSection({
 
   return (
     <div className="space-y-1.5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         {title} ({items.length})
       </p>
       <ul className="space-y-1.5">
         {items.map((item) => (
           <li
             key={item.id}
-            className="flex items-start gap-2 text-sm text-zinc-300 rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2"
+            className="flex items-start gap-2 text-sm text-foreground rounded-lg border border-border bg-background/50 px-3 py-2"
           >
             <Icon className={`size-4 shrink-0 mt-0.5 ${className}`} />
             <span>
               {item.label}
-              <span className="text-zinc-500">
+              <span className="text-muted-foreground">
                 {" "}
                 — {item.before ?? "—"} → {item.after ?? "—"}
               </span>
@@ -264,16 +272,16 @@ export function CompareClient() {
 
       {bothLoaded && outcome?.compatible && (
         <div className="space-y-6">
-          <Card className="border-zinc-800 bg-zinc-900/50">
+          <Card className="border-border bg-background/50">
             <CardContent className="p-4 sm:p-6 space-y-4">
               <div className="flex items-center justify-center gap-4 sm:gap-8">
                 <div className="text-center">
                   <p
-                    className={`text-3xl font-bold ${GRADE_COLOR[outcome.result.gradeBefore] ?? "text-zinc-300"}`}
+                    className={`text-3xl font-bold ${GRADE_COLOR[outcome.result.gradeBefore] ?? "text-foreground"}`}
                   >
                     {outcome.result.gradeBefore}
                   </p>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     {outcome.result.scoreBefore}/100
                   </p>
                 </div>
@@ -284,7 +292,7 @@ export function CompareClient() {
                         ? "text-emerald-400"
                         : outcome.result.scoreDelta < 0
                           ? "text-red-400"
-                          : "text-zinc-400"
+                          : "text-muted-foreground"
                     }`}
                   >
                     {outcome.result.scoreDelta >= 0 ? "+" : ""}
@@ -293,20 +301,20 @@ export function CompareClient() {
                 </div>
                 <div className="text-center">
                   <p
-                    className={`text-3xl font-bold ${GRADE_COLOR[outcome.result.gradeAfter] ?? "text-zinc-300"}`}
+                    className={`text-3xl font-bold ${GRADE_COLOR[outcome.result.gradeAfter] ?? "text-foreground"}`}
                   >
                     {outcome.result.gradeAfter}
                   </p>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     {outcome.result.scoreAfter}/100
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 pt-2 border-t border-zinc-800">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 pt-2 border-t border-border">
                 {outcome.result.categories.map((c) => (
                   <div key={c.category} className="space-y-1">
-                    <div className="flex justify-between text-xs text-zinc-400">
+                    <div className="flex justify-between text-xs text-muted-foreground">
                       <span>{c.label}</span>
                       <span
                         className={
@@ -314,14 +322,14 @@ export function CompareClient() {
                             ? "text-emerald-400"
                             : c.delta < 0
                               ? "text-red-400"
-                              : "text-zinc-500"
+                              : "text-muted-foreground"
                         }
                       >
                         {c.delta >= 0 ? "+" : ""}
                         {c.delta}
                       </span>
                     </div>
-                    <p className="text-xs text-zinc-500">
+                    <p className="text-xs text-muted-foreground">
                       {c.before}/{c.beforeMax} → {c.after}/{c.afterMax}
                     </p>
                   </div>
@@ -359,7 +367,7 @@ export function CompareClient() {
             <Button
               variant="outline"
               onClick={handleExport}
-              className="border-zinc-800 text-zinc-300 hover:text-zinc-100"
+              className="border-border text-foreground hover:text-foreground"
             >
               <FileText className="size-4 mr-2" />
               Export Markdown
@@ -367,7 +375,7 @@ export function CompareClient() {
             <Button
               variant="outline"
               onClick={reset}
-              className="border-zinc-800 text-zinc-400 hover:text-zinc-200"
+              className="border-border text-muted-foreground hover:text-foreground"
             >
               <RefreshCw className="size-4 mr-2" />
               Compare different reports
@@ -377,7 +385,7 @@ export function CompareClient() {
       )}
 
       {!bothLoaded && (
-        <p className="flex items-center justify-center gap-2 text-xs text-zinc-500">
+        <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
           <FileJson className="size-3.5" />
           Export a report as JSON from any InfraLens analysis, then drop two of
           them here.

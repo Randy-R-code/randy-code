@@ -56,7 +56,7 @@ export function ScoreBadge({ score }: ScoreBadgeProps) {
       >
         {gradeInfo.grade}
       </div>
-      <span className="text-sm text-zinc-400 text-center max-w-48">
+      <span className="text-sm text-muted-foreground text-center max-w-48">
         {score.score}/100 · {gradeInfo.label}
       </span>
     </div>

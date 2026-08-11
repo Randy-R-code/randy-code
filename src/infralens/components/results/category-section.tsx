@@ -30,7 +30,7 @@ export function CategorySections({
     <Accordion
       type="multiple"
       defaultValue={sections.map((s) => s.category.category)}
-      className="rounded-lg border border-zinc-800 bg-zinc-900/50 px-4"
+      className="rounded-lg border border-border bg-background/50 px-4"
     >
       {sections.map(({ category, checks: categoryChecks }) => {
         const counts = countsFor(categoryChecks);
@@ -49,10 +49,10 @@ export function CategorySections({
             <AccordionTrigger className="hover:no-underline">
               <div className="flex flex-1 flex-col gap-2 pr-4 text-left sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="font-semibold text-zinc-100">
+                  <span className="font-semibold text-foreground">
                     {CATEGORY_LABELS[category.category]}
                   </span>
-                  <span className="text-sm text-zinc-400">
+                  <span className="text-sm text-muted-foreground">
                     {category.score}/{category.maxScore}
                   </span>
                 </div>
@@ -66,11 +66,11 @@ export function CategorySections({
                     className="h-1.5 w-24 rounded bg-white/10"
                   >
                     <div
-                      className="h-1.5 rounded bg-zinc-400"
+                      className="h-1.5 rounded bg-muted-foreground"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
-                  <span className="text-xs text-zinc-400 whitespace-nowrap">
+                  <span className="text-xs text-muted-foreground whitespace-nowrap">
                     {counts.pass} pass · {counts.warning} warn · {counts.fail}{" "}
                     fail
                   </span>

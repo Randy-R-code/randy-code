@@ -76,24 +76,24 @@ export function Hero({
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-brand-secondary">
             Open-source website inspection tool
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-100 max-w-2xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground max-w-2xl mx-auto">
             Inspect a website&apos;s infrastructure in seconds.
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
             Analyze DNS, TLS, security headers, metadata, hosting and technical
             signals in one readable report.
           </p>
         </div>
 
         {/* Search Form */}
-        <Card className="border-2 border-zinc-800 bg-zinc-900/50">
+        <Card className="border-2 border-border bg-background/50">
           <CardContent className="p-4 sm:p-6 space-y-4">
             <form
               onSubmit={handleSubmit}
               className="flex flex-col min-[26.25rem]:flex-row gap-3"
             >
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-zinc-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                 <Input
                   id="url-input"
                   name="url"
@@ -105,7 +105,7 @@ export function Hero({
                   required
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="pl-10 h-12 text-base bg-zinc-900 border-zinc-800 text-zinc-100 focus:border-brand-secondary focus:ring-brand-secondary/30"
+                  className="pl-10 h-12 text-base bg-background border-border text-foreground focus:border-brand-secondary focus:ring-brand-secondary/30"
                 />
               </div>
               <Button
@@ -119,13 +119,13 @@ export function Hero({
             </form>
 
             <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
-              <span className="text-zinc-400">Try:</span>
+              <span className="text-muted-foreground">Try:</span>
               {QUICK_EXAMPLES.map((example) => (
                 <button
                   key={example}
                   type="button"
                   onClick={() => setUrl(`https://${example}`)}
-                  className="px-2.5 py-1 rounded-full border border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700 transition-colors"
+                  className="px-2.5 py-1 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors"
                 >
                   {example}
                 </button>
@@ -140,21 +140,21 @@ export function Hero({
             href={siteConfig.repositoryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
           >
             <GitHubIcon size={16} />
             View source on GitHub
           </Link>
           <Link
             href="/tools/infralens/docs"
-            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
           >
             <BookOpen className="size-4" />
             Read the documentation
           </Link>
           <Link
             href="/tools/infralens/privacy"
-            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ShieldCheck className="size-4" />
             Privacy
@@ -163,7 +163,7 @@ export function Hero({
             href={siteConfig.licenseUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Scale className="size-4" />
             License
@@ -171,7 +171,7 @@ export function Hero({
         </div>
 
         {/* Reassurance */}
-        <p className="text-center text-xs sm:text-sm text-zinc-400">
+        <p className="text-center text-xs sm:text-sm text-muted-foreground">
           No account · No tracking · Passive checks only
         </p>
       </div>

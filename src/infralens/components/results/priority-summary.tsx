@@ -5,7 +5,7 @@ import { CircleCheckBig, CircleSlash, TriangleAlert } from "lucide-react";
 
 function PriorityRow({ check }: { check: CheckResult }) {
   return (
-    <li className="flex items-start gap-2 text-sm text-zinc-300">
+    <li className="flex items-start gap-2 text-sm text-foreground">
       <TriangleAlert
         className="size-4 shrink-0 text-amber-500 mt-0.5"
         aria-hidden="true"
@@ -13,7 +13,7 @@ function PriorityRow({ check }: { check: CheckResult }) {
       <span>
         <span className="font-medium">{check.label}</span>
         {check.summary && (
-          <span className="text-zinc-400"> — {check.summary}</span>
+          <span className="text-muted-foreground"> — {check.summary}</span>
         )}
       </span>
     </li>
@@ -22,7 +22,7 @@ function PriorityRow({ check }: { check: CheckResult }) {
 
 function PositiveRow({ check }: { check: CheckResult }) {
   return (
-    <li className="flex items-start gap-2 text-sm text-zinc-300">
+    <li className="flex items-start gap-2 text-sm text-foreground">
       <CircleCheckBig
         className="size-4 shrink-0 text-emerald-500 mt-0.5"
         aria-hidden="true"
@@ -30,7 +30,7 @@ function PositiveRow({ check }: { check: CheckResult }) {
       <span>
         <span className="font-medium">{check.label}</span>
         {check.summary && (
-          <span className="text-zinc-400"> — {check.summary}</span>
+          <span className="text-muted-foreground"> — {check.summary}</span>
         )}
       </span>
     </li>
@@ -46,7 +46,7 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
   }
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/50">
+    <Card className="border-border bg-background/50">
       <CardHeader>
         <CardTitle className="text-lg">At a glance</CardTitle>
       </CardHeader>
@@ -54,7 +54,7 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
         <div className="grid gap-4 sm:grid-cols-2">
           {priorities.length > 0 && (
             <div>
-              <h4 className="text-sm font-semibold text-zinc-200 mb-2">
+              <h4 className="text-sm font-semibold text-foreground mb-2">
                 Worth fixing first
               </h4>
               <ul className="space-y-1.5">
@@ -66,7 +66,7 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
           )}
           {positives.length > 0 && (
             <div>
-              <h4 className="text-sm font-semibold text-zinc-200 mb-2">
+              <h4 className="text-sm font-semibold text-foreground mb-2">
                 Working well
               </h4>
               <ul className="space-y-1.5">
@@ -78,14 +78,14 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
           )}
         </div>
         {unavailableCount > 0 && (
-          <p className="flex items-center gap-2 text-xs text-zinc-400">
+          <p className="flex items-center gap-2 text-xs text-muted-foreground">
             <CircleSlash className="size-3.5 shrink-0" aria-hidden="true" />
             {unavailableCount} check{unavailableCount === 1 ? "" : "s"} above{" "}
             aren&apos;t counted here (informational, unavailable, or a technical
             error) — see the categories below.
           </p>
         )}
-        <p className="text-xs text-zinc-400">
+        <p className="text-xs text-muted-foreground">
           This is a snapshot of public, automatically checkable signals, not a
           complete security or quality assessment.
         </p>

@@ -50,7 +50,7 @@ export function CTA({
   return (
     <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <Card className="border-2 border-zinc-800 bg-zinc-900/50">
+        <Card className="border-2 border-border bg-background/50">
           <CardContent className="p-6 md:p-8 lg:p-12">
             <div className="space-y-4 md:space-y-6">
               <div className="text-center space-y-2">
@@ -63,7 +63,7 @@ export function CTA({
                 className="flex flex-col min-[26.25rem]:flex-row gap-3"
               >
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-zinc-500" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                   <Input
                     id="cta-url-input"
                     name="url"
@@ -75,7 +75,7 @@ export function CTA({
                     required
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
-                    className="pl-10 h-12 text-base bg-zinc-900 border-zinc-800 text-zinc-100 focus:border-brand-secondary focus:ring-brand-secondary/30"
+                    className="pl-10 h-12 text-base bg-background border-border text-foreground focus:border-brand-secondary focus:ring-brand-secondary/30"
                   />
                 </div>
                 <Button
