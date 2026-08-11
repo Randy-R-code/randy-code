@@ -29,6 +29,7 @@ app/
   lab/                  # Lab Zone
   projects/             # Projects City
   tools/                # Tools Station
+    infralens/          # InfraLens — analyseur technique de sites (outil intégré)
   opengraph-image.tsx   # OG card dynamique
 
 content/posts/          # Articles de blog (un fichier par article)
@@ -40,7 +41,16 @@ src/
     blog.ts             # Registry des articles + utilitaires
     data.ts             # Zones, connexions, HUB
     nav.ts              # Navigation principale
+  infralens/            # Code métier InfraLens (checks, sécurité, DNS, scoring...)
 ```
+
+## Outils intégrés
+
+**InfraLens** ([`/tools/infralens`](https://randy-code.dev/tools/infralens)) —
+outil open source d'inspection technique de sites web (DNS, TLS, headers,
+sécurité, infrastructure), migré depuis son propre repo vers une route native
+de Randy Code. Documentation d'origine, changelog et licence (MIT) conservés
+dans [`docs/infralens/`](docs/infralens/README.md).
 
 ## Développement
 

@@ -4,6 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  /* InfraLens brand tokens (migration plan §11/§13) — the hex values already
+     match the blue-/green- scale below one-for-one; kept as named aliases
+     because the migrated components reference bg-brand-accent,
+     text-brand-secondary-hover, etc. directly. */
+  --color-brand-accent: #14b894;
+  --color-brand-accent-hover: #35d3ad;
+  --color-brand-accent-strong: #0c9478;
+  --color-brand-secondary: #2388f2;
+  --color-brand-secondary-hover: #4aa7ff;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -124,6 +136,49 @@
   html {
     @apply font-sans;
   }
+}
+
+/* InfraLens — scoped shadcn tokens (migration plan §13/§15). InfraLens'
+   original design uses green as --primary; Randy Code's global tokens above
+   use blue. Rather than let the global tokens silently reskin every
+   migrated shadcn primitive (Button, Dialog, Tooltip...), the original
+   values are re-applied under this scope class, wrapped around
+   app/tools/infralens' children in its layout. Deep harmonization into one
+   shared palette is a deliberate later decision, not a side effect of this
+   migration. */
+.infralens-scope {
+  --background: #18181b;
+  --foreground: #f4f4f5;
+  --card: #27272a;
+  --card-foreground: #f4f4f5;
+  --popover: #27272a;
+  --popover-foreground: #f4f4f5;
+  --primary: #14b894;
+  --primary-foreground: #ffffff;
+  --secondary: #27272a;
+  --secondary-foreground: #f4f4f5;
+  --muted: #71717a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #f4f4f5;
+  --destructive: #ef4444;
+  --border: #3f3f46;
+  --input: #3f3f46;
+  --ring: #14b894;
+  --radius: 0.625rem;
+  --chart-1: #10b981;
+  --chart-2: #f59e0b;
+  --chart-3: #ef4444;
+  --chart-4: #60a5fa;
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #27272a;
+  --sidebar-foreground: #f4f4f5;
+  --sidebar-primary: #14b894;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3f3f46;
+  --sidebar-accent-foreground: #f4f4f5;
+  --sidebar-border: #3f3f46;
+  --sidebar-ring: #14b894;
 }
 
 /* Blog prose styles */

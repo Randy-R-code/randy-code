@@ -50,27 +50,6 @@ const nextConfig = {
       },
     ];
   },
-  async rewrites() {
-    // Phase 7 (RANDY_CODE_MASTER_PLAN.md) — InfraLens reste un dépôt séparé
-    // (règle 3.6), exposé ici sous /tools/infralens/* via un simple proxy de
-    // routing. INFRALENS_ORIGIN pointe vers infralens.dev aujourd'hui ; à
-    // rebasculer vers l'URL de déploiement Vercel sous-jacente avant que ce
-    // domaine ne soit retiré (décision déjà actée, master plan section 9.3),
-    // sinon l'outil embarqué casserait avec le domaine.
-    const infralensOrigin =
-      process.env.INFRALENS_ORIGIN ?? "https://infralens.dev";
-
-    return [
-      {
-        source: "/tools/infralens",
-        destination: `${infralensOrigin}/tools/infralens`,
-      },
-      {
-        source: "/tools/infralens/:path*",
-        destination: `${infralensOrigin}/tools/infralens/:path*`,
-      },
-    ];
-  },
   async headers() {
     // React utilise eval() en mode dev pour reconstruire les call stacks
     // (jamais en production — cf. son propre avertissement console). On

@@ -20,7 +20,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@app/*": ["./app/*"]
+      "@app/*": ["./app/*"],
+      "@infralens/*": ["./src/infralens/*"],
+      "@infralens-lib/*": ["./src/infralens/lib/*"],
+      "@infralens-components/*": ["./src/infralens/components/*"],
+      "@infralens-config/*": ["./src/infralens/config/*"],
+      "@infralens-hooks/*": ["./src/infralens/hooks/*"]
     }
   },
   "include": [

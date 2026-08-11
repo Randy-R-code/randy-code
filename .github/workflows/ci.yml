@@ -95,3 +95,28 @@ jobs:
       - run: pnpm e2e
         env:
           CI: true
+
+  e2e-infralens:
+    name: E2E — InfraLens
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test, build]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.7.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium webkit
+      - run: pnpm build
+      # Rate-limited (1 request/IP/30s) — must stay on a single worker,
+      # see playwright.config.ts and migration plan §17/§28.
+      - run: pnpm e2e:infralens
+        env:
+          CI: true

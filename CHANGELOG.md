@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.7.16] — 2026-08-10
+
+### Contenu
+
+- **InfraLens migré nativement dans Randy Code** (`INFRALENS_TO_RANDY_CODE_MIGRATION_MASTER_PLAN.md`, Phase 1) — copie intégrale du moteur (18 checks, scoring, DNS, sécurité/SSRF, compare, history, recommendations) dans `src/infralens/`, namespacé avec des alias tsconfig/vitest dédiés (`@infralens-*`) pour éviter toute collision avec le `src/` existant. Routes natives sous `app/tools/infralens/` (page, `/compare`, `/docs`, `/privacy`, `opengraph-image`, catch-all `[...slug]` pour le 404 stylé — Next ne route pas ça automatiquement une fois le `basePath` retiré). Le proxy `rewrites()` et `INFRALENS_ORIGIN` de `next.config.mjs` (Phase 7, v0.7.15) sont supprimés : `/tools/infralens` répond désormais directement depuis ce dépôt.
+- **Tokens InfraLens isolés** (`app/globals.css`, `.infralens-scope`) — la palette shadcn d'origine d'InfraLens (primaire vert) est réappliquée dans un scope dédié autour de `app/tools/infralens`, pour ne pas hériter silencieusement du bleu global de Randy Code sur ses composants migrés. Harmonisation profonde volontairement différée.
+- **E2E InfraLens** (`e2e/infralens/`) — 4 specs migrées dans deux projets Playwright dédiés (`infralens-desktop`/`infralens-mobile`, 1 worker — le flux d'analyse est rate-limité à 1 requête/IP/30s), lancés via `pnpm e2e:infralens` et un nouveau job CI séparé.
+- **Documentation d'origine conservée** sous `docs/infralens/` (README, CHANGELOG, SECURITY, CONTRIBUTING, LICENSE MIT, master/branding plans InfraLens) ; README principal mis à jour avec une section "Outils intégrés".
+
+### Outillage
+
+- `pnpm check` inclut désormais les tests unitaires (`pnpm test --run`), qui ne l'étaient pas avant.
+- Dépendances ajoutées : `@radix-ui/react-{accordion,collapsible,dialog,separator,slot,tooltip}`, `ip-address`, `nanoid`, `undici`, `@axe-core/playwright` (dev) — uniquement celles réellement importées par le code migré.
+
+### Connu — reste à faire
+
+- Baseline complète (`docs/infralens/MIGRATION_BASELINE.md`) et suite de validation déjà vertes (282 tests unitaires, 25/25 E2E InfraLens, 15/15 E2E portfolio, build) mais `docs/infralens/MIGRATION_PARITY.md` (comparaison formelle source/cible, Phase 2 du plan) reste à rédiger.
+- Ancien dépôt `infralens` et domaine `infralens.dev` pas encore traités (archivage, redirection) — prévu Phase 3 du plan de migration.
+- Harmonisation de la palette (vert InfraLens vs bleu Randy Code) volontairement reportée.
+
 ## [0.7.15] — 2026-08-10
 
 ### Contenu
