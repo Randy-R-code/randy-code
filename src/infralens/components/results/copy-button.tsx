@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
+import { Button } from "@/components/ui/button";
 import { copyToClipboard } from "@infralens-lib/clipboard";
 import { cn } from "@infralens-lib/utils";
 import { Check, Copy } from "lucide-react";

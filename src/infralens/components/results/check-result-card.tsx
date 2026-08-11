@@ -1,17 +1,12 @@
 "use client";
 
-import { Badge } from "@infralens-components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@infralens-components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@infralens-components/ui/collapsible";
+} from "@/components/ui/collapsible";
 import { CheckResult } from "@infralens-lib/checks/types";
 import { cn } from "@infralens-lib/utils";
 import {

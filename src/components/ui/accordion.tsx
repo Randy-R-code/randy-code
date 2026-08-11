@@ -4,7 +4,7 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "@infralens-lib/utils";
+import { cn } from "@/lib/utils";
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -14,7 +14,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b border-zinc-800 last:border-b-0", className)}
+    className={cn("border-b border-border last:border-b-0", className)}
     {...props}
   />
 ));
@@ -34,7 +34,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDown className="size-4 shrink-0 text-zinc-500 transition-transform duration-200" />
+      <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

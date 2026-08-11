@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { GitHubIcon } from "@infralens-components/github-icon";
-import { Button } from "@infralens-components/ui/button";
-import { Card, CardContent } from "@infralens-components/ui/card";
 import { siteConfig } from "@infralens-config/site-config";
 import { Blocks, Scale, Server, Users } from "lucide-react";
 import Link from "next/link";

@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@infralens-components/ui/accordion";
+} from "@/components/ui/accordion";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import { groupChecksByCategory } from "@infralens-lib/checks/category-sections";
 import { CategoryScore, CheckResult } from "@infralens-lib/checks/types";

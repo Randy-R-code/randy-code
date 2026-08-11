@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
-import { Card, CardContent } from "@infralens-components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { InfraLensExport } from "@infralens-lib/checks/export";
 import { downloadTextFile } from "@infralens-lib/checks/export-markdown";
 import { isValidExport } from "@infralens-lib/checks/validate-export";

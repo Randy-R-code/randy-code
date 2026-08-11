@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
+import { Button } from "@/components/ui/button";
 import { HistoryEntry } from "@infralens-lib/history/types";
 import { cn } from "@infralens-lib/utils";
 import { ExternalLink, History, Trash2, X } from "lucide-react";

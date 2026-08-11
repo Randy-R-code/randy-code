@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.3] — 2026-08-11
+
+### Nettoyage
+
+- **Primitives shadcn dupliquées entre InfraLens et Randy Code fusionnées** — `button.tsx`/`card.tsx` existaient en double (échelles différentes) ; supprimés côté InfraLens, les 23 fichiers consommateurs pointent désormais sur `src/components/ui/` (adoptent l'échelle Randy Code, plus compacte). `accordion.tsx`/`badge.tsx`/`collapsible.tsx`/`dialog.tsx`/`input.tsx`/`skeleton.tsx` (sans équivalent côté Randy Code) promus dans `src/components/ui/` pour être réutilisables par les futurs outils (MetaLens, JSON Studio, Cron Builder). `alert.tsx`/`separator.tsx`/`table.tsx`/`tooltip.tsx` supprimés (0 usage, code mort). `src/infralens/components/ui/` n'existe plus.
+
 ## [0.8.2] — 2026-08-11
 
 ### Nettoyage

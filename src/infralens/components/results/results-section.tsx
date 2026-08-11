@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
-import { Card, CardContent } from "@infralens-components/ui/card";
-import { Skeleton } from "@infralens-components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import {
   filterChecks,

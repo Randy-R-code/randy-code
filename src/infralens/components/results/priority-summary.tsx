@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@infralens-components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { derivePrioritySummary } from "@infralens-lib/checks/priority-summary";
 import { CheckResult } from "@infralens-lib/checks/types";
 import { CircleCheckBig, CircleSlash, TriangleAlert } from "lucide-react";

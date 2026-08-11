@@ -1,10 +1,5 @@
-import { Badge } from "@infralens-components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@infralens-components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Recommendation } from "@infralens-lib/checks/types";
 import { cn } from "@infralens-lib/utils";
 import { CircleAlert, Info, TriangleAlert } from "lucide-react";

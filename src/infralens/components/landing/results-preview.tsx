@@ -1,6 +1,6 @@
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ScoreBadge } from "@infralens-components/results/score-badge";
-import { Badge } from "@infralens-components/ui/badge";
-import { Card, CardContent, CardHeader } from "@infralens-components/ui/card";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import { GlobalScore } from "@infralens-lib/checks/types";
 import { cn } from "@infralens-lib/utils";

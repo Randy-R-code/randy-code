@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@infralens-components/ui/card";
+} from "@/components/ui/card";
 import { Code, FileText, Globe, Network, Shield, Zap } from "lucide-react";
 
 const categories = [

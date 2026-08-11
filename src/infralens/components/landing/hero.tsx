@@ -1,9 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { GitHubIcon } from "@infralens-components/github-icon";
-import { Button } from "@infralens-components/ui/button";
-import { Card, CardContent } from "@infralens-components/ui/card";
-import { Input } from "@infralens-components/ui/input";
 import { siteConfig } from "@infralens-config/site-config";
 import { parseAnalysisError } from "@infralens-lib/checks/parse-error";
 import { ChecksResponse } from "@infralens-lib/checks/types";

@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@infralens-components/ui/card";
+} from "@/components/ui/card";
 import { siteConfig } from "@infralens-config/site-config";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";

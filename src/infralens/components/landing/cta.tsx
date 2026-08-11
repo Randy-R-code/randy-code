@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
-import { Card, CardContent } from "@infralens-components/ui/card";
-import { Input } from "@infralens-components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useState } from "react";
 

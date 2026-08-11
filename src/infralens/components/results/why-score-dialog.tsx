@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@infralens-components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@infralens-components/ui/dialog";
+} from "@/components/ui/dialog";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import { GlobalScore } from "@infralens-lib/checks/types";
 import Link from "next/link";
