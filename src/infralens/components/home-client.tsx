@@ -5,7 +5,10 @@ import { CTA } from "@infralens-components/landing/cta";
 import { Hero } from "@infralens-components/landing/hero";
 import { ResultsSection } from "@infralens-components/results/results-section";
 import { useAnalysisHistory } from "@infralens-hooks/use-analysis-history";
-import { parseAnalysisError } from "@infralens-lib/checks/parse-error";
+import {
+  buildErrorResult,
+  parseAnalysisError,
+} from "@infralens-lib/checks/parse-error";
 import { ChecksResponse } from "@infralens-lib/checks/types";
 import { HistoryEntry } from "@infralens-lib/history/types";
 import { ReactNode, useRef, useState } from "react";
@@ -68,12 +71,14 @@ export function HomeClient({
     setResults(undefined);
     try {
       const normalizedUrl = url.startsWith("http") ? url : `https://${url}`;
-      const newResults = await runInfraChecks(
-        new URL(normalizedUrl).toString(),
-      );
+      const result = await runInfraChecks(new URL(normalizedUrl).toString());
       if (cancelledRef.current) return;
-      setResults(newResults);
-      addEntry(newResults);
+      if (result.ok) {
+        setResults(result.data);
+        addEntry(result.data);
+      } else {
+        setResults(buildErrorResult(result.message, url));
+      }
       setTimeout(() => {
         document.getElementById("results")?.scrollIntoView({
           behavior: "smooth",

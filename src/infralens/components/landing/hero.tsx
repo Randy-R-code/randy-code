@@ -5,7 +5,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { GitHubIcon } from "@infralens-components/github-icon";
 import { siteConfig } from "@infralens-config/site-config";
-import { parseAnalysisError } from "@infralens-lib/checks/parse-error";
+import {
+  buildErrorResult,
+  parseAnalysisError,
+} from "@infralens-lib/checks/parse-error";
 import { ChecksResponse } from "@infralens-lib/checks/types";
 import { BookOpen, Scale, Search, ShieldCheck } from "lucide-react";
 import Link from "next/link";
@@ -43,8 +46,12 @@ export function Hero({
       const normalizedUrl = url.startsWith("http") ? url : `https://${url}`;
 
       try {
-        const results = await runInfraChecks(new URL(normalizedUrl).toString());
-        onResults?.(results);
+        const result = await runInfraChecks(new URL(normalizedUrl).toString());
+        onResults?.(
+          result.ok
+            ? result.data
+            : buildErrorResult(result.message, normalizedUrl),
+        );
 
         // Scroll to results after a short delay
         setTimeout(() => {

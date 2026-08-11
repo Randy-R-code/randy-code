@@ -1,35 +1,12 @@
 import { ChecksResponse } from "./types";
 
-export function parseAnalysisError(
-  error: unknown,
+export function buildErrorResult(
+  message: string,
   inputUrl: string,
 ): ChecksResponse {
   const normalizedUrl = inputUrl.startsWith("http")
     ? inputUrl
     : `https://${inputUrl}`;
-
-  let message =
-    "Failed to analyze the URL. Please check the URL and try again.";
-
-  if (error instanceof Error) {
-    if (error.message.includes("Rate limit exceeded")) {
-      message = error.message;
-    } else if (
-      error.message.includes("Invalid URL") ||
-      error.name === "TypeError"
-    ) {
-      message =
-        "Invalid URL format. Please enter a valid URL (e.g., https://example.com)";
-    } else if (
-      error.message.includes("timeout") ||
-      error.message.includes("fetch")
-    ) {
-      message =
-        "Request timed out or network error. Please check your connection and try again.";
-    } else if (error.message) {
-      message = error.message;
-    }
-  }
 
   let hostname = "unknown";
   try {
@@ -63,4 +40,39 @@ export function parseAnalysisError(
       topPriorityCategory: null,
     },
   };
+}
+
+// Used for errors that were actually thrown and caught client-side (a
+// malformed URL failing `new URL()` before the Server Action is even
+// called, or a genuinely unexpected server failure) — as opposed to the
+// Server Action's own expected rejections, which now return a message
+// directly instead of throwing (see RunChecksResult in run-checks.ts).
+export function parseAnalysisError(
+  error: unknown,
+  inputUrl: string,
+): ChecksResponse {
+  let message =
+    "Failed to analyze the URL. Please check the URL and try again.";
+
+  if (error instanceof Error) {
+    if (error.message.includes("Rate limit exceeded")) {
+      message = error.message;
+    } else if (
+      error.message.includes("Invalid URL") ||
+      error.name === "TypeError"
+    ) {
+      message =
+        "Invalid URL format. Please enter a valid URL (e.g., https://example.com)";
+    } else if (
+      error.message.includes("timeout") ||
+      error.message.includes("fetch")
+    ) {
+      message =
+        "Request timed out or network error. Please check your connection and try again.";
+    } else if (error.message) {
+      message = error.message;
+    }
+  }
+
+  return buildErrorResult(message, inputUrl);
 }

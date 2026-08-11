@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2] — 2026-08-11
+
+### Corrections
+
+- **Messages d'erreur InfraLens redactés en production** — Next.js redacte le `.message` de tout `Error` jeté (`throw`) depuis un Server Action en build de prod, par sécurité. Les messages soignés d'InfraLens (blocage SSRF, rate limit) ne remontaient donc jamais jusqu'à l'utilisateur — un générique Next s'affichait à la place. Vu en dev pendant la migration mais jamais corrigé, ni côté InfraLens historique ni ici. `runInfraChecks` (`app/tools/infralens/actions/run-checks.ts`) retourne désormais `{ ok: false, message }` au lieu de `throw` pour ses trois rejets attendus (rate limit, cible SSRF, URL malformée) — Next ne redacte que les exceptions jetées, pas les données retournées normalement. Une vraie erreur inattendue continue de `throw` et garde le message générique de Next, ce qui reste le bon comportement pour un cas non prévu. Vérifié avec un vrai `pnpm build && pnpm start` (le bug ne se manifeste qu'en prod, jamais en dev) : le message SSRF exact et le message de rate limit s'affichent maintenant correctement.
+- **"Please wait 1 seconds"** — accord manquant, corrigé au passage dans le même fichier.
+
 ## [0.10.1] — 2026-08-11
 
 ### Corrections
