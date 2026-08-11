@@ -75,9 +75,9 @@ export const projects: Project[] = [
       "Les développeurs et DevOps doivent jongler entre plusieurs outils pour inspecter DNS, headers HTTP et TLS d'un site.",
     solution:
       "Application web qui centralise l'analyse complète d'une URL : DNS, headers HTTP et paramètres TLS en un seul endroit.",
-    result: "Outil utilisé au quotidien, disponible sur infralens.dev.",
+    result: "Outil utilisé au quotidien, intégré nativement à Randy Code.",
     technologies: ["Next.js", "TypeScript", "Node.js", "Vercel"],
-    projectUrl: "https://infralens.dev",
+    projectUrl: "https://randy-code.dev/tools/infralens",
     featured: true,
     caseStudy: {
       context:
@@ -86,7 +86,7 @@ export const projects: Project[] = [
         "Donner une vue lisible et rapide de la configuration technique publique d'un site, sans devenir un scanner de sécurité certifié, un outil de pentest ou une plateforme de monitoring commerciale. Rester gratuit, sans compte, open source.",
       role: "Je conçois, développe et maintiens InfraLens seul, du moteur d'analyse à l'interface.",
       solution:
-        "InfraLens exécute 18 checks indépendants répartis en 6 catégories (HTTP & Sécurité, Réseau & DNS, Infrastructure, Structure du site, Métadonnées & Stack, Signaux de performance), tous en parallèle côté serveur. Chaque check a un statut (OK/Warning/Error), un score pondéré par catégorie et une note globale de A à E. Résultats exportables en JSON, historique des 10 dernières analyses conservé localement, application installable en PWA avec support hors ligne.",
+        "InfraLens exécute 18 checks indépendants répartis en 6 catégories (HTTP & Sécurité, Réseau & DNS, Infrastructure, Structure du site, Métadonnées & Stack, Signaux de performance), tous en parallèle côté serveur. Chaque check a un statut (Pass/Warning/Fail/Info/Unavailable/Error), un score pondéré par catégorie et une note globale de A à E. Résultats exportables en JSON ou Markdown, comparaison entre deux analyses, historique des 10 dernières analyses conservé localement dans le navigateur.",
       architecture:
         "Next.js 16 (App Router), TypeScript strict. Chaque check est un module indépendant et testable implémentant une interface commune, exécuté via Server Action avec un timeout de 8 secondes — l'échec d'un check n'interrompt pas les autres. Résolution DNS native (Node.js dns/promises) avec cache en mémoire, extraction de liens via Cheerio, lookup IP/ASN optionnel via ipapi.co. Interface en Tailwind CSS et shadcn/ui.",
       technicalChoices:

@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.8.1] — 2026-08-11
+
+### Corrections
+
+- **Dernier lien actif vers `infralens.dev`** — `src/lib/projects.ts` (case study + `projectUrl`, alimente la home, `/projects`, `/projects/infralens` et le JSON-LD) pointait encore vers l'ancien domaine et décrivait InfraLens comme "installable en PWA avec support hors ligne", faux depuis la migration native. Repointé vers `/tools/infralens`, description mise à jour (statuts Pass/Warning/Fail/Info/Unavailable/Error, export Markdown, comparaison).
+- **Canonical et sitemap manquants pour InfraLens** — aucune des 4 routes (`/tools/infralens`, `/compare`, `/docs`, `/privacy`) n'avait de `alternates.canonical` ni d'entrée dans `app/sitemap.ts`. Ajoutés.
+
+### Nettoyage
+
+- **`docs/roadmap.md`** — les entrées Phase 7/8 InfraLens décrivaient encore l'ancien proxy `rewrites()`/`INFRALENS_ORIGIN`, obsolète depuis la migration native de `v0.7.16`. Réécrites pour refléter l'état actuel.
+
 ## [0.8.0] — 2026-08-11
 
 ### Contenu

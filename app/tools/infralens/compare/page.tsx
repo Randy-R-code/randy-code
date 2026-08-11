@@ -5,6 +5,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Compare reports — InfraLens",
   description: "Compare two InfraLens JSON exports, entirely in your browser.",
+  alternates: { canonical: "/tools/infralens/compare" },
 };
 
 export default function ComparePage() {

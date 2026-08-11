@@ -12,6 +12,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Documentation — InfraLens",
   description: "Learn how InfraLens checks work and what each result means",
+  alternates: { canonical: "/tools/infralens/docs" },
 };
 
 export default function DocsPage() {

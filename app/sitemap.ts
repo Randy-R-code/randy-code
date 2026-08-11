@@ -64,5 +64,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...projectRoutes];
+  const infralensRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/tools/infralens`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/tools/infralens/compare`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/tools/infralens/docs`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/tools/infralens/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+  ];
+
+  return [
+    ...staticRoutes,
+    ...articleRoutes,
+    ...projectRoutes,
+    ...infralensRoutes,
+  ];
 }

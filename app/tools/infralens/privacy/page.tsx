@@ -12,6 +12,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Privacy — InfraLens",
   description: "What InfraLens sends, stores, and contacts, in plain terms.",
+  alternates: { canonical: "/tools/infralens/privacy" },
 };
 
 export default function PrivacyPage() {
