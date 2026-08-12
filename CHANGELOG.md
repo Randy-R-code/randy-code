@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.4] — 2026-08-12
+
+### Corrections
+
+- **Icônes PWA/mobile transparentes rendues blanches par l'OS, et R visuellement décentré** — signalé par toi : sur l'écran d'accueil du téléphone, la transparence des PNG (`app/icon.png`, `app/apple-icon.png`, `public/icon-192.png`, `public/icon-512.png`, `app/favicon.ico`) n'est pas gérée par l'OS et se rend en blanc. Fond opaque `#070b10` ajouté (déjà utilisé comme `background_color`/`theme_color` du manifest et `--background` du design system), et le glyphe recadré de quelques pixels vers la droite : la bounding box était déjà centrée mais le centre de masse réel du R (jambe diagonale plus fine que le fût gauche) était décalé d'environ 3,5% vers la gauche, d'où l'impression de décentrage. Le logo du site (`public/brand/logo-symbol.png`, header) n'est pas concerné et reste transparent — il repose déjà sur le fond sombre de la page.
+
 ## [0.10.3] — 2026-08-11
 
 ### Corrections
