@@ -44,7 +44,7 @@ export function SiteFooter() {
             </p>
             <ul className="flex flex-col gap-2">
               {exploreNav.map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className="flex">
                   <Link
                     href={item.href}
                     className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
@@ -62,7 +62,7 @@ export function SiteFooter() {
             </p>
             <ul className="flex flex-col gap-2">
               {siteNav.map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className="flex">
                   <Link
                     href={item.href}
                     className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
@@ -79,7 +79,7 @@ export function SiteFooter() {
               Liens
             </p>
             <ul className="flex flex-col gap-2">
-              <li>
+              <li className="flex">
                 <a
                   href="https://github.com/Randy-R-code"
                   target="_blank"
@@ -90,7 +90,7 @@ export function SiteFooter() {
                   GitHub
                 </a>
               </li>
-              <li>
+              <li className="flex">
                 <a
                   href="https://liflow.app"
                   target="_blank"

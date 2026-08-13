@@ -9,6 +9,28 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.0.1] — 2026-08-13
+
+### Fixed
+
+- **InfraLens's "What it checks" section overflowed the page's content
+  width** — used `max-w-6xl` while every other section/page on InfraLens
+  (hero, example report, open-source, CTA, `/compare`, `/docs`, `/privacy`)
+  uses `max-w-4xl`; aligned to match.
+- **Footer column alignment** — bare `<li>` elements picked up an inherited
+  line-height "strut", which text-only links and icon+text links resolved
+  against differently (baseline alignment), offsetting the "Liens" column
+  ~2.5px closer to its heading than "Site"/"Explorer". A previously known,
+  never-fixed regression from the branding pass — `<li>` elements now use
+  `display: flex`, removing the dependency on inherited line-height entirely
+  (verified: 0px offset between columns).
+- **Homepage hero's GitHub link** looked mismatched next to the two CTA
+  buttons on mobile, especially when it wrapped. Moved to its own line below
+  the buttons, matching InfraLens's hero secondary-actions treatment
+  (`text-sm`, larger icon); label simplified to "GitHub" — it links to a
+  profile, not a specific repository, so a more descriptive label would
+  have overclaimed.
+
 ## [1.0.0] — 2026-08-13
 
 Closes the 0.x "building it" era (portfolio redesign, InfraLens native

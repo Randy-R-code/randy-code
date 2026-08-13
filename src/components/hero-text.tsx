@@ -34,16 +34,17 @@ export function HeroText() {
         >
           Me contacter
         </Link>
-        <a
-          href="https://github.com/Randy-R-code"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
-        >
-          <GitHubIcon size={11} />
-          GitHub
-        </a>
       </div>
+
+      <a
+        href="https://github.com/Randy-R-code"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 inline-flex items-center gap-1.5 text-sm text-zinc-400 transition-colors hover:text-zinc-300"
+      >
+        <GitHubIcon size={16} />
+        GitHub
+      </a>
     </header>
   );
 }
