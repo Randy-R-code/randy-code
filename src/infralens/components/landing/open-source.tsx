@@ -5,9 +5,9 @@ import { siteConfig } from "@infralens-config/site-config";
 import { Blocks, Scale, Server, Users } from "lucide-react";
 import Link from "next/link";
 
-// Master plan §6.4 — MIT license, public repo, modular architecture,
-// self-hosting, contributions welcome; the GitHub link must not be hidden
-// only in the footer.
+// MIT license, public repo, modular architecture, self-hosting,
+// contributions welcome; the GitHub link must not be hidden only in the
+// footer.
 const POINTS = [
   {
     icon: Scale,

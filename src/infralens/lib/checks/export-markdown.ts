@@ -1,7 +1,7 @@
 import { CATEGORY_LABELS } from "./category-labels";
 import { ChecksResponse } from "./types";
 
-/** Client-side only, no server round-trip, no heavy dependency — master plan §14.7 ("éventuellement exporter un rapport Markdown côté client"). */
+/** Client-side only, no server round-trip, no heavy dependency. */
 export function buildMarkdownReport(results: ChecksResponse): string {
   const lines: string[] = [];
 

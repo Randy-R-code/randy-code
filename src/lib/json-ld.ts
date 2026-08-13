@@ -9,7 +9,7 @@ export function buildPersonSchema() {
     jobTitle: "Développeur Fullstack TypeScript",
     url: "https://randy-code.dev",
     description:
-      "Développeur fullstack freelance spécialisé TypeScript / Next.js. Sites vitrines, applications SaaS, SEO local.",
+      "Développeur fullstack TypeScript. Sites vitrines, applications SaaS, SEO local.",
     knowsAbout: [
       "TypeScript",
       "Next.js",

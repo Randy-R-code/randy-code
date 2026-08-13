@@ -4,7 +4,7 @@ import { isBlockedIp, isLiteralIp, stripBrackets } from "./ip-policy";
 import { NormalizedTarget } from "./target";
 
 export type ValidatedTarget = NormalizedTarget & {
-  /** The single address `safeFetch` pins its connection to (master plan §8.4). */
+  /** The single address `safeFetch` pins its connection to. */
   ip: string;
 };
 

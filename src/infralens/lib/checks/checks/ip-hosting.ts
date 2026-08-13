@@ -37,7 +37,7 @@ export const runIpHostingCheck: CheckRunner<{
 
   try {
     // Reuse the A record already resolved by the shared collection step
-    // (master plan §9.2 — "partager DNS") instead of resolving again.
+    // instead of resolving again.
     const ip = shared.dns.a[0];
 
     if (!ip) {
@@ -53,8 +53,7 @@ export const runIpHostingCheck: CheckRunner<{
 
     // Fetch IP information from ipapi.co — cached across analyses since
     // hosting/ASN info for a given IP changes far less often than DNS
-    // records do (master plan §32 Phase 7: "mettre en cache raisonnablement",
-    // "fiabiliser API IP"), which also eases load on the free-tier rate limit.
+    // records do, which also eases load on the free-tier rate limit.
     const cacheKey = `ipapi:${ip}`;
     const apiKey = env.ipapiKey;
     const apiUrl = apiKey

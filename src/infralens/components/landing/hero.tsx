@@ -15,8 +15,8 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import { runInfraChecks } from "../../../../app/tools/infralens/actions/run-checks";
 
-// Master plan §6.2: fill the field only, never trigger an analysis
-// automatically — the user still has to press Analyze themselves.
+// Fill the field only, never trigger an analysis automatically — the user
+// still has to press Analyze themselves.
 const QUICK_EXAMPLES = ["example.com", "github.com", "vercel.com"];
 
 type HeroProps = {

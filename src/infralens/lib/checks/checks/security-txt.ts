@@ -131,7 +131,7 @@ export const runSecurityTxtCheck: CheckRunner<{
       clearTimeout(id);
       // A genuine fetch/network failure across both locations — the check
       // itself didn't run to completion, not a "site has no security.txt"
-      // finding (master plan §9.6).
+      // finding.
       return {
         id: "security-txt",
         label: "security.txt",

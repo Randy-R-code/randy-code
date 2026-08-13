@@ -1,9 +1,9 @@
 import { GlobalScore } from "@infralens-lib/checks/types";
 import { cn } from "@infralens-lib/utils";
 
-// Deliberately cautious wording (master plan §12.5) — grades are a visual
-// aid over a set of public signals, not a certification, so labels avoid
-// absolute-sounding terms like "Excellent" or "Critical".
+// Deliberately cautious wording — grades are a visual aid over a set of
+// public signals, not a certification, so labels avoid absolute-sounding
+// terms like "Excellent" or "Critical".
 const SCORE_GRADES = [
   {
     min: 90,

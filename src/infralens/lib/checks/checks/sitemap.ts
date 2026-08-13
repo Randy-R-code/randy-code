@@ -2,7 +2,7 @@ import { readBodyText, safeFetch } from "@infralens-lib/security/safe-fetch";
 import { CheckRunner } from "../types";
 import { parseRobots } from "./robots";
 
-/** Never grows unbounded — this check is a signal, not a crawler (master plan §11.12). */
+/** Never grows unbounded — this check is a signal, not a crawler. */
 const MAX_LOCATIONS_TRIED = 3;
 
 async function fetchSitemapDeclaredInRobots(
@@ -37,8 +37,7 @@ export const runSitemapCheck: CheckRunner<{
     const id = setTimeout(() => controller.abort(), timeout);
 
     try {
-      // Prefer whatever robots.txt actually declares (master plan §11.12:
-      // "tester [...] les références de robots.txt") before falling back to
+      // Prefer whatever robots.txt actually declares before falling back to
       // the two conventional default locations.
       const declared = await fetchSitemapDeclaredInRobots(
         urlObj.origin,
@@ -122,7 +121,7 @@ export const runSitemapCheck: CheckRunner<{
     } catch {
       clearTimeout(id);
       // A genuine fetch failure — the check couldn't run, distinct from
-      // "no sitemap found" (master plan §9.6).
+      // "no sitemap found".
       return {
         id: "sitemap",
         label: "Sitemap",

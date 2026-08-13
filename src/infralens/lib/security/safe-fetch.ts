@@ -21,8 +21,8 @@ const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
  * matter what a fresh DNS lookup would return at connect time. The `Host`
  * header and TLS SNI are untouched (they come from the request URL, not
  * from this dispatcher), so the destination server still sees the original
- * hostname. This is the DNS-rebinding protection (master plan §8.4):
- * resolve once, validate, then pin the connection to that exact address —
+ * hostname. This is the DNS-rebinding protection: resolve once, validate,
+ * then pin the connection to that exact address —
  * never let the HTTP client re-resolve DNS itself.
  */
 function pinnedDispatcher(ip: string): Agent {
@@ -132,7 +132,7 @@ export async function safeFetch(
 
 /**
  * Reads a response body up to `maxBytes`, throwing `ResponseTooLargeError`
- * instead of buffering further (master plan §8.6/§8.7) — `response.text()`
+ * instead of buffering further — `response.text()`
  * has no such limit. Operates on the already-decompressed stream, so this
  * also caps decompression bombs: a small gzipped payload that decompresses
  * to gigabytes is stopped as soon as the *decoded* bytes cross the limit,

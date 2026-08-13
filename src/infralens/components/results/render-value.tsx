@@ -14,7 +14,7 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
  * Renders any check's `data`/evidence value without per-check hardcoding —
  * every check used to need its own bespoke UI branch (only `headers` had
  * one) before this, leaving 17 of 18 checks with no second-level detail at
- * all (master plan §14.4).
+ * all.
  */
 export function RenderValue({ value }: { value: unknown }): ReactNode {
   if (value === null || value === undefined) return null;

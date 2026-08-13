@@ -19,8 +19,8 @@ export const runDnsRecordsCheck: CheckRunner<{
   const start = performance.now();
 
   try {
-    // A/AAAA come from the shared collection step (master plan §9.2) —
-    // only the record types it doesn't already resolve are fetched here.
+    // A/AAAA come from the shared collection step — only the record types
+    // it doesn't already resolve are fetched here.
     const a = shared.dns.a;
     const aaaa = shared.dns.aaaa;
 
@@ -92,7 +92,7 @@ export const runDnsRecordsCheck: CheckRunner<{
     // CAA restricts which CAs may issue certificates for the domain — a real
     // hardening signal when present, but its absence is the common default
     // and not itself a misconfiguration, so it's surfaced as evidence only
-    // and never moves `status` (master plan §11: "ajouter CAA si pertinent").
+    // and never moves `status`.
     const evidence: EvidenceItem[] = [
       {
         label: "CAA",

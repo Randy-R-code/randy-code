@@ -1,7 +1,7 @@
 import { Address4, Address6 } from "ip-address";
 import { isIP } from "node:net";
 
-/** IPv4 ranges `ip-address` doesn't classify on its own (master plan §8.2: "documentation ranges", "reserved"). */
+/** IPv4 documentation/reserved ranges `ip-address` doesn't classify on its own. */
 const IPV4_EXTRA_BLOCKED_RANGES = [
   "0.0.0.0/8", // "this network" — isUnspecified() only matches the exact 0.0.0.0
   "192.0.2.0/24", // documentation (RFC 5737, TEST-NET-1)

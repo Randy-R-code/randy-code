@@ -2,8 +2,8 @@ import { detectCdnFromHeaders } from "../cdn-fingerprints";
 import { CheckRunner } from "../types";
 
 /**
- * Confidence tiers (master plan §11.17: "confirmed / likely / possible") —
- * a single fragile string match is never enough to claim certainty:
+ * Confidence tiers (confirmed / likely / possible) — a single fragile
+ * string match is never enough to claim certainty:
  * - `likely`: a structural fingerprint (a build-output path, a generated
  *   attribute, a distinctive script URL) that's very unlikely to appear by
  *   coincidence, but still just static markup, not an executed check.
@@ -189,7 +189,7 @@ export const runStackCheck: CheckRunner<{
 
   // Detecting nothing isn't a finding at all — most sites don't leak a
   // fingerprint for every category, and that's not a configuration gap
-  // (same reasoning as the WAF check, master plan §32 Phase 7).
+  // (same reasoning as the WAF check).
   const status: "pass" | "info" = "info";
   const summary =
     findings.length === 0

@@ -87,7 +87,7 @@ describe("buildExport", () => {
     expect(() => new Date(result.scannedAt).toISOString()).not.toThrow();
   });
 
-  it("strips evidence items marked sensitive (master plan §10.3)", () => {
+  it("strips evidence items marked sensitive", () => {
     const result = buildExport(sampleResponse);
 
     // The headers check's non-sensitive evidence survives...

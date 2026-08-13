@@ -1,4 +1,4 @@
-/** Environment variable validation (master plan §21.4 — "valider les variables d'environnement au démarrage"). Every consumer reads `env` from here instead of `process.env` directly, so a misconfiguration fails fast at module load instead of surfacing as a confusing runtime error deep in a check. */
+/** Environment variable validation. Every consumer reads `env` from here instead of `process.env` directly, so a misconfiguration fails fast at module load instead of surfacing as a confusing runtime error deep in a check. */
 
 export type Env = {
   ipapiKey?: string;

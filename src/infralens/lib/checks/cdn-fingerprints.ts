@@ -1,5 +1,5 @@
 /**
- * Shared CDN header-fingerprint table (master plan §11.10/§11.17) — used by
+ * Shared CDN header-fingerprint table — used by
  * both `waf.ts` and `stack.ts`, which each care about "which CDN is this"
  * for a different purpose. Kept in one place so a fix to the fingerprint
  * logic (e.g. the Phase 7 bug where a bare `Server` header key matched

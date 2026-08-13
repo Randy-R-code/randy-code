@@ -2,8 +2,8 @@ import { CheckRunner, EvidenceItem } from "../types";
 
 // A version number in the value (e.g. "nginx/1.18.0", "Apache/2.4.41") is
 // the actual leak — a bare "nginx" or "cloudflare" reveals nothing an
-// attacker couldn't guess anyway (master plan §11.18: "Ne pas considérer
-// chaque header serveur comme une vulnérabilité critique").
+// attacker couldn't guess anyway, so the mere presence of a server header
+// is never treated as a vulnerability on its own.
 const VERSION_PATTERN = /\d+\.\d+/;
 
 // These headers are unusual enough that their mere presence is already

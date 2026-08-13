@@ -8,7 +8,7 @@ import { inspectTls } from "@infralens-lib/security/inspect-tls";
 import { CheckRunner, EvidenceItem, Recommendation } from "../types";
 import { analyzeHsts } from "./headers";
 
-/** Certificates inside this window are still valid but worth flagging before they lapse (master plan §11.3). */
+/** Certificates inside this window are still valid but worth flagging before they lapse. */
 const EXPIRY_WARNING_DAYS = 30;
 
 export const runHttpsCheck: CheckRunner<{
@@ -71,7 +71,7 @@ export const runHttpsCheck: CheckRunner<{
       }
     }
 
-    // Raw TLS inspection (master plan §11.3) — best-effort, never escalates a
+    // Raw TLS inspection — best-effort, never escalates a
     // check to `error` on its own since it's a supplement to, not a
     // requirement for, the pass/warning/fail assessment above.
     const tlsTarget = shared.page.finalUrl.startsWith("https:")

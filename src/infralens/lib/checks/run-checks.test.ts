@@ -106,7 +106,7 @@ beforeEach(() => {
   });
 });
 
-describe("runChecks — shared collection dedup (master plan §9.2, Phase 3)", () => {
+describe("runChecks — shared collection dedup", () => {
   it("fetches the main page exactly once across all 18 checks", async () => {
     await runChecks({ url: MAIN_URL, hostname: "example.com", timeout: 1000 });
 

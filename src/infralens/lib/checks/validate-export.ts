@@ -11,12 +11,9 @@ const VALID_STATUSES = new Set([
 const VALID_GRADES = new Set(["A", "B", "C", "D", "E"]);
 
 /**
- * Structural validation for the exported JSON shape (master plan §10.4,
- * Phase 4 "valider l'export"). Used only in tests and, later, by Phase 16's
- * local comparator when it imports a previously-exported report — never
- * called at runtime in the analysis path itself, per the master plan's own
- * scoping ("import de validation uniquement pour tests ou futur
- * comparateur").
+ * Structural validation for the exported JSON shape. Used in tests and by
+ * the local comparator when it imports a previously-exported report — never
+ * called at runtime in the analysis path itself.
  */
 export function isValidExport(data: unknown): data is InfraLensExport {
   if (typeof data !== "object" || data === null) return false;

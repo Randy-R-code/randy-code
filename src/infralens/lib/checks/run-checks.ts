@@ -74,7 +74,7 @@ export async function runChecks(input: AnalysisInput): Promise<ChecksResponse> {
     MAX_CONCURRENT_CHECKS,
     async (check) => {
       // Each check's own timeout shrinks to whatever's left of the global
-      // budget (master plan §9.5) — a check dispatched late in the pool
+      // budget — a check dispatched late in the pool
       // can't run past the analysis-wide deadline just because it hasn't
       // started yet. Checks that no longer fetch anything (they read
       // `shared` instead) ignore this; the ones that still do their own

@@ -1,7 +1,7 @@
 /**
- * Runs `fn` over `items` with at most `limit` calls in flight at once
- * (master plan §9.4 — "un pool de concurrence" instead of an unbounded
- * `Promise.all`). Order of `results` matches `items`; a rejected `fn` call
+ * Runs `fn` over `items` with at most `limit` calls in flight at once — a
+ * concurrency pool instead of an unbounded `Promise.all`. Order of
+ * `results` matches `items`; a rejected `fn` call
  * propagates like `Promise.all` would (callers that want isolation should
  * catch inside `fn`, same as this project's checks already do).
  */

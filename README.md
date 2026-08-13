@@ -1,67 +1,119 @@
 # Randy Code
 
-Portfolio interactif de Randy Rimbault — développeur fullstack freelance.
+Randy Rimbault's personal portfolio — an interactive, map-based site presenting
+his projects, articles, and integrated developer tools.
 
-> Lisible comme un site classique, vécu comme une expérience.
-
-**Site :** [randy-code.dev](https://randy-code.dev)
+**Site:** [randy-code.dev](https://randy-code.dev)
 
 ---
 
-## Stack
+## Overview
 
-- **Framework :** Next.js 16 (App Router)
-- **Langage :** TypeScript
-- **Style :** Tailwind CSS v4
-- **Animations :** Framer Motion 12
-- **UI :** shadcn/ui
-- **Email :** Resend
-- **Déploiement :** Vercel
+The homepage is an interactive world map: each zone is a real, accessible
+route (Projects, Tools, Articles, About, Lab), not just a visual gimmick.
+Beyond the map, the site is a standard content/portfolio app — project case
+studies, a blog, a contact form, and a growing space for developer tools
+built and open-sourced under the Randy Code brand.
 
-## Structure
+## Highlights
+
+- **Interactive homepage** — a hub-and-zone world map, fully keyboard- and
+  screen-reader-accessible, with a static fallback for `prefers-reduced-motion`.
+- **Project case studies** (`/projects`) — Liflow (SaaS product), InfraLens
+  (open-source tool), and client work, each with problem/solution/architecture
+  write-ups sourced from the real product, not marketing copy.
+- **Articles** (`/articles`) — technical write-ups grounded in what was
+  actually built (e.g. securing a URL analyzer against SSRF), with an RSS feed.
+- **Developer tools** (`/tools`) — open-source tools built by Randy Code,
+  usable directly from the site.
+
+## Developer Tools — InfraLens
+
+[InfraLens](https://randy-code.dev/tools/infralens) is an open-source website
+inspection tool — DNS, TLS, HTTP security headers, infrastructure, and other
+public technical signals, summarized into one scored, readable report.
+
+It's the first tool integrated natively into Randy Code (migrated from its
+own standalone repository into `app/tools/infralens/` and `src/infralens/`).
+Its original documentation, changelog, and MIT license are preserved under
+[`docs/infralens/`](docs/infralens/README.md).
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript (strict)
+- **Styling:** Tailwind CSS v4
+- **Animation:** Framer Motion
+- **UI:** shadcn/ui, Radix UI primitives
+- **Email:** Resend (contact form)
+- **Testing:** Vitest (unit), Playwright (E2E)
+- **Deployment:** Vercel
+
+See [`package.json`](package.json) for exact versions and scripts.
+
+## Project Structure
 
 ```
 app/
-  page.tsx              # Home — world map interactive
-  about/                # About Base
-  articles/             # Knowledge Base (listing + articles)
-  contact/              # Contact Base (page + formulaire, Resend)
-  lab/                  # Lab Zone
-  projects/             # Projects City
-  tools/                # Tools Station
-    infralens/          # InfraLens — analyseur technique de sites (outil intégré)
-  opengraph-image.tsx   # OG card dynamique
+  page.tsx                    # Home — interactive world map
+  about/                      # About
+  articles/                   # Articles (listing + [slug])
+  contact/                    # Contact page + form (Resend server action)
+  lab/                        # Lab — experiments and internal tooling
+  projects/                   # Project case studies (listing + [slug])
+  tools/                      # Developer tools
+    infralens/                # InfraLens — native routes (analyze, compare, docs, privacy)
+  rss.xml/                    # RSS feed
+  sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx
 
-content/posts/          # Articles de blog (un fichier par article)
+content/posts/                # Articles, one file per post
 src/
-  components/
-    map/                # WorldMap, MapConnections, MapNode
-    layout/             # PageShell, SiteHeader
-  lib/
-    blog.ts             # Registry des articles + utilitaires
-    data.ts             # Zones, connexions, HUB
-    nav.ts              # Navigation principale
-  infralens/            # Code métier InfraLens (checks, sécurité, DNS, scoring...)
+  components/                 # Shared UI (map, layout, shadcn/ui primitives)
+  lib/                        # Content registries, brand tokens, navigation, JSON-LD
+  infralens/                  # InfraLens engine — checks, security/SSRF, DNS, scoring, history
+
+docs/
+  infralens/                  # InfraLens developer docs, changelog, security policy, MIT license
 ```
 
-## Outils intégrés
+## Development
 
-**InfraLens** ([`/tools/infralens`](https://randy-code.dev/tools/infralens)) —
-outil open source d'inspection technique de sites web (DNS, TLS, headers,
-sécurité, infrastructure), migré depuis son propre repo vers une route native
-de Randy Code. Documentation d'origine, changelog et licence (MIT) conservés
-dans [`docs/infralens/`](docs/infralens/README.md).
-
-## Développement
+Requires [pnpm](https://pnpm.io).
 
 ```bash
+pnpm install
 pnpm dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Ajouter un article
+## Quality Checks
 
-1. Créer `content/posts/[slug].ts` en suivant le modèle existant
-2. L'importer dans `src/lib/blog.ts`
-3. Le temps de lecture est calculé automatiquement
+```bash
+pnpm lint        # ESLint
+pnpm typecheck   # tsc --noEmit
+pnpm test        # Vitest
+pnpm build       # Production build
+pnpm check       # lint + typecheck + test + build — the required local/CI gate
+
+pnpm e2e             # Playwright — portfolio routes
+pnpm e2e:infralens   # Playwright — InfraLens (rate-limited, single worker)
+```
+
+`e2e`/`e2e:infralens` run against a real server and aren't part of `pnpm check`;
+they run as separate CI jobs.
+
+## Content / Articles
+
+1. Create `content/posts/[slug].ts` following an existing post's shape.
+2. Register it in `src/lib/blog.ts`.
+3. Reading time is computed automatically.
+
+## Licensing
+
+Randy Code as a whole is public but does **not** carry an open-source
+license — public visibility doesn't grant reuse rights.
+
+**InfraLens is the exception**: it remains MIT licensed, scoped to
+[`docs/infralens/LICENSE`](docs/infralens/LICENSE). See
+[`docs/infralens/README.md`](docs/infralens/README.md) for its documentation.

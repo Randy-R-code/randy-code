@@ -6,7 +6,7 @@ import type { CollectedContext } from "./collect";
  * `unavailable` means the check ran but couldn't get a real answer for a
  * reason outside the target's control (e.g. a third-party API being down).
  * `error` means the check itself failed to execute (network/timeout) —
- * never used to represent a bad configuration (master plan §9.6). `info`,
+ * never used to represent a bad configuration. `info`,
  * `unavailable`, and `error` are all excluded from scoring — see
  * `isScoredStatus` in `scoring-config.ts`.
  */
@@ -41,7 +41,7 @@ export type Recommendation = {
   severity: RecommendationSeverity;
 };
 
-/** A structured piece of proof behind a result (master plan §10.3) — e.g. the exact header checked, or the resolved IP. `sensitive: true` items are stripped from JSON exports (see `export.ts`). */
+/** A structured piece of proof behind a result — e.g. the exact header checked, or the resolved IP. `sensitive: true` items are stripped from JSON exports (see `export.ts`). */
 export type EvidenceItem = {
   label: string;
   value: string | number | boolean | null;
@@ -77,7 +77,7 @@ export type ChecksResponse = {
   checks: CheckResult[];
   totalDurationMs: number;
   score: GlobalScore;
-  /** ISO timestamp set when the analysis started (master plan §14.1: "date et heure") — real, not set at render/export time. */
+  /** ISO timestamp set when the analysis started — real, not set at render/export time. */
   analyzedAt: string;
 };
 
@@ -85,7 +85,7 @@ export type CheckContext = {
   url: string;
   hostname: string;
   timeout: number;
-  /** Result of the one shared page fetch + DNS lookup done before any check runs (master plan §9.2) — most checks read from this instead of fetching the same URL themselves. */
+  /** Result of the one shared page fetch + DNS lookup done before any check runs — most checks read from this instead of fetching the same URL themselves. */
   shared: CollectedContext;
 };
 
@@ -107,7 +107,7 @@ export type GlobalScore = {
   score: number; // 0 - 100
   grade: "A" | "B" | "C" | "D" | "E";
   categories: CategoryScore[];
-  /** How many of the results actually counted toward `score` (master plan §12.3). */
+  /** How many of the results actually counted toward `score`. */
   scoredCount: number;
   /** How many results were excluded — `info`/`unavailable`/`error` (never penalized). */
   excludedCount: number;

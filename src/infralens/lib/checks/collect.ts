@@ -5,7 +5,7 @@ import type { Response as UndiciResponse } from "undici";
 
 const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
 
-/** One hop of the redirect chain (master plan §11.4) — the URL requested and the status it returned, whether that was a redirect or the final response. */
+/** One hop of the redirect chain — the URL requested and the status it returned, whether that was a redirect or the final response. */
 export type RedirectHop = {
   url: string;
   status: number;
@@ -29,21 +29,21 @@ export type CollectedContext = {
   dns: {
     a: string[];
     aaaa: string[];
-    /** Wall-clock time for the A/AAAA lookups (they run concurrently, so this is their max, not sum). Near-zero on a cache hit — not a fresh-lookup measurement in that case (master plan §11.19). */
+    /** Wall-clock time for the A/AAAA lookups (they run concurrently, so this is their max, not sum). Near-zero on a cache hit — not a fresh-lookup measurement in that case. */
     durationMs: number;
   };
 };
 
 /**
- * The single place the target's main page gets fetched (master plan §9.2:
- * "éviter que le contrôle metadata télécharge la page [...] que le contrôle
- * social télécharge la même page [...]"). Follows redirects manually — the
+ * The single place the target's main page gets fetched — avoids the
+ * metadata check, the social-tags check, etc. each independently
+ * downloading the same page. Follows redirects manually — the
  * same walk `redirects.ts` used to do on its own — so the chain and the
  * final page's headers/body come out of exactly one sequence of requests,
  * shared by every check that used to fetch this same URL independently.
  *
  * Every hop still goes through `safeFetch`, so it's re-validated (SSRF
- * protections, master plan §8) exactly as before — this only removes
+ * protections) exactly as before — this only removes
  * *duplicate* fetches of the same content, never a validation step.
  */
 async function collectPage(

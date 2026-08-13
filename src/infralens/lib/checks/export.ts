@@ -25,7 +25,7 @@ export type InfraLensExport = {
   version: string;
 };
 
-/** Drops any evidence item marked `sensitive: true` (master plan §10.3, Phase 4 "nettoyer les données sensibles") — e.g. a resolved IP is useful in the UI but not worth baking into a JSON file someone might share. */
+/** Drops any evidence item marked `sensitive: true` — e.g. a resolved IP is useful in the UI but not worth baking into a JSON file someone might share. */
 function redactEvidence(
   evidence: EvidenceItem[] | undefined,
 ): EvidenceItem[] | undefined {

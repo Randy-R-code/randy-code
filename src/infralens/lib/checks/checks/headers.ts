@@ -1,7 +1,7 @@
 import { securityHeadersRecommendation } from "@infralens-lib/recommendations/security";
 import { CheckRunner } from "../types";
 
-/** Header names checked for both presence and value quality (master plan §11.2). `strong` means present with a reasonably safe value, not just present. */
+/** Header names checked for both presence and value quality. `strong` means present with a reasonably safe value, not just present. */
 type HeaderFinding = {
   label: string;
   present: boolean;
@@ -9,7 +9,7 @@ type HeaderFinding = {
   note?: string;
 };
 
-/** Informational only (master plan §11.2: "sans les exiger aveuglément") — surfaced as evidence, never required. */
+/** Informational only — surfaced as evidence, never required. */
 const INFORMATIONAL_HEADERS = [
   "cross-origin-opener-policy",
   "cross-origin-embedder-policy",
@@ -20,7 +20,7 @@ function analyzeCsp(value: string | null): Omit<HeaderFinding, "label"> {
   if (!value) return { present: false, strong: false };
   // A present-but-permissive CSP isn't meaningfully different from having
   // none — flag the classic weakening patterns rather than crediting any
-  // non-empty value equally (master plan §11.2).
+  // non-empty value equally.
   const isWeak =
     /unsafe-inline/i.test(value) ||
     /unsafe-eval/i.test(value) ||
@@ -34,7 +34,7 @@ function analyzeCsp(value: string | null): Omit<HeaderFinding, "label"> {
   };
 }
 
-/** Exported for reuse by `https.ts`, which needs the same weak-max-age judgment for its own HSTS assessment (master plan §11.3). */
+/** Exported for reuse by `https.ts`, which needs the same weak-max-age judgment for its own HSTS assessment. */
 export function analyzeHsts(
   value: string | null,
 ): Omit<HeaderFinding, "label"> {
@@ -67,7 +67,7 @@ function analyzeReferrerPolicy(
   };
 }
 
-/** Framing protection can come from either header (master plan §11.2) — a site with `frame-ancestors` in its CSP and no X-Frame-Options is still protected. */
+/** Framing protection can come from either header — a site with `frame-ancestors` in its CSP and no X-Frame-Options is still protected. */
 function analyzeFraming(
   hasXfo: boolean,
   cspValue: string | null,

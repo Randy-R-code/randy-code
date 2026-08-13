@@ -1,7 +1,7 @@
 import { InfraLensExport } from "../checks/export";
 import { CheckTransition, ComparisonResult } from "./diff";
 
-/** Client-side only, same pattern as the single-report Markdown export (master plan §32 Phase 16 "export Markdown"). */
+/** Client-side only, same pattern as the single-report Markdown export. */
 export function buildComparisonMarkdown(
   before: InfraLensExport,
   after: InfraLensExport,

@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact — Randy Code",
   description:
-    "Contactez Randy Rimbault, développeur fullstack TypeScript freelance, pour discuter d'un projet.",
+    "Contactez Randy Rimbault, développeur fullstack TypeScript, pour discuter d'un projet.",
   alternates: { canonical: "/contact" },
 };
 

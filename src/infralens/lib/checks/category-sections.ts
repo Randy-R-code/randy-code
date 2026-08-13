@@ -6,7 +6,7 @@ export type CategorySection = {
   checks: CheckResult[];
 };
 
-// Canonical, weight-derived order (master plan §14.3: "ordre stable").
+// Canonical, weight-derived, stable order.
 const CATEGORY_ORDER = Object.keys(CATEGORY_LABELS) as CheckCategory[];
 
 /**

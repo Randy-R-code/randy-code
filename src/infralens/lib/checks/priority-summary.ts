@@ -20,7 +20,7 @@ const STATUS_RANK: Record<string, number> = {
   warning: 1,
 };
 
-/** Pure so it's directly testable without React (master plan §14.2 "Résumé prioritaire"). */
+/** Pure so it's directly testable without React. */
 export function derivePrioritySummary(checks: CheckResult[]): PrioritySummary {
   const positives = checks
     .filter((c) => c.status === "pass")

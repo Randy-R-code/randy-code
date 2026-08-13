@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Randy Code — Développeur Fullstack TypeScript",
     short_name: "Randy Code",
     description:
-      "Portfolio interactif de Randy Rimbault, développeur fullstack freelance TypeScript / Next.js.",
+      "Portfolio interactif de Randy Rimbault, développeur fullstack TypeScript.",
     start_url: "/",
     display: "standalone",
     background_color: "#070b10",

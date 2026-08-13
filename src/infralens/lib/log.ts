@@ -1,4 +1,4 @@
-/** Minimal structured server-side logger (master plan §21.4, §31, §8.9). Never pass a full URL with query string, raw headers/content, or a clear-text user IP — hostname, error category, duration, and check id only. */
+/** Minimal structured server-side logger. Never pass a full URL with query string, raw headers/content, or a clear-text user IP — hostname, error category, duration, and check id only. */
 
 type LogLevel = "info" | "warn" | "error";
 

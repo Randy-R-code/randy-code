@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Base — Randy Code",
   description:
-    "Randy Rimbault, développeur fullstack TypeScript freelance. Parcours, vision, stack technique et contact.",
+    "Randy Rimbault, développeur fullstack TypeScript. Parcours, vision, stack technique et contact.",
   alternates: { canonical: "/about" },
 };
 

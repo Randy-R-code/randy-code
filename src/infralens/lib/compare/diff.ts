@@ -48,9 +48,9 @@ export type CompareOutcome =
   | { compatible: false; reason: string };
 
 // Only pass/warning/fail are real, ranked assessments — info/unavailable/
-// error are neutral or a technical non-answer (master plan §9.6), so a
-// transition touching either of those is reported as "changed", never as
-// an improvement or regression the way "fail -> pass" is.
+// error are neutral or a technical non-answer, so a transition touching
+// either of those is reported as "changed", never as an improvement or
+// regression the way "fail -> pass" is.
 const SCORED_STATUSES = new Set(["pass", "warning", "fail"]);
 const STATUS_RANK: Record<string, number> = { fail: 0, warning: 1, pass: 2 };
 
@@ -60,8 +60,8 @@ function majorVersion(version: string): number | null {
 }
 
 /**
- * Compares two exported reports (master plan §32 Phase 16). Pure,
- * synchronous, and 100% local — no network call, no server persistence.
+ * Compares two exported reports. Pure, synchronous, and 100% local — no
+ * network call, no server persistence.
  * Refuses to diff across incompatible major export-schema versions rather
  * than silently comparing vocabularies that may no longer mean the same
  * thing (master plan's own "versions incompatibles expliquées" criterion).

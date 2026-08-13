@@ -316,8 +316,7 @@ export function dmarcWeakPolicyRecommendation(policy: string): Recommendation {
 }
 
 /**
- * Deliberately not framed as "DKIM is missing" (master plan §32 Phase 7
- * validation criterion: "pas de conclusion DKIM non fondée") — DKIM selector
+ * Deliberately not framed as "DKIM is missing" — DKIM selector
  * names are chosen by whoever configured the domain's mail and aren't
  * published anywhere, so checking a handful of common ones can only ever
  * confirm presence, never absence.

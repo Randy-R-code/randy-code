@@ -1,8 +1,8 @@
 import { CheckCategory, CheckStatus } from "./types";
 
 /**
- * Reviewed for Phase 5 ("revoir poids", master plan §12.4) — kept as-is,
- * the existing split already follows an explicit, defensible principle:
+ * Weights kept as-is on review — the existing split already follows an
+ * explicit, defensible principle:
  * categories closer to actual attack surface or delivery integrity are
  * weighted higher than ones that are mostly informational.
  *
@@ -39,7 +39,7 @@ export const STATUS_MULTIPLIER: Record<CheckStatus, number> = {
   error: 0,
 } as const;
 
-/** `pass`/`warning`/`fail` are real assessments and always count toward the score; `info`/`unavailable`/`error` never do (master plan §9.6 — a technical failure or a neutral note must not move the score). */
+/** `pass`/`warning`/`fail` are real assessments and always count toward the score; `info`/`unavailable`/`error` never do — a technical failure or a neutral note must not move the score. */
 export function isScoredStatus(status: CheckStatus): boolean {
   return status === "pass" || status === "warning" || status === "fail";
 }

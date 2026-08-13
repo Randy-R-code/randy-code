@@ -21,8 +21,7 @@ function calculateCategoryScore(
   // Only results that represent a real assessment count toward the
   // average — a check that merely failed to execute (`error`) or
   // couldn't get a real answer (`unavailable`/`info`) is excluded rather
-  // than treated as a failing grade (master plan §9.6, backlog P0 "score
-  // excluant indisponibles").
+  // than treated as a failing grade.
   const categoryChecks = checks.filter(
     (check) => check.category === category && isScoredStatus(check.status),
   );
@@ -54,7 +53,7 @@ function calculateCategoryScore(
 // Global score
 // --------------------
 
-/** Best and worst score/maxScore ratio among categories that have a weight at all — the basis for `strongestCategory`/`topPriorityCategory` (master plan §12.3). */
+/** Best and worst score/maxScore ratio among categories that have a weight at all — the basis for `strongestCategory`/`topPriorityCategory`. */
 function pickStrongestAndWeakest(categoryScores: CategoryScore[]): {
   strongest: CheckCategory | null;
   weakest: CheckCategory | null;
@@ -113,7 +112,7 @@ export function calculateGlobalScore(checks: CheckResult[]): GlobalScore {
  * Fills in `scored`/`scoreContribution` on the final check list, once the
  * category scores are known — a single check can't know its own
  * contribution in isolation, since that depends on how many sibling
- * checks in its category are also scored (master plan §10.1).
+ * checks in its category are also scored.
  */
 export function annotateScoring(
   checks: CheckResult[],

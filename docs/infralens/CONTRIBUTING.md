@@ -17,20 +17,24 @@ These aren't up for debate in a PR — they're the reason this project exists in
 
 ## Setup
 
+InfraLens lives inside the `randy-code` repository — there's no separate
+InfraLens repo to clone anymore.
+
 ```bash
-git clone https://github.com/Randy-R-code/infralens.git
-cd infralens
+git clone https://github.com/Randy-R-code/randy-code.git
+cd randy-code
 pnpm install
 pnpm dev
 ```
 
-Requires Node 22+ and pnpm — this project doesn't use npm or yarn.
+Open http://localhost:3000/tools/infralens. Requires Node 22+ and pnpm —
+this project doesn't use npm or yarn.
 
 ## Making a change
 
 1. Create a branch off `main`.
-2. Keep the PR to one thing. A bug fix doesn't need a drive-by refactor; a new check doesn't need to touch five unrelated files.
-3. Add or update tests alongside the change — `pnpm test`. Pure logic (scoring, parsing, formatting) should be unit tested; if you're touching a check, follow the existing pattern in `src/lib/checks/checks/*.test.ts`. If the change affects a real user flow (not just logic), add or update an E2E spec under `e2e/` — see below.
+2. Keep the PR to one thing. A bug fix doesn't need a drive-by refactor; a new check doesn't need to touch five unrelated files. Changes to InfraLens shouldn't touch unrelated parts of the portfolio, and vice versa.
+3. Add or update tests alongside the change — `pnpm test`. Pure logic (scoring, parsing, formatting) should be unit tested; if you're touching a check, follow the existing pattern in `src/infralens/lib/checks/checks/*.test.ts`. If the change affects a real user flow (not just logic), add or update an E2E spec under `e2e/infralens/` — see below.
 4. Run the full gate before opening the PR:
    ```bash
    pnpm check   # lint + typecheck + test + build — same as CI
@@ -41,19 +45,19 @@ Requires Node 22+ and pnpm — this project doesn't use npm or yarn.
 
 ```bash
 pnpm exec playwright install --with-deps chromium webkit   # once
-pnpm e2e
+pnpm e2e:infralens
 ```
 
-`e2e/` uses Playwright against a real dev server, deliberately not mocked — this project has a habit of finding real bugs this way that mocked unit tests can't catch (a silent HTML5 form-validation deadlock on the URL input, several false-positive security findings from live header fingerprinting, and others — see `CHANGELOG.md`). `workers: 1` is intentional: the analysis flow is rate-limited to one request per IP per 30 seconds, and parallel workers hitting the same local server would collide on that limit. Only `e2e/analysis.spec.ts` triggers a real analysis (against `example.com`) — keep it that way rather than adding a second spec that also does, or the two will race each other.
+`e2e/infralens/` uses Playwright against a real dev server, deliberately not mocked — this project has a habit of finding real bugs this way that mocked unit tests can't catch (a silent HTML5 form-validation deadlock on the URL input, several false-positive security findings from live header fingerprinting, and others — see `CHANGELOG.md`). It runs on dedicated `infralens-desktop`/`infralens-mobile` Playwright projects, single worker: the analysis flow is rate-limited to one request per IP per 30 seconds, and parallel workers hitting the same local server would collide on that limit. Only `e2e/infralens/analysis.spec.ts` triggers a real analysis (against `example.com`) — keep it that way rather than adding a second spec that also does, or the two will race each other.
 
 ## Adding a new check
 
-Each check is an independent module in `src/lib/checks/checks/`, implementing the shared `CheckRunner` interface (`src/lib/checks/types.ts`). Before adding one:
+Each check is an independent module in `src/infralens/lib/checks/checks/`, implementing the shared `CheckRunner` interface (`src/infralens/lib/checks/types.ts`). Before adding one:
 
 - Decide honestly whether it can be scored (`pass`/`warning`/`fail`) or is inherently a heuristic/informational signal (`info`, never affecting the score) — see `isScoredStatus` in `scoring-config.ts`.
 - If a lookup can fail for a reason outside the target's control (a third-party API being down, a resolver timeout), that's `unavailable`, not `fail`. If the check itself throws, that's `error`, not a bad configuration.
 - Add the check to the shared mock list in `run-checks.test.ts` if it does its own network/DNS calls — every check-level module doing independent I/O needs a matching mock there.
-- Document it in `app/docs/page.tsx` in the same PR — a check without documentation isn't done.
+- Document it in `app/tools/infralens/docs/page.tsx` in the same PR — a check without documentation isn't done.
 
 ## Commit style
 

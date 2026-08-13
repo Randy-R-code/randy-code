@@ -10,7 +10,7 @@ import { CheckRunner, EvidenceItem, Recommendation } from "../types";
 // Selector names are chosen by whoever configured the domain's mail and are
 // never published anywhere discoverable — these are just the handful of
 // common defaults used by major providers. Finding one confirms DKIM is in
-// use; not finding any of them proves nothing (master plan §32 Phase 7).
+// use; not finding any of them proves nothing.
 const COMMON_DKIM_SELECTORS = ["default", "google", "selector1", "selector2"];
 
 function extractDmarcPolicy(record: string): string | undefined {

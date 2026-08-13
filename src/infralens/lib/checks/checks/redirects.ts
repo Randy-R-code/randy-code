@@ -22,7 +22,7 @@ function hostnameOf(url: string): string | null {
   }
 }
 
-/** True if any hop goes from https:// to http:// (master plan §11.4: "downgrade HTTPS vers HTTP"). */
+/** True if any hop downgrades from https:// to http://. */
 function hasProtocolDowngrade(chain: RedirectHop[]): boolean {
   for (let i = 0; i < chain.length - 1; i++) {
     if (

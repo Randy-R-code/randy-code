@@ -22,9 +22,9 @@ function firstValue(field: string | string[] | undefined): string | undefined {
 /**
  * Opens a raw TLS connection to inspect the certificate and negotiated
  * protocol version — `fetch`/undici don't expose this, so it needs its own
- * primitive (master plan §11.3). Connects directly to the already-validated
+ * primitive. Connects directly to the already-validated
  * IP with `servername` set for SNI/hostname verification, the same
- * resolve-once-then-pin discipline as `safeFetch` (master plan §8.4) — no
+ * resolve-once-then-pin discipline as `safeFetch` — no
  * fresh DNS lookup happens at connect time. `rejectUnauthorized: false` so
  * an invalid certificate (self-signed, expired, mismatched) is reported as
  * a finding via `authorized`/`authorizationError` instead of just failing

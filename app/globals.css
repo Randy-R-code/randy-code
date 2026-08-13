@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* InfraLens brand tokens (migration plan §11/§13) — the hex values already
-     match the blue-/green- scale below one-for-one; kept as named aliases
-     because the migrated components reference bg-brand-accent,
-     text-brand-secondary-hover, etc. directly. */
+  /* InfraLens brand tokens — the hex values already match the blue-/green-
+     scale below one-for-one; kept as named aliases because InfraLens's
+     components reference bg-brand-accent, text-brand-secondary-hover, etc.
+     directly. */
   --color-brand-accent: #14b894;
   --color-brand-accent-hover: #35d3ad;
   --color-brand-accent-strong: #0c9478;
@@ -52,7 +52,7 @@
 }
 
 :root {
-  /* Randy Code — brand tokens (RANDY_CODE_BRANDING_PLAN.md section 4) */
+  /* Randy Code — brand tokens (see src/lib/brand.ts) */
   --background: #070b10;
   --foreground: var(--text-primary);
   --background-elevated: #0b1118;
@@ -138,9 +138,9 @@
   }
 }
 
-/* InfraLens — scoped shadcn tokens (migration plan §13/§15, harmonized
-   finalization pass Phase 6). Originally re-applied InfraLens' own hardcoded
-   zinc/green shadcn theme here to avoid Randy Code's blue silently reskinning
+/* InfraLens — scoped shadcn tokens. Originally re-applied InfraLens' own
+   hardcoded zinc/green shadcn theme here to avoid Randy Code's blue silently
+   reskinning
    every migrated primitive. Now that every InfraLens component reads through
    semantic classes (bg-background, text-muted-foreground...) instead of raw
    zinc utilities, this scope only needs to override what should genuinely
@@ -227,7 +227,7 @@
   margin-bottom: 1.25rem;
 }
 
-/* Global decorative background (RANDY_CODE_BRANDING_PLAN.md section 6) */
+/* Global decorative background (see src/components/layout/app-background.tsx) */
 .app-background {
   position: fixed;
   inset: 0;

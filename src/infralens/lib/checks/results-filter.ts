@@ -18,7 +18,7 @@ export const FILTER_LABELS: Record<ResultFilter, string> = {
   unavailable: "Unavailable",
 };
 
-/** Pure so it's directly testable (master plan §14.6). */
+/** Pure so it's directly testable. */
 export function filterChecks(
   checks: CheckResult[],
   filter: ResultFilter,

@@ -22,7 +22,7 @@ export function HomeClient({
   const [results, setResults] = useState<ChecksResponse | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const { history, addEntry, removeEntry, clearHistory } = useAnalysisHistory();
-  // Cancellation is client-side only (master plan §15.2, "si possible") — the
+  // Cancellation is client-side only — the
   // server action already in flight keeps running and its result is simply
   // discarded here rather than applied. Narrow edge case, accepted as a
   // known limitation: cancelling and immediately starting a new analysis

@@ -1,4 +1,4 @@
-/** Single source of truth for brand/domain-dependent strings (branding plan §6) — nothing else should hardcode these. */
+/** Single source of truth for brand/domain-dependent strings — nothing else should hardcode these. */
 export const siteConfig = {
   name: "InfraLens",
   parentBrand: "Randy Code",

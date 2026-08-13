@@ -21,8 +21,7 @@ export const runWafCheck: CheckRunner<{
   // These are header *fingerprints*, not proof of a WAF — a CDN header
   // doesn't mean requests are actually being filtered, and a real WAF that
   // strips its own signature would show nothing here. Detection is
-  // inherently probabilistic (master plan §32 Phase 7: "rendre WAF/CDN
-  // probabiliste"), so this never fails or warns — only `info`.
+  // inherently probabilistic, so this never fails or warns — only `info`.
   const { detected, provider: likelyProvider } = detectCdnFromHeaders(
     shared.page.headers,
   );

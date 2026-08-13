@@ -10,9 +10,9 @@ type RobotsAnalysis = {
 /**
  * Lightweight line-based parser, not a full spec implementation — good
  * enough to spot a sitewide block or list declared sitemaps without
- * pretending to fully validate robots.txt syntax (master plan §11.11).
+ * pretending to fully validate robots.txt syntax.
  */
-/** Exported for reuse by `sitemap.ts`, which needs the declared Sitemap: URL(s) before falling back to guessed locations (master plan §11.12). */
+/** Exported for reuse by `sitemap.ts`, which needs the declared Sitemap: URL(s) before falling back to guessed locations. */
 export function parseRobots(content: string): RobotsAnalysis {
   const lines = content
     .split(/\r?\n/)
@@ -109,7 +109,7 @@ export const runRobotsCheck: CheckRunner<{
         summary = "robots.txt is present but may be invalid or empty.";
       } else if (analysis.blocksAll) {
         // Not a security problem — this is explicitly an SEO/indexing
-        // signal, not a vulnerability (master plan §11.11's own caution).
+        // signal, not a vulnerability.
         checkStatus = "warning";
         summary =
           "robots.txt disallows all crawlers from the entire site (Disallow: / under User-agent: *).";

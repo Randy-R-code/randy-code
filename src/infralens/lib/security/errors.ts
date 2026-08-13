@@ -1,4 +1,4 @@
-/** Typed errors for target validation and safe fetching (master plan §21.5). Each carries a `userMessage` — the only text that should ever reach the UI; the `message` (Error's own) may be more precise for logs but must still never include a full URL or a raw resolved IP, per §8.9/§31.2. */
+/** Typed errors for target validation and safe fetching. Each carries a `userMessage` — the only text that should ever reach the UI; the `message` (Error's own) may be more precise for logs but must still never include a full URL or a raw resolved IP. */
 
 export class InvalidTargetError extends Error {
   readonly userMessage: string;
