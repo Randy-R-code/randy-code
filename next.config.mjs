@@ -73,7 +73,13 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`,
+            // script-src keeps 'unsafe-inline': removing it needs either
+            // per-request nonces (Next.js requires dynamic rendering for
+            // that — this site is ~100% statically prerendered, so that
+            // would drop CDN caching/SSG sitewide) or the experimental SRI
+            // feature, which doesn't cover React/Next's own inline
+            // hydration scripts. Not worth the tradeoff here.
+            value: `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`,
           },
         ],
       },

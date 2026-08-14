@@ -9,6 +9,25 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.0.2] — 2026-08-14
+
+### Security
+
+- **Hardened Content-Security-Policy** — added `object-src 'none'`;
+  `'unsafe-inline'` on `script-src` stays, documented as a deliberate
+  tradeoff (removing it requires either per-request nonces, which force
+  the ~fully static site into dynamic rendering sitewide, or Next.js's
+  experimental SRI feature, which doesn't cover React/Next's own inline
+  hydration scripts). `upgrade-insecure-requests` was tried and dropped —
+  it's a no-op on this all-HTTPS site but made WebKit try to upgrade
+  navigation on the plain-HTTP `localhost` server used by the InfraLens
+  e2e suite, breaking it in CI.
+- **DMARC tightened** from `p=none` to `p=quarantine` on `randy-code.dev`
+  (DNS record, not in this repo).
+- **Removed a stale Google Workspace MX record** left over after
+  cancelling the subscription — mail to `@randy-code.dev` root was
+  silently bouncing (DNS record, not in this repo).
+
 ## [1.0.1] — 2026-08-13
 
 ### Fixed
