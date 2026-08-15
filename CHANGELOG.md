@@ -9,6 +9,45 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.1.0] — 2026-08-15
+
+### Added
+
+- InfraLens: DKIM and DNSSEC are now their own checks, separate from
+  DNS Security (SPF/DMARC) — neither can reach a confirmed pass/warning/
+  fail the way SPF/DMARC can, so they're scored as genuinely
+  `inconclusive` rather than folded into one opaque status. 20 checks
+  total, up from 18.
+
+### Changed
+
+- InfraLens's scoring engine rebuilt around per-check point weights
+  summing to 100, instead of fixed category budgets — a category's
+  score is now the sum of its checks' weights.
+- InfraLens's landing page example and Open Graph card now derive their
+  numbers from the real scoring engine instead of independently
+  hand-typed values that had drifted apart.
+
+### Fixed
+
+- InfraLens's Infrastructure category always showed a hardcoded `0/20`
+  (its only check, WAF detection, is informational) — now correctly
+  shows as "Info".
+- A DMARC policy set to monitor-only (`p=none`) used to score a plain
+  pass alongside a present SPF record — now correctly scores as a
+  warning.
+- The InfraLens Open Graph card's preview image pointed at a
+  per-deployment Vercel URL instead of `randy-code.dev`, breaking link
+  previews after new deployments.
+
+### Security
+
+- `randy-code.dev` now publishes `v=spf1 -all` at the domain root —
+  mail is sent only from a delegated subdomain, never the root
+  directly, so this closes a spoofing gap InfraLens's scanner had
+  flagged (as a false "SPF missing" finding, since it only checks the
+  root domain).
+
 ## [1.0.2] — 2026-08-14
 
 ### Security
