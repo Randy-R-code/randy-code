@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   BookOpen,
   Building2,
-  Clock,
   FlaskConical,
   Mail,
   User,
@@ -20,7 +19,6 @@ const iconMap = {
   user: User,
   bookOpen: BookOpen,
   mail: Mail,
-  clock: Clock,
 } as const;
 
 export type PageIcon = keyof typeof iconMap;

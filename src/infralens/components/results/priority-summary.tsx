@@ -46,7 +46,7 @@ export function PrioritySummary({ checks }: { checks: CheckResult[] }) {
   }
 
   return (
-    <Card className="border-border bg-background/50">
+    <Card className="border-border bg-card/50">
       <CardHeader>
         <CardTitle className="text-lg">At a glance</CardTitle>
       </CardHeader>

@@ -34,7 +34,7 @@ export function RecommendationCard({
   const Icon = config.icon;
 
   return (
-    <Card className="border-border bg-background/50">
+    <Card className="border-border bg-card/50">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg">{recommendation.title}</CardTitle>

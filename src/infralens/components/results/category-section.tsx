@@ -31,7 +31,7 @@ export function CategorySections({
     <Accordion
       type="multiple"
       defaultValue={sections.map((s) => s.category.category)}
-      className="rounded-lg border border-border bg-background/50 px-4"
+      className="rounded-lg border border-border bg-card/50 px-4"
     >
       {sections.map(({ category, checks: categoryChecks }) => {
         const counts = countsFor(categoryChecks);

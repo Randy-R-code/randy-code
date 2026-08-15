@@ -50,7 +50,7 @@ export function CTA({
   return (
     <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <Card className="border-2 border-border bg-background/50">
+        <Card className="border-2 border-border bg-card/50">
           <CardContent className="p-6 md:p-8 lg:p-12">
             <div className="space-y-4 md:space-y-6">
               <div className="text-center space-y-2">

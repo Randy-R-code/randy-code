@@ -67,10 +67,7 @@ export function WhatItChecks() {
           {categories.map((category) => {
             const Icon = category.icon;
             return (
-              <Card
-                key={category.title}
-                className="border-border bg-background/50"
-              >
+              <Card key={category.title} className="border-border bg-card/50">
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-brand-secondary/10 border border-brand-secondary/20">

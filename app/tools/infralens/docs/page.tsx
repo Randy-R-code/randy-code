@@ -49,7 +49,7 @@ export default function DocsPage() {
           </div>
 
           {/* Overview */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Overview</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -156,7 +156,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Network & DNS */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Network & DNS</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -266,7 +266,7 @@ export default function DocsPage() {
           </Card>
 
           {/* HTTP & Security */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">HTTP & Security</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -397,7 +397,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Infrastructure */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Infrastructure</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -423,7 +423,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Website Structure */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Website Structure</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -469,7 +469,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Metadata & Stack */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">
                 Metadata & Technology Stack
@@ -567,7 +567,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Performance Signals */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Performance Signals</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -623,7 +623,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Scoring */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Scoring System</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -692,7 +692,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Comparing reports */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Comparing Reports</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -720,7 +720,7 @@ export default function DocsPage() {
           </Card>
 
           {/* Notes */}
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-2xl">Notes & Limitations</CardTitle>
             </CardHeader>

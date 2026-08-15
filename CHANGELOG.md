@@ -9,6 +9,43 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.2.1] — 2026-08-15
+
+### Fixed
+
+- Cron Builder's "Next runs" dates rendered in the visitor's browser
+  locale (e.g. French on a French system) instead of the tool's
+  English-only UI — the formatter now forces `en-US` regardless of the
+  visitor's locale.
+- Cron Builder's back link pointed at the homepage map instead of
+  `/tools`, and its decorative background let the homepage's grid/glow
+  show through instead of the flat, opaque background every other tool
+  uses.
+- InfraLens's card backgrounds (`bg-background/50`) used the page's own
+  background color instead of the elevated `--card` token, making them
+  blend into the page instead of standing out — fixed across the
+  landing sections, the entire scan-results display (report header,
+  category/check cards, priority summary, recommendations, the score
+  dialog), and the compare/docs/privacy pages. Only the "example
+  report" preview card used the correct token before this.
+- A resulting color-contrast regression (`text-zinc-500` on Cron
+  Builder's now-lighter card backgrounds fell under the WCAG AA 4.5:1
+  minimum) caught by the axe accessibility check and fixed to
+  `text-zinc-400`.
+
+### Changed
+
+- Extracted `ToolPageShell`/`ToolHeader` (`src/components/layout/`) as
+  the shared chrome for every tool under `/tools` — opaque background,
+  "back to tools" link, and a common `max-w-4xl` content width — and
+  moved both InfraLens's layout and Cron Builder onto it, so their back
+  links and content now line up pixel-for-pixel instead of each tool
+  drifting on its own width.
+- Cron Builder's Range-mode picker for labeled fields (Day of week,
+  Month) replaced native `<select>` elements with the same pill-button
+  style used everywhere else in the tool, for visual consistency and
+  more uniform touch targets.
+
 ## [1.2.0] — 2026-08-15
 
 ### Added

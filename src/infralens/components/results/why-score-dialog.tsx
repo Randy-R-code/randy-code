@@ -77,7 +77,7 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
               </li>
             </ul>
           </div>
-          <div className="space-y-1 rounded border border-border bg-background/50 p-3">
+          <div className="space-y-1 rounded border border-border bg-card/50 p-3">
             <p className="font-semibold text-foreground">This analysis:</p>
             <p className="text-muted-foreground">
               {score.scoredCount} check{score.scoredCount === 1 ? "" : "s"}{" "}

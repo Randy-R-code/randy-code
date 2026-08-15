@@ -45,6 +45,20 @@ function pluralize(unit: string, n: number): string {
   return n === 1 ? unit : `${unit}s`;
 }
 
+function pillButtonStyle(active: boolean): React.CSSProperties {
+  return active
+    ? {
+        background: `${brand.colors.green[500]}20`,
+        color: brand.colors.green[500],
+        border: `1px solid ${brand.colors.green[500]}50`,
+      }
+    : {
+        background: brand.colors.surface[1],
+        color: "#A9B8C7",
+        border: `1px solid ${brand.colors.border.subtle}`,
+      };
+}
+
 interface CronFieldEditorProps {
   fieldName: CronFieldName;
   label: string;
@@ -196,7 +210,7 @@ export function CronFieldEditor({
       </div>
 
       {mode === "every" && (
-        <p className="text-xs text-zinc-500">Runs on every {unit}.</p>
+        <p className="text-xs text-zinc-400">Runs on every {unit}.</p>
       )}
 
       {mode === "interval" && (
@@ -219,30 +233,50 @@ export function CronFieldEditor({
         </div>
       )}
 
-      {mode === "range" && (
-        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
-          <span>From</span>
-          <FieldValuePicker
-            id={`${groupId}-from`}
-            ariaLabel={`${label} range start`}
-            labels={labels}
-            min={range.min}
-            max={range.max}
-            value={rangeBounds.from}
-            onChange={updateRangeFrom}
-          />
-          <span>to</span>
-          <FieldValuePicker
-            id={`${groupId}-to`}
-            ariaLabel={`${label} range end`}
-            labels={labels}
-            min={range.min}
-            max={range.max}
-            value={rangeBounds.to}
-            onChange={updateRangeTo}
-          />
-        </div>
-      )}
+      {mode === "range" &&
+        (labels ? (
+          <div className="flex flex-col gap-3">
+            <LabeledOptionRow
+              legend="From"
+              ariaLabel={`${label} range start`}
+              labels={labels}
+              min={range.min}
+              max={range.max}
+              value={rangeBounds.from}
+              onChange={updateRangeFrom}
+            />
+            <LabeledOptionRow
+              legend="to"
+              ariaLabel={`${label} range end`}
+              labels={labels}
+              min={range.min}
+              max={range.max}
+              value={rangeBounds.to}
+              onChange={updateRangeTo}
+            />
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+            <span>From</span>
+            <NumberRangeInput
+              id={`${groupId}-from`}
+              ariaLabel={`${label} range start`}
+              min={range.min}
+              max={range.max}
+              value={rangeBounds.from}
+              onChange={updateRangeFrom}
+            />
+            <span>to</span>
+            <NumberRangeInput
+              id={`${groupId}-to`}
+              ariaLabel={`${label} range end`}
+              min={range.min}
+              max={range.max}
+              value={rangeBounds.to}
+              onChange={updateRangeTo}
+            />
+          </div>
+        ))}
 
       {mode === "specific" && (
         <div className="flex flex-wrap gap-1.5">
@@ -257,19 +291,7 @@ export function CronFieldEditor({
                 aria-label={`${label} ${displayLabel}`}
                 onClick={() => toggleValue(v)}
                 className="flex h-8 min-w-8 items-center justify-center rounded-md px-1.5 text-xs font-medium transition-colors"
-                style={
-                  isSelected
-                    ? {
-                        background: `${brand.colors.green[500]}20`,
-                        color: brand.colors.green[500],
-                        border: `1px solid ${brand.colors.green[500]}50`,
-                      }
-                    : {
-                        background: brand.colors.surface[1],
-                        color: "#A9B8C7",
-                        border: `1px solid ${brand.colors.border.subtle}`,
-                      }
-                }
+                style={pillButtonStyle(isSelected)}
               >
                 {displayLabel}
               </button>
@@ -281,49 +303,73 @@ export function CronFieldEditor({
   );
 }
 
-interface FieldValuePickerProps {
-  id: string;
+interface LabeledOptionRowProps {
+  legend: string;
   ariaLabel: string;
-  labels: readonly string[] | undefined;
+  labels: readonly string[];
   min: number;
   max: number;
   value: number;
   onChange: (value: number) => void;
 }
 
-function FieldValuePicker({
-  id,
+/** Single-select row of pill buttons — used for Range mode on labeled fields (month, day of week) instead of a native select, to match the rest of the tool's button-driven controls. */
+function LabeledOptionRow({
+  legend,
   ariaLabel,
   labels,
   min,
   max,
   value,
   onChange,
-}: FieldValuePickerProps) {
-  const style = {
-    background: brand.colors.surface[1],
-    borderColor: `${brand.colors.green[500]}30`,
-  };
+}: LabeledOptionRowProps) {
+  const options = Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
-  if (labels) {
-    return (
-      <select
-        id={id}
+  return (
+    <div>
+      <span className="mb-1.5 block text-xs text-zinc-400">{legend}</span>
+      <div
+        role="group"
         aria-label={ariaLabel}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="rounded-md border px-2 py-1 text-sm text-white"
-        style={style}
+        className="flex flex-wrap gap-1.5"
       >
-        {Array.from({ length: max - min + 1 }, (_, i) => min + i).map((v) => (
-          <option key={v} value={v}>
-            {labels[v - min]}
-          </option>
-        ))}
-      </select>
-    );
-  }
+        {options.map((v) => {
+          const active = v === value;
+          return (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={active}
+              onClick={() => onChange(v)}
+              className="flex h-8 min-w-8 items-center justify-center rounded-md px-1.5 text-xs font-medium transition-colors"
+              style={pillButtonStyle(active)}
+            >
+              {labels[v - min]}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
+interface NumberRangeInputProps {
+  id: string;
+  ariaLabel: string;
+  min: number;
+  max: number;
+  value: number;
+  onChange: (value: number) => void;
+}
+
+function NumberRangeInput({
+  id,
+  ariaLabel,
+  min,
+  max,
+  value,
+  onChange,
+}: NumberRangeInputProps) {
   return (
     <input
       id={id}
@@ -334,7 +380,10 @@ function FieldValuePicker({
       value={value}
       onChange={(e) => onChange(Number(e.target.value))}
       className="w-16 rounded-md border px-2 py-1 text-sm text-white"
-      style={style}
+      style={{
+        background: brand.colors.surface[1],
+        borderColor: `${brand.colors.green[500]}30`,
+      }}
     />
   );
 }

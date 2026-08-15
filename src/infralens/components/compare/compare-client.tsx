@@ -79,7 +79,7 @@ function ReportSlot({
 
   if (slot.status === "loaded") {
     return (
-      <Card className="border-border bg-background/50">
+      <Card className="border-border bg-card/50">
         <CardContent className="p-4 space-y-2">
           <div className="flex items-start justify-between gap-2">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -211,7 +211,7 @@ function TransitionSection({
         {items.map((item) => (
           <li
             key={item.id}
-            className="flex items-start gap-2 text-sm text-foreground rounded-lg border border-border bg-background/50 px-3 py-2"
+            className="flex items-start gap-2 text-sm text-foreground rounded-lg border border-border bg-card/50 px-3 py-2"
           >
             <Icon className={`size-4 shrink-0 mt-0.5 ${className}`} />
             <span>
@@ -273,7 +273,7 @@ export function CompareClient() {
 
       {bothLoaded && outcome?.compatible && (
         <div className="space-y-6">
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardContent className="p-4 sm:p-6 space-y-4">
               <div className="flex items-center justify-center gap-4 sm:gap-8">
                 <div className="text-center">

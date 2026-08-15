@@ -93,7 +93,7 @@ export function Hero({
         </div>
 
         {/* Search Form */}
-        <Card className="border-2 border-border bg-background/50">
+        <Card className="border-2 border-border bg-card/50">
           <CardContent className="p-4 sm:p-6 space-y-4">
             <form
               onSubmit={handleSubmit}

@@ -97,7 +97,7 @@ export function CheckResultCard({ result }: { result: CheckResult }) {
   const expandable = hasDetail(result);
 
   return (
-    <Card className="border-border bg-background/50">
+    <Card className="border-border bg-card/50">
       <Collapsible open={open} onOpenChange={setOpen}>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-2">

@@ -1,6 +1,8 @@
 import { brand } from "@/lib/brand";
 
-const dateFormatter = new Intl.DateTimeFormat(undefined, {
+// Locale is forced to "en-US" — the tool's UI is English-only regardless of
+// the visitor's browser locale (only /tools itself is French).
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
@@ -36,17 +38,17 @@ export function CronSchedulePreview({
       <h2 className="mb-3 text-xs font-medium text-zinc-400">Next runs</h2>
 
       {!valid && (
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-zinc-400">
           Fix the expression to see its schedule.
         </p>
       )}
 
       {valid && timezone === null && (
-        <p className="text-sm text-zinc-500">Calculating…</p>
+        <p className="text-sm text-zinc-400">Calculating…</p>
       )}
 
       {valid && timezone !== null && runs.length === 0 && (
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-zinc-400">
           No upcoming runs found in the next few years.
         </p>
       )}
@@ -65,7 +67,7 @@ export function CronSchedulePreview({
       )}
 
       {timezone !== null && (
-        <p className="mt-4 text-xs text-zinc-500">Previewed in {timezone}</p>
+        <p className="mt-4 text-xs text-zinc-400">Previewed in {timezone}</p>
       )}
     </div>
   );

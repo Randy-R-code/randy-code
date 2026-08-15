@@ -37,7 +37,7 @@ function LoadingState({ onCancel }: { onCancel?: () => void }) {
           </Button>
         )}
       </div>
-      <Card className="border-border bg-background/50">
+      <Card className="border-border bg-card/50">
         <CardContent className="space-y-4">
           <div className="flex items-center gap-4">
             <Skeleton className="size-10 rounded" />
@@ -50,7 +50,7 @@ function LoadingState({ onCancel }: { onCancel?: () => void }) {
         </CardContent>
       </Card>
       {[1, 2].map((i) => (
-        <Card key={i} className="border-border bg-background/50">
+        <Card key={i} className="border-border bg-card/50">
           <CardContent className="space-y-3">
             <div className="flex items-center justify-between">
               <Skeleton className="h-5 w-40" />

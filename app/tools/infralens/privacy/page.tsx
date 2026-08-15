@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             </div>
           </div>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What gets sent when you run an analysis
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 Rate limiting and your IP
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 Third-party services contacted
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What&apos;s stored locally
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">
                 What the analyzed site can see
@@ -174,7 +174,7 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border bg-background/50">
+          <Card className="border-border bg-card/50">
             <CardHeader>
               <CardTitle className="text-xl">No tracking, by design</CardTitle>
             </CardHeader>

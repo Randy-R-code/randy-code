@@ -49,10 +49,7 @@ export function OpenSource() {
           {POINTS.map((point) => {
             const Icon = point.icon;
             return (
-              <Card
-                key={point.title}
-                className="border-border bg-background/50"
-              >
+              <Card key={point.title} className="border-border bg-card/50">
                 <CardContent className="flex items-start gap-3 p-6">
                   <div className="p-2 rounded-lg bg-brand-secondary/10 border border-brand-secondary/20 shrink-0">
                     <Icon className="size-5 text-brand-secondary-hover" />

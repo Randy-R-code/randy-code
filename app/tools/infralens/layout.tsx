@@ -1,4 +1,4 @@
-import { ToolBackLink } from "@/components/layout/tool-back-link";
+import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { siteMetadata } from "@infralens-lib/metadata";
 import type { Metadata, Viewport } from "next";
 
@@ -15,12 +15,7 @@ export default function InfraLensLayout({
 }>) {
   return (
     <div className="infralens-scope">
-      <div className="bg-background px-6 pt-4 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-4xl">
-          <ToolBackLink />
-        </div>
-      </div>
-      {children}
+      <ToolPageShell>{children}</ToolPageShell>
     </div>
   );
 }

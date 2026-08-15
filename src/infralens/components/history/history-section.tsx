@@ -116,7 +116,7 @@ export function HistorySection({
                 key={entry.id}
                 type="button"
                 onClick={() => onSelect(entry)}
-                className="group relative flex flex-col items-start sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-lg border border-border bg-background/50 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 cursor-pointer transition-all"
+                className="group relative flex flex-col items-start sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-lg border border-border bg-card/50 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 cursor-pointer transition-all"
               >
                 <span className="text-sm text-foreground font-medium group-hover:text-foreground -mt-0.5">
                   {entry.results.hostname}
