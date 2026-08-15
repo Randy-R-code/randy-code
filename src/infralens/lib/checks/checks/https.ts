@@ -67,6 +67,12 @@ export const runHttpsCheck: CheckRunner<{
     } else if (httpsAvailable) {
       summary = "HTTPS is properly configured.";
       if (!hasStrongHsts) {
+        // HSTS is scored here, not in headers.ts (which still surfaces it
+        // as evidence) — a missing/weak HSTS header is a transport-security
+        // gap, the same family of finding as the rest of this check.
+        status = "warning";
+        summary =
+          "HTTPS is properly configured, but Strict-Transport-Security is missing or weak.";
         recommendation = hstsRecommendation();
       }
     }

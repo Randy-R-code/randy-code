@@ -68,12 +68,26 @@ export const runDnsRecordsCheck: CheckRunner<{
     const hasRecords =
       a.length > 0 || aaaa.length > 0 || mx.length > 0 || ns.length > 0;
 
+    if (!hasRecords && !shared.page) {
+      // No DNS records *and* the page itself was unreachable — the same
+      // outage/nonexistent-domain root cause every other check already
+      // reports as `error`, not an independent DNS-hygiene finding.
+      return {
+        id: "dns-records",
+        label: "DNS Records",
+        category: "network-dns",
+        status: "error",
+        summary: "Unable to resolve DNS records.",
+        durationMs: Math.round(performance.now() - start),
+      };
+    }
+
     let status: "pass" | "warning" | "fail" = "pass";
     let summary = "";
 
     if (!hasRecords) {
-      // A domain with genuinely no DNS records is a real (if unusual)
-      // finding, not a technical failure to look them up.
+      // The page loaded fine, so this isn't an outage — genuinely no DNS
+      // records is a real (if unusual) finding, not a technical failure.
       status = "fail";
       summary = "No DNS records found.";
     } else {

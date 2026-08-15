@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { PageSnapshot } from "../collect";
 
 const { resolveCAA, resolveCNAME, resolveMX, resolveNS, resolveTXT } =
   vi.hoisted(() => ({
@@ -20,13 +21,31 @@ vi.mock("@infralens-lib/dns/dns-client", () => ({
 const { runDnsRecordsCheck } = await import("./dns-records");
 
 const empty = { success: false, durationMs: 1 };
+// A minimal but real snapshot — just enough to signal "the page loaded
+// fine", which is all these tests need `shared.page` for.
+const reachablePage: PageSnapshot = {
+  finalUrl: "https://example.com/",
+  redirectChain: [{ url: "https://example.com/", status: 200 }],
+  redirectCount: 0,
+  hasRedirectLoop: false,
+  status: 200,
+  headers: new Headers() as PageSnapshot["headers"],
+  html: "",
+  responseTimeMs: 10,
+  contentLength: 0,
+  compression: "none",
+};
 
-function context(a: string[] = ["93.184.216.34"], aaaa: string[] = []) {
+function context(
+  a: string[] = ["93.184.216.34"],
+  aaaa: string[] = [],
+  page: PageSnapshot | null = reachablePage,
+) {
   return {
     url: "https://example.com",
     hostname: "example.com",
     timeout: 1000,
-    shared: { page: null, dns: { a, aaaa, durationMs: 0 } },
+    shared: { page, dns: { a, aaaa, durationMs: 0 } },
   };
 }
 
@@ -75,9 +94,15 @@ describe("runDnsRecordsCheck", () => {
     );
   });
 
-  it("still fails when there are genuinely no DNS records at all", async () => {
+  it("still fails when the page is reachable but there are genuinely no DNS records at all", async () => {
     const result = await runDnsRecordsCheck(context([], []));
 
     expect(result.status).toBe("fail");
+  });
+
+  it("returns error instead of fail when no records AND the page itself is unreachable (outage, not a DNS finding)", async () => {
+    const result = await runDnsRecordsCheck(context([], [], null));
+
+    expect(result.status).toBe("error");
   });
 });

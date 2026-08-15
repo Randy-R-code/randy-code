@@ -32,11 +32,21 @@ export const IPAPI_BASE_URL = "https://ipapi.co";
 /** IP/ASN/hosting info changes far less often than DNS records, so this outlives `DNS_CACHE_TTL_MS` — also reduces load on ipapi.co's free-tier rate limit. */
 export const IP_INFO_CACHE_TTL_MS = 15 * 60_000;
 
-/** Bump whenever an export-breaking change lands — 2.0.0 marked the status vocabulary change (ok/error -> pass/warning/fail/info/unavailable/error) and the new evidence/scored/scoreContribution fields. */
-export const EXPORT_SCHEMA_VERSION = "2.0.0";
+/**
+ * Bump the MAJOR component whenever scoring semantics change materially —
+ * `compareExports` (`lib/compare/diff.ts`) refuses to diff two exports with
+ * different major versions, which is exactly what should happen when an
+ * old report's score isn't computed the same way a new one is. 2.0.0 marked
+ * the status vocabulary change (ok/error -> pass/warning/fail/info/
+ * unavailable/error) and the new evidence/scored/scoreContribution fields.
+ * 3.0.0 marks the check-weight-first 100-point scoring model (previously a
+ * fixed category-budget average) plus the `not-applicable`/`inconclusive`
+ * statuses.
+ */
+export const EXPORT_SCHEMA_VERSION = "3.0.0";
 
 /** Ceiling for a whole analysis — each check's own timeout shrinks to fit whatever budget remains under this as the analysis progresses, so a slow check can't let the total run away unbounded. */
 export const ANALYSIS_TIMEOUT_MS = 20_000;
 
-/** Concurrency pool size for the 18 checks — avoids firing every check's network activity at once. */
+/** Concurrency pool size for the 20 checks — avoids firing every check's network activity at once. */
 export const MAX_CONCURRENT_CHECKS = 6;

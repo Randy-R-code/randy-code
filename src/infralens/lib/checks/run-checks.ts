@@ -6,8 +6,10 @@ import { mapWithConcurrencyLimit } from "@infralens-lib/concurrency";
 import { logInfo } from "@infralens-lib/log";
 import { annotateScoring, calculateGlobalScore } from "./calculate-score";
 import { runAccessibilityCheck } from "./checks/accessibility";
+import { runDkimCheck } from "./checks/dkim";
 import { runDnsRecordsCheck } from "./checks/dns-records";
 import { runDnsSecurityCheck } from "./checks/dns-security";
+import { runDnssecCheck } from "./checks/dnssec";
 import { runHeadersCheck } from "./checks/headers";
 import { runHttpsCheck } from "./checks/https";
 import { runIpHostingCheck } from "./checks/ip-hosting";
@@ -33,6 +35,8 @@ const CHECKS: CheckRunner[] = [
   runRedirectsCheck,
   runDnsRecordsCheck,
   runDnsSecurityCheck,
+  runDkimCheck,
+  runDnssecCheck,
   runIpHostingCheck,
   runRobotsCheck,
   runSitemapCheck,
@@ -90,7 +94,7 @@ export async function runChecks(input: AnalysisInput): Promise<ChecksResponse> {
 
   const totalDurationMs = Math.round(performance.now() - start);
   const score = calculateGlobalScore(results);
-  const checks = annotateScoring(results, score.categories);
+  const checks = annotateScoring(results);
 
   return {
     url: input.url,

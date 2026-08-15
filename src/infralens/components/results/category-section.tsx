@@ -17,6 +17,13 @@ function countsFor(checks: CheckResult[]) {
   };
 }
 
+/** A category with no scoreable checks this report (either informational by design, like Infrastructure/WAF, or every normally-scoreable check was excluded for this specific report) has no earned/max fraction to show. */
+function formatCategoryScore(category: CategoryScore): string {
+  return category.maxScore > 0
+    ? `${category.score}/${category.maxScore}`
+    : "Info";
+}
+
 export function CategorySections({
   categories,
   checks,
@@ -53,7 +60,7 @@ export function CategorySections({
                     {CATEGORY_LABELS[category.category]}
                   </span>
                   <span className="text-sm text-muted-foreground">
-                    {category.score}/{category.maxScore}
+                    {formatCategoryScore(category)}
                   </span>
                 </div>
                 <div className="flex items-center gap-4">

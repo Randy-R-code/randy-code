@@ -1,33 +1,50 @@
-import { CheckCategory, CheckStatus } from "./types";
+import { CheckStatus } from "./types";
 
 /**
- * Weights kept as-is on review — the existing split already follows an
- * explicit, defensible principle:
- * categories closer to actual attack surface or delivery integrity are
- * weighted higher than ones that are mostly informational.
+ * Check-weight-first model: every genuinely scoreable check has an explicit
+ * weight; every informational-only check has weight 0. Sums to exactly 100
+ * across the nonzero entries — a category no longer owns a fixed budget of
+ * its own, its max is simply the sum of its own checks' weights (see
+ * `calculate-score.ts`).
  *
- * - `http-security` (25, highest) — headers, HTTPS/TLS, security.txt,
- *   redirects: directly affects whether traffic and users are protected.
- * - `network-dns` / `infrastructure` (20 each) — DNS hygiene (SPF/DMARC/
- *   DKIM), hosting, WAF/CDN presence: foundational, but usually one layer
- *   removed from a direct exploit path compared to `http-security`.
- * - `website-structure` (15) — robots/sitemap/links: correctness and
- *   crawlability, lower security relevance.
- * - `metadata-stack` / `performance` (10 each, lowest) — largely
- *   informational or UX-oriented signals (metadata completeness, detected
- *   stack, response time) with no direct security implication on their
- *   own.
- *
- * Sums to 100. Values weren't changed without a concrete, target-specific
- * reason to — see individual check reviews in Phases 6-9 for that.
+ * Weights come from a per-check audit (importance / reliability /
+ * actionability / applicability / independence / severity), not from the
+ * old category budgets — see the InfraLens scoring-redesign plan for the
+ * full per-check rationale. Notable decisions:
+ * - `waf`/`stack` are weight 0 — already always return `status: "info"` in
+ *   their own code, this just makes that formal in the scoring model too.
+ * - `ip-hosting` is weight 0 (reclassified) — ASN/hosting/geo info is
+ *   inventory, not a quality judgment, same reasoning as `waf`/`stack`.
+ * - HSTS is scored once, by `https` (transport security), not duplicated in
+ *   `headers` (which still surfaces it as evidence).
+ * - `dns-security` (SPF/DMARC only) was split out of what used to be one
+ *   check bundling SPF/DMARC/DKIM/DNSSEC into a single opaque status. DKIM
+ *   and DNSSEC are now their own checks (`dkim`, `dnssec`) since neither can
+ *   ever reach a confirmed pass/warning/fail the way SPF/DMARC can — the
+ *   original 12-point weight is split 8/2/2 rather than changing the
+ *   overall 100-point total.
  */
-export const CATEGORY_WEIGHTS: Record<CheckCategory, number> = {
-  "http-security": 25,
-  "network-dns": 20,
-  infrastructure: 20,
-  "website-structure": 15,
-  "metadata-stack": 10,
-  performance: 10,
+export const CHECK_WEIGHTS: Record<string, number> = {
+  https: 18,
+  headers: 16,
+  "dns-security": 8,
+  redirects: 7,
+  reachability: 7,
+  accessibility: 6,
+  performance: 6,
+  metadata: 5,
+  "security-txt": 4,
+  robots: 4,
+  sitemap: 4,
+  "server-headers": 4,
+  links: 3,
+  social: 2,
+  "dns-records": 2,
+  dkim: 2,
+  dnssec: 2,
+  "ip-hosting": 0,
+  waf: 0,
+  stack: 0,
 };
 
 export const STATUS_MULTIPLIER: Record<CheckStatus, number> = {
@@ -35,11 +52,13 @@ export const STATUS_MULTIPLIER: Record<CheckStatus, number> = {
   warning: 0.6,
   fail: 0,
   info: 0,
+  "not-applicable": 0,
+  inconclusive: 0,
   unavailable: 0,
   error: 0,
 } as const;
 
-/** `pass`/`warning`/`fail` are real assessments and always count toward the score; `info`/`unavailable`/`error` never do — a technical failure or a neutral note must not move the score. */
+/** `pass`/`warning`/`fail` are real assessments and always count toward the score (given a nonzero check weight); every other status never does — a technical failure, a neutral note, or a genuinely inconclusive/not-applicable result must not move the score. */
 export function isScoredStatus(status: CheckStatus): boolean {
   return status === "pass" || status === "warning" || status === "fail";
 }

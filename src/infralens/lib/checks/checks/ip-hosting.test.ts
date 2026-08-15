@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { PageSnapshot } from "../collect";
 
 const { getCache, setCache } = vi.hoisted(() => ({
   getCache: vi.fn(),
@@ -11,12 +12,30 @@ const { runIpHostingCheck } = await import("./ip-hosting");
 const fetchMock = vi.fn();
 vi.stubGlobal("fetch", fetchMock);
 
-function context(ip = "93.184.216.34") {
+// A minimal but real snapshot — just enough to signal "the page loaded
+// fine", which is all these tests need `shared.page` for.
+const reachablePage: PageSnapshot = {
+  finalUrl: "https://example.com/",
+  redirectChain: [{ url: "https://example.com/", status: 200 }],
+  redirectCount: 0,
+  hasRedirectLoop: false,
+  status: 200,
+  headers: new Headers() as PageSnapshot["headers"],
+  html: "",
+  responseTimeMs: 10,
+  contentLength: 0,
+  compression: "none",
+};
+
+function context(
+  ip = "93.184.216.34",
+  page: PageSnapshot | null = reachablePage,
+) {
   return {
     url: "https://example.com",
     hostname: "example.com",
     timeout: 1000,
-    shared: { page: null, dns: { a: ip ? [ip] : [], aaaa: [], durationMs: 0 } },
+    shared: { page, dns: { a: ip ? [ip] : [], aaaa: [], durationMs: 0 } },
   };
 }
 
@@ -31,10 +50,17 @@ beforeEach(() => {
 });
 
 describe("runIpHostingCheck", () => {
-  it("fails fast when no IP was resolved", async () => {
+  it("fails fast when the page is reachable but no IP was resolved", async () => {
     const result = await runIpHostingCheck(context(""));
 
     expect(result.status).toBe("fail");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("returns error instead of fail when no IP AND the page itself is unreachable (outage, not a hosting finding)", async () => {
+    const result = await runIpHostingCheck(context("", null));
+
+    expect(result.status).toBe("error");
     expect(fetchMock).not.toHaveBeenCalled();
   });
 

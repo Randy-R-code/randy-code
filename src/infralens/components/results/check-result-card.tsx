@@ -10,6 +10,7 @@ import {
 import { CheckResult } from "@infralens-lib/checks/types";
 import { cn } from "@infralens-lib/utils";
 import {
+  Ban,
   ChevronDown,
   CircleAlert,
   CircleCheckBig,
@@ -44,6 +45,18 @@ const statusConfig = {
     icon: Info,
     label: "Info",
     className: "text-blue-400 border-blue-400/20 bg-blue-400/10",
+  },
+  "not-applicable": {
+    icon: Ban,
+    label: "Not applicable",
+    className:
+      "text-muted-foreground border-muted-foreground/20 bg-muted-foreground/10",
+  },
+  inconclusive: {
+    icon: CircleHelp,
+    label: "Inconclusive",
+    className:
+      "text-muted-foreground border-muted-foreground/20 bg-muted-foreground/10",
   },
   unavailable: {
     icon: CircleSlash,

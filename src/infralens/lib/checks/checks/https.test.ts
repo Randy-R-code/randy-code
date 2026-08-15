@@ -94,16 +94,16 @@ describe("runHttpsCheck", () => {
     expect(result.data?.certificateIssuer).toBe("Test CA");
   });
 
-  it("recommends HSTS when missing, without failing the check", async () => {
+  it("warns (doesn't fail) and recommends HSTS when missing — scored here, not in headers.ts", async () => {
     const context = contextWith("https://example.com", snapshot());
 
     const result = await runHttpsCheck(context);
 
-    expect(result.status).toBe("pass");
+    expect(result.status).toBe("warning");
     expect(result.recommendation?.id).toBe("missing-hsts");
   });
 
-  it("recommends HSTS when the max-age is too short (weak, not just missing)", async () => {
+  it("warns and recommends HSTS when the max-age is too short (weak, not just missing)", async () => {
     const context = contextWith(
       "https://example.com",
       snapshot({
@@ -115,6 +115,7 @@ describe("runHttpsCheck", () => {
 
     const result = await runHttpsCheck(context);
 
+    expect(result.status).toBe("warning");
     expect(result.recommendation?.id).toBe("missing-hsts");
   });
 

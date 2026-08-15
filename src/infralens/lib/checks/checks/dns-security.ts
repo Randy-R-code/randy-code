@@ -1,17 +1,10 @@
 import { resolveTXT } from "@infralens-lib/dns/dns-client";
 import {
-  dkimNotFoundRecommendation,
   dmarcWeakPolicyRecommendation,
   dnsSecurityRecommendation,
   spfMultipleRecordsRecommendation,
 } from "@infralens-lib/recommendations/security";
 import { CheckRunner, EvidenceItem, Recommendation } from "../types";
-
-// Selector names are chosen by whoever configured the domain's mail and are
-// never published anywhere discoverable — these are just the handful of
-// common defaults used by major providers. Finding one confirms DKIM is in
-// use; not finding any of them proves nothing.
-const COMMON_DKIM_SELECTORS = ["default", "google", "selector1", "selector2"];
 
 function extractDmarcPolicy(record: string): string | undefined {
   const match = record.match(/(?:^|;)\s*p=([a-zA-Z]+)/i);
@@ -25,10 +18,6 @@ export const runDnsSecurityCheck: CheckRunner<{
   dmarc: boolean;
   dmarcRecord?: string;
   dmarcPolicy?: string;
-  dkimFoundAtCommonSelector: boolean;
-  dkimSelector?: string;
-  dkimRecord?: string;
-  dnssec: "not-evaluated";
 }> = async ({ hostname }) => {
   const start = performance.now();
 
@@ -58,38 +47,10 @@ export const runDnsSecurityCheck: CheckRunner<{
       ? extractDmarcPolicy(dmarcRecord)
       : undefined;
 
-    // DKIM: only a handful of common selectors can be guessed — see
-    // COMMON_DKIM_SELECTORS above. A miss here is reported as "not found at
-    // common selectors", never as "missing".
-    let dkimFoundAtCommonSelector = false;
-    let dkimSelector: string | undefined;
-    let dkimRecord: string | undefined;
-
-    for (const selector of COMMON_DKIM_SELECTORS) {
-      const dkimHost = `${selector}._domainkey.${hostname}`;
-      const dkimResult = await resolveTXT(dkimHost);
-      const dkimRecords = dkimResult.data || [];
-      const found = dkimRecords.find((record) =>
-        record.toLowerCase().includes("v=dkim1"),
-      );
-      if (found) {
-        dkimFoundAtCommonSelector = true;
-        dkimSelector = selector;
-        dkimRecord = found;
-        break;
-      }
-    }
-
-    // DNSSEC: Node's built-in `dns/promises` has no DS/DNSKEY/RRSIG
-    // resolution, so genuine validation isn't possible here without adding
-    // a DNSSEC-aware resolver dependency — explicitly documented as
-    // not-evaluated rather than silently omitted or implied absent (master
-    // plan §32 Phase 7: "documenter DNSSEC").
-    const dnssec = "not-evaluated" as const;
-
     // Only SPF/DMARC (fixed, well-known locations) drive status/missing —
-    // DKIM's absence-at-common-selectors is never treated as a confirmed
-    // finding.
+    // DKIM and DNSSEC are their own separate checks (`dkim.ts`/`dnssec.ts`),
+    // since neither can ever reach a confirmed pass/warning/fail here the
+    // way SPF/DMARC can.
     const missing: string[] = [];
     if (!spf) missing.push("SPF");
     if (!dmarc) missing.push("DMARC");
@@ -98,7 +59,15 @@ export const runDnsSecurityCheck: CheckRunner<{
     let summary = "";
     let recommendation: Recommendation | undefined;
 
-    if (missing.length === 0) {
+    if (missing.length === 0 && dmarcPolicy === "none") {
+      // Present but non-enforcing: p=none is monitor-only, so a spoofed
+      // message still delivers — that's a materially weaker state than a
+      // real pass, not just a footnote in the recommendation.
+      status = "warning";
+      summary =
+        "SPF and DMARC are present, but DMARC is in monitor-only mode (p=none) — it doesn't stop spoofed mail from being delivered.";
+      recommendation = dmarcWeakPolicyRecommendation(dmarcPolicy);
+    } else if (missing.length === 0) {
       status = "pass";
       summary = "SPF and DMARC records are present.";
     } else {
@@ -119,32 +88,13 @@ export const runDnsSecurityCheck: CheckRunner<{
       if (!recommendation) recommendation = spfMultipleRecordsRecommendation();
     }
 
-    const evidence: EvidenceItem[] = [
-      {
-        label: "DKIM",
-        value: dkimFoundAtCommonSelector
-          ? `found at selector "${dkimSelector}"`
-          : "not found at common selectors (inconclusive)",
-        source: "dns",
-      },
-      {
-        label: "DNSSEC",
-        value: "not evaluated — requires a DNSSEC-aware resolver",
-        source: "dns",
-      },
-    ];
+    const evidence: EvidenceItem[] = [];
     if (dmarcPolicy) {
       evidence.push({
         label: "DMARC policy",
         value: dmarcPolicy,
         source: "dns",
       });
-      if (dmarcPolicy === "none" && !recommendation) {
-        recommendation = dmarcWeakPolicyRecommendation(dmarcPolicy);
-      }
-    }
-    if (!dkimFoundAtCommonSelector && !recommendation) {
-      recommendation = dkimNotFoundRecommendation();
     }
 
     return {
@@ -161,16 +111,8 @@ export const runDnsSecurityCheck: CheckRunner<{
         dmarc,
         dmarcRecord,
         dmarcPolicy,
-        dkimFoundAtCommonSelector,
-        dkimSelector,
-        dkimRecord,
-        dnssec,
       },
-      evidence,
-      limitations: [
-        "DKIM is only checked at a handful of common selector names — a miss means it wasn't found there, not that it's confirmed absent.",
-        "DNSSEC is not evaluated at all — Node's built-in DNS resolver doesn't support DS/DNSKEY/RRSIG lookups.",
-      ],
+      evidence: evidence.length > 0 ? evidence : undefined,
       durationMs: Math.round(performance.now() - start),
     };
   } catch {

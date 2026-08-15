@@ -41,11 +41,14 @@ export const runIpHostingCheck: CheckRunner<{
     const ip = shared.dns.a[0];
 
     if (!ip) {
+      // If the page also never loaded, this is the same outage/
+      // nonexistent-domain root cause every other check already reports
+      // as `error` — not an independent, scoreable finding on its own.
       return {
         id: "ip-hosting",
         label: "IP & Hosting Information",
         category: "network-dns",
-        status: "fail",
+        status: shared.page ? "fail" : "error",
         summary: "Unable to resolve IP address.",
         durationMs: Math.round(performance.now() - start),
       };

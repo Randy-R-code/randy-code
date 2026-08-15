@@ -2,19 +2,31 @@ import type { CollectedContext } from "./collect";
 
 /**
  * `pass`/`warning`/`fail` are real assessments of the target's config and
- * always count toward the score. `info` is neutral, never penalized.
+ * always count toward the score (for a check with a nonzero weight — see
+ * `CHECK_WEIGHTS` in `scoring-config.ts`; a weight-0 check like `waf`/`stack`
+ * never counts regardless of status). The rest are all excluded from scoring
+ * — see `isScoredStatus` in `scoring-config.ts` — but mean different things:
+ * `info` is a neutral, non-judgmental finding (e.g. detected tech stack).
+ * `not-applicable` means the underlying condition genuinely doesn't apply to
+ * this target (e.g. a mail-auth check for a domain that provably never sends
+ * mail) — the check's weight is dropped from that report's denominator
+ * rather than counted as a failure.
+ * `inconclusive` means the check ran and got *an* answer, but the detection
+ * method can't reach a reliable conclusion by design (e.g. DKIM selector
+ * guessing, DNSSEC validation with no DNSSEC-aware resolver available) —
+ * also dropped from the denominator, distinct from a transient failure.
  * `unavailable` means the check ran but couldn't get a real answer for a
  * reason outside the target's control (e.g. a third-party API being down).
  * `error` means the check itself failed to execute (network/timeout) —
- * never used to represent a bad configuration. `info`,
- * `unavailable`, and `error` are all excluded from scoring — see
- * `isScoredStatus` in `scoring-config.ts`.
+ * never used to represent a bad configuration.
  */
 export type CheckStatus =
   | "pass"
   | "warning"
   | "fail"
   | "info"
+  | "not-applicable"
+  | "inconclusive"
   | "unavailable"
   | "error";
 
@@ -109,7 +121,7 @@ export type GlobalScore = {
   categories: CategoryScore[];
   /** How many of the results actually counted toward `score`. */
   scoredCount: number;
-  /** How many results were excluded — `info`/`unavailable`/`error` (never penalized). */
+  /** How many results were excluded — weight-0 checks, or any non-pass/warning/fail status (never penalized). */
   excludedCount: number;
   /** Category with the best score/maxScore ratio, if any category has one. */
   strongestCategory: CheckCategory | null;

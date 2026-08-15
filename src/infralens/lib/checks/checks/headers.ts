@@ -112,19 +112,26 @@ export const runHeadersCheck: CheckRunner<{
       ...analyzeReferrerPolicy(headers.get("referrer-policy")),
     },
     {
-      label: "Strict-Transport-Security",
-      ...analyzeHsts(headers.get("strict-transport-security")),
-    },
-    {
       label: "Permissions-Policy",
       present: headers.has("permissions-policy"),
       strong: headers.has("permissions-policy"),
     },
   ];
 
-  const present = findings.filter((f) => f.present).map((f) => f.label);
-  const missing = findings.filter((f) => !f.present).map((f) => f.label);
-  const weak = findings
+  // HSTS is scored by the HTTPS & TLS check instead — it's a
+  // transport-security signal, not just a header, and https.ts already
+  // needs the same value for its own assessment. Kept here as evidence/
+  // recommendation input only, so a weak or missing HSTS header isn't
+  // penalized in two checks at once.
+  const hstsFinding: HeaderFinding = {
+    label: "Strict-Transport-Security",
+    ...analyzeHsts(headers.get("strict-transport-security")),
+  };
+  const displayFindings = [...findings, hstsFinding];
+
+  const present = displayFindings.filter((f) => f.present).map((f) => f.label);
+  const missing = displayFindings.filter((f) => !f.present).map((f) => f.label);
+  const weak = displayFindings
     .filter((f) => f.present && !f.strong)
     .map((f) => f.label);
   const strongCount = findings.filter((f) => f.strong).length;
@@ -132,8 +139,10 @@ export const runHeadersCheck: CheckRunner<{
   let status: "pass" | "warning" | "fail";
   if (strongCount === findings.length) {
     status = "pass";
-  } else if (present.length === 0) {
-    // Nothing at all is a real configuration gap, not a partial one.
+  } else if (findings.filter((f) => f.present).length === 0) {
+    // Nothing at all among the *scored* headers is a real configuration
+    // gap, not a partial one — HSTS presence alone (scored separately by
+    // https.ts) shouldn't soften this down to a warning.
     status = "fail";
   } else {
     status = "warning";
@@ -155,7 +164,7 @@ export const runHeadersCheck: CheckRunner<{
     summary,
     data: { present, missing, weak },
     evidence: [
-      ...findings.map((f) => ({
+      ...displayFindings.map((f) => ({
         label: f.label,
         value: f.strong ? "strong" : f.present ? "weak" : "missing",
         source: "header" as const,

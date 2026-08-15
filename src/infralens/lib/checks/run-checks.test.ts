@@ -107,7 +107,7 @@ beforeEach(() => {
 });
 
 describe("runChecks — shared collection dedup", () => {
-  it("fetches the main page exactly once across all 18 checks", async () => {
+  it("fetches the main page exactly once across all 20 checks", async () => {
     await runChecks({ url: MAIN_URL, hostname: "example.com", timeout: 1000 });
 
     const mainPageCalls = safeFetch.mock.calls.filter(
@@ -116,19 +116,21 @@ describe("runChecks — shared collection dedup", () => {
     expect(mainPageCalls).toHaveLength(1);
   });
 
-  it("still produces a result for every one of the 18 checks", async () => {
+  it("still produces a result for every one of the 20 checks", async () => {
     const response = await runChecks({
       url: MAIN_URL,
       hostname: "example.com",
       timeout: 1000,
     });
 
-    expect(response.checks).toHaveLength(18);
+    expect(response.checks).toHaveLength(20);
     const validStatuses = [
       "pass",
       "warning",
       "fail",
       "info",
+      "not-applicable",
+      "inconclusive",
       "unavailable",
       "error",
     ];
@@ -149,7 +151,7 @@ describe("runChecks — shared collection dedup", () => {
       timeout: 1000,
     });
 
-    expect(response.checks).toHaveLength(18);
+    expect(response.checks).toHaveLength(20);
     const headersCheck = response.checks.find((c) => c.id === "headers");
     expect(headersCheck?.status).toBe("error");
     // DNS-only checks are unaffected by the page-fetch failure.
