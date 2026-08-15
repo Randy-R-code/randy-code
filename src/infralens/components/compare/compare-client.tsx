@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { InfraLensExport } from "@infralens-lib/checks/export";
 import { downloadTextFile } from "@infralens-lib/checks/export-markdown";
+import { formatCategoryScore } from "@infralens-lib/checks/format-category-score";
 import { isValidExport } from "@infralens-lib/checks/validate-export";
 import { CheckTransition, compareExports } from "@infralens-lib/compare/diff";
 import { buildComparisonMarkdown } from "@infralens-lib/compare/export-markdown";
@@ -330,7 +331,8 @@ export function CompareClient() {
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      {c.before}/{c.beforeMax} → {c.after}/{c.afterMax}
+                      {formatCategoryScore(c.before, c.beforeMax)} →{" "}
+                      {formatCategoryScore(c.after, c.afterMax)}
                     </p>
                   </div>
                 ))}

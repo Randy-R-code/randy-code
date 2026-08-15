@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { CHECK_CATEGORIES, CHECK_WEIGHTS } from "./scoring-config";
 
 const {
   safeFetch,
@@ -137,6 +138,19 @@ describe("runChecks — shared collection dedup", () => {
     expect(response.checks.every((c) => validStatuses.includes(c.status))).toBe(
       true,
     );
+  });
+
+  it("CHECK_CATEGORIES stays in sync with what each real check actually returns", async () => {
+    const response = await runChecks({
+      url: MAIN_URL,
+      hostname: "example.com",
+      timeout: 1000,
+    });
+
+    for (const check of response.checks) {
+      expect(CHECK_WEIGHTS).toHaveProperty(check.id);
+      expect(CHECK_CATEGORIES[check.id]).toBe(check.category);
+    }
   });
 
   it("lets a single check's failure produce a partial result without breaking the rest", async () => {

@@ -1,7 +1,7 @@
 # InfraLens — Developer Documentation
 
 InfraLens is Randy Code's open-source website inspection tool: give it a
-URL, it runs 18 passive, read-only checks server-side and returns a scored,
+URL, it runs 20 passive, read-only checks server-side and returns a scored,
 readable report — no exploitation, no brute force, no port scanning, no
 crawling beyond the page itself.
 
@@ -37,7 +37,7 @@ flowchart LR
         SA["Server Action\nrunInfraChecks()"]
         RL["Rate limiter\n(per-IP, in-memory)"]
         SSRF["Target validation\n(SSRF guard, DNS pinning)"]
-        Checks["18 checks\n(concurrency-limited pool)"]
+        Checks["20 checks\n(concurrency-limited pool)"]
         Score["Scoring + recommendations"]
     end
     Target(["Target website\nDNS / HTTP / TLS"])
@@ -101,7 +101,7 @@ src/infralens/
 │   │   ├── run-checks.ts             # Orchestration (concurrency pool, timeouts)
 │   │   ├── calculate-score.ts        # Scoring
 │   │   ├── export.ts / export-markdown.ts
-│   │   └── checks/                   # The 18 individual check modules
+│   │   └── checks/                   # The 20 individual check modules
 │   ├── dns/                          # Resolver + cache
 │   ├── security/                     # SSRF guard, target validation, TLS inspection
 │   ├── compare/                      # Report diffing + Markdown export
@@ -121,16 +121,29 @@ public/infralens/                     # Namespaced brand assets and fonts
 
 ## What InfraLens analyzes
 
-18 checks across 6 weighted categories:
+20 checks, each with its own point weight — not a fixed category budget.
+Weights sum to exactly 100 across every genuinely scoreable check;
+informational-only checks (WAF/CDN detection, stack fingerprinting,
+IP/ASN/hosting inventory) have weight 0 and never move the score. A
+category's total is simply the sum of its checks' weights, shown below for
+a report where every check runs normally (a check that's excluded for a
+specific report — inconclusive, unavailable, not applicable, or errored —
+drops out of that report's denominator instead, see `calculate-score.ts`):
 
-| Category            | Weight | Checks                                                                                                                             |
-| ------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| HTTP & Security     | 25     | Security headers (value-checked, not just presence), HTTPS/TLS enforcement + redirect downgrade detection, security.txt (RFC 9116) |
-| Network & DNS       | 20     | DNS records (A/AAAA/CNAME/MX/TXT/NS/CAA), DNS security (SPF/DMARC/DKIM/DNSSEC), IP/ASN/hosting (via ipapi.co)                      |
-| Infrastructure      | 20     | WAF/CDN header-fingerprint detection (always probabilistic, informational)                                                         |
-| Website Structure   | 15     | robots.txt, sitemap discovery, internal/external link reachability                                                                 |
-| Metadata & Stack    | 10     | HTML metadata, Open Graph/Twitter tags, stack detection (confidence-graded), server header leak detection, accessibility hints     |
-| Performance Signals | 10     | Response time/size/compression/Cache-Control, reachability snapshot                                                                |
+| Category            | Total | Checks (weight)                                                                                                                    |
+| ------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| HTTP & Security     | 45    | HTTPS/TLS incl. HSTS (18), HTTP security headers (16), redirect behavior (7), security.txt, RFC 9116 (4)                           |
+| Network & DNS       | 14    | DNS security, SPF/DMARC (8), DNS records (2), DKIM (2), DNSSEC (2), IP/ASN/hosting — informational (0)                             |
+| Infrastructure      | 0     | WAF/CDN header-fingerprint detection — always probabilistic, informational                                                         |
+| Website Structure   | 11    | robots.txt (4), sitemap discovery (4), internal/external link reachability (3)                                                     |
+| Metadata & Stack    | 17    | Accessibility hints (6), HTML metadata (5), server header leak detection (4), social tags (2), stack detection — informational (0) |
+| Performance Signals | 13    | Reachability snapshot (7), response time/size/compression/Cache-Control (6)                                                        |
+
+DKIM and DNSSEC are separate checks from DNS security (SPF/DMARC) because
+neither can ever reach a confirmed pass/warning/fail the way SPF/DMARC can:
+DKIM only confirms presence-if-found (a miss is `inconclusive`, not proof of
+absence), and DNSSEC is always `inconclusive` — Node's built-in resolver
+has no DS/DNSKEY/RRSIG support.
 
 Port scanning, traceroute, and any active/intrusive technique are
 intentionally excluded — see [Limitations](#limitations) and

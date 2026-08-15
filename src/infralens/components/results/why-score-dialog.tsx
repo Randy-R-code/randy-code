@@ -10,8 +10,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
-import { GlobalScore } from "@infralens-lib/checks/types";
+import { CATEGORY_MAX_WEIGHTS } from "@infralens-lib/checks/scoring-config";
+import { CheckCategory, GlobalScore } from "@infralens-lib/checks/types";
 import Link from "next/link";
+
+const CATEGORY_ORDER: CheckCategory[] = [
+  "http-security",
+  "network-dns",
+  "infrastructure",
+  "website-structure",
+  "metadata-stack",
+  "performance",
+];
 
 export function WhyScoreDialog({ score }: { score: GlobalScore }) {
   return (
@@ -34,34 +44,35 @@ export function WhyScoreDialog({ score }: { score: GlobalScore }) {
         </DialogHeader>
         <div className="space-y-4 text-sm text-foreground">
           <p>
-            The score is calculated based on a weighted set of infrastructure
-            checks: points earned ÷ points applicable to checks that actually
-            ran, per category, then summed.
-          </p>
-          <p>
-            Each check belongs to a category (Security, Performance, Headers,
-            Network…). Each category contributes differently to the final score.
+            Every check has its own point weight (not its category) — a
+            category&apos;s total is simply the sum of its checks&apos; weights,
+            so an all-informational category like Infrastructure has no fixed
+            budget of its own.
           </p>
           <div className="space-y-2">
-            <p className="font-semibold text-foreground">Category Weights:</p>
+            <p className="font-semibold text-foreground">
+              Category totals (when every check runs normally):
+            </p>
             <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-              <li>HTTP & Security: 25 points</li>
-              <li>Network & DNS: 20 points</li>
-              <li>Infrastructure: 20 points</li>
-              <li>Website Structure: 15 points</li>
-              <li>Metadata & Stack: 10 points</li>
-              <li>Performance: 10 points</li>
+              {CATEGORY_ORDER.map((category) => (
+                <li key={category}>
+                  {CATEGORY_LABELS[category]}: {CATEGORY_MAX_WEIGHTS[category]}{" "}
+                  point{CATEGORY_MAX_WEIGHTS[category] === 1 ? "" : "s"}
+                  {CATEGORY_MAX_WEIGHTS[category] === 0 && " (informational)"}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="space-y-2">
             <p className="font-semibold text-foreground">Status Points:</p>
             <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-              <li>Pass: 100% of category weight</li>
-              <li>Warning: 60% of category weight</li>
-              <li>Fail: 0% of category weight</li>
+              <li>Pass: 100% of the check&apos;s weight</li>
+              <li>Warning: 60% of the check&apos;s weight</li>
+              <li>Fail: 0% of the check&apos;s weight</li>
               <li>
-                Info / Unavailable / Error: excluded from the score entirely — a
-                neutral note or a check that couldn&apos;t run doesn&apos;t
+                Info / Not applicable / Inconclusive / Unavailable / Error:
+                excluded from the score entirely — a neutral note, a genuinely
+                uncertain result, or a check that couldn&apos;t run doesn&apos;t
                 count for or against the site
               </li>
             </ul>

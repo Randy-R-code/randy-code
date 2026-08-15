@@ -1,4 +1,5 @@
 import { CATEGORY_LABELS } from "./category-labels";
+import { formatCategoryScore } from "./format-category-score";
 import { ChecksResponse } from "./types";
 
 /** Client-side only, no server round-trip, no heavy dependency. */
@@ -20,7 +21,7 @@ export function buildMarkdownReport(results: ChecksResponse): string {
     if (checks.length === 0) continue;
 
     lines.push(
-      `## ${CATEGORY_LABELS[category.category] ?? category.category} — ${category.score}/${category.maxScore}`,
+      `## ${CATEGORY_LABELS[category.category] ?? category.category} — ${formatCategoryScore(category.score, category.maxScore)}`,
     );
     lines.push("");
 

@@ -1,4 +1,5 @@
 import { InfraLensExport } from "../checks/export";
+import { formatCategoryScore } from "../checks/format-category-score";
 import { CheckTransition, ComparisonResult } from "./diff";
 
 /** Client-side only, same pattern as the single-report Markdown export. */
@@ -28,7 +29,7 @@ export function buildComparisonMarkdown(
   lines.push("| --- | --- | --- | --- |");
   for (const c of result.categories) {
     lines.push(
-      `| ${c.label} | ${c.before}/${c.beforeMax} | ${c.after}/${c.afterMax} | ${c.delta >= 0 ? "+" : ""}${c.delta} |`,
+      `| ${c.label} | ${formatCategoryScore(c.before, c.beforeMax)} | ${formatCategoryScore(c.after, c.afterMax)} | ${c.delta >= 0 ? "+" : ""}${c.delta} |`,
     );
   }
   lines.push("");

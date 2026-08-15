@@ -7,7 +7,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LocalNav } from "@infralens-components/local-nav";
+import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
+import { CATEGORY_MAX_WEIGHTS } from "@infralens-lib/checks/scoring-config";
+import { CheckCategory } from "@infralens-lib/checks/types";
 import Link from "next/link";
+
+const CATEGORY_ORDER: CheckCategory[] = [
+  "http-security",
+  "network-dns",
+  "infrastructure",
+  "website-structure",
+  "metadata-stack",
+  "performance",
+];
 
 export const metadata = {
   title: "Documentation — InfraLens",
@@ -41,7 +53,7 @@ export default function DocsPage() {
             <CardHeader>
               <CardTitle className="text-2xl">Overview</CardTitle>
               <CardDescription className="text-muted-foreground">
-                InfraLens performs 18 independent checks across 6 categories to
+                InfraLens performs 20 independent checks across 6 categories to
                 analyze the technical exposure and configuration of a website.
                 Each check is modular, type-safe, and focuses on a specific
                 aspect of infrastructure, security, or configuration.
@@ -88,6 +100,31 @@ export default function DocsPage() {
                       Info
                     </Badge>
                     <span>Neutral note — doesn&apos;t affect the score</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      variant="outline"
+                      className="border-muted-foreground/40 text-muted-foreground"
+                    >
+                      Not applicable
+                    </Badge>
+                    <span>
+                      The check&apos;s condition genuinely doesn&apos;t apply to
+                      this target — doesn&apos;t affect the score
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      variant="outline"
+                      className="border-muted-foreground/40 text-muted-foreground"
+                    >
+                      Inconclusive
+                    </Badge>
+                    <span>
+                      Ran, but the detection method can&apos;t reach a reliable
+                      conclusion (e.g. DKIM/DNSSEC) — doesn&apos;t affect the
+                      score
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge
@@ -165,10 +202,11 @@ export default function DocsPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-2">
-                  DNS Security
+                  DNS Security (SPF/DMARC)
                 </h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  This check focuses on email and domain security signals:
+                  Checks the two email-authentication signals reliable enough to
+                  confirm pass/warning/fail on their own:
                 </p>
                 <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                   <li>
@@ -179,25 +217,35 @@ export default function DocsPage() {
                   <li>
                     <strong>DMARC:</strong> Domain-based Message Authentication
                     — its policy (none/quarantine/reject) is reported, with
-                    p=none flagged as weaker enforcement
-                  </li>
-                  <li>
-                    <strong>DKIM:</strong> DomainKeys Identified Mail signatures
-                    — checked only at a handful of commonly-used selector names,
-                    since the actual selector isn&apos;t published anywhere. Not
-                    finding one there is reported as inconclusive, never as
-                    &quot;DKIM is missing&quot;
-                  </li>
-                  <li>
-                    <strong>DNSSEC:</strong> not evaluated — Node&apos;s
-                    built-in DNS resolver doesn&apos;t support the DS/DNSKEY
-                    lookups DNSSEC validation requires, so this is reported as
-                    such rather than implied absent
+                    p=none flagged as monitor-only, not real enforcement
                   </li>
                 </ul>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Missing SPF/DMARC records may expose the domain to spoofing or
-                  delivery issues.
+                  Missing SPF/DMARC records, or a DMARC policy that only
+                  monitors instead of enforcing, may expose the domain to
+                  spoofing or delivery issues.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">DKIM</h3>
+                <p className="text-sm text-muted-foreground">
+                  DomainKeys Identified Mail signatures — checked only at a
+                  handful of commonly-used selector names, since the actual
+                  selector isn&apos;t published anywhere. Finding one is a real,
+                  confirmed pass; not finding one there is reported as
+                  inconclusive, never as &quot;DKIM is missing&quot; — a
+                  separate check from DNS Security above, since it can never
+                  reach a confirmed fail the way SPF/DMARC can.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">DNSSEC</h3>
+                <p className="text-sm text-muted-foreground">
+                  Always reported as inconclusive — Node&apos;s built-in DNS
+                  resolver doesn&apos;t support the DS/DNSKEY lookups DNSSEC
+                  validation requires, so this is reported as such rather than
+                  implied absent. A separate check, kept apart from DNS Security
+                  above for the same reason as DKIM.
                 </p>
               </div>
               <div>
@@ -210,7 +258,8 @@ export default function DocsPage() {
                   geographic location, and IPv6 availability. This provides a
                   high-level view of where and how the site is hosted. The API
                   key is optional—the service works without it but with rate
-                  limits.
+                  limits. Informational only — inventory, not a quality
+                  judgment, so it never affects the score.
                 </p>
               </div>
             </CardContent>
@@ -584,15 +633,26 @@ export default function DocsPage() {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-semibold text-foreground mb-2">
-                  Category Weights
+                  Check Weights
                 </h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Every check has its own point weight — not its category.
+                  Weights sum to exactly 100 across every genuinely scoreable
+                  check; informational-only checks (like WAF/CDN detection) have
+                  weight 0. A category&apos;s total is simply the sum of its
+                  checks&apos; weights, shown here for a report where every
+                  check runs normally:
+                </p>
                 <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                  <li>HTTP & Security: 25 points</li>
-                  <li>Network & DNS: 20 points</li>
-                  <li>Infrastructure: 20 points</li>
-                  <li>Website Structure: 15 points</li>
-                  <li>Metadata & Stack: 10 points</li>
-                  <li>Performance Signals: 10 points</li>
+                  {CATEGORY_ORDER.map((category) => (
+                    <li key={category}>
+                      {CATEGORY_LABELS[category]}:{" "}
+                      {CATEGORY_MAX_WEIGHTS[category]} point
+                      {CATEGORY_MAX_WEIGHTS[category] === 1 ? "" : "s"}
+                      {CATEGORY_MAX_WEIGHTS[category] === 0 &&
+                        " (informational)"}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
@@ -600,12 +660,13 @@ export default function DocsPage() {
                   Status Points
                 </h3>
                 <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                  <li>Pass: 100% of category weight</li>
-                  <li>Warning: 60% of category weight</li>
-                  <li>Fail: 0% of category weight</li>
+                  <li>Pass: 100% of the check&apos;s weight</li>
+                  <li>Warning: 60% of the check&apos;s weight</li>
+                  <li>Fail: 0% of the check&apos;s weight</li>
                   <li>
-                    Info / Unavailable / Error: excluded from the score entirely
-                    — never counted for or against the site
+                    Info / Not applicable / Inconclusive / Unavailable / Error:
+                    excluded from the score entirely — never counted for or
+                    against the site
                   </li>
                 </ul>
               </div>

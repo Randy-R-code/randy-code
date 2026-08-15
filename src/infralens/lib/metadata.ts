@@ -1,13 +1,11 @@
-import { env } from "@infralens-config/env";
 import type { Metadata } from "next";
 
-// Get the base URL from environment variable or use localhost for development
-const baseUrl =
-  env.siteUrl ||
-  (env.vercelUrl ? `https://${env.vercelUrl}` : "http://localhost:3000");
-
+// No metadataBase here — InfraLens is natively part of randy-code now, not a
+// standalone deployment, so it inherits the root layout's real
+// `https://randy-code.dev` metadataBase (app/layout.tsx) instead of
+// resolving OG/Twitter image URLs against whatever Vercel deployment
+// preview happened to build the page.
 export const siteMetadata: Metadata = {
-  metadataBase: new URL(baseUrl),
   title: "InfraLens — Website inspection tool",
   description:
     "Inspect, analyze and understand any website infrastructure. Built for developers.",

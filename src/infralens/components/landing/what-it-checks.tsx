@@ -5,44 +5,51 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CHECK_CATEGORIES } from "@infralens-lib/checks/scoring-config";
+import { CheckCategory } from "@infralens-lib/checks/types";
 import { Code, FileText, Globe, Network, Shield, Zap } from "lucide-react";
+
+/** Counted from CHECK_CATEGORIES instead of hardcoded, so this can't quietly go stale the way it did once already (still said 18 total after DKIM/DNSSEC split into their own checks). */
+function countInCategory(category: CheckCategory): number {
+  return Object.values(CHECK_CATEGORIES).filter((c) => c === category).length;
+}
 
 const categories = [
   {
     icon: Shield,
     title: "HTTP & Security",
     description: "Security headers, HTTPS, redirects, security.txt",
-    count: 4,
+    count: countInCategory("http-security"),
   },
   {
     icon: Globe,
     title: "Network & DNS",
-    description: "DNS records, security, IP & hosting",
-    count: 3,
+    description: "DNS records, security, DKIM, DNSSEC, IP & hosting",
+    count: countInCategory("network-dns"),
   },
   {
     icon: Network,
     title: "Infrastructure",
     description: "WAF & CDN detection",
-    count: 1,
+    count: countInCategory("infrastructure"),
   },
   {
     icon: FileText,
     title: "Website Structure",
     description: "robots.txt, sitemap, links",
-    count: 3,
+    count: countInCategory("website-structure"),
   },
   {
     icon: Code,
     title: "Metadata & Stack",
     description: "HTML metadata, social tags, tech stack, accessibility",
-    count: 5,
+    count: countInCategory("metadata-stack"),
   },
   {
     icon: Zap,
     title: "Performance",
     description: "Response metrics, reachability",
-    count: 2,
+    count: countInCategory("performance"),
   },
 ];
 

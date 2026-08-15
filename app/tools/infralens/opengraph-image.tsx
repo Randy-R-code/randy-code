@@ -1,4 +1,6 @@
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
+import { formatCategoryScore } from "@infralens-lib/checks/format-category-score";
+import { GlobalScore } from "@infralens-lib/checks/types";
 import {
   MOCK_CHECKS,
   MOCK_HOSTNAME,
@@ -18,10 +20,19 @@ export const contentType = "image/png";
 // never sees a different-looking "example" once they click through.
 // next/og (satori) can't render the real React components or read CSS
 // custom properties, so the two mini check rows below are picked by id
-// from MOCK_CHECKS and MOCK_GRADE_COLOR is a plain hex tied to grade "B"
-// (matches ScoreBadge's grade-color mapping) rather than computed.
-const MOCK_GRADE_COLOR = "#a3e635"; // lime-400 — update if MOCK_SCORE.grade ever changes
-const OG_CHECK_IDS = ["https-tls", "security-headers"] as const;
+// from MOCK_CHECKS, and grade colors are duplicated as raw hex here
+// (matching ScoreBadge's Tailwind classes) — but indexed by the real
+// derived MOCK_SCORE.grade, so this can't silently go stale the way a
+// single hardcoded hex tied to one assumed letter could.
+const GRADE_COLOR: Record<GlobalScore["grade"], string> = {
+  A: "#34d399", // emerald-400
+  B: "#a3e635", // lime-400
+  C: "#facc15", // yellow-400
+  D: "#fb923c", // orange-400
+  E: "#f87171", // red-400
+};
+const gradeColor = GRADE_COLOR[MOCK_SCORE.grade];
+const OG_CHECK_IDS = ["https", "headers"] as const;
 const ogChecks = OG_CHECK_IDS.map(
   (id) => MOCK_CHECKS.find((check) => check.id === id)!,
 );
@@ -262,8 +273,8 @@ export default async function OgImage() {
           {/* Score badge — mirrors ScoreBadge's grade-color mapping */}
           <div
             style={{
-              background: `${MOCK_GRADE_COLOR}1a`,
-              border: `1px solid ${MOCK_GRADE_COLOR}40`,
+              background: `${gradeColor}1a`,
+              border: `1px solid ${gradeColor}40`,
               borderRadius: 6,
               padding: "3px 12px",
               display: "flex",
@@ -275,14 +286,12 @@ export default async function OgImage() {
               style={{
                 fontSize: 20,
                 fontWeight: 700,
-                color: MOCK_GRADE_COLOR,
+                color: gradeColor,
               }}
             >
               {MOCK_SCORE.grade}
             </span>
-            <span
-              style={{ fontSize: 12, color: MOCK_GRADE_COLOR, opacity: 0.75 }}
-            >
+            <span style={{ fontSize: 12, color: gradeColor, opacity: 0.75 }}>
               {MOCK_SCORE.score} / 100
             </span>
           </div>
@@ -312,7 +321,7 @@ export default async function OgImage() {
                 {CATEGORY_LABELS[c.category]}
               </span>
               <span style={{ fontSize: 15, color: "#52525b", fontWeight: 600 }}>
-                {c.score}/{c.maxScore}
+                {formatCategoryScore(c.score, c.maxScore)}
               </span>
             </div>
           ))}

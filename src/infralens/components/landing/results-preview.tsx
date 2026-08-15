@@ -13,7 +13,7 @@ import {
 // Which of the shared MOCK_CHECKS to show as example cards below the
 // summary — a mix of pass/warning/fail, same as PrioritySummary reads from
 // the same array above it.
-const EXAMPLE_CHECK_IDS = ["https-tls", "security-headers", "robots-txt"];
+const EXAMPLE_CHECK_IDS = ["https", "headers", "robots"];
 
 export function ResultsPreview() {
   const exampleChecks = MOCK_CHECKS.filter((check) =>

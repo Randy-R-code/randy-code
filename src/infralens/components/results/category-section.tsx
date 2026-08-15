@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import { groupChecksByCategory } from "@infralens-lib/checks/category-sections";
+import { formatCategoryScore } from "@infralens-lib/checks/format-category-score";
 import { CategoryScore, CheckResult } from "@infralens-lib/checks/types";
 import { CheckResultCard } from "./check-result-card";
 
@@ -15,13 +16,6 @@ function countsFor(checks: CheckResult[]) {
     warning: checks.filter((c) => c.status === "warning").length,
     fail: checks.filter((c) => c.status === "fail").length,
   };
-}
-
-/** A category with no scoreable checks this report (either informational by design, like Infrastructure/WAF, or every normally-scoreable check was excluded for this specific report) has no earned/max fraction to show. */
-function formatCategoryScore(category: CategoryScore): string {
-  return category.maxScore > 0
-    ? `${category.score}/${category.maxScore}`
-    : "Info";
 }
 
 export function CategorySections({
@@ -60,7 +54,7 @@ export function CategorySections({
                     {CATEGORY_LABELS[category.category]}
                   </span>
                   <span className="text-sm text-muted-foreground">
-                    {formatCategoryScore(category)}
+                    {formatCategoryScore(category.score, category.maxScore)}
                   </span>
                 </div>
                 <div className="flex items-center gap-4">

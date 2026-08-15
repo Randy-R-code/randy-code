@@ -2,27 +2,12 @@
 
 export type Env = {
   ipapiKey?: string;
-  siteUrl?: string;
-  vercelUrl?: string;
 };
 
 export function parseEnv(raw: Record<string, string | undefined>): Env {
   const ipapiKey = raw.IPAPI_KEY?.trim() || undefined;
 
-  const siteUrl = raw.NEXT_PUBLIC_SITE_URL?.trim() || undefined;
-  if (siteUrl) {
-    try {
-      new URL(siteUrl);
-    } catch {
-      throw new Error(
-        `Invalid environment configuration: NEXT_PUBLIC_SITE_URL is not a valid URL ("${siteUrl}").`,
-      );
-    }
-  }
-
-  const vercelUrl = raw.VERCEL_URL?.trim() || undefined;
-
-  return { ipapiKey, siteUrl, vercelUrl };
+  return { ipapiKey };
 }
 
 export const env = parseEnv(process.env);
