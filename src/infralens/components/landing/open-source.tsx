@@ -45,7 +45,7 @@ export function OpenSource() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 min-[26.25rem]:gap-4 md:gap-6">
           {POINTS.map((point) => {
             const Icon = point.icon;
             return (

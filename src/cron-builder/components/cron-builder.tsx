@@ -97,8 +97,8 @@ export function CronBuilder() {
 
   return (
     <div>
-      <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        <div className="flex flex-col gap-6">
+      <div className="grid gap-4 lg:grid-cols-[1fr_320px] lg:gap-6">
+        <div className="flex flex-col gap-4 lg:gap-6">
           <CronExpressionCard
             rawExpression={rawExpression}
             onRawChange={applyExpression}
