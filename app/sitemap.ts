@@ -91,10 +91,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const cronBuilderRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/tools/cron-builder`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+
   return [
     ...staticRoutes,
     ...articleRoutes,
     ...projectRoutes,
     ...infralensRoutes,
+    ...cronBuilderRoutes,
   ];
 }

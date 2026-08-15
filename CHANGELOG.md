@@ -9,6 +9,30 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.2.0] — 2026-08-15
+
+### Added
+
+- **Cron Builder** (`/tools/cron-builder`) — a new developer tool for
+  building, validating, and understanding standard Unix 5-field cron
+  expressions. A visual per-field editor (Every/Specific/Range/Interval
+  modes) stays in sync with a raw expression input, backed by a
+  deterministic human-readable description, the next 5 execution times
+  previewed in the browser's detected timezone, and 8 common presets.
+  Parsing, validation, and next-run calculation are hand-rolled rather
+  than pulled from a cron library — every version of `cron-parser`
+  mandates `luxon` as a dependency, and hand-rolling keeps the tool's
+  supported syntax (wildcards, lists, ranges, steps — no seconds/year/
+  Quartz extensions) strictly under our own control instead of a
+  general-purpose parser's.
+
+### Changed
+
+- `/tools` now renders its cards from a small typed registry
+  (`src/lib/tools.ts`) instead of one hard-coded card, so the next
+  lightweight tool (JSON Studio, MetaLens) is a registry entry, not
+  copy-pasted markup.
+
 ## [1.1.0] — 2026-08-15
 
 ### Added

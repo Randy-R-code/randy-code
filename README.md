@@ -63,6 +63,7 @@ app/
   projects/                   # Project case studies (listing + [slug])
   tools/                      # Developer tools
     infralens/                # InfraLens — native routes (analyze, compare, docs, privacy)
+    cron-builder/             # Cron Builder — visual cron expression editor
   rss.xml/                    # RSS feed
   sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx
 
@@ -71,6 +72,7 @@ src/
   components/                 # Shared UI (map, layout, shadcn/ui primitives)
   lib/                        # Content registries, brand tokens, navigation, JSON-LD
   infralens/                  # InfraLens engine — checks, security/SSRF, DNS, scoring, history
+  cron-builder/               # Cron Builder engine — parsing, validation, next-run calculation
 
 docs/
   infralens/                  # InfraLens developer docs, changelog, security policy, MIT license
