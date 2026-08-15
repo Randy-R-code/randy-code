@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.3.0] — 2026-08-15
+
+### Added
+
+- **JSON Studio** (`/tools/json-studio`) — a new developer tool for
+  formatting, validating, minifying, and exploring JSON directly in
+  the browser. A large editor stays in sync with a live-computed
+  validity status, a compact stats line (root type, key count, depth,
+  byte size), and a collapsible tree viewer with Expand/Collapse all.
+  Also supports loading a local `.json` file (drag-and-drop or file
+  picker), downloading the formatted result, a bundled example, and
+  content persisted to `localStorage` across visits. Parsing,
+  formatting, and statistics are built entirely on native `JSON.parse`/
+  `JSON.stringify` — no editor or JSON dependency was added. Everything
+  runs client-side; JSON content never leaves the browser.
+
 ## [1.2.1] — 2026-08-15
 
 ### Fixed

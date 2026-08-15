@@ -27,4 +27,12 @@ export const tools: ToolEntry[] = [
       "Construisez, validez et comprenez des expressions cron grâce à un éditeur visuel et un aperçu des prochaines exécutions.",
     href: "/tools/cron-builder",
   },
+  {
+    slug: "json-studio",
+    name: "JSON Studio",
+    status: "Disponible",
+    description:
+      "Formatez, validez et explorez du JSON instantanément grâce à un éditeur, une vue arborescente et des statistiques utiles.",
+    href: "/tools/json-studio",
+  },
 ];

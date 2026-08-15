@@ -64,6 +64,7 @@ app/
   tools/                      # Developer tools
     infralens/                # InfraLens — native routes (analyze, compare, docs, privacy)
     cron-builder/             # Cron Builder — visual cron expression editor
+    json-studio/              # JSON Studio — format, validate and explore JSON
   rss.xml/                    # RSS feed
   sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx
 
@@ -73,6 +74,7 @@ src/
   lib/                        # Content registries, brand tokens, navigation, JSON-LD
   infralens/                  # InfraLens engine — checks, security/SSRF, DNS, scoring, history
   cron-builder/               # Cron Builder engine — parsing, validation, next-run calculation
+  json-studio/                # JSON Studio engine — parsing, formatting, stats, storage
 
 docs/
   infralens/                  # InfraLens developer docs, changelog, security policy, MIT license

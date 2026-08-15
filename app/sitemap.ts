@@ -100,11 +100,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const jsonStudioRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/tools/json-studio`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+
   return [
     ...staticRoutes,
     ...articleRoutes,
     ...projectRoutes,
     ...infralensRoutes,
     ...cronBuilderRoutes,
+    ...jsonStudioRoutes,
   ];
 }
