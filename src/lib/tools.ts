@@ -35,4 +35,12 @@ export const tools: ToolEntry[] = [
       "Formatez, validez et explorez du JSON instantanément grâce à un éditeur, une vue arborescente et des statistiques utiles.",
     href: "/tools/json-studio",
   },
+  {
+    slug: "metalens",
+    name: "MetaLens",
+    status: "Disponible",
+    description:
+      "Inspectez rapidement les métadonnées SEO et sociales d'une page web : titre, Open Graph, Twitter Cards, canonical et robots.",
+    href: "/tools/metalens",
+  },
 ];

@@ -109,6 +109,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const metalensRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/tools/metalens`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+
   return [
     ...staticRoutes,
     ...articleRoutes,
@@ -116,5 +125,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...infralensRoutes,
     ...cronBuilderRoutes,
     ...jsonStudioRoutes,
+    ...metalensRoutes,
   ];
 }

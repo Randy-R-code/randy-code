@@ -9,6 +9,26 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.4.0] — 2026-08-15
+
+### Added
+
+- **MetaLens** (`/tools/metalens`) — a new developer tool for inspecting a
+  public page's metadata: title, meta description, canonical, robots
+  directives, viewport, document language, hreflang, Open Graph, Twitter/X
+  cards, favicons/manifest, plus indicative search and social previews and
+  targeted findings (missing/duplicate tags, `noindex`, length guidance,
+  URL inconsistencies — no global SEO score). Metadata is fetched
+  server-side through InfraLens's existing SSRF-hardened stack (DNS
+  resolution + IP-range blocking, redirect revalidation on every hop,
+  response size and timeout limits, no cookies/auth forwarding) reused
+  as-is rather than duplicated, with its own rate-limit bucket and
+  User-Agent. HTML is parsed once with `node-html-parser` — the only new
+  dependency — and metadata URLs only become clickable links after a
+  safe-scheme check (`http`/`https` only). Nothing is stored: no account,
+  no scan history, no crawling beyond the requested page and its
+  redirects.
+
 ## [1.3.0] — 2026-08-15
 
 ### Added
