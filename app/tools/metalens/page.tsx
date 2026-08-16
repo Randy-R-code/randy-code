@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 export default function MetaLensPage() {
   return (
     <ToolPageShell>
-      <main className="flex min-h-screen flex-col bg-background px-6 pb-16 text-foreground">
+      <main className="flex min-h-screen flex-col overflow-x-hidden bg-background px-6 pb-16 text-foreground">
         <div className="mx-auto w-full max-w-5xl">
           <ToolHeader
             icon={ScanSearch}

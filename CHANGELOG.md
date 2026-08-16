@@ -9,6 +9,35 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.4.4] — 2026-08-16
+
+### Fixed
+
+- **MetaLens mobile overflow** — long, unbreakable text (a raw malformed
+  canonical URL surfaced in a finding, plus default grid-item sizing on the
+  Search and Social preview cards) could force the whole page to scroll
+  horizontally on mobile instead of staying contained within the result
+  cards.
+- **Social preview images blocked by CSP** — `img-src` only allowed
+  `'self'` and `data:`, so no analyzed page's Open Graph image could ever
+  load; widened to `https:`, consistent with the http(s)-only gate already
+  enforced before an image URL is rendered.
+- **Service worker blocked cross-origin fetches** — `public/sw.js`
+  intercepted every GET request regardless of origin and re-issued it via
+  `fetch()`, which is subject to `connect-src 'self'`; now scoped to
+  same-origin requests only, so cross-origin resources bypass the service
+  worker and follow normal browser/CSP rules.
+- **Footer logo** — the R symbol's bounding-box center sat measurably
+  (~32px on the 1000px source) right of the "RANDY CODE" wordmark's, an
+  artifact of the letter's diagonal leg; recentered so both align on the
+  same axis.
+
+### Changed
+
+- **"Fullstack" capitalization unified to lowercase** across metadata,
+  Open Graph images and structured data, matching the About page and
+  footer.
+
 ## [1.4.3] — 2026-08-16
 
 ### Fixed

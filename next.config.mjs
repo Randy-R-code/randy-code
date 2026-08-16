@@ -79,7 +79,10 @@ const nextConfig = {
             // would drop CDN caching/SSG sitewide) or the experimental SRI
             // feature, which doesn't cover React/Next's own inline
             // hydration scripts. Not worth the tradeoff here.
-            value: `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`,
+            // img-src allows https: on top of 'self' — MetaLens renders
+            // social-preview images from arbitrary analyzed pages, already
+            // gated to http(s) by isSafeExternalUrl() before reaching <img>.
+            value: `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`,
           },
         ],
       },

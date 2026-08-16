@@ -13,7 +13,7 @@ export function FindingsList({ findings }: { findings: MetadataFinding[] }) {
           <FindingBadge severity={finding.severity} />
           <div className="min-w-0">
             <p className="text-sm text-white">{finding.title}</p>
-            <p className="mt-0.5 text-xs text-zinc-400">
+            <p className="mt-0.5 wrap-break-word text-xs text-zinc-400">
               {finding.description}
             </p>
           </div>

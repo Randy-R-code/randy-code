@@ -3,7 +3,7 @@ import type { SearchPreviewData } from "@/metalens/lib/types";
 
 export function SearchPreview({ data }: { data: SearchPreviewData }) {
   return (
-    <div className="rounded-xl border border-border bg-card/50 p-5">
+    <div className="min-w-0 rounded-xl border border-border bg-card/50 p-5">
       <h2 className="mb-3 text-xs font-medium uppercase tracking-wide text-zinc-400">
         Search preview
       </h2>

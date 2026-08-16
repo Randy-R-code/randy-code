@@ -104,7 +104,7 @@ const domains = [
       "Le développement web est venu compléter ce parcours de façon naturelle. Construire des outils utiles, comprendre les besoins réels, livrer quelque chose de fiable — c'est exactement ce que j'ai cherché à faire dans chaque poste avant ça.",
     points: [
       "Formation autodidacte structurée depuis 2025",
-      "Applications full-stack TypeScript / Next.js",
+      "Applications fullstack TypeScript / Next.js",
       "Projets SaaS de A à Z en autonomie complète",
       "Veille technique et amélioration continue",
     ],

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Randy Code — Développeur Fullstack TypeScript";
+export const alt = "Randy Code — Développeur fullstack TypeScript";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -142,7 +142,7 @@ export default async function Image() {
             marginBottom: 16,
           }}
         >
-          Développeur Fullstack TypeScript
+          Développeur fullstack TypeScript
         </div>
 
         {/* Tagline */}

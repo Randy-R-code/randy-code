@@ -6,7 +6,7 @@ export function buildPersonSchema() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Randy Rimbault",
-    jobTitle: "Développeur Fullstack TypeScript",
+    jobTitle: "Développeur fullstack TypeScript",
     url: "https://randy-code.dev",
     description:
       "Développeur fullstack TypeScript. Sites vitrines, applications SaaS, SEO local.",

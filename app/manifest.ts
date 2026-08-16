@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Randy Code — Développeur Fullstack TypeScript",
+    name: "Randy Code — Développeur fullstack TypeScript",
     short_name: "Randy Code",
     description:
       "Portfolio interactif de Randy Rimbault, développeur fullstack TypeScript.",

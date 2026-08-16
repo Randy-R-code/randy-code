@@ -65,7 +65,7 @@ const preview = (
           marginTop: 4,
         }}
       >
-        Randy Rimbault — Développeur Fullstack TypeScript
+        Randy Rimbault — Développeur fullstack TypeScript
       </span>
       <span
         style={{
