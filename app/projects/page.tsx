@@ -43,7 +43,7 @@ export default function ProjectsPage() {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap content-start gap-1.5 lg:min-h-11">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
               <div>
                 <span
                   className="text-[10px] font-semibold uppercase tracking-wider"
-                  style={{ color: brand.colors.green[500] }}
+                  style={{ color: brand.colors.blue[400] }}
                 >
                   Résultat
                 </span>

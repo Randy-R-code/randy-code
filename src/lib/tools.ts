@@ -1,3 +1,5 @@
+import { Braces, Clock, type LucideIcon, ScanSearch } from "lucide-react";
+
 export interface ToolEntry {
   slug: string;
   name: string;
@@ -6,6 +8,7 @@ export interface ToolEntry {
   href: string;
   caseStudyHref?: string;
   logo?: { src: string; alt: string };
+  icon?: LucideIcon;
 }
 
 export const tools: ToolEntry[] = [
@@ -26,6 +29,7 @@ export const tools: ToolEntry[] = [
     description:
       "Construisez, validez et comprenez des expressions cron grâce à un éditeur visuel et un aperçu des prochaines exécutions.",
     href: "/tools/cron-builder",
+    icon: Clock,
   },
   {
     slug: "json-studio",
@@ -34,6 +38,7 @@ export const tools: ToolEntry[] = [
     description:
       "Formatez, validez et explorez du JSON instantanément grâce à un éditeur, une vue arborescente et des statistiques utiles.",
     href: "/tools/json-studio",
+    icon: Braces,
   },
   {
     slug: "metalens",
@@ -42,5 +47,6 @@ export const tools: ToolEntry[] = [
     description:
       "Inspectez rapidement les métadonnées SEO et sociales d'une page web : titre, Open Graph, Twitter Cards, canonical et robots.",
     href: "/tools/metalens",
+    icon: ScanSearch,
   },
 ];

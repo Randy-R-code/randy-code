@@ -32,7 +32,7 @@ export default function ToolsPage() {
             }}
           >
             <div
-              className={`mb-4 flex items-center ${tool.logo ? "justify-between" : "justify-end"}`}
+              className={`mb-4 flex items-center ${tool.logo || tool.icon ? "justify-between" : "justify-end"}`}
             >
               {tool.logo && (
                 <div className="flex items-center gap-2">
@@ -42,6 +42,15 @@ export default function ToolsPage() {
                     width={24}
                     height={24}
                     className="h-6 w-6"
+                  />
+                  <span className="sr-only">{tool.name}</span>
+                </div>
+              )}
+              {tool.icon && (
+                <div className="flex items-center gap-2">
+                  <tool.icon
+                    className="h-5 w-5"
+                    style={{ color: brand.colors.green[500] }}
                   />
                   <span className="sr-only">{tool.name}</span>
                 </div>

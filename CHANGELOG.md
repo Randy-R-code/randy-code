@@ -9,6 +9,21 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.4.3] — 2026-08-16
+
+### Fixed
+
+- **Tool card icons** — Cron Builder, JSON Studio and MetaLens now show
+  their existing Lucide icon in the same slot, size and alignment
+  InfraLens's logo occupies, instead of no visual identifier at all.
+- **`Résultat` label on the Projects page** recolored to the same blue
+  accent used by the page's other structural labels, replacing an
+  inconsistent green.
+- **Project card title alignment on desktop** — a variable number of tech
+  tags per project pushed each card's title down by a different amount at
+  the 3-column breakpoint. The tag row now reserves consistent height so
+  titles line up across a row.
+
 ## [1.4.2] — 2026-08-16
 
 ### Added
