@@ -1,20 +1,23 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import type { ReactNode } from "react";
 
 const SIZE = { width: 1200, height: 630 };
 
 /** A single Lucide `__iconNode` entry, stripped of its internal `key` field — see the note in each tool's opengraph-image.tsx. */
-type IconNode = readonly ["circle" | "path", Record<string, string>];
+export type IconNode = readonly ["circle" | "path", Record<string, string>];
 
 /**
  * Renders a Lucide icon from its raw node data rather than the React
  * component — satori (next/og's renderer) works from plain SVG elements,
  * and Lucide's exported components are simple enough that their node data
  * translates directly, giving the exact same icon shown in the tool's own
- * `ToolHeader` instead of a separately drawn approximation.
+ * `ToolHeader` instead of a separately drawn approximation. Exported so a
+ * tool's own preview fragment (see `preview` below) can draw small in-panel
+ * icons (e.g. a validity checkmark) with the same technique.
  */
-function Icon({
+export function Icon({
   nodes,
   color,
   size,
@@ -59,11 +62,18 @@ export async function renderToolOgImage({
   tagline,
   color,
   iconNodes,
+  preview,
 }: {
   title: string;
   tagline: string;
   color: string;
   iconNodes: readonly IconNode[];
+  /** Tool-specific mini preview fragment (e.g. a compact cron/JSON/metadata
+   * mockup) — the shared renderer owns the surrounding panel (border,
+   * radius, background); the route only supplies the inner content. Tools
+   * without a preview yet keep the original full-width single-column
+   * layout. */
+  preview?: ReactNode;
 }) {
   const [fontBold, fontRegular] = await Promise.all([
     readFile(join(process.cwd(), "assets/Inter-Bold.woff")),
@@ -122,80 +132,125 @@ export async function renderToolOgImage({
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 48,
           width: "100%",
           height: "100%",
           padding: "64px 88px",
         }}
       >
-        {/* Icon + eyebrow */}
+        {/* Left content */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 18,
-            marginBottom: 32,
+            flexDirection: "column",
+            justifyContent: "center",
+            flex: 1,
+            minWidth: 0,
           }}
         >
+          {/* Icon + eyebrow */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: 76,
-              height: 76,
-              borderRadius: 18,
-              background: `${color}1a`,
-              border: `1px solid ${color}40`,
+              gap: 18,
+              marginBottom: 32,
             }}
           >
-            <Icon nodes={iconNodes} color={color} size={38} />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 76,
+                height: 76,
+                borderRadius: 18,
+                background: `${color}1a`,
+                border: `1px solid ${color}40`,
+              }}
+            >
+              <Icon nodes={iconNodes} color={color} size={38} />
+            </div>
+            <span
+              style={{
+                display: "flex",
+                fontSize: 16,
+                fontFamily: "Inter",
+                fontWeight: 700,
+                color,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+              }}
+            >
+              Developer Tool
+            </span>
           </div>
-          <span
+
+          {/* Title */}
+          <div
             style={{
               display: "flex",
-              fontSize: 16,
+              fontSize: preview ? 64 : 76,
               fontFamily: "Inter",
               fontWeight: 700,
-              color,
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
+              color: "#F4F8FC",
+              letterSpacing: "-0.02em",
+              marginBottom: 22,
             }}
           >
-            Developer Tool
-          </span>
+            {title}
+          </div>
+
+          {/* Tagline */}
+          <div
+            style={{
+              display: "flex",
+              fontSize: preview ? 22 : 26,
+              fontFamily: "Inter",
+              fontWeight: 400,
+              color: "#A9B8C7",
+              lineHeight: 1.45,
+              // satori chokes on a style value that's explicitly `undefined`
+              // (as opposed to the key being absent) — always give it a real
+              // number. The left column is already width-constrained by the
+              // preview panel's fixed width when one is present, so 560 is
+              // just a safety cap there, not the binding constraint.
+              maxWidth: preview ? 560 : 800,
+            }}
+          >
+            {tagline}
+          </div>
         </div>
 
-        {/* Title */}
-        <div
-          style={{
-            display: "flex",
-            fontSize: 76,
-            fontFamily: "Inter",
-            fontWeight: 700,
-            color: "#F4F8FC",
-            letterSpacing: "-0.02em",
-            marginBottom: 22,
-          }}
-        >
-          {title}
-        </div>
-
-        {/* Tagline */}
-        <div
-          style={{
-            display: "flex",
-            fontSize: 26,
-            fontFamily: "Inter",
-            fontWeight: 400,
-            color: "#A9B8C7",
-            lineHeight: 1.45,
-            maxWidth: 800,
-          }}
-        >
-          {tagline}
-        </div>
+        {/* Right preview panel — same border/radius/surface across every
+            tool that has one; only the inner fragment changes. */}
+        {preview && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              width: 380,
+              flexShrink: 0,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                background: "rgba(255,255,255,0.035)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                borderRadius: 20,
+                padding: "28px 28px 30px",
+              }}
+            >
+              {preview}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Bottom URL */}
