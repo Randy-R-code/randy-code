@@ -45,7 +45,7 @@ export default function LabPage() {
       color={brand.colors.blue[400]}
       icon="flask"
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-3 sm:gap-5">
         {experiments.map((exp) => (
           <article
             key={exp.id}

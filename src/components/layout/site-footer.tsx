@@ -1,5 +1,6 @@
 import { GitHubIcon } from "@/components/github-icon";
 import { primaryNav } from "@/lib/nav";
+import { tools } from "@/lib/tools";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,7 +38,7 @@ export function SiteFooter() {
           <p className="text-xs text-zinc-400">© {year} Randy Code</p>
         </div>
 
-        <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 sm:gap-x-10">
           <nav aria-label="Explorer">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               Explorer
@@ -68,6 +69,24 @@ export function SiteFooter() {
                     className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
                   >
                     <span>{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Outils">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
+              Outils
+            </p>
+            <ul className="flex flex-col gap-2">
+              {tools.map((tool) => (
+                <li key={tool.slug} className="flex">
+                  <Link
+                    href={tool.href}
+                    className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                  >
+                    <span>{tool.name}</span>
                   </Link>
                 </li>
               ))}

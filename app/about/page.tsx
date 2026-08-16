@@ -162,7 +162,7 @@ export default function AboutPage() {
       {/* Valeurs */}
       <section className="mb-12">
         <h2 className="mb-4 text-xl font-semibold text-white">Ma méthode</h2>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-3 md:gap-4">
           {values.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -220,7 +220,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2 md:gap-4">
           {domains.map(({ icon: Icon, title, tagline, intro, points }) => (
             <div
               key={title}

@@ -9,6 +9,31 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.4.2] — 2026-08-16
+
+### Added
+
+- **Footer "Outils" column**, linking to all four tools (InfraLens, Cron
+  Builder, JSON Studio, MetaLens), sourced from the same list `/tools`
+  itself renders from.
+
+### Changed
+
+- **Card-grid spacing on mobile** — every portfolio section with a card
+  grid or list (home, tools, projects, articles, about ×2, lab, a project
+  case study) used the same gap at every viewport; each now starts tighter
+  on mobile and opens back up to its original spacing once the layout
+  switches to multiple columns.
+
+### Fixed
+
+- **Footer nav columns collapsed to the left at the `sm` breakpoint**,
+  leaving roughly half the footer empty — the columns switched to a flex
+  row before the section around them did, and flex items don't stretch to
+  fill unclaimed space. Replaced with a grid (2 columns on mobile, pairing
+  Explorer+Site and Outils+Liens; 4 across from `sm` up), which spreads
+  across the full width by construction.
+
 ## [1.4.1] — 2026-08-16
 
 ### Added

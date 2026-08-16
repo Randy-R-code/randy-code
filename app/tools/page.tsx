@@ -21,7 +21,7 @@ export default function ToolsPage() {
       color={brand.colors.green[500]}
       icon="wrench"
     >
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-6">
         {tools.map((tool) => (
           <section
             key={tool.slug}

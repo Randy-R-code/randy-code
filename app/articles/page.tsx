@@ -22,7 +22,7 @@ export default function BlogPage() {
       color={brand.colors.blue[400]}
       icon="bookOpen"
     >
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         {posts.map((post, i) => (
           <Link
             key={post.slug}
