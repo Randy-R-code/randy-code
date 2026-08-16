@@ -2,10 +2,10 @@ import { CATEGORY_LABELS } from "@infralens-lib/checks/category-labels";
 import { formatCategoryScore } from "@infralens-lib/checks/format-category-score";
 import { GlobalScore } from "@infralens-lib/checks/types";
 import {
-  MOCK_CHECKS,
-  MOCK_HOSTNAME,
-  MOCK_SCORE,
-} from "@infralens-lib/mock-report";
+  EXAMPLE_CHECKS,
+  EXAMPLE_HOSTNAME,
+  EXAMPLE_SCORE,
+} from "@infralens-lib/example-report";
 import { readFileSync } from "fs";
 import { ImageResponse } from "next/og";
 import { join } from "path";
@@ -15,15 +15,15 @@ export const alt = "InfraLens — Website inspection tool";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Sourced from src/infralens/lib/mock-report.ts — the same example shown
-// in results-preview.tsx on the landing, so a visitor who saw this card
-// never sees a different-looking "example" once they click through.
-// next/og (satori) can't render the real React components or read CSS
-// custom properties, so the two mini check rows below are picked by id
-// from MOCK_CHECKS, and grade colors are duplicated as raw hex here
-// (matching ScoreBadge's Tailwind classes) — but indexed by the real
-// derived MOCK_SCORE.grade, so this can't silently go stale the way a
-// single hardcoded hex tied to one assumed letter could.
+// Sourced from src/infralens/lib/example-report.ts — the same real
+// randy-code.dev scan shown in results-preview.tsx on the landing, so a
+// visitor who saw this card never sees a different-looking "example" once
+// they click through. next/og (satori) can't render the real React
+// components or read CSS custom properties, so the two mini check rows
+// below are picked by id from EXAMPLE_CHECKS, and grade colors are
+// duplicated as raw hex here (matching ScoreBadge's Tailwind classes) — but
+// indexed by the real derived EXAMPLE_SCORE.grade, so this can't silently
+// go stale the way a single hardcoded hex tied to one assumed letter could.
 const GRADE_COLOR: Record<GlobalScore["grade"], string> = {
   A: "#34d399", // emerald-400
   B: "#a3e635", // lime-400
@@ -31,10 +31,10 @@ const GRADE_COLOR: Record<GlobalScore["grade"], string> = {
   D: "#fb923c", // orange-400
   E: "#f87171", // red-400
 };
-const gradeColor = GRADE_COLOR[MOCK_SCORE.grade];
+const gradeColor = GRADE_COLOR[EXAMPLE_SCORE.grade];
 const OG_CHECK_IDS = ["https", "headers"] as const;
 const ogChecks = OG_CHECK_IDS.map(
-  (id) => MOCK_CHECKS.find((check) => check.id === id)!,
+  (id) => EXAMPLE_CHECKS.find((check) => check.id === id)!,
 );
 
 export default async function OgImage() {
@@ -268,7 +268,7 @@ export default async function OgImage() {
           <span
             style={{ color: "#52525b", fontSize: 13, fontWeight: 600, flex: 1 }}
           >
-            {MOCK_HOSTNAME}
+            {EXAMPLE_HOSTNAME}
           </span>
           {/* Score badge — mirrors ScoreBadge's grade-color mapping */}
           <div
@@ -289,10 +289,10 @@ export default async function OgImage() {
                 color: gradeColor,
               }}
             >
-              {MOCK_SCORE.grade}
+              {EXAMPLE_SCORE.grade}
             </span>
             <span style={{ fontSize: 12, color: gradeColor, opacity: 0.75 }}>
-              {MOCK_SCORE.score} / 100
+              {EXAMPLE_SCORE.score} / 100
             </span>
           </div>
         </div>
@@ -307,7 +307,7 @@ export default async function OgImage() {
             marginTop: 6,
           }}
         >
-          {MOCK_SCORE.categories.map((c) => (
+          {EXAMPLE_SCORE.categories.map((c) => (
             <div
               key={c.category}
               style={{

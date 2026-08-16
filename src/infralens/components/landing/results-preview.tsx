@@ -4,20 +4,20 @@ import { CheckResultCard } from "@infralens-components/results/check-result-card
 import { PrioritySummary } from "@infralens-components/results/priority-summary";
 import { ScoreBadge } from "@infralens-components/results/score-badge";
 import {
-  MOCK_CHECKS,
-  MOCK_HOSTNAME,
-  MOCK_SCORE,
-  MOCK_URL,
-} from "@infralens-lib/mock-report";
+  EXAMPLE_CHECKS,
+  EXAMPLE_HOSTNAME,
+  EXAMPLE_SCORE,
+  EXAMPLE_URL,
+} from "@infralens-lib/example-report";
 
-// Which of the shared MOCK_CHECKS to show as example cards below the
+// Which of the shared EXAMPLE_CHECKS to show as example cards below the
 // summary — a mix of pass/warning/fail, same as PrioritySummary reads from
 // the same array above it.
-const EXAMPLE_CHECK_IDS = ["https", "headers", "robots"];
+const PREVIEW_CHECK_IDS = ["https", "headers", "robots"];
 
 export function ResultsPreview() {
-  const exampleChecks = MOCK_CHECKS.filter((check) =>
-    EXAMPLE_CHECK_IDS.includes(check.id),
+  const previewChecks = EXAMPLE_CHECKS.filter((check) =>
+    PREVIEW_CHECK_IDS.includes(check.id),
   );
 
   return (
@@ -28,8 +28,8 @@ export function ResultsPreview() {
             See what a report looks like
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">
-            A shortened example — no need to run a real analysis to see the
-            shape of it.
+            A real InfraLens scan of this very site — captured once, not re-run
+            on every visit.
           </p>
         </div>
 
@@ -39,28 +39,28 @@ export function ResultsPreview() {
               variant="outline"
               className="w-fit border-brand-secondary/30 text-brand-secondary-hover"
             >
-              Example report — not a real analysis
+              Example — randy-code.dev
             </Badge>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="flex flex-col sm:flex-row items-center gap-6">
-              <ScoreBadge score={MOCK_SCORE} />
+              <ScoreBadge score={EXAMPLE_SCORE} />
               <div className="flex-1 w-full min-w-0 space-y-1 text-center sm:text-left">
-                <p className="font-semibold truncate">{MOCK_HOSTNAME}</p>
+                <p className="font-semibold truncate">{EXAMPLE_HOSTNAME}</p>
                 <p className="text-sm text-muted-foreground truncate">
-                  {MOCK_URL}
+                  {EXAMPLE_URL}
                 </p>
               </div>
             </div>
 
-            <PrioritySummary checks={MOCK_CHECKS} />
+            <PrioritySummary checks={EXAMPLE_CHECKS} />
 
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                A few checks, same as the real report
+                A few checks, straight from the real report
               </p>
               <div className="space-y-3">
-                {exampleChecks.map((check) => (
+                {previewChecks.map((check) => (
                   <CheckResultCard key={check.id} result={check} />
                 ))}
               </div>
