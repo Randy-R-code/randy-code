@@ -9,7 +9,6 @@ interface ToolAboutItem {
 interface ToolAboutSectionProps {
   title: string;
   intro: string;
-  color: string;
   items: ToolAboutItem[];
 }
 
@@ -17,13 +16,14 @@ interface ToolAboutSectionProps {
  * Compact "what/how/why" section shared by the lightweight /tools pages
  * (Cron Builder, JSON Studio, MetaLens, ...) — three short cards below the
  * tool itself, not a documentation area. InfraLens keeps its own larger
- * editorial content instead of this component. Reuses the "Ma méthode"
- * card pattern from app/about/page.tsx rather than inventing new chrome.
+ * editorial content, but these cards share InfraLens's own neutral
+ * `border-border bg-card/50` treatment (report/tool UI) rather than the
+ * portfolio's saturated `surface[2]` cards (narrative UI) — see the other
+ * tool-family components for the same convention.
  */
 export function ToolAboutSection({
   title,
   intro,
-  color,
   items,
 }: ToolAboutSectionProps) {
   return (
@@ -44,11 +44,7 @@ export function ToolAboutSection({
         {items.map((item) => (
           <article
             key={item.title}
-            className="rounded-xl border p-5"
-            style={{
-              borderColor: `${color}18`,
-              background: brand.colors.surface[2],
-            }}
+            className="rounded-xl border border-border bg-card/50 p-5"
           >
             <h3 className="mb-1.5 text-sm font-semibold text-white">
               {item.title}

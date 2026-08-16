@@ -12,13 +12,7 @@ export function SocialPreview({ data }: { data: SocialPreviewData }) {
   );
 
   return (
-    <div
-      className="rounded-xl border p-5"
-      style={{
-        borderColor: `${brand.colors.green[500]}18`,
-        background: brand.colors.surface[2],
-      }}
-    >
+    <div className="rounded-xl border border-border bg-card/50 p-5">
       <h2 className="mb-3 text-xs font-medium uppercase tracking-wide text-zinc-400">
         Social preview
       </h2>

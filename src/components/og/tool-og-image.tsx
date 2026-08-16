@@ -241,8 +241,8 @@ export async function renderToolOgImage({
               style={{
                 display: "flex",
                 flexDirection: "column",
-                background: "rgba(255,255,255,0.035)",
-                border: "1px solid rgba(255,255,255,0.10)",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.14)",
                 borderRadius: 20,
                 padding: "28px 28px 30px",
               }}

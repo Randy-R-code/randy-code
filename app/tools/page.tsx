@@ -21,11 +21,11 @@ export default function ToolsPage() {
       color={brand.colors.green[500]}
       icon="wrench"
     >
-      <div className="flex flex-col gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         {tools.map((tool) => (
           <section
             key={tool.slug}
-            className="rounded-2xl border p-8"
+            className="flex flex-col rounded-2xl border p-8"
             style={{
               borderColor: `${brand.colors.green[500]}30`,
               background: brand.colors.surface[2],
@@ -61,7 +61,7 @@ export default function ToolsPage() {
             <p className="mt-2 max-w-lg text-sm text-muted-foreground">
               {tool.description}
             </p>
-            <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+            <p className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-4 text-xs text-muted-foreground">
               <Link
                 href={tool.href}
                 className="text-foreground underline underline-offset-2 hover:text-muted-foreground"

@@ -20,7 +20,6 @@ import {
   type CronFields,
   type ParsedCronFields,
 } from "@/cron-builder/lib/types";
-import { brand } from "@/lib/brand";
 import { useMemo, useState, useSyncExternalStore } from "react";
 
 function requireValid(expression: string): {
@@ -107,13 +106,7 @@ export function CronBuilder() {
             onReset={handleReset}
           />
 
-          <div
-            className="rounded-xl border p-5"
-            style={{
-              borderColor: `${brand.colors.green[500]}18`,
-              background: brand.colors.surface[2],
-            }}
-          >
+          <div className="rounded-xl border border-border bg-card/50 p-5">
             <h2 className="mb-4 text-xs font-medium text-zinc-400">
               Visual editor
             </h2>

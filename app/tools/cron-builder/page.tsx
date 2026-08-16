@@ -62,7 +62,6 @@ export default function CronBuilderPage() {
           <ToolAboutSection
             title="About Cron Builder"
             intro="Build reliable schedules without memorizing cron syntax."
-            color={brand.colors.green[500]}
             items={ABOUT_ITEMS}
           />
         </div>

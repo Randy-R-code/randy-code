@@ -19,13 +19,7 @@ export function CronReference() {
         Syntax reference
       </h2>
 
-      <div
-        className="overflow-x-auto rounded-xl border"
-        style={{
-          borderColor: `${brand.colors.green[500]}18`,
-          background: brand.colors.surface[2],
-        }}
-      >
+      <div className="overflow-x-auto rounded-xl border border-border bg-card/50">
         <table className="w-full min-w-105 text-left text-sm">
           <thead>
             <tr
@@ -78,11 +72,7 @@ export function CronReference() {
           return (
             <div
               key={name}
-              className="rounded-lg border px-3 py-2.5"
-              style={{
-                borderColor: `${brand.colors.green[500]}18`,
-                background: brand.colors.surface[2],
-              }}
+              className="rounded-lg border border-border bg-card/50 px-3 py-2.5"
             >
               <p className="text-xs font-medium text-zinc-400">{meta.label}</p>
               <p className="mt-0.5 font-mono text-sm text-zinc-300">

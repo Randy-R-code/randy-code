@@ -56,7 +56,6 @@ export default function MetaLensPage() {
           <ToolAboutSection
             title="About MetaLens"
             intro="Understand the metadata behind any web page at a glance."
-            color={brand.colors.green[500]}
             items={ABOUT_ITEMS}
           />
         </div>

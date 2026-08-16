@@ -1,4 +1,3 @@
-import { brand } from "@/lib/brand";
 import type { MetadataAnalysis } from "@/metalens/lib/types";
 
 function countFor(
@@ -22,13 +21,7 @@ export function AnalysisSummary({ analysis }: { analysis: MetadataAnalysis }) {
   const hasDifferentFinalUrl = analysis.finalUrl !== analysis.requestedUrl;
 
   return (
-    <div
-      className="rounded-xl border p-5"
-      style={{
-        borderColor: `${brand.colors.green[500]}18`,
-        background: brand.colors.surface[2],
-      }}
-    >
+    <div className="rounded-xl border border-border bg-card/50 p-5">
       <div className="flex flex-wrap gap-x-8 gap-y-3">
         <div className="min-w-0">
           <p className="text-xs font-medium text-zinc-400">Analyzed</p>

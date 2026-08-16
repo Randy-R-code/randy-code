@@ -56,7 +56,6 @@ export default function JsonStudioPage() {
           <ToolAboutSection
             title="About JSON Studio"
             intro="Work with JSON quickly, clearly and with confidence."
-            color={brand.colors.green[500]}
             items={ABOUT_ITEMS}
           />
         </div>

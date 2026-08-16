@@ -1,6 +1,7 @@
 "use client";
 
-import { brand } from "@/lib/brand";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
@@ -41,13 +42,14 @@ export function MetaLensForm({ onAnalyze, pending }: MetaLensFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3"
+      className="flex flex-col gap-3 min-[26.25rem]:flex-row min-[26.25rem]:items-start"
     >
-      <div className="flex-1">
+      <div className="relative flex-1">
         <label htmlFor="metalens-url" className="sr-only">
           Public URL to analyze
         </label>
-        <input
+        <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+        <Input
           id="metalens-url"
           type="text"
           inputMode="url"
@@ -61,36 +63,29 @@ export function MetaLensForm({ onAnalyze, pending }: MetaLensFormProps) {
           onBlur={() => setTouched(true)}
           aria-invalid={showError}
           aria-describedby={showError ? "metalens-url-error" : undefined}
-          className="w-full rounded-lg border px-3 py-2.5 text-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-1"
-          style={{
-            background: brand.colors.surface[1],
-            borderColor: showError
-              ? brand.colors.functional.danger
-              : `${brand.colors.green[500]}30`,
-          }}
+          className={
+            showError
+              ? "pl-10 h-12 text-base bg-background border-destructive text-foreground focus:border-destructive focus:ring-destructive/30"
+              : "pl-10 h-12 text-base bg-background border-brand-accent/30 text-foreground focus:border-brand-accent focus:ring-brand-accent/30"
+          }
         />
         {showError && (
           <p
             id="metalens-url-error"
-            className="mt-1.5 text-xs"
-            style={{ color: brand.colors.functional.danger }}
+            className="mt-1.5 text-xs text-destructive"
           >
             Enter a valid public HTTP or HTTPS URL.
           </p>
         )}
       </div>
-      <button
+      <Button
         type="submit"
+        size="lg"
         disabled={pending}
-        className="inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-        style={{
-          background: `${brand.colors.green[500]}20`,
-          color: brand.colors.green[500],
-        }}
+        className="h-12 min-[26.25rem]:px-8 w-full min-[26.25rem]:w-auto border border-brand-accent/40 bg-brand-accent/10 text-brand-accent-hover hover:bg-brand-accent/20 disabled:opacity-50"
       >
-        <Search size={14} />
         {pending ? "Analyzing…" : "Analyze"}
-      </button>
+      </Button>
     </form>
   );
 }

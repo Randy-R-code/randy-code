@@ -38,13 +38,7 @@ export function CronExpressionCard({
   }
 
   return (
-    <div
-      className="rounded-xl border p-5"
-      style={{
-        borderColor: `${brand.colors.green[500]}18`,
-        background: brand.colors.surface[2],
-      }}
-    >
+    <div className="rounded-xl border border-border bg-card/50 p-5">
       <div className="mb-3 flex items-center justify-between gap-3">
         <label
           htmlFor="cron-raw-input"

@@ -1,5 +1,3 @@
-import { brand } from "@/lib/brand";
-
 // Locale is forced to "en-US" — the tool's UI is English-only regardless of
 // the visitor's browser locale (only /tools itself is French).
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -28,13 +26,7 @@ export function CronSchedulePreview({
   valid,
 }: CronSchedulePreviewProps) {
   return (
-    <div
-      className="rounded-xl border p-5"
-      style={{
-        borderColor: `${brand.colors.green[500]}18`,
-        background: brand.colors.surface[2],
-      }}
-    >
+    <div className="rounded-xl border border-border bg-card/50 p-5">
       <h2 className="mb-3 text-xs font-medium text-zinc-400">Next runs</h2>
 
       {!valid && (

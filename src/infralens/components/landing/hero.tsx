@@ -112,7 +112,7 @@ export function Hero({
                   required
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="pl-10 h-12 text-base bg-background border-border text-foreground focus:border-brand-secondary focus:ring-brand-secondary/30"
+                  className="pl-10 h-12 text-base bg-background border-brand-accent/30 text-foreground focus:border-brand-accent focus:ring-brand-accent/30"
                 />
               </div>
               <Button

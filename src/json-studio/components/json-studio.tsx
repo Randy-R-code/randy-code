@@ -12,7 +12,6 @@ import { parseJson } from "@/json-studio/lib/parse";
 import { SAMPLE_JSON } from "@/json-studio/lib/sample";
 import { computeStats } from "@/json-studio/lib/stats";
 import { useStoredContent } from "@/json-studio/lib/storage";
-import { brand } from "@/lib/brand";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function isJsonFile(file: File): boolean {
@@ -150,13 +149,7 @@ export function JsonStudio() {
           </p>
         </div>
 
-        <div
-          className="rounded-xl border p-5"
-          style={{
-            borderColor: `${brand.colors.green[500]}18`,
-            background: brand.colors.surface[2],
-          }}
-        >
+        <div className="rounded-xl border border-border bg-card/50 p-5">
           <h2 className="mb-3 text-xs font-medium text-zinc-400">Structure</h2>
           {parseResult?.success ? (
             <JsonTree status="valid" value={parseResult.value} />
