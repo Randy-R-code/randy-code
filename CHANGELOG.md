@@ -9,6 +9,50 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.4.1] — 2026-08-16
+
+### Added
+
+- **Cron Builder, JSON Studio and MetaLens OG cards** now show a
+  representative preview of the tool's actual output — a real cron
+  schedule with its next runs, a syntax-colored JSON snippet matching the
+  tree viewer's real type colors, and a search-preview mockup — instead of
+  a generic title/tagline card, via a new optional `preview` slot on the
+  shared tool OG renderer. InfraLens keeps its own standalone report-style
+  OG card.
+- **About sections** on Cron Builder, JSON Studio and MetaLens — a compact
+  what/how/why explainer below each tool, reusing the "Ma méthode" card
+  pattern from `app/about` rather than inventing new documentation chrome.
+  InfraLens keeps its own larger editorial content.
+
+### Changed
+
+- **InfraLens's landing "Example report" and OG card** now show a real
+  snapshot of `randy-code.dev` (94/100, grade A, full 20-check breakdown)
+  instead of a synthetic `example.com` mock — captured from a live scan, so
+  the score and every category total are derived by the real scoring
+  engine rather than hand-picked.
+- **Cron Builder, JSON Studio and MetaLens's cards** (including the new
+  About sections) now use InfraLens's own `border-border bg-card/50`
+  treatment instead of a solid `surface-2` background — same base color,
+  but InfraLens blends it at 50% opacity; the newer tools had drifted into
+  a visibly bluer, more saturated look.
+- **InfraLens and MetaLens's URL inputs** now share the same treatment: a
+  permanent green-tinted border, a green focus ring, a search icon inside
+  the field, and matching "Analyze"/"Analyze website" buttons. InfraLens's
+  input previously focused blue, inconsistent with its own green accent
+  everywhere else on the page.
+- **`/tools` listing** now shows two tools per row on desktop (single
+  column preserved on mobile) — the four cards had room to spare at their
+  current description length.
+
+### Fixed
+
+- **Tool pages were narrower than the rest of the portfolio** (`max-w-4xl`
+  vs `max-w-5xl`) and their "Retour aux outils" link didn't align with the
+  portfolio's "Retour à la carte" link. Both now match `PageShell`'s width
+  and back-link position exactly.
+
 ## [1.4.0] — 2026-08-15
 
 ### Added
