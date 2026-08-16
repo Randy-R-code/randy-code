@@ -104,7 +104,7 @@ export function ResultsSection({
       id="results"
       className={cn("py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12 scroll-mt-8")}
     >
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="max-w-5xl mx-auto space-y-6">
         {isLoading ? (
           <LoadingState onCancel={onCancel} />
         ) : (

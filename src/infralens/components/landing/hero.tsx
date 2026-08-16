@@ -71,7 +71,7 @@ export function Hero({
       id="hero"
       className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] px-6 sm:px-8 md:px-12 py-8 md:py-12 lg:py-16"
     >
-      <div className="w-full max-w-4xl space-y-6 md:space-y-8">
+      <div className="w-full max-w-5xl space-y-6 md:space-y-8">
         {/* Branding */}
         <div className="text-center space-y-4 md:space-y-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}

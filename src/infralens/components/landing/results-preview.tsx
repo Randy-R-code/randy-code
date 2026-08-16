@@ -22,7 +22,7 @@ export function ResultsPreview() {
 
   return (
     <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12">
-      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
+      <div className="max-w-5xl mx-auto space-y-6 md:space-y-8">
         <div className="text-center space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             See what a report looks like

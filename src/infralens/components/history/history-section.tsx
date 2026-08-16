@@ -88,7 +88,7 @@ export function HistorySection({
 
   return (
     <section className="pb-8 md:pb-12 lg:pb-16 px-6 sm:px-8 md:px-12">
-      <div className="max-w-4xl mx-auto space-y-4">
+      <div className="max-w-5xl mx-auto space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <History className="size-4 text-muted-foreground" />

@@ -34,7 +34,7 @@ const POINTS = [
 export function OpenSource() {
   return (
     <section className="py-8 md:py-12 lg:py-16 px-6 sm:px-8 md:px-12 bg-background/50">
-      <div className="max-w-4xl mx-auto space-y-8 md:space-y-10">
+      <div className="max-w-5xl mx-auto space-y-8 md:space-y-10">
         <div className="text-center space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Open source, all the way down
