@@ -20,11 +20,13 @@ test.describe("cron builder", () => {
   test("upcoming runs render for the default schedule", async ({ page }) => {
     await page.goto("/tools/cron-builder");
 
-    await expect(
-      page.getByRole("heading", { name: "Next runs" }),
-    ).toBeVisible();
+    const nextRunsHeading = page.getByRole("heading", { name: "Next runs" });
+    await expect(nextRunsHeading).toBeVisible();
+    // Scoped to the sibling <ol> right after the heading — the page also
+    // has its own unrelated <ol> in the About section's "How to use it".
+    const nextRunsList = nextRunsHeading.locator("xpath=following-sibling::ol");
     // 5 upcoming runs, each formatted like "Mon, Aug 17 · 09:00".
-    await expect(page.locator("ol li")).toHaveCount(5);
+    await expect(nextRunsList.locator("li")).toHaveCount(5);
     await expect(page.getByText(/Previewed in/)).toBeVisible();
   });
 
@@ -94,6 +96,23 @@ test.describe("cron builder", () => {
       () => (window as unknown as { __copied: string[] }).__copied,
     );
     expect(copied).toEqual(["0 9 * * 1-5"]);
+  });
+
+  test("renders an About section explaining the tool", async ({ page }) => {
+    await page.goto("/tools/cron-builder");
+
+    await expect(
+      page.getByRole("heading", { name: "About Cron Builder" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "What is it?" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "How to use it" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Why use it?" }),
+    ).toBeVisible();
   });
 
   test("mobile viewport has no horizontal overflow", async ({ page }) => {

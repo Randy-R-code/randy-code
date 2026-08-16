@@ -129,6 +129,23 @@ test.describe("json studio", () => {
     expect(download.suggestedFilename()).toBe("data.json");
   });
 
+  test("renders an About section explaining the tool", async ({ page }) => {
+    await page.goto("/tools/json-studio");
+
+    await expect(
+      page.getByRole("heading", { name: "About JSON Studio" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "What is it?" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "How to use it" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Why use it?" }),
+    ).toBeVisible();
+  });
+
   test("mobile viewport has no horizontal overflow", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/tools/json-studio");

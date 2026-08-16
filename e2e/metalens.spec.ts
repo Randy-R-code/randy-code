@@ -33,6 +33,23 @@ test.describe("metalens", () => {
     ).toBeVisible();
   });
 
+  test("renders an About section explaining the tool", async ({ page }) => {
+    await page.goto("/tools/metalens");
+
+    await expect(
+      page.getByRole("heading", { name: "About MetaLens" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "What is it?" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "How to use it" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Why use it?" }),
+    ).toBeVisible();
+  });
+
   test("mobile viewport has no horizontal overflow", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/tools/metalens");
