@@ -9,6 +9,43 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.5.0] — 2026-08-17
+
+### Added
+
+- **API Studio** (`/tools/api-studio`) — a new developer tool for building,
+  sending, and inspecting HTTP requests directly from the browser: method,
+  URL, query params, headers, Bearer/Basic auth, and a JSON/text/URL-encoded
+  body, sent through a secured backend proxy (`POST /api/api-studio/request`)
+  that reuses InfraLens's SSRF/DNS/redirect validation stack untouched
+  rather than duplicating it. Responses show status, timing, size, headers,
+  and a formatted/raw body; requests are saved to a local IndexedDB history
+  (reopen/resend/delete/clear, capped at 100 entries) and can be exported as
+  ready-to-use `fetch` or `curl` code. Gated by its own rate-limit policy
+  and a per-client concurrency cap, both enforced before any outbound
+  attempt. `/tools` is now grouped into Web & API / Developer Utilities
+  categories to make room for it; the footer's tool list follows the same
+  order.
+
+### Changed
+
+- **Rate limiting moved off the in-memory limiter** — InfraLens and MetaLens
+  now share a distributed, Upstash-backed rate-limit module
+  (`src/lib/rate-limit`) instead of a process-local `Map`, which gave every
+  serverless instance its own independent counter and reset on cold start.
+  Each tool keeps its own quota bucket; InfraLens's policy relaxes from 1
+  request/30s to 5/min + 30/h. The shared client-identifier helper also
+  drops `cf-connecting-ip` from the trusted header chain — this deployment
+  has no Cloudflare in front of it, so that header was accepted without
+  ever being sanitized.
+
+### Security
+
+- **Contact form** had no abuse protection at all — now rate-limited
+  (3 submissions/15min + 10/24h before the email is sent), plus a
+  honeypot field, a minimum form-fill-time check, and server-side max
+  field lengths.
+
 ## [1.4.4] — 2026-08-16
 
 ### Fixed
