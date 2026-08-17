@@ -20,15 +20,13 @@ import {
 import { safeFetch } from "@infralens-lib/security/safe-fetch";
 import { normalizeTarget } from "@infralens-lib/security/target";
 import type { Response as UndiciResponse } from "undici";
+import { isTextLikeContentType } from "./content-type";
 import type {
   ErrorKind,
   ExecuteRequestResult,
   HttpMethod,
   RequestConfig,
 } from "./types";
-
-const TEXT_LIKE_CONTENT_TYPE =
-  /^(text\/|application\/(json|xml|javascript|x-www-form-urlencoded)|[^;]+\+(json|xml))/i;
 
 /**
  * Parses and validates an untrusted JSON body into a `RequestConfig` — the
@@ -149,7 +147,7 @@ async function readCappedBody(
     return { bodyText: "", isBinary: false, sizeBytes: 0 };
   }
 
-  const isBinary = !TEXT_LIKE_CONTENT_TYPE.test(
+  const isBinary = !isTextLikeContentType(
     response.headers.get("content-type") ?? "",
   );
 
