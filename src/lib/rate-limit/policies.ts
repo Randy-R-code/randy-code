@@ -5,7 +5,9 @@ export type PolicyName =
   | "contact"
   | "infralens"
   | "metalens"
-  | "apiStudioRequest";
+  | "apiStudioRequest"
+  | "apiStudioWebhookCreate"
+  | "apiStudioWebhookIngest";
 
 type ScopeDefinition = { scope: string; limit: number; window: Duration };
 
@@ -26,6 +28,19 @@ const POLICY_DEFINITIONS: Record<PolicyName, readonly ScopeDefinition[]> = {
   apiStudioRequest: [
     { scope: "burst", limit: 20, window: "1 m" },
     { scope: "hourly", limit: 200, window: "1 h" },
+  ],
+  // Identified by client IP — bounds how many abandoned endpoint tokens (and
+  // their Redis records) a single client can create.
+  apiStudioWebhookCreate: [
+    { scope: "hourly", limit: 10, window: "1 h" },
+    { scope: "daily", limit: 30, window: "24 h" },
+  ],
+  // Identified by the webhook *token*, not client IP — inbound traffic is
+  // intentionally public and may legitimately burst, so the token itself is
+  // the meaningful abuse boundary (audit §12).
+  apiStudioWebhookIngest: [
+    { scope: "burst", limit: 60, window: "1 m" },
+    { scope: "hourly", limit: 500, window: "1 h" },
   ],
 };
 

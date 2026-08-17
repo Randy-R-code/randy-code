@@ -52,3 +52,12 @@ export const STRIPPED_RESPONSE_HEADERS = new Set([
 
 /** Local (IndexedDB) history cap — oldest entries are dropped past this. */
 export const HISTORY_MAX_ENTRIES = 100;
+
+/** Fixed lifetime of a webhook endpoint from creation — not sliding on activity. */
+export const WEBHOOK_TTL_SECONDS = 24 * 60 * 60;
+/** Oldest events are evicted past this count (spec's "friendlier than rejecting" behavior for a debugging tool). */
+export const WEBHOOK_MAX_EVENTS = 50;
+export const WEBHOOK_MAX_BODY_BYTES = 256 * 1024; // 256 KB — webhook payloads are typically small JSON
+export const WEBHOOK_MAX_HEADER_COUNT = 50;
+/** Client polling interval while a Webhooks endpoint is "listening" — see the plan's SSE-vs-polling decision. */
+export const WEBHOOK_POLL_INTERVAL_MS = 2500;

@@ -37,6 +37,8 @@ describe("getPolicyLimiters", () => {
 
       expect(getPolicyLimiters("contact")).toHaveLength(2); // short + daily
       expect(getPolicyLimiters("infralens")).toHaveLength(2); // burst + hourly
+      expect(getPolicyLimiters("apiStudioWebhookCreate")).toHaveLength(2); // hourly + daily
+      expect(getPolicyLimiters("apiStudioWebhookIngest")).toHaveLength(2); // burst + hourly
     });
 
     it("caches limiters across calls for the same policy", async () => {
