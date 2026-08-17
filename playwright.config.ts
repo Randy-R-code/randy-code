@@ -17,10 +17,16 @@ export default defineConfig({
       testIgnore: /infralens\//,
     },
     {
-      // InfraLens E2E — the analysis flow is rate-limited to one request per
-      // IP per 30s (migration plan §17/§28), so this group must stay
-      // serialized. Run via `pnpm e2e:infralens`, never as part of the
-      // default `pnpm e2e` (which only targets the "chromium" project).
+      // InfraLens E2E, kept as its own desktop + mobile project pair rather
+      // than folded into "chromium". CI never has Upstash credentials, so
+      // the rate limiter (src/lib/rate-limit) runs allow-all there — but
+      // `pnpm start` still loads `.env.local` like any other Next.js run,
+      // so a developer who added real Upstash credentials locally (e.g. to
+      // exercise rate limiting manually) will hit the genuine "infralens"
+      // policy here. Staying serialized keeps that case safe without
+      // needing to know which case is active. Run via `pnpm e2e:infralens`,
+      // never as part of the default `pnpm e2e` (which only targets
+      // "chromium").
       name: "infralens-desktop",
       testDir: "./e2e/infralens",
       fullyParallel: false,
@@ -28,8 +34,9 @@ export default defineConfig({
     },
     {
       // Mirrors the source repo's mobile project: skips analysis.spec.ts,
-      // which makes one real rate-limited request already covered by the
-      // desktop project — running it twice would just collide on the limit.
+      // which makes one real analysis request already covered by the
+      // desktop project — running it twice would collide if a real quota
+      // is active (see the desktop project's comment above).
       name: "infralens-mobile",
       testDir: "./e2e/infralens",
       fullyParallel: false,

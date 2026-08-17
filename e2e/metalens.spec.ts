@@ -80,9 +80,11 @@ test.describe("metalens", () => {
   // One real, live analysis against example.com (IANA-reserved for exactly
   // this kind of documentation/testing use, so it's a stable, low-flakiness
   // target) — deliberately the only spec in this file that triggers a real
-  // analysis, since the rate limiter allows one request per IP per 30s.
-  // Matches this project's existing culture of real network smoke tests
-  // over mocks (see e2e/infralens/analysis.spec.ts).
+  // analysis, kept singular in case a real "metalens" rate-limit quota is
+  // active (CI itself never has Upstash credentials, so this only matters
+  // for a developer testing against real credentials locally). Matches this
+  // project's existing culture of real network smoke tests over mocks (see
+  // e2e/infralens/analysis.spec.ts).
   test("analyzing a real public page renders metadata, previews, findings and supports copy", async ({
     page,
   }) => {

@@ -1,10 +1,11 @@
 "use server";
 
+import { checkRateLimit } from "@/lib/rate-limit";
+import { getClientIdentifier } from "@/lib/rate-limit/identifier";
 import { CHECK_TIMEOUT_MS } from "@infralens-config/constants";
 import { runChecks } from "@infralens-lib/checks";
 import { ChecksResponse } from "@infralens-lib/checks/types";
 import { logWarn } from "@infralens-lib/log";
-import { checkRateLimit } from "@infralens-lib/rate-limit";
 import { isSecurityError } from "@infralens-lib/security/errors";
 import { resolveValidatedTarget } from "@infralens-lib/security/resolve-target";
 import { normalizeTarget } from "@infralens-lib/security/target";
@@ -22,31 +23,21 @@ export type RunChecksResult =
   | { ok: true; data: ChecksResponse }
   | { ok: false; message: string };
 
-async function getClientIdentifier(): Promise<string> {
-  const headersList = await headers();
-  // Try to get IP from various headers (Vercel, Cloudflare, etc.)
-  const forwardedFor = headersList.get("x-forwarded-for");
-  const realIp = headersList.get("x-real-ip");
-  const cfConnectingIp = headersList.get("cf-connecting-ip");
-
-  const ip =
-    forwardedFor?.split(",")[0]?.trim() ||
-    realIp ||
-    cfConnectingIp ||
-    "unknown";
-
-  return ip;
-}
-
 export async function runInfraChecks(
   inputUrl: string,
 ): Promise<RunChecksResult> {
-  // Rate limiting
-  const identifier = await getClientIdentifier();
-  const rateLimit = checkRateLimit(identifier);
+  const identifier = getClientIdentifier(await headers());
+  const rateLimit = await checkRateLimit("infralens", identifier);
 
   if (!rateLimit.allowed) {
     logWarn({ event: "rate_limit_exceeded" });
+    if (rateLimit.reason === "backend_error") {
+      return {
+        ok: false,
+        message:
+          "Rate limiting is temporarily unavailable. Please try again shortly.",
+      };
+    }
     const secondsLeft = Math.ceil((rateLimit.resetAt - Date.now()) / 1000);
     return {
       ok: false,

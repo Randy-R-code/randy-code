@@ -8,8 +8,6 @@ export const MAX_RESPONSE_BYTES = 1.5 * 1024 * 1024;
 
 export const FETCH_TIMEOUT_MS = 8000;
 
-export const RATE_LIMIT_IDENTIFIER_PREFIX = "metalens";
-
 /** Redirect hops MetaLens's own action loop will follow — each one revalidated via `safeFetch` (spec §68). */
 export const MAX_REDIRECTS = 5;
 

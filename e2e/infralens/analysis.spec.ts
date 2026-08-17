@@ -3,10 +3,10 @@ import { expect, test } from "@playwright/test";
 // One real, live analysis against example.com (IANA-reserved for exactly
 // this kind of documentation/testing use, so it's a stable, low-flakiness
 // target) — deliberately the only spec that triggers a real analysis, since
-// the rate limiter allows one request per IP per 30s (see
-// playwright.config.ts). Matches this project's existing culture of real
-// network smoke tests over mocks (multiple real bugs were only ever caught
-// this way, never by a mocked unit test).
+// this project stays serialized in case a real "infralens" rate-limit quota
+// is active (see playwright.config.ts). Matches this project's existing
+// culture of real network smoke tests over mocks (multiple real bugs were
+// only ever caught this way, never by a mocked unit test).
 test.describe("full analysis journey", () => {
   test("analyze -> results -> export -> history -> clear all", async ({
     page,

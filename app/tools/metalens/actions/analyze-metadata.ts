@@ -1,18 +1,18 @@
 "use server";
 
+import { checkRateLimit } from "@/lib/rate-limit";
+import { getClientIdentifier } from "@/lib/rate-limit/identifier";
 import { buildAnalysis } from "@/metalens/lib/build-analysis";
 import {
   ACCEPTED_HTML_CONTENT_TYPES,
   FETCH_TIMEOUT_MS,
   MAX_REDIRECTS,
   MAX_RESPONSE_BYTES,
-  RATE_LIMIT_IDENTIFIER_PREFIX,
   USER_AGENT,
 } from "@/metalens/lib/constants";
 import { parseHtmlMetadata } from "@/metalens/lib/parse-html";
 import type { MetadataAnalysis } from "@/metalens/lib/types";
 import { logInfo, logWarn } from "@infralens-lib/log";
-import { checkRateLimit } from "@infralens-lib/rate-limit";
 import { isSecurityError } from "@infralens-lib/security/errors";
 import { resolveValidatedTarget } from "@infralens-lib/security/resolve-target";
 import { readBodyText, safeFetch } from "@infralens-lib/security/safe-fetch";
@@ -29,32 +29,21 @@ export type AnalyzeMetadataResult =
   | { ok: true; data: MetadataAnalysis }
   | { ok: false; message: string };
 
-// Small, duplicated on purpose rather than imported from InfraLens's action
-// file — each tool owns its own tiny request-identity helper instead of a
-// shared cross-tool utility for something this small.
-async function getClientIdentifier(): Promise<string> {
-  const headersList = await headers();
-  const forwardedFor = headersList.get("x-forwarded-for");
-  const realIp = headersList.get("x-real-ip");
-  const cfConnectingIp = headersList.get("cf-connecting-ip");
-
-  return (
-    forwardedFor?.split(",")[0]?.trim() || realIp || cfConnectingIp || "unknown"
-  );
-}
-
 export async function analyzeMetadata(
   inputUrl: string,
 ): Promise<AnalyzeMetadataResult> {
-  const identifier = await getClientIdentifier();
-  // Prefixed so MetaLens's quota never shares a bucket with InfraLens's own
-  // rate limiter, even though both call the same underlying store.
-  const rateLimit = checkRateLimit(
-    `${RATE_LIMIT_IDENTIFIER_PREFIX}:${identifier}`,
-  );
+  const identifier = getClientIdentifier(await headers());
+  const rateLimit = await checkRateLimit("metalens", identifier);
 
   if (!rateLimit.allowed) {
     logWarn({ event: "metalens_rate_limit_exceeded" });
+    if (rateLimit.reason === "backend_error") {
+      return {
+        ok: false,
+        message:
+          "Rate limiting is temporarily unavailable. Please try again shortly.",
+      };
+    }
     const secondsLeft = Math.ceil((rateLimit.resetAt - Date.now()) / 1000);
     return {
       ok: false,

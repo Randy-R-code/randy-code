@@ -5,9 +5,6 @@ export const CHECK_TIMEOUT_MS = 8000;
 export const DNS_TIMEOUT_MS = 1500;
 export const DNS_CACHE_TTL_MS = 60_000;
 
-export const RATE_LIMIT_WINDOW_MS = 30_000;
-export const RATE_LIMIT_MAX_REQUESTS = 1;
-
 export const MAX_REDIRECTS = 10;
 
 /** Redirect hops `safeFetch` will follow while revalidating each destination — deliberately lower than MAX_REDIRECTS, which `redirects.ts` uses only to report a chain, not to decide what's safe to connect to. */
