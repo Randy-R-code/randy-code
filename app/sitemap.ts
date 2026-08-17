@@ -100,6 +100,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const apiStudioRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/tools/api-studio`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+
   const jsonStudioRoutes: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/tools/json-studio`,
@@ -123,6 +132,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...articleRoutes,
     ...projectRoutes,
     ...infralensRoutes,
+    ...apiStudioRoutes,
     ...cronBuilderRoutes,
     ...jsonStudioRoutes,
     ...metalensRoutes,
