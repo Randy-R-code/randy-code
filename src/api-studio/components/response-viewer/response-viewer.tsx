@@ -1,37 +1,12 @@
 "use client";
 
-import { copyToClipboard } from "@/api-studio/lib/clipboard";
+import { CopyButton } from "@/api-studio/components/copy-button";
 import type { ExecuteRequestResult } from "@/api-studio/lib/types";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatJson } from "@/json-studio/lib/format";
 import { parseJson } from "@/json-studio/lib/parse";
 import { brand } from "@/lib/brand";
-import { Check, Copy } from "lucide-react";
-import { useState } from "react";
 import { StatusLine } from "./status-line";
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-
-  return (
-    <Button
-      type="button"
-      variant="ghost"
-      size="sm"
-      onClick={async () => {
-        const ok = await copyToClipboard(text);
-        if (ok) {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1500);
-        }
-      }}
-    >
-      {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-      {copied ? "Copied" : "Copy"}
-    </Button>
-  );
-}
 
 function formattedBody(
   result: Extract<ExecuteRequestResult, { ok: true }>,
