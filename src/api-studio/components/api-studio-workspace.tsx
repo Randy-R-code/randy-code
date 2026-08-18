@@ -54,8 +54,17 @@ function loadFromConfig(config: RequestConfig): WorkspaceState {
   };
 }
 
-export function ApiStudioWorkspace() {
-  const [state, setState] = useState<WorkspaceState>(INITIAL_STATE);
+interface ApiStudioWorkspaceProps {
+  /** Prefills the builder from a captured webhook event (see api-studio-page.tsx's Replay wiring) — pass a new object each time to seed a fresh state. */
+  initialSeed?: RequestConfig;
+}
+
+export function ApiStudioWorkspace({
+  initialSeed,
+}: ApiStudioWorkspaceProps = {}) {
+  const [state, setState] = useState<WorkspaceState>(() =>
+    initialSeed ? loadFromConfig(initialSeed) : INITIAL_STATE,
+  );
   const { state: sendState, send, cancel } = useSendRequest();
   const history = useRequestHistory();
 

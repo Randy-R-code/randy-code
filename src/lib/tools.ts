@@ -39,7 +39,7 @@ export const tools: ToolEntry[] = [
     name: "API Studio",
     status: "Disponible",
     description:
-      "Construisez, envoyez et inspectez des requêtes HTTP directement depuis le navigateur, avec historique local et génération de code fetch/curl.",
+      "Construisez, envoyez et inspectez des requêtes HTTP, ou recevez de vrais webhooks sur une URL temporaire — historique local et génération de code fetch/curl.",
     href: "/tools/api-studio",
     category: "web-api",
     icon: Send,

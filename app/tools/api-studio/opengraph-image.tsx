@@ -89,13 +89,38 @@ const preview = (
       </span>
       <span style={{ display: "flex" }}>{"}"}</span>
     </div>
+
+    <div
+      style={{
+        display: "flex",
+        height: 1,
+        background: "rgba(255,255,255,0.08)",
+        margin: "18px 0",
+      }}
+    />
+
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        fontFamily: "Inter",
+        fontSize: 12,
+        color: brand.colors.text.secondary,
+      }}
+    >
+      <span style={{ display: "flex", fontWeight: 600, color }}>Webhooks</span>
+      <span style={{ display: "flex" }}>
+        randy-code.dev/.../webhooks/••••••
+      </span>
+    </div>
   </div>
 );
 
 export default async function Image() {
   return renderToolOgImage({
     title: "API Studio",
-    tagline: "Build, send, and inspect HTTP requests.",
+    tagline: "Build, send, receive, and inspect HTTP requests.",
     color,
     iconNodes: SEND_ICON,
     preview,
