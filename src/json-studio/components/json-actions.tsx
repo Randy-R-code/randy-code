@@ -4,7 +4,6 @@ import { brand } from "@/lib/brand";
 import {
   AlignLeft,
   Check,
-  CircleCheck,
   Copy,
   Download,
   FileJson,
@@ -17,7 +16,6 @@ import { useRef, type ChangeEvent } from "react";
 interface JsonActionsProps {
   onFormat: () => void;
   onMinify: () => void;
-  onValidate: () => void;
   onCopy: () => void;
   onClear: () => void;
   onLoadExample: () => void;
@@ -50,7 +48,6 @@ const buttonClass =
 export function JsonActions({
   onFormat,
   onMinify,
-  onValidate,
   onCopy,
   onClear,
   onLoadExample,
@@ -92,15 +89,6 @@ export function JsonActions({
       >
         <Shrink size={14} />
         Minify
-      </button>
-      <button
-        type="button"
-        onClick={onValidate}
-        className={buttonClass}
-        style={secondaryStyle()}
-      >
-        <CircleCheck size={14} />
-        Validate
       </button>
       <button
         type="button"

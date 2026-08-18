@@ -25,15 +25,12 @@ export function JsonStudio() {
   const [content, setContent] = useStoredContent();
   const [fileName, setFileName] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [justValidated, setJustValidated] = useState(false);
   const editorRef = useRef<HTMLTextAreaElement>(null);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const validateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
       if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      if (validateTimeoutRef.current) clearTimeout(validateTimeoutRef.current);
     };
   }, []);
 
@@ -71,12 +68,6 @@ export function JsonStudio() {
     if (!parseResult?.success) return;
     setContent(minifyJson(parseResult.value));
     editorRef.current?.focus();
-  }
-
-  function handleValidate() {
-    setJustValidated(true);
-    if (validateTimeoutRef.current) clearTimeout(validateTimeoutRef.current);
-    validateTimeoutRef.current = setTimeout(() => setJustValidated(false), 900);
   }
 
   async function handleCopy() {
@@ -119,7 +110,6 @@ export function JsonStudio() {
           <JsonActions
             onFormat={handleFormat}
             onMinify={handleMinify}
-            onValidate={handleValidate}
             onCopy={handleCopy}
             onClear={handleClear}
             onLoadExample={handleLoadExample}
@@ -138,7 +128,6 @@ export function JsonStudio() {
               error={
                 parseResult && !parseResult.success ? parseResult.error : null
               }
-              pulse={justValidated}
             />
             {stats && <JsonStatsBar stats={stats} />}
           </div>

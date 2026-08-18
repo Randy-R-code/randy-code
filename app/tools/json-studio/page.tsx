@@ -49,7 +49,7 @@ export default function JsonStudioPage() {
             icon={Braces}
             label="Developer Tool"
             title="JSON Studio"
-            tagline="Validate, format and inspect JSON instantly."
+            tagline="Format, validate and explore JSON instantly."
             color={brand.colors.green[500]}
           />
           <JsonStudio />

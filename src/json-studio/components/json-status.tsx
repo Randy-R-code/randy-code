@@ -7,7 +7,6 @@ type JsonStatusKind = "empty" | "valid" | "invalid";
 interface JsonStatusProps {
   status: JsonStatusKind;
   error: JsonParseError | null;
-  pulse: boolean;
 }
 
 const STATUS_CONFIG = {
@@ -24,7 +23,7 @@ const STATUS_CONFIG = {
   },
 } as const;
 
-export function JsonStatus({ status, error, pulse }: JsonStatusProps) {
+export function JsonStatus({ status, error }: JsonStatusProps) {
   const config = STATUS_CONFIG[status];
   const Icon = config.icon;
 
@@ -37,7 +36,6 @@ export function JsonStatus({ status, error, pulse }: JsonStatusProps) {
         style={{
           background: `${config.color}18`,
           color: config.color,
-          boxShadow: pulse ? `0 0 0 2px ${config.color}60` : undefined,
         }}
       >
         <Icon size={13} />

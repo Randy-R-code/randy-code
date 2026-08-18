@@ -9,6 +9,15 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.2] — 2026-08-18
+
+### Changed
+
+- **JSON Studio toolbar cleanup** — removed the `Validate` button: it only
+  pulsed the status indicator that's already shown at all times, with no
+  additional information of its own. Hero tagline reordered to "Format,
+  validate and explore JSON instantly." to match the tool's actual workflow.
+
 ## [1.6.1] — 2026-08-18
 
 ### Fixed
