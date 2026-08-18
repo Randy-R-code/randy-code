@@ -115,8 +115,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium webkit
       - run: pnpm build
-      # Rate-limited (1 request/IP/30s) — must stay on a single worker,
-      # see playwright.config.ts and migration plan §17/§28.
+      # Serialized (--workers=1, see playwright.config.ts) — not because CI
+      # itself is rate-limited (it never has Upstash credentials, so
+      # src/lib/rate-limit runs allow-all here), but because this same
+      # script also runs locally, where a developer may have added real
+      # credentials and would hit the genuine InfraLens policy. Staying
+      # serialized keeps that case safe without needing to know which one
+      # is active.
       - run: pnpm e2e:infralens
         env:
           CI: true
