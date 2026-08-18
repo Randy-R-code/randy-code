@@ -3,6 +3,7 @@ import {
   canonicalizeValues,
   describeCron,
   getNextRuns,
+  isDayRestrictionAmbiguous,
   isWildcardValues,
   serialize,
 } from "../cron";
@@ -67,6 +68,22 @@ describe("isWildcardValues", () => {
       true,
     );
     expect(isWildcardValues([0, 1, 2], FIELD_META.dayOfWeek)).toBe(false);
+  });
+});
+
+describe("isDayRestrictionAmbiguous", () => {
+  it("is true when both day-of-month and day-of-week are restricted", () => {
+    expect(isDayRestrictionAmbiguous(parse("0 9 1 * 1"))).toBe(true);
+    expect(isDayRestrictionAmbiguous(parse("0 9 1-7 * 1-5"))).toBe(true);
+  });
+
+  it("is false when only one of the two is restricted", () => {
+    expect(isDayRestrictionAmbiguous(parse("0 9 * * 1-5"))).toBe(false);
+    expect(isDayRestrictionAmbiguous(parse("0 9 1 * *"))).toBe(false);
+  });
+
+  it("is false when neither is restricted", () => {
+    expect(isDayRestrictionAmbiguous(parse("0 9 * * *"))).toBe(false);
   });
 });
 

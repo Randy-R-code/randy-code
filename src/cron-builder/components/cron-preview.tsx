@@ -59,7 +59,10 @@ export function CronSchedulePreview({
       )}
 
       {timezone !== null && (
-        <p className="mt-4 text-xs text-zinc-400">Previewed in {timezone}</p>
+        <p className="mt-4 text-xs text-zinc-400">
+          Previewed in {timezone}. Cron expressions do not include timezone
+          information — your runtime may use a different one.
+        </p>
       )}
     </div>
   );

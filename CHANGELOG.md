@@ -9,6 +9,16 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.3] — 2026-08-18
+
+### Added
+
+- **Cron Builder trust clarifications** — a note next to "Next runs" now
+  states that cron expressions carry no timezone information of their own.
+  A contextual warning appears when Day of month and Day of week are both
+  restricted at once, since their combined (OR) semantics can differ
+  between cron implementations.
+
 ## [1.6.2] — 2026-08-18
 
 ### Changed

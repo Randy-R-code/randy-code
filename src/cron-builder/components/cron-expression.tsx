@@ -2,7 +2,7 @@
 
 import { copyToClipboard } from "@/cron-builder/lib/clipboard";
 import { brand } from "@/lib/brand";
-import { Check, Copy, RotateCcw } from "lucide-react";
+import { Check, Copy, RotateCcw, TriangleAlert } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface CronExpressionCardProps {
@@ -10,6 +10,7 @@ interface CronExpressionCardProps {
   onRawChange: (value: string) => void;
   error: string | null;
   description: string | null;
+  dayRestrictionAmbiguous: boolean;
   onReset: () => void;
 }
 
@@ -18,6 +19,7 @@ export function CronExpressionCard({
   onRawChange,
   error,
   description,
+  dayRestrictionAmbiguous,
   onReset,
 }: CronExpressionCardProps) {
   const [copied, setCopied] = useState(false);
@@ -108,6 +110,14 @@ export function CronExpressionCard({
           description && <p className="text-sm text-zinc-300">{description}</p>
         )}
       </div>
+
+      {!error && dayRestrictionAmbiguous && (
+        <p className="mt-2 flex items-start gap-1.5 text-xs text-amber-400">
+          <TriangleAlert size={12} className="mt-0.5 shrink-0" />
+          Day of month and day of week are both restricted. Their combined
+          behavior can vary between cron implementations.
+        </p>
+      )}
     </div>
   );
 }

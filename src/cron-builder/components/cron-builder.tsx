@@ -8,6 +8,7 @@ import {
   DEFAULT_EXPRESSION,
   describeCron,
   getNextRuns,
+  isDayRestrictionAmbiguous,
   serialize,
 } from "@/cron-builder/lib/cron";
 import {
@@ -89,6 +90,8 @@ export function CronBuilder() {
   }
 
   const description = error === null ? describeCron(parsed) : null;
+  const dayRestrictionAmbiguous =
+    error === null ? isDayRestrictionAmbiguous(parsed) : false;
   const timezone = mounted
     ? Intl.DateTimeFormat().resolvedOptions().timeZone
     : null;
@@ -103,6 +106,7 @@ export function CronBuilder() {
             onRawChange={applyExpression}
             error={error}
             description={description}
+            dayRestrictionAmbiguous={dayRestrictionAmbiguous}
             onReset={handleReset}
           />
 

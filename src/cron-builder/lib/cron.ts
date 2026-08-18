@@ -69,6 +69,18 @@ export function isWildcardValues(values: number[], range: FieldRange): boolean {
 }
 
 /**
+ * True when both day-of-month and day-of-week are restricted (≠ `*`) at the
+ * same time — the Vixie-cron OR rule in `dayMatches` below then applies, and
+ * that combined behavior can vary between cron implementations.
+ */
+export function isDayRestrictionAmbiguous(parsed: ParsedCronFields): boolean {
+  return (
+    !isWildcardValues(parsed.dayOfMonth.values, FIELD_META.dayOfMonth) &&
+    !isWildcardValues(parsed.dayOfWeek.values, FIELD_META.dayOfWeek)
+  );
+}
+
+/**
  * Collapses a set of selected values into the shortest valid field syntax:
  * `*` when it covers the whole range, a contiguous `a-b` range, a bare value,
  * or a comma-separated list.

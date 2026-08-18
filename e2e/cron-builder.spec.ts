@@ -53,6 +53,23 @@ test.describe("cron builder", () => {
     ).toBeVisible();
   });
 
+  test("warns when day-of-month and day-of-week are both restricted", async ({
+    page,
+  }) => {
+    await page.goto("/tools/cron-builder");
+
+    const warning = page.getByText(
+      "Day of month and day of week are both restricted. Their combined behavior can vary between cron implementations.",
+    );
+    await expect(warning).toBeHidden();
+
+    await page.fill("#cron-raw-input", "0 9 1 * 1");
+    await expect(warning).toBeVisible();
+
+    await page.fill("#cron-raw-input", "0 9 * * 1-5");
+    await expect(warning).toBeHidden();
+  });
+
   test("an invalid raw expression is rejected without destroying the visual editor", async ({
     page,
   }) => {
