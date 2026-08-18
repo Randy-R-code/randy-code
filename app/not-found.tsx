@@ -4,7 +4,13 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6">
+    // min-h-screen, not flex-1 — this sits between SiteHeader/SiteFooter in
+    // the root layout, and flex-1 only gets whatever height is left over
+    // after those, which on a page with this many footer nav columns left
+    // almost nothing to center within (content hugging the header on top,
+    // footer on the bottom). min-h-screen is the same fix already used by
+    // InfraLens's own not-found.tsx, confirmed clean there.
+    <main className="flex min-h-screen flex-col items-center justify-center px-6">
       <div className="text-center">
         <p
           className="mb-4 font-mono text-7xl font-bold"
@@ -25,7 +31,9 @@ export default function NotFound() {
           }}
         >
           <ArrowLeft size={14} />
-          Retour à la carte
+          {/* WorldMap only renders md:block+ (src/components/map/world-map.tsx) — see the same fix in page-shell.tsx. */}
+          <span className="hidden md:inline">Retour à la carte</span>
+          <span className="md:hidden">Retour à l&apos;accueil</span>
         </Link>
       </div>
     </main>

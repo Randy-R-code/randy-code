@@ -56,7 +56,9 @@ export function PageShell({
             className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-300"
           >
             <ArrowLeft size={12} />
-            Retour à la carte
+            {/* WorldMap itself only renders md:block+ (src/components/map/world-map.tsx) — below that breakpoint there's no map to go "back" to, just its own zone-list fallback. */}
+            <span className="hidden md:inline">Retour à la carte</span>
+            <span className="md:hidden">Retour à l&apos;accueil</span>
           </Link>
         </motion.div>
 

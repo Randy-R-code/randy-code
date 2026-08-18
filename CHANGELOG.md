@@ -9,6 +9,23 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.1] — 2026-08-18
+
+### Fixed
+
+- **"Retour à la carte" back-link was misleading on mobile** — the
+  homepage's `WorldMap` only renders at `md:` and up; below that it falls
+  back to a plain zone list, so the label referenced something that
+  wasn't there. Now reads "Retour à l'accueil" on mobile, on both
+  `PageShell` (`/tools`, `/about`, `/projects`, `/lab`, `/contact`) and
+  the standalone 404 page. Desktop keeps "Retour à la carte" — the map is
+  real there.
+- **404 page content crowded against the header and footer on mobile** —
+  used `flex-1` to center within whatever space was left after the site
+  header/footer, which on a page with this many footer nav columns left
+  almost no room. Switched to `min-h-screen`, matching the same fix
+  already used by InfraLens's own 404 page.
+
 ## [1.6.0] — 2026-08-18
 
 ### Added
