@@ -77,6 +77,14 @@ jobs:
     name: E2E
     runs-on: ubuntu-latest
     needs: [lint, typecheck, test, build]
+    # Playwright's official image ships chromium/webkit and all their OS
+    # deps preinstalled — avoids `playwright install --with-deps` re-running
+    # a full apt-get against the Ubuntu package mirror on every single run
+    # (measured 10+ minutes on a slow mirror day, vs. a fast image pull).
+    # Version must match the resolved `@playwright/test` version exactly
+    # (pnpm-lock.yaml) or Playwright refuses to run — bump both together.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     steps:
       - uses: actions/checkout@v7
 
@@ -90,7 +98,6 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build
       - run: pnpm e2e
         env:
@@ -100,6 +107,11 @@ jobs:
     name: E2E — InfraLens
     runs-on: ubuntu-latest
     needs: [lint, typecheck, test, build]
+    # Same rationale as the `e2e` job above — this one felt it most, since
+    # webkit's own dependency tree (media/audio/video libs) is far larger
+    # than chromium's.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     steps:
       - uses: actions/checkout@v7
 
@@ -113,7 +125,6 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium webkit
       - run: pnpm build
       # Serialized (--workers=1, see playwright.config.ts) — not because CI
       # itself is rate-limited (it never has Upstash credentials, so
