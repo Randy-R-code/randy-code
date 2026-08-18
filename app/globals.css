@@ -138,18 +138,19 @@
   }
 }
 
-/* InfraLens — scoped shadcn tokens. Originally re-applied InfraLens' own
+/* Tool family — scoped shadcn tokens. Originally re-applied InfraLens' own
    hardcoded zinc/green shadcn theme here to avoid Randy Code's blue silently
    reskinning
    every migrated primitive. Now that every InfraLens component reads through
    semantic classes (bg-background, text-muted-foreground...) instead of raw
    zinc utilities, this scope only needs to override what should genuinely
    stay different from the rest of the site — InfraLens' green identity for
-   primary/ring. Everything else (background, surfaces, borders, text) is
-   intentionally left undeclared so it inherits Randy Code's own tokens
-   straight from :root — one shared source of truth instead of a second,
-   independently-maintained palette. */
-.infralens-scope {
+   primary/ring, now shared by every tool under /tools (applied via
+   ToolPageShell) rather than InfraLens alone. Everything else (background,
+   surfaces, borders, text) is intentionally left undeclared so it inherits
+   Randy Code's own tokens straight from :root — one shared source of truth
+   instead of a second, independently-maintained palette. */
+.tool-accent-scope {
   --primary: var(--green-500);
   --primary-foreground: #ffffff;
   --ring: var(--green-500);

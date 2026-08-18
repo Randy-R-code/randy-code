@@ -13,9 +13,5 @@ export default function InfraLensLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div className="infralens-scope">
-      <ToolPageShell>{children}</ToolPageShell>
-    </div>
-  );
+  return <ToolPageShell>{children}</ToolPageShell>;
 }
