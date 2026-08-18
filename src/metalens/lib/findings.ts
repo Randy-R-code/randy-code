@@ -105,7 +105,7 @@ export function buildFindings(input: FindingsInput): MetadataFinding[] {
     if (raw.canonical?.href) {
       findings.push({
         id: "canonical-malformed",
-        severity: "warning",
+        severity: "invalid",
         title: "Canonical URL could not be resolved",
         description: `"${raw.canonical.href}" is not a valid URL.`,
         field: "canonical",
@@ -143,6 +143,16 @@ export function buildFindings(input: FindingsInput): MetadataFinding[] {
 
   // Robots
   const robotsLower = raw.robots.map((directive) => directive.toLowerCase());
+  if (robotsLower.length === 0) {
+    findings.push({
+      id: "robots-not-specified",
+      severity: "info",
+      title: "Robots directive not specified",
+      description:
+        "No robots meta directive detected. Indexing and link following are allowed by default.",
+      field: "robots",
+    });
+  }
   if (robotsLower.includes("noindex")) {
     findings.push({
       id: "robots-noindex",
@@ -150,6 +160,16 @@ export function buildFindings(input: FindingsInput): MetadataFinding[] {
       title: "This page declares noindex",
       description:
         "Search engines that respect this directive should not index this page.",
+      field: "robots",
+    });
+  }
+  if (robotsLower.includes("nofollow")) {
+    findings.push({
+      id: "robots-nofollow",
+      severity: "warning",
+      title: "This page declares nofollow",
+      description:
+        "Search engines that respect this directive should not follow links from this page.",
       field: "robots",
     });
   }
@@ -210,6 +230,24 @@ export function buildFindings(input: FindingsInput): MetadataFinding[] {
       description:
         "No twitter:image was found — the Open Graph image is used instead.",
       field: "twitter.image",
+    });
+  }
+  if (!raw.twitter.site) {
+    findings.push({
+      id: "twitter-site-missing",
+      severity: "info",
+      title: "Twitter site is not set",
+      description: "No twitter:site was found.",
+      field: "twitter.site",
+    });
+  }
+  if (!raw.twitter.creator) {
+    findings.push({
+      id: "twitter-creator-missing",
+      severity: "info",
+      title: "Twitter creator is not set",
+      description: "No twitter:creator was found.",
+      field: "twitter.creator",
     });
   }
 

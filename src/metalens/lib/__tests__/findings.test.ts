@@ -68,6 +68,56 @@ describe("buildFindings", () => {
     expect(findingIds(findings)).not.toContain("canonical-missing");
   });
 
+  it("marks a malformed canonical as invalid, distinct from a check/warning", () => {
+    const findings = buildFindings({
+      raw: emptyRaw({
+        canonical: { href: "not a valid url", duplicateCount: 1 },
+      }),
+      canonical: undefined,
+      finalUrl: "https://example.com/",
+    });
+    const finding = findings.find((f) => f.id === "canonical-malformed");
+    expect(finding?.severity).toBe("invalid");
+  });
+
+  it("treats missing twitter:site and twitter:creator as neutral, not a warning", () => {
+    const findings = buildFindings({
+      raw: emptyRaw(),
+      finalUrl: "https://example.com/",
+    });
+    const site = findings.find((f) => f.id === "twitter-site-missing");
+    const creator = findings.find((f) => f.id === "twitter-creator-missing");
+    expect(site?.severity).toBe("info");
+    expect(creator?.severity).toBe("info");
+  });
+
+  it("treats an absent robots meta directive as neutral, not a problem", () => {
+    const findings = buildFindings({
+      raw: emptyRaw({ robots: [] }),
+      finalUrl: "https://example.com/",
+    });
+    const finding = findings.find((f) => f.id === "robots-not-specified");
+    expect(finding?.severity).toBe("info");
+    expect(findingIds(findings)).not.toContain("robots-noindex");
+  });
+
+  it("does not flag robots-not-specified when a robots directive is present", () => {
+    const findings = buildFindings({
+      raw: emptyRaw({ robots: ["index", "follow"] }),
+      finalUrl: "https://example.com/",
+    });
+    expect(findingIds(findings)).not.toContain("robots-not-specified");
+  });
+
+  it("flags nofollow as a targeted check", () => {
+    const findings = buildFindings({
+      raw: emptyRaw({ robots: ["nofollow"] }),
+      finalUrl: "https://example.com/",
+    });
+    const finding = findings.find((f) => f.id === "robots-nofollow");
+    expect(finding?.severity).toBe("warning");
+  });
+
   it("treats a canonical that differs from the final URL as informational, not an error", () => {
     const findings = buildFindings({
       raw: emptyRaw({

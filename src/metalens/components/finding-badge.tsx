@@ -5,6 +5,7 @@ import {
   CircleCheck,
   Info,
   type LucideIcon,
+  TriangleAlert,
   XCircle,
 } from "lucide-react";
 
@@ -21,6 +22,11 @@ const SEVERITY_CONFIG: Record<
   missing: {
     label: "Missing",
     icon: XCircle,
+    color: brand.colors.functional.danger,
+  },
+  invalid: {
+    label: "Invalid",
+    icon: TriangleAlert,
     color: brand.colors.functional.danger,
   },
   info: { label: "Info", icon: Info, color: brand.colors.blue[400] },

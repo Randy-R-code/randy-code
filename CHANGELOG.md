@@ -9,6 +9,17 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.4] — 2026-08-18
+
+### Fixed
+
+- **MetaLens finding severity accuracy** — malformed canonical URLs now get
+  their own "Invalid" severity instead of sharing "Check" with `noindex`.
+  Missing `twitter:site`/`twitter:creator` and an absent robots meta tag
+  are now informational rather than unflagged, and `nofollow` is now
+  detected as a targeted check. Preview copy no longer claims to show
+  exactly how a page will render in search results or social shares.
+
 ## [1.6.3] — 2026-08-18
 
 ### Added

@@ -10,11 +10,13 @@ function countFor(
 export function AnalysisSummary({ analysis }: { analysis: MetadataAnalysis }) {
   const missing = countFor(analysis.findings, "missing");
   const warnings = countFor(analysis.findings, "warning");
+  const invalid = countFor(analysis.findings, "invalid");
   const info = countFor(analysis.findings, "info");
 
   const parts = [
     warnings > 0 && `${warnings} check${warnings === 1 ? "" : "s"}`,
     missing > 0 && `${missing} missing`,
+    invalid > 0 && `${invalid} invalid`,
     info > 0 && `${info} info`,
   ].filter(Boolean);
 

@@ -10,7 +10,7 @@ const ABOUT_ITEMS = [
   {
     title: "What is it?",
     content:
-      "MetaLens inspects a public page's metadata — title, description, Open Graph tags, Twitter cards, canonical URL and more — and shows exactly how it will appear in search results and social shares.",
+      "MetaLens inspects a public page's metadata — title, description, Open Graph tags, Twitter cards, canonical URL and more — and provides indicative previews of how that metadata may be used in search results and social shares.",
   },
   {
     title: "How to use it",

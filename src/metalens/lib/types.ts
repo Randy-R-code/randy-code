@@ -1,4 +1,9 @@
-export type FindingSeverity = "success" | "warning" | "missing" | "info";
+export type FindingSeverity =
+  | "success"
+  | "warning"
+  | "missing"
+  | "invalid"
+  | "info";
 
 export type MetadataFinding = {
   id: string;
