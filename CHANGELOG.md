@@ -9,6 +9,19 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.6] — 2026-08-18
+
+### Fixed
+
+- **InfraLens 404 page and privacy disclosure accuracy** — the 404 page
+  no longer shows a redundant "back to tools" link above its own CTA,
+  and that CTA now renders in InfraLens's actual green identity color
+  instead of blue. The privacy page's rate-limiting section now reflects
+  the real Upstash-backed policy (5 requests/minute, 30/hour, an external
+  store) instead of the pre-migration in-memory description, and
+  discloses Upstash as a second third-party service that receives the
+  visitor's IP.
+
 ## [1.6.5] — 2026-08-18
 
 ### Added

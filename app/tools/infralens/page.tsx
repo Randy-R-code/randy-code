@@ -1,3 +1,4 @@
+import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { HomeClient } from "@infralens-components/home-client";
 import { OpenSource } from "@infralens-components/landing/open-source";
 import { ResultsPreview } from "@infralens-components/landing/results-preview";
@@ -10,14 +11,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <HomeClient
-      landingSections={
-        <>
-          <ResultsPreview />
-          <WhatItChecks />
-          <OpenSource />
-        </>
-      }
-    />
+    <ToolPageShell>
+      <HomeClient
+        landingSections={
+          <>
+            <ResultsPreview />
+            <WhatItChecks />
+            <OpenSource />
+          </>
+        }
+      />
+    </ToolPageShell>
   );
 }

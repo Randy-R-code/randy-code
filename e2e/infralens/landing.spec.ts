@@ -12,6 +12,11 @@ test.describe("landing page", () => {
     await expect(
       page.locator("#hero").getByRole("button", { name: "example.com" }),
     ).toBeVisible();
+    // ToolPageShell is now applied per-page rather than via layout.tsx (so
+    // the 404 page can skip it) — confirm the landing page still gets it.
+    await expect(
+      page.getByRole("link", { name: "Retour aux outils" }),
+    ).toBeVisible();
   });
 
   test("a quick-example chip fills a full, submittable URL", async ({
@@ -71,5 +76,11 @@ test.describe("landing page", () => {
     await expect(
       page.getByRole("link", { name: /back to infralens/i }),
     ).toBeVisible();
+    // Deliberately skips ToolPageShell's "Retour aux outils" link (unlike
+    // every other InfraLens page) — a single, page-specific CTA instead of
+    // a redundant second "back" affordance.
+    await expect(
+      page.getByRole("link", { name: "Retour aux outils" }),
+    ).toHaveCount(0);
   });
 });

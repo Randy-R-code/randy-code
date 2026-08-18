@@ -30,12 +30,14 @@ export default function NotFound() {
         </div>
 
         {/* Divider */}
-        <div className="w-12 h-px bg-brand-secondary/40 mx-auto" />
+        <div className="w-12 h-px bg-brand-accent/40 mx-auto" />
 
-        {/* CTA */}
+        {/* CTA — brand-accent (green), not brand-secondary (blue): InfraLens's
+            actual identity color, hardcoded so it renders correctly even
+            though this page is outside .tool-accent-scope (see layout.tsx). */}
         <Link
           href="/tools/infralens"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-brand-secondary/40 bg-brand-secondary/10 hover:bg-brand-secondary/20 text-brand-secondary-hover text-sm font-semibold transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-brand-accent/40 bg-brand-accent/10 hover:bg-brand-accent/20 text-brand-accent-hover text-sm font-semibold transition-colors"
         >
           Back to InfraLens
         </Link>
