@@ -35,7 +35,7 @@ flowchart LR
     end
     subgraph "Next.js server (this repo)"
         SA["Server Action\nrunInfraChecks()"]
-        RL["Rate limiter\n(per-IP, in-memory)"]
+        RL["Rate limiter\n(Upstash, shared policy)"]
         SSRF["Target validation\n(SSRF guard, DNS pinning)"]
         Checks["20 checks\n(concurrency-limited pool)"]
         Score["Scoring + recommendations"]
@@ -107,7 +107,7 @@ src/infralens/
 │   ├── compare/                      # Report diffing + Markdown export
 │   ├── history/                      # Local history storage (versioned format)
 │   ├── recommendations/
-│   ├── concurrency.ts, rate-limit.ts
+│   ├── concurrency.ts                # Bounded-concurrency check pool
 ├── hooks/use-analysis-history.ts
 ├── config/{constants,env,site-config}.ts
 └── components/
@@ -172,10 +172,14 @@ analysis-wide deadline (`ANALYSIS_TIMEOUT_MS`, 20s) as the analysis
 progresses; checks run through a bounded concurrency pool
 (`MAX_CONCURRENT_CHECKS`, 6) instead of unbounded `Promise.all`.
 
-Rate limiting is in-memory, per-IP, 1 request/30s — sufficient for a
-single-instance deployment, not yet a hard guarantee under horizontal
-scaling. See [`SECURITY.md`](SECURITY.md) for how to report a
-vulnerability.
+Rate limiting is per-IP, via the shared Upstash-backed limiter
+(`src/lib/rate-limit/`, policy `"infralens"`: 5 requests/minute burst, 30/
+hour) — a real cross-instance guarantee once Redis is configured, not an
+in-memory approximation. Without `UPSTASH_REDIS_REST_URL`/
+`UPSTASH_REDIS_REST_TOKEN` (local dev, CI), it runs allow-all instead of
+blocking real usage; a genuine backend error fails closed rather than
+silently letting requests through. See [`SECURITY.md`](SECURITY.md) for
+how to report a vulnerability.
 
 ## DNS and TLS
 
@@ -237,6 +241,10 @@ NEXT_PUBLIC_SITE_URL=
 
 Validated once at module load (`src/infralens/config/env.ts`) — consumers
 read the parsed `env` object instead of `process.env` directly.
+
+Rate limiting is configured separately, shared with the rest of the repo
+(`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) — see the root
+[`README.md`](../../README.md#environment-variables).
 
 ## Development
 
