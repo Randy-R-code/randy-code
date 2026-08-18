@@ -9,6 +9,32 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.0] — 2026-08-18
+
+### Added
+
+- **API Studio Webhooks** — a second mode alongside Request: generate a
+  temporary, high-entropy endpoint (24h lifetime, up to 50 retained events)
+  and inspect real inbound traffic sent to it — method, query, headers and
+  body, captured as-sent. A lightweight ~2.5s poll drives the live event
+  list rather than a persistent connection — this deployment has no
+  `maxDuration` configured, so SSE would be at the mercy of the default
+  serverless function timeout. Ingestion is rate-limited per endpoint token
+  rather than by client IP (inbound traffic is intentionally public and
+  bursty), and endpoint creation is separately rate-limited per IP. Replay
+  seeds a captured event straight into the existing Request builder and
+  sends it through the same secured outbound proxy — no second, weaker
+  request path.
+
+### Fixed
+
+- **Focus ring/primary color inconsistent across the tool family** —
+  MetaLens, JSON Studio, Cron Builder and API Studio rendered the
+  portfolio's default blue on shared inputs/buttons instead of InfraLens's
+  green identity, because the scoping that provided it lived only in
+  InfraLens's own layout. Moved into the shared `ToolPageShell` so every
+  tool under `/tools` gets it consistently.
+
 ## [1.5.0] — 2026-08-17
 
 ### Added
