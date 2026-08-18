@@ -53,6 +53,13 @@ export const STRIPPED_RESPONSE_HEADERS = new Set([
 /** Local (IndexedDB) history cap — oldest entries are dropped past this. */
 export const HISTORY_MAX_ENTRIES = 100;
 
+/** Stable, public, deterministic request used by "Load example" — demonstrates params and headers without sending anything. */
+export const EXAMPLE_REQUEST = {
+  method: "GET" as const,
+  url: "https://jsonplaceholder.typicode.com/posts?userId=1",
+  headers: { Accept: "application/json" },
+};
+
 /** Fixed lifetime of a webhook endpoint from creation — not sliding on activity. */
 export const WEBHOOK_TTL_SECONDS = 24 * 60 * 60;
 /** Oldest events are evicted past this count (spec's "friendlier than rejecting" behavior for a debugging tool). */

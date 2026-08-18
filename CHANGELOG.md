@@ -9,6 +9,21 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.5] — 2026-08-18
+
+### Added
+
+- **API Studio first-use and history polish** — a "Load example" request
+  populates the builder without sending anything; a Clear action resets
+  the response panel; Params/Headers/History now have clearer, distinct
+  empty states; and an empty URL no longer produces an invalid `fetch("")`
+  snippet in the generated code.
+
+### Changed
+
+- Wording no longer implies API Studio runs without a backend — it now
+  credits the secured outbound proxy it actually goes through.
+
 ## [1.6.4] — 2026-08-18
 
 ### Fixed

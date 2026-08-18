@@ -7,7 +7,7 @@ import type { BodyMode, HttpMethod } from "@/api-studio/lib/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Send, X } from "lucide-react";
+import { FileJson, Loader2, Send, X } from "lucide-react";
 import { AuthEditor } from "./auth-editor";
 import { BodyEditor } from "./body-editor";
 import { KeyValueEditor } from "./key-value-editor";
@@ -30,6 +30,7 @@ interface RequestBuilderProps {
   onBodyValueChange: (value: string) => void;
   onSend: () => void;
   onCancel: () => void;
+  onLoadExample: () => void;
 }
 
 export function RequestBuilder({
@@ -50,6 +51,7 @@ export function RequestBuilder({
   onBodyValueChange,
   onSend,
   onCancel,
+  onLoadExample,
 }: RequestBuilderProps) {
   return (
     <div className="flex flex-col gap-4">
@@ -117,12 +119,25 @@ export function RequestBuilder({
         )}
       </form>
 
-      {pending && (
-        <p className="flex items-center gap-1.5 text-xs text-zinc-400">
-          <Loader2 className="size-3.5 animate-spin" />
-          Sending request…
-        </p>
-      )}
+      <div className="flex items-center justify-between">
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={onLoadExample}
+          className="self-start"
+        >
+          <FileJson className="size-3.5" />
+          Load example
+        </Button>
+
+        {pending && (
+          <p className="flex items-center gap-1.5 text-xs text-zinc-400">
+            <Loader2 className="size-3.5 animate-spin" />
+            Sending request…
+          </p>
+        )}
+      </div>
 
       <Tabs defaultValue="params">
         <TabsList>
@@ -137,6 +152,8 @@ export function RequestBuilder({
             rows={params}
             onChange={onParamsChange}
             addLabel="Add param"
+            emptyMessage="No query parameters"
+            emptyHint="Add parameters to include them in the request URL."
           />
         </TabsContent>
 
@@ -145,6 +162,8 @@ export function RequestBuilder({
             rows={headers}
             onChange={onHeadersChange}
             addLabel="Add header"
+            emptyMessage="No custom headers"
+            emptyHint="Add headers to customize the request."
           />
         </TabsContent>
 

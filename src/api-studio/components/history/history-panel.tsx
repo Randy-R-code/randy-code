@@ -24,9 +24,12 @@ export function HistoryPanel({
 }: HistoryPanelProps) {
   if (entries.length === 0) {
     return (
-      <p className="text-sm text-zinc-400">
-        Sent requests will show up here — nothing sent yet.
-      </p>
+      <div>
+        <p className="text-sm text-zinc-300">No requests yet</p>
+        <p className="text-xs text-zinc-400">
+          Sent requests will appear here and stay on this device.
+        </p>
+      </div>
     );
   }
 
@@ -34,7 +37,8 @@ export function HistoryPanel({
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <p className="text-xs font-medium text-zinc-400">
-          {entries.length} request{entries.length === 1 ? "" : "s"}
+          {entries.length} request{entries.length === 1 ? "" : "s"} · stays on
+          this device
         </p>
         <Button type="button" variant="ghost" size="sm" onClick={onClear}>
           Clear all

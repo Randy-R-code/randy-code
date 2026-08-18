@@ -4,6 +4,7 @@ import { CodegenPanel } from "@/api-studio/components/codegen-panel";
 import { HistoryPanel } from "@/api-studio/components/history/history-panel";
 import { RequestBuilder } from "@/api-studio/components/request-builder/request-builder";
 import { ResponseViewer } from "@/api-studio/components/response-viewer/response-viewer";
+import { EXAMPLE_REQUEST } from "@/api-studio/config/constants";
 import { useRequestHistory } from "@/api-studio/hooks/use-request-history";
 import { useSendRequest } from "@/api-studio/hooks/use-send-request";
 import type { AuthConfig } from "@/api-studio/lib/auth";
@@ -20,6 +21,7 @@ import type {
   HttpMethod,
   RequestConfig,
 } from "@/api-studio/lib/types";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type WorkspaceState = {
@@ -65,7 +67,7 @@ export function ApiStudioWorkspace({
   const [state, setState] = useState<WorkspaceState>(() =>
     initialSeed ? loadFromConfig(initialSeed) : INITIAL_STATE,
   );
-  const { state: sendState, send, cancel } = useSendRequest();
+  const { state: sendState, send, cancel, reset } = useSendRequest();
   const history = useRequestHistory();
 
   const pending = sendState.status === "pending";
@@ -83,6 +85,10 @@ export function ApiStudioWorkspace({
 
   function handleReopen(entry: HistoryEntry) {
     setState(loadFromConfig(entry.request));
+  }
+
+  function handleLoadExample() {
+    setState(loadFromConfig(EXAMPLE_REQUEST));
   }
 
   async function handleResend(entry: HistoryEntry) {
@@ -126,6 +132,7 @@ export function ApiStudioWorkspace({
         }
         onSend={handleSend}
         onCancel={cancel}
+        onLoadExample={handleLoadExample}
       />
 
       <div role="status" aria-live="polite" className="sr-only">
@@ -138,16 +145,23 @@ export function ApiStudioWorkspace({
 
       {sendState.status === "done" && (
         <section aria-label="Response">
-          <h2 className="mb-3 text-sm font-semibold text-foreground">
-            Response
-          </h2>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-foreground">Response</h2>
+            <Button type="button" variant="ghost" size="sm" onClick={reset}>
+              Clear
+            </Button>
+          </div>
           <ResponseViewer result={sendState.result} />
         </section>
       )}
 
       <section aria-label="Generate code">
         <h2 className="mb-3 text-sm font-semibold text-foreground">Code</h2>
-        <CodegenPanel config={buildRequestConfig(state)} />
+        {state.url.trim() === "" ? (
+          <p className="text-sm text-zinc-400">Enter a URL to generate code.</p>
+        ) : (
+          <CodegenPanel config={buildRequestConfig(state)} />
+        )}
       </section>
 
       <section aria-label="Request history">

@@ -39,9 +39,23 @@ test.describe("api studio", () => {
     await expect(
       page.getByRole("button", { name: "Send", exact: true }),
     ).toBeDisabled();
-    await expect(
-      page.getByText("Sent requests will show up here — nothing sent yet."),
-    ).toBeVisible();
+    await expect(page.getByText("No requests yet")).toBeVisible();
+    await expect(page.getByText("Enter a URL to generate code.")).toBeVisible();
+  });
+
+  test("Load example populates the builder without sending anything", async ({
+    page,
+  }) => {
+    await page.goto("/tools/api-studio");
+
+    await page.getByRole("button", { name: "Load example" }).click();
+
+    await expect(page.locator("#api-studio-url")).toHaveValue(
+      "https://jsonplaceholder.typicode.com/posts?userId=1",
+    );
+    await expect(page.locator('section[aria-label="Response"]')).toHaveCount(0);
+    await page.getByRole("tab", { name: "Params" }).click();
+    await expect(page.getByPlaceholder("Key")).toHaveValue("userId");
   });
 
   test("send -> response -> history -> reopen -> generated code", async ({
@@ -80,6 +94,20 @@ test.describe("api studio", () => {
     await expect(page.locator("#api-studio-url")).toHaveValue(
       "https://api.example.com/users",
     );
+  });
+
+  test("Clear removes the response panel", async ({ page }) => {
+    await mockSuccessfulResponse(page);
+    await page.goto("/tools/api-studio");
+
+    await page.fill("#api-studio-url", "https://api.example.com/users");
+    await page.getByRole("button", { name: "Send", exact: true }).click();
+
+    const responseSection = page.locator('section[aria-label="Response"]');
+    await expect(responseSection).toBeVisible();
+
+    await responseSection.getByRole("button", { name: "Clear" }).click();
+    await expect(responseSection).toHaveCount(0);
   });
 
   test("a request without a URL cannot be sent", async ({ page }) => {

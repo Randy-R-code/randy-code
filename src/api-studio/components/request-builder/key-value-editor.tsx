@@ -11,6 +11,8 @@ interface KeyValueEditorProps {
   keyPlaceholder?: string;
   valuePlaceholder?: string;
   addLabel: string;
+  emptyMessage: string;
+  emptyHint: string;
 }
 
 /** Shared enable/disable key-value row editor used by both the Params and Headers tabs. */
@@ -20,6 +22,8 @@ export function KeyValueEditor({
   keyPlaceholder = "Key",
   valuePlaceholder = "Value",
   addLabel,
+  emptyMessage,
+  emptyHint,
 }: KeyValueEditorProps) {
   function updateRow(id: string, patch: Partial<KeyValueRow>) {
     onChange(rows.map((row) => (row.id === id ? { ...row, ...patch } : row)));
@@ -39,7 +43,10 @@ export function KeyValueEditor({
   return (
     <div className="flex flex-col gap-2">
       {rows.length === 0 && (
-        <p className="py-2 text-sm text-zinc-400">None yet.</p>
+        <div className="py-2">
+          <p className="text-sm text-zinc-300">{emptyMessage}</p>
+          <p className="text-xs text-zinc-400">{emptyHint}</p>
+        </div>
       )}
       {rows.map((row) => (
         <div key={row.id} className="flex items-center gap-2">

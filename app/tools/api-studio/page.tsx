@@ -35,7 +35,7 @@ const ABOUT_ITEMS = [
   {
     title: "Why use it?",
     content:
-      "Testing an API shouldn't require installing a desktop app. API Studio runs entirely in the browser, keeps your request history local, and reuses the same SSRF-hardened outbound proxy built for InfraLens for both Request and Webhook replay — so it's safe to point at arbitrary public URLs.",
+      "Testing an API shouldn't require installing a desktop app. API Studio runs directly from your browser and keeps your request history local — requests are sent through a secured backend proxy that reuses the same SSRF-hardened outbound fetch built for InfraLens, for both Request and Webhook replay, so it's safe to point at arbitrary public URLs.",
   },
 ];
 

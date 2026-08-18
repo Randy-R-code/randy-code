@@ -62,5 +62,9 @@ export function useSendRequest() {
     controllerRef.current?.abort();
   }, []);
 
-  return { state, send, cancel };
+  const reset = useCallback(() => {
+    setState({ status: "idle" });
+  }, []);
+
+  return { state, send, cancel, reset };
 }
