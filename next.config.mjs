@@ -52,12 +52,15 @@ const nextConfig = {
   },
   async headers() {
     // React utilise eval() en mode dev pour reconstruire les call stacks
-    // (jamais en production — cf. son propre avertissement console). On
-    // assouplit script-src uniquement ici pour retirer le bruit console en
-    // local, sans toucher à la CSP réellement servie en production.
+    // (jamais en production — cf. son propre avertissement console), et
+    // @vercel/analytics charge son script de debug depuis
+    // va.vercel-scripts.com en dev (en prod il passe par /_vercel/... en
+    // same-origin, déjà couvert par 'self'). On assouplit script-src
+    // uniquement ici pour retirer le bruit console en local, sans toucher à
+    // la CSP réellement servie en production.
     const scriptSrc =
       process.env.NODE_ENV === "development"
-        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
         : "script-src 'self' 'unsafe-inline'";
 
     return [

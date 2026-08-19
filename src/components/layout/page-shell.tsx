@@ -7,6 +7,7 @@ import {
   Building2,
   FlaskConical,
   Mail,
+  Shield,
   User,
   Wrench,
 } from "lucide-react";
@@ -19,6 +20,7 @@ const iconMap = {
   user: User,
   bookOpen: BookOpen,
   mail: Mail,
+  shield: Shield,
 } as const;
 
 export type PageIcon = keyof typeof iconMap;

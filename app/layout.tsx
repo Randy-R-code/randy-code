@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { brand } from "@/lib/brand";
 import { buildPersonSchema } from "@/lib/json-ld";
+import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "framer-motion";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -78,6 +79,8 @@ export default function RootLayout({
         <ServiceWorkerRegistration />
         <MotionConfig reducedMotion="user">{children}</MotionConfig>
         <SiteFooter />
+
+        <Analytics />
       </body>
     </html>
   );

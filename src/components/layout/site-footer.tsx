@@ -35,7 +35,16 @@ export function SiteFooter() {
             Développeur fullstack TypeScript — sites vitrines, SaaS, apps
             mobiles.
           </p>
-          <p className="text-xs text-zinc-400">© {year} Randy Code</p>
+          <p className="flex items-center gap-2 text-xs text-zinc-400">
+            <span>© {year} Randy Code</span>
+            <span aria-hidden="true">·</span>
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-white"
+            >
+              Confidentialité
+            </Link>
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 sm:gap-x-10">

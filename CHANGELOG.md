@@ -9,6 +9,17 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.7.0] — 2026-08-19
+
+### Added
+
+- **Vercel Web Analytics** — enabled site-wide via the official
+  `@vercel/analytics` package, mounted once in the root layout.
+- **Privacy page** (`/privacy`) — non-professional publisher notice,
+  hosting disclosure, and RGPD data-processing coverage for the contact
+  form (Resend), anti-abuse rate limiting (Upstash, IP used only as an
+  ephemeral key), and Web Analytics. Linked from the footer.
+
 ## [1.6.7] — 2026-08-19
 
 ### Added
