@@ -151,10 +151,9 @@ export default function AboutPage() {
           </p>
           <p className="mt-3 text-sm leading-relaxed text-zinc-400">
             En parallèle, je développe{" "}
-            <span className="font-medium text-zinc-200">Liflow</span> et{" "}
-            <span className="font-medium text-zinc-200">InfraLens</span>, deux
-            projets produit qui me permettent de rester proche des contraintes
-            réelles d&apos;un builder.
+            <span className="font-medium text-zinc-200">Liflow</span> et une
+            collection d&apos;outils développeur open source, qui me permettent
+            de rester proche des contraintes réelles d&apos;un builder.
           </p>
         </div>
       </section>
