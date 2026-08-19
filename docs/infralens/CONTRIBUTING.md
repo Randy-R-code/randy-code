@@ -12,7 +12,7 @@ These aren't up for debate in a PR — they're the reason this project exists in
 
 - **No SaaS drift.** No accounts, no billing, no orgs, no persistent server-side storage of analysis results. Ephemeral server-side, capped local (`localStorage`) history only.
 - **Passive analysis only.** No exploitation, no brute force, no port scanning, no injection, no deep crawling, no internal network access. If a check needs anything beyond reading what a normal visitor's browser or DNS resolver could already see, it doesn't belong here.
-- **SSRF protection is never negotiable.** Every new outbound request to a user-supplied target must go through the existing validated/pinned resolution path (`src/lib/security/`). Never weaken or bypass it to make a test pass.
+- **SSRF protection is never negotiable.** Every new outbound request to a user-supplied target must go through the existing validated/pinned resolution path (`src/infralens/lib/security/`). Never weaken or bypass it to make a test pass.
 - **No invented certainty.** Heuristic findings (stack detection, WAF/CDN fingerprinting) must be labeled with their actual confidence and must never silently affect the score.
 
 ## Setup
@@ -48,7 +48,7 @@ pnpm exec playwright install --with-deps chromium webkit   # once
 pnpm e2e:infralens
 ```
 
-`e2e/infralens/` uses Playwright against a real dev server, deliberately not mocked — this project has a habit of finding real bugs this way that mocked unit tests can't catch (a silent HTML5 form-validation deadlock on the URL input, several false-positive security findings from live header fingerprinting, and others — see `CHANGELOG.md`). It runs on dedicated `infralens-desktop`/`infralens-mobile` Playwright projects, single worker: the analysis flow is rate-limited to one request per IP per 30 seconds, and parallel workers hitting the same local server would collide on that limit. Only `e2e/infralens/analysis.spec.ts` triggers a real analysis (against `example.com`) — keep it that way rather than adding a second spec that also does, or the two will race each other.
+`e2e/infralens/` uses Playwright against a real dev server, deliberately not mocked — this project has a habit of finding real bugs this way that mocked unit tests can't catch (a silent HTML5 form-validation deadlock on the URL input, several false-positive security findings from live header fingerprinting, and others — see `CHANGELOG.md`). It runs on dedicated `infralens-desktop`/`infralens-mobile` Playwright projects, single worker: the analysis flow is rate-limited per IP via the shared Upstash-backed policy (5 requests/minute burst, 30/hour), and parallel workers hitting the same local server would collide on that limit. Only `e2e/infralens/analysis.spec.ts` triggers a real analysis (against `example.com`) — keep it that way rather than adding a second spec that also does, or the two will race each other.
 
 ## Adding a new check
 
