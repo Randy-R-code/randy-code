@@ -10,8 +10,6 @@ const SOFTWARE_APPLICATION_SLUGS = new Set(["liflow", "infralens"]);
 
 type Props = { params: Promise<{ slug: string }> };
 
-const color = brand.colors.blue[400];
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
@@ -31,6 +29,9 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+
+  const color =
+    project.type === "tool" ? brand.colors.green[500] : brand.colors.blue[400];
 
   return (
     <main className="flex-1 px-6 pt-8 pb-16">
@@ -117,32 +118,21 @@ export default async function ProjectPage({ params }: Props) {
                 { label: "Solution", text: project.solution },
                 { label: "Résultat", text: project.result },
               ]
-          ).map(({ label, text }) => {
-            const isResult = label === "Résultat";
-            const sectionColor = isResult ? brand.colors.green[500] : color;
-            return (
-              <section
-                key={label}
-                className="rounded-xl border p-6"
-                style={{
-                  borderColor: `${sectionColor}18`,
-                  background: brand.colors.surface[2],
-                }}
-              >
-                <h2
-                  className={
-                    isResult
-                      ? "mb-2 text-sm font-semibold uppercase tracking-wider"
-                      : "mb-2 text-sm font-semibold uppercase tracking-wider text-zinc-400"
-                  }
-                  style={isResult ? { color: sectionColor } : undefined}
-                >
-                  {label}
-                </h2>
-                <p className="text-sm leading-relaxed text-zinc-300">{text}</p>
-              </section>
-            );
-          })}
+          ).map(({ label, text }) => (
+            <section
+              key={label}
+              className="rounded-xl border p-6"
+              style={{
+                borderColor: `${color}18`,
+                background: brand.colors.surface[2],
+              }}
+            >
+              <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+                {label}
+              </h2>
+              <p className="text-sm leading-relaxed text-zinc-300">{text}</p>
+            </section>
+          ))}
         </div>
 
         {/* Stack */}

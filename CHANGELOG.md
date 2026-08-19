@@ -9,6 +9,32 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.6.7] — 2026-08-19
+
+### Added
+
+- **Tools collection visible from Home** — a compact "Outils développeur"
+  section links to all 5 tools (InfraLens, API Studio, MetaLens, JSON
+  Studio, Cron Builder) without competing with the existing Projects
+  showcase.
+
+### Changed
+
+- **InfraLens styled consistently as a dual project/tool** — its cards on
+  Home and `/projects`, and its case study page, now use its
+  tools-collection green identity (with a wrench badge) instead of the
+  generic Projects blue.
+- Home hero title harmonized to "Développeur fullstack TypeScript"
+  everywhere.
+
+### Fixed
+
+- **Stale product copy corrected across About, InfraLens's case study,
+  InfraLens's contributor docs, and API Studio** — outdated project
+  lists, the old (pre-redesign) InfraLens scoring weights, the
+  pre-Upstash rate-limiting description, a stale SSRF file path, and an
+  absolute "safe" security claim on API Studio.
+
 ## [1.6.6] — 2026-08-18
 
 ### Fixed

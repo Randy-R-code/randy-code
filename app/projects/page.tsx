@@ -1,7 +1,7 @@
 import { PageShell } from "@/components/layout/page-shell";
 import { brand } from "@/lib/brand";
 import { projects, statusLabel } from "@/lib/projects";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -22,94 +22,107 @@ export default function ProjectsPage() {
       icon="building2"
     >
       <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-        {projects.map((project) => (
-          <article
-            key={project.slug}
-            className="flex flex-col gap-4 rounded-xl border p-6"
-            style={{
-              borderColor: `${brand.colors.blue[400]}18`,
-              background: brand.colors.surface[2],
-            }}
-          >
-            <div className="flex items-center justify-between gap-2">
-              <span
-                className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                style={{
-                  backgroundColor: `${brand.colors.blue[400]}18`,
-                  color: brand.colors.blue[400],
-                }}
-              >
-                {statusLabel(project.status)}
-              </span>
-            </div>
-
-            <div className="flex flex-wrap content-start gap-1.5 lg:min-h-11">
-              {project.technologies.map((tech) => (
+        {projects.map((project) => {
+          const cardColor =
+            project.type === "tool"
+              ? brand.colors.green[500]
+              : brand.colors.blue[400];
+          return (
+            <article
+              key={project.slug}
+              className="flex flex-col gap-4 rounded-xl border p-6"
+              style={{
+                borderColor: `${cardColor}18`,
+                background: brand.colors.surface[2],
+              }}
+            >
+              <div className="flex items-center justify-between gap-2">
                 <span
-                  key={tech}
-                  className="rounded-md px-2 py-0.5 text-[10px] font-medium"
+                  className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
                   style={{
-                    backgroundColor: `${brand.colors.blue[400]}18`,
-                    color: brand.colors.blue[400],
+                    backgroundColor: `${cardColor}18`,
+                    color: cardColor,
                   }}
                 >
-                  {tech}
+                  {statusLabel(project.status)}
                 </span>
-              ))}
-            </div>
-
-            <h2 className="text-base font-semibold text-white">
-              {project.name}
-            </h2>
-
-            <div className="flex flex-col gap-2.5 text-sm">
-              <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-                  Problème
-                </span>
-                <p className="mt-0.5 text-zinc-400">{project.problem}</p>
+                {project.type === "tool" && (
+                  <Wrench
+                    size={16}
+                    aria-hidden="true"
+                    style={{ color: cardColor }}
+                  />
+                )}
               </div>
-              <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-                  Solution
-                </span>
-                <p className="mt-0.5 text-zinc-400">{project.solution}</p>
+
+              <div className="flex flex-wrap content-start gap-1.5 lg:min-h-11">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md px-2 py-0.5 text-[10px] font-medium"
+                    style={{
+                      backgroundColor: `${cardColor}18`,
+                      color: cardColor,
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-              <div>
-                <span
-                  className="text-[10px] font-semibold uppercase tracking-wider"
-                  style={{ color: brand.colors.blue[400] }}
+
+              <h2 className="text-base font-semibold text-white">
+                {project.name}
+              </h2>
+
+              <div className="flex flex-col gap-2.5 text-sm">
+                <div>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                    Problème
+                  </span>
+                  <p className="mt-0.5 text-zinc-400">{project.problem}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                    Solution
+                  </span>
+                  <p className="mt-0.5 text-zinc-400">{project.solution}</p>
+                </div>
+                <div>
+                  <span
+                    className="text-[10px] font-semibold uppercase tracking-wider"
+                    style={{ color: cardColor }}
+                  >
+                    Résultat
+                  </span>
+                  <p className="mt-0.5 font-medium text-zinc-300">
+                    {project.result}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-auto flex items-center gap-4">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="text-xs font-medium"
+                  style={{ color: cardColor }}
                 >
-                  Résultat
-                </span>
-                <p className="mt-0.5 font-medium text-zinc-300">
-                  {project.result}
-                </p>
+                  Étude de cas →
+                </Link>
+                {project.projectUrl && (
+                  <a
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-medium"
+                    style={{ color: cardColor }}
+                  >
+                    Voir le projet <ExternalLink size={11} />
+                  </a>
+                )}
               </div>
-            </div>
-
-            <div className="mt-auto flex items-center gap-4">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="text-xs font-medium"
-                style={{ color: brand.colors.blue[400] }}
-              >
-                Étude de cas →
-              </Link>
-              {project.projectUrl && (
-                <a
-                  href={project.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-medium"
-                  style={{ color: brand.colors.blue[400] }}
-                >
-                  Voir le projet <ExternalLink size={11} />
-                </a>
-              )}
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
       <div
