@@ -62,12 +62,17 @@ export async function renderToolOgImage({
   tagline,
   color,
   iconNodes,
+  label,
   preview,
 }: {
   title: string;
   tagline: string;
   color: string;
   iconNodes: readonly IconNode[];
+  /** Eyebrow text above the title — the tool's category (see
+   * TOOL_CATEGORY_LABELS in src/lib/tools.ts), matching the same label
+   * shown in the tool's own ToolHeader. */
+  label: string;
   /** Tool-specific mini preview fragment (e.g. a compact cron/JSON/metadata
    * mockup) — the shared renderer owns the surrounding panel (border,
    * radius, background); the route only supplies the inner content. Tools
@@ -185,7 +190,7 @@ export async function renderToolOgImage({
                 textTransform: "uppercase",
               }}
             >
-              Developer Tool
+              {label}
             </span>
           </div>
 

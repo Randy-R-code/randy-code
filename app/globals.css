@@ -5,15 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* InfraLens brand tokens — the hex values already match the blue-/green-
-     scale below one-for-one; kept as named aliases because InfraLens's
+  /* InfraLens brand tokens — kept as named aliases because InfraLens's
      components reference bg-brand-accent, text-brand-secondary-hover, etc.
-     directly. */
+     directly. brand-secondary used to alias the blue scale (a leftover from
+     the original standalone repo); repointed to a lighter green tier so
+     every decorative accent in InfraLens reads as its actual green identity
+     instead of mixing in blue. */
   --color-brand-accent: #14b894;
   --color-brand-accent-hover: #35d3ad;
   --color-brand-accent-strong: #0c9478;
-  --color-brand-secondary: #2388f2;
-  --color-brand-secondary-hover: #4aa7ff;
+  --color-brand-secondary: var(--green-400);
+  --color-brand-secondary-hover: var(--green-300);
 }
 
 @theme inline {

@@ -1,5 +1,6 @@
 import { Icon, renderToolOgImage } from "@/components/og/tool-og-image";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 
 export const runtime = "nodejs";
 export const alt = "JSON Studio — Randy Code";
@@ -122,6 +123,7 @@ export default async function Image() {
     tagline: "Validate, format and inspect JSON instantly.",
     color,
     iconNodes: BRACES_ICON,
+    label: TOOL_CATEGORY_LABELS["developer-utilities"],
     preview,
   });
 }

@@ -44,8 +44,8 @@ export default function ConfidentialitePage() {
       <Block title="Éditeur du site">
         <p>
           Ce site est publié par{" "}
-          <span className="font-medium text-zinc-200">Randy Rimbault</span>, à
-          titre personnel et non professionnel. Contact :{" "}
+          <span className="font-medium text-zinc-200">Randy Rimbault</span>.
+          Contact :{" "}
           <a
             href="mailto:randy.rcode@gmail.com"
             className="text-blue-400 underline underline-offset-2 hover:text-blue-300"

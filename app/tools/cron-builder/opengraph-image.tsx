@@ -1,5 +1,6 @@
 import { Icon, renderToolOgImage } from "@/components/og/tool-og-image";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 
 export const runtime = "nodejs";
 export const alt = "Cron Builder — Randy Code";
@@ -128,6 +129,7 @@ export default async function Image() {
     tagline: "Build, validate and understand cron expressions.",
     color,
     iconNodes: CLOCK_ICON,
+    label: TOOL_CATEGORY_LABELS["developer-utilities"],
     preview,
   });
 }

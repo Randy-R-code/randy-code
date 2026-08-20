@@ -1,5 +1,6 @@
 import { Icon, renderToolOgImage } from "@/components/og/tool-og-image";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 
 export const runtime = "nodejs";
 export const alt = "MetaLens — Randy Code";
@@ -124,6 +125,7 @@ export default async function Image() {
       "Inspect metadata, social cards and indexing signals from any public web page.",
     color,
     iconNodes: SCAN_SEARCH_ICON,
+    label: TOOL_CATEGORY_LABELS["web-api"],
     preview,
   });
 }

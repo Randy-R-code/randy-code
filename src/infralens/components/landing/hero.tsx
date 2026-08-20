@@ -10,7 +10,7 @@ import {
   parseAnalysisError,
 } from "@infralens-lib/checks/parse-error";
 import { ChecksResponse } from "@infralens-lib/checks/types";
-import { BookOpen, Scale, Search, ShieldCheck } from "lucide-react";
+import { BookOpen, GitCompare, Scale, Search, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { runInfraChecks } from "../../../../app/tools/infralens/actions/run-checks";
@@ -158,6 +158,13 @@ export function Hero({
           >
             <BookOpen className="size-4" />
             Read the documentation
+          </Link>
+          <Link
+            href="/tools/infralens/compare"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <GitCompare className="size-4" />
+            Compare reports
           </Link>
           <Link
             href="/tools/infralens/privacy"

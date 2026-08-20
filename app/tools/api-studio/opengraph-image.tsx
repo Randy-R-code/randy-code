@@ -1,5 +1,6 @@
 import { renderToolOgImage } from "@/components/og/tool-og-image";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 
 export const runtime = "nodejs";
 export const alt = "API Studio — Randy Code";
@@ -123,6 +124,7 @@ export default async function Image() {
     tagline: "Build, send, receive, and inspect HTTP requests.",
     color,
     iconNodes: SEND_ICON,
+    label: TOOL_CATEGORY_LABELS["web-api"],
     preview,
   });
 }

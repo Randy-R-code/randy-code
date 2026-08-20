@@ -2,6 +2,7 @@ import { ToolAboutSection } from "@/components/layout/tool-about-section";
 import { ToolHeader } from "@/components/layout/tool-header";
 import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 import { MetaLens } from "@/metalens/components/metalens";
 import { ScanSearch } from "lucide-react";
 import type { Metadata, Viewport } from "next";
@@ -47,7 +48,7 @@ export default function MetaLensPage() {
         <div className="mx-auto w-full max-w-5xl">
           <ToolHeader
             icon={ScanSearch}
-            label="Developer Tool"
+            label={TOOL_CATEGORY_LABELS["web-api"]}
             title="MetaLens"
             tagline="Inspect metadata, social cards and indexing signals from any public web page."
             color={brand.colors.green[500]}

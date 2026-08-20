@@ -9,6 +9,29 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.7.2] — 2026-08-20
+
+### Fixed
+
+- **InfraLens's remaining blue accents repainted green** — the
+  `brand-secondary` token (hero kicker text, category icon badges, history
+  hover states, recommendation links, compare drag-over highlight) was
+  still aliased to InfraLens's original blue; repointed to a lighter green
+  tier so every decorative accent matches its actual green identity. The
+  semantic blue used for "Info" status badges and the compare page's
+  "Added" diff category is unchanged.
+- **Compare reports wasn't discoverable before running a scan** — added
+  next to GitHub/Docs/Privacy/License in InfraLens's hero; previously only
+  reachable from the report header after an analysis.
+- **About page's two non-tool icons no longer share the tools collection's
+  wrench** — "Produit-first" and "Mécanique" now use distinct icons
+  (`Target`, `Gauge`).
+- **Tool pages showed a generic "Developer Tool" label instead of their
+  real category** — Cron Builder, JSON Studio, API Studio and MetaLens's
+  page header and social-share image now read their actual category
+  ("Web & API" or "Developer Utilities") from the same source already
+  used on `/tools`.
+
 ## [1.7.1] — 2026-08-20
 
 ### Changed

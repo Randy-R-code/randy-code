@@ -3,6 +3,7 @@ import { ToolHeader } from "@/components/layout/tool-header";
 import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { JsonStudio } from "@/json-studio/components/json-studio";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 import { Braces } from "lucide-react";
 import type { Metadata, Viewport } from "next";
 
@@ -47,7 +48,7 @@ export default function JsonStudioPage() {
         <div className="mx-auto w-full max-w-5xl">
           <ToolHeader
             icon={Braces}
-            label="Developer Tool"
+            label={TOOL_CATEGORY_LABELS["developer-utilities"]}
             title="JSON Studio"
             tagline="Format, validate and explore JSON instantly."
             color={brand.colors.green[500]}

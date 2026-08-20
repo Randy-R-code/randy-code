@@ -4,6 +4,7 @@ import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { CronBuilder } from "@/cron-builder/components/cron-builder";
 import { CronReference } from "@/cron-builder/components/cron-reference";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 import { Clock } from "lucide-react";
 import type { Metadata, Viewport } from "next";
 
@@ -52,7 +53,7 @@ export default function CronBuilderPage() {
         <div className="mx-auto w-full max-w-5xl">
           <ToolHeader
             icon={Clock}
-            label="Developer Tool"
+            label={TOOL_CATEGORY_LABELS["developer-utilities"]}
             title="Cron Builder"
             tagline="Build, validate, and understand cron expressions without memorizing the syntax."
             color={brand.colors.green[500]}

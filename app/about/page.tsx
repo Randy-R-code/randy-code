@@ -1,6 +1,6 @@
 import { PageShell } from "@/components/layout/page-shell";
 import { brand } from "@/lib/brand";
-import { Code2, Lightbulb, Package, Wrench, Zap } from "lucide-react";
+import { Code2, Gauge, Lightbulb, Package, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -45,7 +45,7 @@ const values = [
     desc: "Je choisis les outils adaptés au problème, pas les plus tendance. La simplicité est une feature.",
   },
   {
-    icon: Wrench,
+    icon: Target,
     title: "Produit-first",
     desc: "Je code pour résoudre un problème business. La technique est au service de la valeur livrée.",
   },
@@ -58,7 +58,7 @@ const values = [
 
 const domains = [
   {
-    icon: Wrench,
+    icon: Gauge,
     title: "Mécanique",
     tagline: "Diagnostic & précision",
     intro:

@@ -3,6 +3,7 @@ import { ToolAboutSection } from "@/components/layout/tool-about-section";
 import { ToolHeader } from "@/components/layout/tool-header";
 import { ToolPageShell } from "@/components/layout/tool-page-shell";
 import { brand } from "@/lib/brand";
+import { TOOL_CATEGORY_LABELS } from "@/lib/tools";
 import { Send } from "lucide-react";
 import type { Metadata, Viewport } from "next";
 
@@ -57,7 +58,7 @@ export default function ApiStudioPage() {
         <div className="mx-auto w-full max-w-5xl">
           <ToolHeader
             icon={Send}
-            label="Developer Tool"
+            label={TOOL_CATEGORY_LABELS["web-api"]}
             title="API Studio"
             tagline="Build, send, receive, and inspect HTTP requests."
             color={brand.colors.green[500]}

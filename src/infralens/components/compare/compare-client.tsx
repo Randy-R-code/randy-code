@@ -183,7 +183,9 @@ const KIND_CONFIG: Record<
   added: {
     title: "New in B",
     icon: Plus,
-    className: "text-brand-secondary-hover",
+    // Literal blue, not brand-secondary — that token is green now, and this
+    // is the diff legend's 4th distinct color (green is already "improved").
+    className: "text-blue-400",
   },
   removed: {
     title: "No longer in B",
