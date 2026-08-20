@@ -18,6 +18,35 @@ export default function Home() {
         <HeroText />
         <WorldMap />
 
+        {/* Mon parcours */}
+        <section className="mt-16">
+          <h2 className="mb-6 text-xl font-semibold text-white">
+            Mon parcours
+          </h2>
+          <div
+            className="flex flex-col gap-4 rounded-xl border p-6 sm:flex-row sm:items-center sm:justify-between"
+            style={{
+              borderColor: "var(--border-default)",
+              background: brand.colors.surface[2],
+            }}
+          >
+            <p className="max-w-2xl text-sm leading-relaxed text-zinc-300">
+              Développeur fullstack TypeScript, je construis des applications
+              web complètes — du prototype au produit déployé. Avant le code,
+              plusieurs années sur le terrain (mécanique, électricité,
+              logistique) m&apos;ont appris à livrer des outils vraiment
+              utilisables, pas juste fonctionnels.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex shrink-0 self-start items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium text-zinc-300 transition-all duration-200 hover:text-white sm:self-auto"
+              style={{ borderColor: "var(--border-default)" }}
+            >
+              Mon parcours en détail →
+            </Link>
+          </div>
+        </section>
+
         {/* Projets phares */}
         <section className="mt-16">
           <h2 className="mb-6 text-xl font-semibold text-white">
@@ -128,7 +157,7 @@ export default function Home() {
             </p>
             <Link
               href="/tools"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:brightness-125"
+              className="inline-flex shrink-0 self-start items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:brightness-125 sm:self-auto"
               style={{
                 borderColor: `${toolsColor}30`,
                 backgroundColor: `${toolsColor}0d`,
@@ -138,26 +167,6 @@ export default function Home() {
               Explorer les outils →
             </Link>
           </div>
-        </section>
-
-        {/* Profil synthétique */}
-        <section
-          className="mt-16 border-t pt-10"
-          style={{ borderColor: "var(--border-subtle)" }}
-        >
-          <p className="max-w-2xl text-sm leading-relaxed text-zinc-400">
-            Développeur fullstack TypeScript, je construis des applications web
-            complètes — du prototype au produit déployé. Avant le code,
-            plusieurs années sur le terrain (mécanique, électricité, logistique)
-            m&apos;ont appris à livrer des outils vraiment utilisables, pas
-            juste fonctionnels.
-          </p>
-          <Link
-            href="/about"
-            className="mt-3 inline-block text-sm font-medium text-zinc-300 hover:text-white"
-          >
-            En savoir plus →
-          </Link>
         </section>
 
         {/* CTA final */}

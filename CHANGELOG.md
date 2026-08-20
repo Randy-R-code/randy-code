@@ -9,6 +9,28 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.7.1] — 2026-08-20
+
+### Changed
+
+- **"Mon parcours" section repositioned and restyled** — moved from the
+  page bottom (plain paragraph) to right under the hero, styled as a card
+  matching the "Outils développeur" section. Border and button switched to
+  a neutral treatment instead of a zone color, since it's a personal
+  statement rather than zone-coded content — mirrors the final CTA.
+- Lab Zone boilerplates status updated from "En cours" to "Réutilisé
+  activement" (badge color aligned with "Usage quotidien") — reflects
+  their actual stable, actively-reused state rather than an in-progress
+  one.
+
+### Fixed
+
+- Sitemap missing `/privacy` (added in v1.7.0) — now indexed.
+- Homepage secondary buttons ("Mon parcours en détail", "Explorer les
+  outils") stretched full-width on mobile, a latent default
+  `align-items: stretch` behavior in their column layout; now sized to
+  content at every breakpoint.
+
 ## [1.7.0] — 2026-08-19
 
 ### Added
