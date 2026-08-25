@@ -9,6 +9,7 @@ import { logWarn } from "@infralens-lib/log";
 import { isSecurityError } from "@infralens-lib/security/errors";
 import { resolveValidatedTarget } from "@infralens-lib/security/resolve-target";
 import { normalizeTarget } from "@infralens-lib/security/target";
+import { track } from "@vercel/analytics/server";
 import { headers } from "next/headers";
 
 // Returned instead of thrown for every expected rejection (rate limit,
@@ -71,6 +72,8 @@ export async function runInfraChecks(
     hostname: validated.hostname,
     timeout: CHECK_TIMEOUT_MS,
   });
+
+  await track("infralens_scan_completed");
 
   return { ok: true, data: response };
 }
