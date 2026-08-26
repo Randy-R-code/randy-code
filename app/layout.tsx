@@ -2,7 +2,7 @@ import { AppBackground } from "@/components/layout/app-background";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { brand } from "@/lib/brand";
-import { buildPersonSchema } from "@/lib/json-ld";
+import { buildOrganizationSchema, buildPersonSchema } from "@/lib/json-ld";
 import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "framer-motion";
 import type { Metadata, Viewport } from "next";
@@ -72,6 +72,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(buildPersonSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(buildOrganizationSchema()),
           }}
         />
         <AppBackground />

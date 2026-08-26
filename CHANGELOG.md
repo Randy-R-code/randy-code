@@ -9,6 +9,21 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.7.3] — 2026-08-26
+
+### Added
+
+- **Organization JSON-LD** — mounted site-wide alongside the existing Person
+  schema, linked via `founder`, with `sameAs` pointing to GitHub.
+- **`/llms.txt`** — machine-readable index of tools, projects and articles,
+  generated from the same data sources as the sitemap so it never goes
+  stale.
+
+Prompted by a third-party AI-agent readiness scan of randy-code.dev — most
+of its checklist (OpenAPI spec, public API, CLI, developer portal) doesn't
+apply to a portfolio site, but these two structured-data/discoverability
+gaps were genuine.
+
 ## [1.7.2] — 2026-08-20
 
 ### Fixed

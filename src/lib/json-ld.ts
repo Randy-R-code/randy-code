@@ -22,6 +22,24 @@ export function buildPersonSchema() {
   };
 }
 
+export function buildOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Randy Code",
+    url: "https://randy-code.dev",
+    description:
+      "Développeur fullstack TypeScript. Sites vitrines, applications SaaS, SEO local.",
+    logo: "https://randy-code.dev/brand/logo-symbol.png",
+    founder: {
+      "@type": "Person",
+      name: "Randy Rimbault",
+      url: "https://randy-code.dev",
+    },
+    sameAs: ["https://github.com/Randy-R-code"],
+  };
+}
+
 export function buildArticleSchema(post: BlogPost) {
   return {
     "@context": "https://schema.org",

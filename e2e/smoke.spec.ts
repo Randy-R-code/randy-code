@@ -38,9 +38,9 @@ test("an article page renders", async ({ page }) => {
   await page.goto("/articles/liflow-refonte-souvenirs-familiaux");
 
   await expect(page.locator("h1")).toBeVisible();
-  // 2 scripts: the root layout's Person schema + this page's Article schema.
+  // 3 scripts: the root layout's Person + Organization schemas, plus this page's Article schema.
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(
-    2,
+    3,
   );
 });
 
