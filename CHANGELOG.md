@@ -9,6 +9,16 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.7.4] — 2026-09-02
+
+### Added
+
+- **Vercel Speed Insights** — enabled site-wide via `@vercel/speed-insights`,
+  mounted in the root layout next to Web Analytics. Previously reverted in
+  v1.7.0 because the Hobby plan only allowed it free on one project;
+  Vercel removed that per-project cap, so it now ships alongside Web
+  Analytics. `/privacy` updated to disclose the new data collected.
+
 ## [1.7.3] — 2026-08-26
 
 ### Added

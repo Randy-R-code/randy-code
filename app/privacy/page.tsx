@@ -71,7 +71,7 @@ export default function ConfidentialitePage() {
             <span className="mt-0.5 text-zinc-500">—</span>
             <span>
               <span className="font-medium text-zinc-200">Vercel</span> —
-              hébergement et Web Analytics.
+              hébergement, Web Analytics et Speed Insights.
             </span>
           </li>
           <li className="flex items-start gap-2">
@@ -106,6 +106,12 @@ export default function ConfidentialitePage() {
           (pays/appareil/navigateur), collectées par Vercel sans cookies tiers
           et avec une identification visiteur anonymisée et effacée sous 24h,
           pour comprendre l&apos;usage du site.
+        </p>
+        <p>
+          <span className="font-medium text-zinc-200">Speed Insights</span> —
+          métriques de performance de chargement des pages (Core Web Vitals),
+          collectées par Vercel sans cookies ni identification du visiteur, pour
+          suivre la performance du site.
         </p>
         <p>
           <span className="font-medium text-zinc-200">Adresse IP</span> —
@@ -160,9 +166,9 @@ export default function ConfidentialitePage() {
 
       <Block title="Cookies">
         <p>
-          Le site n&apos;utilise aucun cookie tiers. Vercel Web Analytics
-          fonctionne sans cookie ; aucune bannière de consentement n&apos;est
-          donc nécessaire.
+          Le site n&apos;utilise aucun cookie tiers. Vercel Web Analytics et
+          Speed Insights fonctionnent sans cookie ; aucune bannière de
+          consentement n&apos;est donc nécessaire.
         </p>
       </Block>
     </PageShell>

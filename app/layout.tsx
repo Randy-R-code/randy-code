@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { brand } from "@/lib/brand";
 import { buildOrganizationSchema, buildPersonSchema } from "@/lib/json-ld";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { MotionConfig } from "framer-motion";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -87,6 +88,7 @@ export default function RootLayout({
         <SiteFooter />
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
