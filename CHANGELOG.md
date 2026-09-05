@@ -9,6 +9,17 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.8.0] — 2026-09-05
+
+### Added
+
+- **Open Source section on Projects City** (`/projects`) — new subsection
+  listing public repositories and packages, positioned after the main
+  projects grid without a new nav entry or competing with the primary
+  showcase. First entry: RepoCheckup, a zero-config CLI (`npx repo-checkup`)
+  that checks a JS/TypeScript repository's configuration, tooling, testing
+  and CI, linking out to GitHub and npm.
+
 ## [1.7.4] — 2026-09-02
 
 ### Added

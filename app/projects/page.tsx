@@ -1,7 +1,9 @@
+import { GitHubIcon } from "@/components/github-icon";
 import { PageShell } from "@/components/layout/page-shell";
 import { brand } from "@/lib/brand";
+import { openSourceProjects } from "@/lib/open-source";
 import { projects, statusLabel } from "@/lib/projects";
-import { ExternalLink, Wrench } from "lucide-react";
+import { ExternalLink, Package, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -124,6 +126,68 @@ export default function ProjectsPage() {
           );
         })}
       </div>
+
+      <section className="mt-16">
+        <h2 className="mb-2 text-xl font-semibold text-white">Open Source</h2>
+        <p className="mb-6 max-w-xl text-sm text-zinc-400">
+          Des projets et packages publics conçus pour être utilisés, explorés et
+          contribués.
+        </p>
+        <div className="flex flex-col gap-4 sm:max-w-sm">
+          {openSourceProjects.map((project) => (
+            <div
+              key={project.name}
+              className="flex flex-col gap-3 rounded-xl border p-5"
+              style={{
+                borderColor: `${brand.colors.blue[400]}18`,
+                background: brand.colors.surface[2],
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <Package
+                  size={15}
+                  aria-hidden="true"
+                  style={{ color: brand.colors.blue[400] }}
+                />
+                <h3 className="text-base font-semibold text-white">
+                  {project.name}
+                </h3>
+              </div>
+              <p className="text-[11px] font-medium text-zinc-500">
+                {project.tags.join(" · ")}
+              </p>
+              <p className="text-sm text-zinc-400">{project.description}</p>
+              <div className="mt-1 flex items-center gap-4">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Voir ${project.name} sur GitHub`}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium"
+                  style={{ color: brand.colors.blue[400] }}
+                >
+                  <GitHubIcon size={13} />
+                  GitHub
+                  <ExternalLink size={10} />
+                </a>
+                {project.npmUrl && (
+                  <a
+                    href={project.npmUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir ${project.name} sur npm`}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium"
+                    style={{ color: brand.colors.blue[400] }}
+                  >
+                    npm
+                    <ExternalLink size={10} />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div
         className="mt-12 rounded-xl border p-6"
