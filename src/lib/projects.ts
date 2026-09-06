@@ -25,6 +25,7 @@ export interface Project {
   image?: string;
   featured: boolean;
   caseStudy?: ProjectCaseStudy;
+  relatedArticleSlug?: string;
 }
 
 export const projects: Project[] = [
@@ -44,6 +45,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Mistral AI", "Mux", "Upstash"],
     projectUrl: "https://liflow.app",
     featured: true,
+    relatedArticleSlug: "liflow-refonte-souvenirs-familiaux",
     caseStudy: {
       context:
         'Liflow a démarré comme un SaaS de partage classique, pensé autour de "capsules" (notes, fichiers, événements partagés par groupe). En devenant père, je me suis retrouvé avec des centaines de photos et de souvenirs dispersés, jamais revisités — ce changement personnel a déclenché une refonte complète du produit, avec la sortie de Next.js 16 comme fenêtre technique pour tout reconstruire.',
@@ -79,6 +81,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Node.js", "Vercel"],
     projectUrl: "https://randy-code.dev/tools/infralens",
     featured: true,
+    relatedArticleSlug: "securiser-analyseur-url-contre-ssrf",
     caseStudy: {
       context:
         "InfraLens est né du besoin de vérifier rapidement la configuration technique d'un site (DNS, sécurité, headers) sans jongler entre plusieurs outils différents. Conçu et maintenu en solo, en parallèle de projets clients, comme outil gratuit et open source plutôt que comme produit commercial.",

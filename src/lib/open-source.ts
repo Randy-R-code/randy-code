@@ -5,6 +5,7 @@ export interface OpenSourceProject {
   href?: string;
   githubUrl: string;
   npmUrl?: string;
+  articleSlug?: string;
 }
 
 export const openSourceProjects: OpenSourceProject[] = [
@@ -15,6 +16,7 @@ export const openSourceProjects: OpenSourceProject[] = [
     tags: ["CLI", "TypeScript", "npm"],
     githubUrl: "https://github.com/Randy-R-code/repo-checkup",
     npmUrl: "https://www.npmjs.com/package/repo-checkup",
+    articleSlug: "construire-moins-de-projets-vraiment-utiles",
   },
   {
     name: "CookieCheckup",
@@ -23,5 +25,6 @@ export const openSourceProjects: OpenSourceProject[] = [
     tags: ["Next.js", "React", "TypeScript"],
     href: "https://cookie-checkup.vercel.app",
     githubUrl: "https://github.com/Randy-R-code/cookie-checkup",
+    articleSlug: "construire-moins-de-projets-vraiment-utiles",
   },
 ];

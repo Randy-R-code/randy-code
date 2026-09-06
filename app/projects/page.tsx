@@ -102,24 +102,35 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="mt-auto flex items-center gap-4">
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="text-xs font-medium"
-                  style={{ color: cardColor }}
-                >
-                  Étude de cas →
-                </Link>
-                {project.projectUrl && (
-                  <a
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium"
+              <div className="mt-auto flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="text-xs font-medium"
                     style={{ color: cardColor }}
                   >
-                    Voir le projet <ExternalLink size={11} />
-                  </a>
+                    Étude de cas →
+                  </Link>
+                  {project.projectUrl && (
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium"
+                      style={{ color: cardColor }}
+                    >
+                      Voir le projet <ExternalLink size={11} />
+                    </a>
+                  )}
+                </div>
+                {project.relatedArticleSlug && (
+                  <Link
+                    href={`/articles/${project.relatedArticleSlug}`}
+                    className="text-xs font-medium"
+                    style={{ color: cardColor }}
+                  >
+                    Lire l&apos;article →
+                  </Link>
                 )}
               </div>
             </article>
@@ -157,44 +168,55 @@ export default function ProjectsPage() {
                 {project.tags.join(" · ")}
               </p>
               <p className="text-sm text-zinc-400">{project.description}</p>
-              <div className="mt-1 flex items-center gap-4">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Voir ${project.name} sur GitHub`}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium"
-                  style={{ color: brand.colors.blue[400] }}
-                >
-                  <GitHubIcon size={13} />
-                  GitHub
-                  <ExternalLink size={10} />
-                </a>
-                {project.href && (
+              <div className="mt-auto flex flex-col gap-2">
+                <div className="flex items-center gap-4">
                   <a
-                    href={project.href}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Voir la démo de ${project.name}`}
+                    aria-label={`Voir ${project.name} sur GitHub`}
                     className="inline-flex items-center gap-1.5 text-xs font-medium"
                     style={{ color: brand.colors.blue[400] }}
                   >
-                    Voir la démo
+                    <GitHubIcon size={13} />
+                    GitHub
                     <ExternalLink size={10} />
                   </a>
-                )}
-                {project.npmUrl && (
-                  <a
-                    href={project.npmUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Voir ${project.name} sur npm`}
+                  {project.href && (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Voir la démo de ${project.name}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium"
+                      style={{ color: brand.colors.blue[400] }}
+                    >
+                      Voir la démo
+                      <ExternalLink size={10} />
+                    </a>
+                  )}
+                  {project.npmUrl && (
+                    <a
+                      href={project.npmUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Voir ${project.name} sur npm`}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium"
+                      style={{ color: brand.colors.blue[400] }}
+                    >
+                      npm
+                      <ExternalLink size={10} />
+                    </a>
+                  )}
+                </div>
+                {project.articleSlug && (
+                  <Link
+                    href={`/articles/${project.articleSlug}`}
                     className="inline-flex items-center gap-1.5 text-xs font-medium"
                     style={{ color: brand.colors.blue[400] }}
                   >
-                    npm
-                    <ExternalLink size={10} />
-                  </a>
+                    Lire l&apos;article →
+                  </Link>
                 )}
               </div>
             </div>

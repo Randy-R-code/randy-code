@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.9.0] — 2026-09-06
+
+### Added
+
+- **Cross-links between projects and articles** — project cards on Projects
+  City (Liflow, InfraLens, RepoCheckup, CookieCheckup) now link to a
+  relevant article when one exists (InfraLens points to the SSRF
+  deep-dive, Liflow to its May refonte, both OSS projects to the new
+  open source retrospective). Every article's footer now lists all four
+  projects, instead of always hardcoding Liflow and InfraLens.
+
+### Fixed
+
+- Open Source cards now align their action links to the bottom of the
+  card (`mt-auto`), matching the main Projects grid.
+
 ## [1.8.3] — 2026-09-06
 
 ### Added

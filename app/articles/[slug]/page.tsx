@@ -1,7 +1,10 @@
+import { GitHubIcon } from "@/components/github-icon";
 import { formatDate, getPost, posts } from "@/lib/blog";
 import { brand } from "@/lib/brand";
 import { buildArticleSchema } from "@/lib/json-ld";
-import { ArrowLeft, Clock } from "lucide-react";
+import { openSourceProjects } from "@/lib/open-source";
+import { getFeaturedProjects } from "@/lib/projects";
+import { ArrowLeft, Clock, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +31,8 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
+
+  const featuredProjects = getFeaturedProjects();
 
   return (
     <main className="flex-1 pb-20">
@@ -137,28 +142,39 @@ export default async function BlogPostPage({ params }: Props) {
         >
           <p className="mb-4 text-sm font-semibold text-white">Mes projets</p>
           <div className="flex flex-wrap gap-3">
-            <Link
-              href="/projects/liflow"
-              className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
-              style={{
-                backgroundColor: "#ffffff0d",
-                color: "#ffffff",
-                border: "1px solid #ffffff18",
-              }}
-            >
-              Découvrir Liflow →
-            </Link>
-            <Link
-              href="/projects/infralens"
-              className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
-              style={{
-                backgroundColor: "#ffffff0d",
-                color: "#ffffff",
-                border: "1px solid #ffffff18",
-              }}
-            >
-              Découvrir InfraLens →
-            </Link>
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                style={{
+                  backgroundColor: "#ffffff0d",
+                  color: "#ffffff",
+                  border: "1px solid #ffffff18",
+                }}
+              >
+                Découvrir {project.name} →
+              </Link>
+            ))}
+            {openSourceProjects.map((project) => (
+              <a
+                key={project.name}
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Voir ${project.name} sur GitHub`}
+                className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                style={{
+                  backgroundColor: "#ffffff0d",
+                  color: "#ffffff",
+                  border: "1px solid #ffffff18",
+                }}
+              >
+                <GitHubIcon size={13} />
+                {project.name}
+                <ExternalLink size={11} />
+              </a>
+            ))}
           </div>
         </div>
       </div>
