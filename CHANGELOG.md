@@ -9,6 +9,19 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.8.2] — 2026-09-06
+
+### Added
+
+- **CookieCheckup live demo** — https://cookie-checkup.vercel.app now linked
+  from its Open Source card now that the app is deployed.
+
+### Changed
+
+- Open Source card links reordered (GitHub first, then demo/npm) so the
+  same link type sits in the same position across cards.
+- Projects City meta description broadened to mention open source projects.
+
 ## [1.8.1] — 2026-09-06
 
 ### Added

@@ -21,6 +21,7 @@ export const openSourceProjects: OpenSourceProject[] = [
     description:
       "Un outil open source qui simule le cycle de vie d'un cookie HTTP : acceptation, stockage, matching des requêtes et accès JavaScript.",
     tags: ["Next.js", "React", "TypeScript"],
+    href: "https://cookie-checkup.vercel.app",
     githubUrl: "https://github.com/Randy-R-code/cookie-checkup",
   },
 ];

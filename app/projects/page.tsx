@@ -10,7 +10,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projects City — Randy Code",
   description:
-    "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, sites clients et applications sur mesure.",
+    "Projets réalisés par Randy Rimbault, développeur fullstack TypeScript. InfraLens, sites clients, applications sur mesure et projets open source.",
   alternates: { canonical: "/projects" },
 };
 
@@ -158,6 +158,18 @@ export default function ProjectsPage() {
               </p>
               <p className="text-sm text-zinc-400">{project.description}</p>
               <div className="mt-1 flex items-center gap-4">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Voir ${project.name} sur GitHub`}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium"
+                  style={{ color: brand.colors.blue[400] }}
+                >
+                  <GitHubIcon size={13} />
+                  GitHub
+                  <ExternalLink size={10} />
+                </a>
                 {project.href && (
                   <a
                     href={project.href}
@@ -171,18 +183,6 @@ export default function ProjectsPage() {
                     <ExternalLink size={10} />
                   </a>
                 )}
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Voir ${project.name} sur GitHub`}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium"
-                  style={{ color: brand.colors.blue[400] }}
-                >
-                  <GitHubIcon size={13} />
-                  GitHub
-                  <ExternalLink size={10} />
-                </a>
                 {project.npmUrl && (
                   <a
                     href={project.npmUrl}
