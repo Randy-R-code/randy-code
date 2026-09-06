@@ -10,7 +10,7 @@ const post: PostData = {
   tags: ["open source", "performance web", "outils développeur"],
   coverImage: "/blog/infralens-outil-open-source-analyse-performance-web.jpg",
   content: `
-<p>Créer des outils pour moi, pour moi d'abord — c'est devenu une habitude. Avec InfraLens, je voulais un outil open source que j'utilise tous les jours pour améliorer mes apps, sans dépendre de sites externes que je ne maîtrise pas.</p>
+<p>Construire les outils dont j'ai moi-même besoin — c'est devenu une habitude. Avec InfraLens, je voulais un outil open source que j'utilise tous les jours pour améliorer mes apps, sans dépendre de sites externes que je ne maîtrise pas.</p>
 
 <h2>Un outil utile, pensé par besoin réel</h2>
 <p>J'avais envie d'un outil que je puisse utiliser tout de suite, sans friction : pas de clés API, pas de configuration compliquée, pas de compte à créer. Juste un outil clair, mesurable, simple à prendre en main.</p>

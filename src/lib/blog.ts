@@ -1,4 +1,5 @@
 import beauSite from "../../content/posts/beau-site-web-seo-google";
+import ossProjets from "../../content/posts/construire-moins-de-projets-vraiment-utiles";
 import liflow from "../../content/posts/creer-application-saas-retour-experience-liflow";
 import aiDev from "../../content/posts/ia-developpement-web-workflow-coder-sans-perdre-controle";
 import infralens from "../../content/posts/infralens-outil-open-source-analyse-performance-web";
@@ -29,6 +30,7 @@ function computeReadingTime(html: string): number {
 
 // Pour ajouter un article : créer content/posts/[slug].ts et l'importer ici
 const rawPosts: PostData[] = [
+  ossProjets,
   ssrf,
   liflowRefonte,
   prixSite,

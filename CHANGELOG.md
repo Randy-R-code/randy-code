@@ -9,6 +9,19 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.8.3] — 2026-09-06
+
+### Added
+
+- **New article**: "Construire moins de projets, mais les rendre vraiment
+  utiles" — retrospective on choosing standalone open source formats
+  (RepoCheckup as a CLI, CookieCheckup as a web app) versus integrating
+  tools directly into Randy Code.
+
+### Fixed
+
+- Duplicated "pour moi, pour moi" phrasing in the InfraLens article.
+
 ## [1.8.2] — 2026-09-06
 
 ### Added
