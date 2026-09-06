@@ -9,6 +9,21 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.8.1] — 2026-09-06
+
+### Added
+
+- **CookieCheckup** added to the Open Source section on Projects City —
+  second entry alongside RepoCheckup, a browser cookie lifecycle simulator
+  (Next.js/React/TypeScript), linking out to GitHub. Live demo link wired
+  up but left unset until the app is deployed.
+
+### Fixed
+
+- Open Source cards now use the same responsive grid as the main Projects
+  grid instead of a capped-width column, so they sit side by side on
+  larger screens instead of always stacking.
+
 ## [1.8.0] — 2026-09-05
 
 ### Added

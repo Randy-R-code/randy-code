@@ -16,4 +16,11 @@ export const openSourceProjects: OpenSourceProject[] = [
     githubUrl: "https://github.com/Randy-R-code/repo-checkup",
     npmUrl: "https://www.npmjs.com/package/repo-checkup",
   },
+  {
+    name: "CookieCheckup",
+    description:
+      "Un outil open source qui simule le cycle de vie d'un cookie HTTP : acceptation, stockage, matching des requêtes et accès JavaScript.",
+    tags: ["Next.js", "React", "TypeScript"],
+    githubUrl: "https://github.com/Randy-R-code/cookie-checkup",
+  },
 ];

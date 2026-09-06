@@ -133,7 +133,7 @@ export default function ProjectsPage() {
           Des projets et packages publics conçus pour être utilisés, explorés et
           contribués.
         </p>
-        <div className="flex flex-col gap-4 sm:max-w-sm">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {openSourceProjects.map((project) => (
             <div
               key={project.name}
@@ -158,6 +158,19 @@ export default function ProjectsPage() {
               </p>
               <p className="text-sm text-zinc-400">{project.description}</p>
               <div className="mt-1 flex items-center gap-4">
+                {project.href && (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir la démo de ${project.name}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium"
+                    style={{ color: brand.colors.blue[400] }}
+                  >
+                    Voir la démo
+                    <ExternalLink size={10} />
+                  </a>
+                )}
                 <a
                   href={project.githubUrl}
                   target="_blank"
