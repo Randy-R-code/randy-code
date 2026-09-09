@@ -10,7 +10,7 @@ Only the latest version on `main` / the latest published release is supported. T
 
 **Please do not open a public GitHub issue for a security vulnerability.**
 
-Please email **randy.rcode@gmail.com** instead, with a clear subject line (e.g. "InfraLens security report"). InfraLens now ships as part of the [randy-code](https://github.com/Randy-R-code/randy-code) repository; email is the reliable channel until private vulnerability reporting is enabled there.
+Please email **contact@randy-code.dev** instead, with a clear subject line (e.g. "InfraLens security report"). InfraLens now ships as part of the [randy-code](https://github.com/Randy-R-code/randy-code) repository; email is the reliable channel until private vulnerability reporting is enabled there.
 
 Please include:
 
