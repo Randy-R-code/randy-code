@@ -79,7 +79,7 @@ export async function sendContact(
 
   const { error: resendError } = await resend.emails.send({
     from: "Randy Code <noreply@randy-code.dev>",
-    to: process.env.CONTACT_EMAIL ?? "randy.rcode@gmail.com",
+    to: "contact@randy-code.dev",
     replyTo: email,
     subject: `[Randy Code] Message de ${name}`,
     text: `Nom : ${name}\nEmail : ${email}\n\n${message}`,

@@ -111,7 +111,6 @@ graceful fallback. Set them in `.env.local` to exercise the real behavior:
 
 - `RESEND_API_KEY` — sends real email from the contact form; without it,
   submissions fail.
-- `CONTACT_EMAIL` — destination address for contact form submissions.
 - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — enable real rate
   limiting (InfraLens, MetaLens, contact form, API Studio); without them,
   the shared limiter (`src/lib/rate-limit/`) runs allow-all.

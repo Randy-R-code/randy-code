@@ -44,6 +44,13 @@ describe("sendContact", () => {
     const result = await sendContact(initial, buildFormData());
 
     expect(sendMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        from: "Randy Code <noreply@randy-code.dev>",
+        to: "contact@randy-code.dev",
+        replyTo: "jane@example.com",
+      }),
+    );
     expect(result).toEqual({ success: true });
   });
 

@@ -47,10 +47,10 @@ export default function ConfidentialitePage() {
           <span className="font-medium text-zinc-200">Randy Rimbault</span>.
           Contact :{" "}
           <a
-            href="mailto:randy.rcode@gmail.com"
+            href="mailto:contact@randy-code.dev"
             className="text-blue-400 underline underline-offset-2 hover:text-blue-300"
           >
-            randy.rcode@gmail.com
+            contact@randy-code.dev
           </a>
           .
         </p>
@@ -65,7 +65,9 @@ export default function ConfidentialitePage() {
       </Block>
 
       <Block title="Sous-traitants et services tiers">
-        <p>Trois services tiers traitent des données dans le cadre du site :</p>
+        <p>
+          Quatre services tiers traitent des données dans le cadre du site :
+        </p>
         <ul className="space-y-1.5">
           <li className="flex items-start gap-2">
             <span className="mt-0.5 text-zinc-500">—</span>
@@ -79,6 +81,15 @@ export default function ConfidentialitePage() {
             <span>
               <span className="font-medium text-zinc-200">Resend</span> — envoi
               de l&apos;email généré par le formulaire de contact.
+            </span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 text-zinc-500">—</span>
+            <span>
+              <span className="font-medium text-zinc-200">Zoho Mail</span> —
+              hébergement de la boîte mail contact@randy-code.dev recevant les
+              messages du formulaire de contact et les emails envoyés
+              directement.
             </span>
           </li>
           <li className="flex items-start gap-2">
@@ -154,10 +165,10 @@ export default function ConfidentialitePage() {
           rectification et de suppression des données vous concernant. Pour
           l&apos;exercer, écrivez à{" "}
           <a
-            href="mailto:randy.rcode@gmail.com"
+            href="mailto:contact@randy-code.dev"
             className="text-blue-400 underline underline-offset-2 hover:text-blue-300"
           >
-            randy.rcode@gmail.com
+            contact@randy-code.dev
           </a>
           . Vous pouvez aussi introduire une réclamation auprès de la CNIL
           (cnil.fr).

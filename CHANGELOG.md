@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.10.0] — 2026-09-09
+
+### Changed
+
+- **Contact identity moved to `contact@randy-code.dev`** — the contact form
+  now delivers straight to a real mailbox on the portfolio's own domain
+  instead of forwarding to a private address, and the last public mentions
+  of the old address (privacy page, `security.txt`) now point to the same
+  domain address. The privacy page's sub-processor list now also discloses
+  Zoho Mail, the mailbox provider, alongside Vercel, Resend and Upstash.
+
+### Removed
+
+- `CONTACT_EMAIL` environment variable — the contact form's destination is
+  now a fixed public address rather than a configurable private one.
+
 ## [1.9.1] — 2026-09-09
 
 ### Changed
