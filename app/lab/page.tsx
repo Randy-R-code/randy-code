@@ -36,6 +36,27 @@ const experiments = [
   },
 ];
 
+const radarItems = [
+  {
+    title: "RAG & recherche sémantique",
+    status: "À explorer",
+    desc: "Expérimenter la recherche sémantique, les embeddings et les réponses sourcées sur des données réelles.",
+    tags: ["Embeddings", "Retrieval", "Reranking", "Citations"],
+  },
+  {
+    title: "Agents & tool calling",
+    status: "En exploration",
+    desc: "Explorer des workflows agentiques capables d'utiliser des outils, d'enchaîner des actions et de travailler avec davantage d'autonomie.",
+    tags: ["Agents", "Tools", "MCP", "Automation"],
+  },
+  {
+    title: "Architecture Web ↔ Mobile",
+    status: "À approfondir",
+    desc: "Explorer jusqu'où mutualiser backend, authentification, données et logique métier entre applications web et mobiles.",
+    tags: ["Expo", "Convex", "Auth", "Shared backend"],
+  },
+];
+
 export default function LabPage() {
   return (
     <PageShell
@@ -96,29 +117,53 @@ export default function LabPage() {
         ))}
       </div>
 
-      {/* Idées en attente */}
       <section className="mt-10">
-        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+        <h2 className="mb-1 text-sm font-semibold uppercase tracking-wider text-zinc-400">
           Sur le radar
         </h2>
-        <div className="flex flex-wrap gap-2">
-          {[
-            "RAG sur documentation technique",
-            "CLI pour scaffolding Next.js",
-            "Dashboard analytics léger",
-            "Générateur de contrats freelance",
-            "Assistant portfolio IA (langage naturel)",
-          ].map((idea) => (
-            <span
-              key={idea}
-              className="rounded-lg border px-3 py-1.5 text-xs text-zinc-400"
+        <p className="mb-4 max-w-xl text-xs text-zinc-500">
+          Des sujets que j&apos;explore ou que j&apos;aimerais approfondir — pas
+          nécessairement de futurs projets.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {radarItems.map((item) => (
+            <div
+              key={item.title}
+              className="flex flex-col gap-2 rounded-lg border p-4"
               style={{
                 borderColor: `${brand.colors.blue[400]}10`,
                 background: brand.colors.surface[1],
               }}
             >
-              {idea}
-            </span>
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="text-sm font-semibold text-white">
+                  {item.title}
+                </h3>
+                <span
+                  className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium"
+                  style={{
+                    backgroundColor: `${brand.colors.blue[400]}15`,
+                    color: brand.colors.blue[400],
+                  }}
+                >
+                  {item.status}
+                </span>
+              </div>
+              <p className="text-xs leading-relaxed text-zinc-400">
+                {item.desc}
+              </p>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-md px-2 py-0.5 text-[10px] font-medium text-zinc-500"
+                    style={{ background: brand.colors.surface[2] }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>

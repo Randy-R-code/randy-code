@@ -9,6 +9,18 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.9.1] — 2026-09-09
+
+### Changed
+
+- **Lab Zone "Sur le radar"** — replaced the flat 5-idea pill list with 3
+  curated technical-exploration cards (RAG & recherche sémantique, Agents &
+  tool calling, Architecture Web ↔ Mobile), styled as visually secondary to
+  the main experiments above. Dropped items that either duplicated existing
+  content (Next.js scaffolding CLI) or were too generic to be differentiating
+  (analytics dashboard), and reframed the AI portfolio assistant idea as a
+  future application of the RAG topic rather than its own experiment.
+
 ## [1.9.0] — 2026-09-06
 
 ### Added
