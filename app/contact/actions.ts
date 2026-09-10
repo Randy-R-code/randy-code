@@ -82,7 +82,7 @@ export async function sendContact(
     to: "contact@randy-code.dev",
     replyTo: email,
     subject: `[Randy Code] Message de ${name}`,
-    text: `Nom : ${name}\nEmail : ${email}\n\n${message}`,
+    text: `Nom : ${name}\nAdresse email : ${email}\n\n${message}`,
   });
 
   if (resendError) {

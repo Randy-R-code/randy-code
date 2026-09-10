@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.10.1] — 2026-09-10
+
+### Added
+
+- **Direct email on the contact page** — `contact@randy-code.dev` now shown
+  as a clickable link above the form, so visitors aren't limited to the
+  form.
+
+### Fixed
+
+- Contact page's GitHub link now uses the site's own GitHub mark instead of
+  a generic external-link icon, matching every other GitHub link on the
+  site.
+- Outbound contact email now labels the sender's address "Adresse email"
+  instead of "Email", matching Liflow's template.
+
 ## [1.10.0] — 2026-09-09
 
 ### Changed
