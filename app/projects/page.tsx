@@ -5,6 +5,7 @@ import { openSourceProjects } from "@/lib/open-source";
 import { projects, statusLabel } from "@/lib/projects";
 import { ExternalLink, Package, Wrench } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -39,15 +40,35 @@ export default function ProjectsPage() {
               }}
             >
               <div className="flex items-center justify-between gap-2">
-                <span
-                  className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                  style={{
-                    backgroundColor: `${cardColor}18`,
-                    color: cardColor,
-                  }}
-                >
-                  {statusLabel(project.status)}
-                </span>
+                <div className="flex items-center gap-2">
+                  {project.logo && (
+                    <Image
+                      src={project.logo.src}
+                      alt={project.logo.alt}
+                      width={24}
+                      height={24}
+                      className="h-6 w-6"
+                    />
+                  )}
+                  <span
+                    className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                    style={{
+                      backgroundColor: `${cardColor}18`,
+                      color: cardColor,
+                    }}
+                  >
+                    {statusLabel(project.status)}
+                  </span>
+                  {project.openSource && (
+                    <span
+                      className="inline-block rounded-md px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap uppercase tracking-wider text-zinc-300"
+                      style={{ background: brand.colors.surface[3] }}
+                    >
+                      <span className="xs:hidden">OSS</span>
+                      <span className="hidden xs:inline">Open Source</span>
+                    </span>
+                  )}
+                </div>
                 {project.type === "tool" && (
                   <Wrench
                     size={16}
@@ -120,6 +141,18 @@ export default function ProjectsPage() {
                       style={{ color: cardColor }}
                     >
                       Voir le projet <ExternalLink size={11} />
+                    </a>
+                  )}
+                  {project.repositoryUrl && (
+                    <a
+                      href={project.repositoryUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium"
+                      style={{ color: cardColor }}
+                    >
+                      <GitHubIcon size={11} />
+                      GitHub
                     </a>
                   )}
                 </div>

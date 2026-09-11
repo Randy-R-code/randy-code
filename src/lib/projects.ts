@@ -14,7 +14,7 @@ export interface Project {
   slug: string;
   name: string;
   type: "product" | "tool" | "client" | "experiment";
-  status: "active" | "maintained" | "completed" | "experimental";
+  status: "active" | "maintained" | "completed" | "experimental" | "beta";
   tagline: string;
   problem: string;
   solution: string;
@@ -23,6 +23,8 @@ export interface Project {
   projectUrl?: string;
   repositoryUrl?: string;
   image?: string;
+  logo?: { src: string; alt: string };
+  openSource?: boolean;
   featured: boolean;
   caseStudy?: ProjectCaseStudy;
   relatedArticleSlug?: string;
@@ -44,6 +46,7 @@ export const projects: Project[] = [
       "Application live et disponible sur liflow.app, en phase de croissance post-lancement.",
     technologies: ["Next.js", "TypeScript", "Mistral AI", "Mux", "Upstash"],
     projectUrl: "https://liflow.app",
+    logo: { src: "/projects/logos/liflow.png", alt: "" },
     featured: true,
     relatedArticleSlug: "liflow-refonte-souvenirs-familiaux",
     caseStudy: {
@@ -80,6 +83,8 @@ export const projects: Project[] = [
     result: "Outil utilisé au quotidien, intégré nativement à Randy Code.",
     technologies: ["Next.js", "TypeScript", "Node.js", "Vercel"],
     projectUrl: "https://randy-code.dev/tools/infralens",
+    logo: { src: "/infralens/brand/logo-symbol.png", alt: "" },
+    openSource: true,
     featured: true,
     relatedArticleSlug: "securiser-analyseur-url-contre-ssrf",
     caseStudy: {
@@ -99,6 +104,24 @@ export const projects: Project[] = [
       learnings:
         "Garder InfraLens simple, gratuit et transparent demande de la discipline : résister à la tentation d'ajouter des fonctionnalités qui le feraient glisser vers un SaaS ou un outil de pentest commercial, alors que ce n'est ni son objectif ni son positionnement.",
     },
+  },
+  {
+    slug: "nativeprobe",
+    name: "NativeProbe",
+    type: "product",
+    status: "beta",
+    tagline:
+      "Un playground mobile open source pour explorer, tester et comprendre les capacités réelles d'un appareil.",
+    problem:
+      "Les développeurs React Native n'ont pas de terrain de jeu pour tester en direct les capacités réelles d'un appareil — capteurs, permissions, réseau, biométrie — sans écrire un projet de test à chaque fois.",
+    solution:
+      "Playground mobile open source avec des probes interactifs qui déclenchent chaque capacité en direct (capteurs, réseau, localisation, biométrie, haptique...) et montrent l'API Expo derrière chaque test.",
+    result: "Application en beta, en approche de la phase de test Google Play.",
+    technologies: ["React Native", "Expo", "TypeScript", "iOS", "Android"],
+    repositoryUrl: "https://github.com/Randy-R-code/nativeprobe",
+    logo: { src: "/projects/logos/nativeprobe.png", alt: "" },
+    openSource: true,
+    featured: true,
   },
   {
     slug: "specialiste-automobile",
@@ -137,6 +160,7 @@ const statusLabels: Record<Project["status"], string> = {
   maintained: "Maintenu",
   completed: "Projet client livré",
   experimental: "Expérimentation",
+  beta: "Beta",
 };
 
 export function statusLabel(status: Project["status"]): string {

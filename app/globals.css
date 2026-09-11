@@ -5,6 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --breakpoint-xs: 26.25rem;
+
   /* InfraLens brand tokens — kept as named aliases because InfraLens's
      components reference bg-brand-accent, text-brand-secondary-hover, etc.
      directly. brand-secondary used to alias the blue scale (a leftover from

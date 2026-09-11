@@ -1,9 +1,11 @@
+import { GitHubIcon } from "@/components/github-icon";
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
 import { brand } from "@/lib/brand";
 import { getFeaturedProjects, statusLabel } from "@/lib/projects";
 import { tools } from "@/lib/tools";
 import { ExternalLink, Wrench } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const featuredProjects = getFeaturedProjects();
@@ -65,15 +67,35 @@ export default function Home() {
                   }}
                 >
                   <div className="mb-3 flex items-center justify-between">
-                    <span
-                      className="inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                      style={{
-                        backgroundColor: `${cardColor}18`,
-                        color: cardColor,
-                      }}
-                    >
-                      {statusLabel(project.status)}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {project.logo && (
+                        <Image
+                          src={project.logo.src}
+                          alt={project.logo.alt}
+                          width={24}
+                          height={24}
+                          className="h-6 w-6"
+                        />
+                      )}
+                      <span
+                        className="inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                        style={{
+                          backgroundColor: `${cardColor}18`,
+                          color: cardColor,
+                        }}
+                      >
+                        {statusLabel(project.status)}
+                      </span>
+                      {project.openSource && (
+                        <span
+                          className="inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap uppercase tracking-wider text-zinc-300"
+                          style={{ background: brand.colors.surface[3] }}
+                        >
+                          <span className="xs:hidden">OSS</span>
+                          <span className="hidden xs:inline">Open Source</span>
+                        </span>
+                      )}
+                    </div>
                     {project.type === "tool" && (
                       <Wrench
                         size={16}
@@ -120,6 +142,22 @@ export default function Home() {
                       >
                         <ExternalLink size={11} />
                         Voir le produit
+                      </a>
+                    )}
+                    {project.repositoryUrl && (
+                      <a
+                        href={project.repositoryUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:brightness-125"
+                        style={{
+                          borderColor: `${cardColor}30`,
+                          backgroundColor: `${cardColor}0d`,
+                          color: cardColor,
+                        }}
+                      >
+                        <GitHubIcon size={11} />
+                        GitHub
                       </a>
                     )}
                   </div>

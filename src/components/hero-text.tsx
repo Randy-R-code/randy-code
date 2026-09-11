@@ -5,7 +5,8 @@ const heroContent = {
   eyebrow: "Développeur TypeScript",
   headline:
     "Développeur TypeScript, je construis des applications web, mobiles et des outils métier pensés pour des usages réels.",
-  tagline: "React, Next.js et TypeScript — du prototype au produit déployé.",
+  tagline:
+    "TypeScript, React et React Native — du prototype au produit déployé.",
 };
 
 export function HeroText() {

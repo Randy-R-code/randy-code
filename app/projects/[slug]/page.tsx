@@ -1,8 +1,10 @@
+import { GitHubIcon } from "@/components/github-icon";
 import { brand } from "@/lib/brand";
 import { buildSoftwareApplicationSchema } from "@/lib/json-ld";
 import { getProject, projects, statusLabel } from "@/lib/projects";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -72,12 +74,32 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Hero */}
         <header className="mb-10">
-          <span
-            className="mb-3 inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-            style={{ backgroundColor: `${color}18`, color }}
-          >
-            {statusLabel(project.status)}
-          </span>
+          <div className="mb-3 flex items-center gap-2">
+            {project.logo && (
+              <Image
+                src={project.logo.src}
+                alt={project.logo.alt}
+                width={24}
+                height={24}
+                className="h-6 w-6"
+              />
+            )}
+            <span
+              className="inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+              style={{ backgroundColor: `${color}18`, color }}
+            >
+              {statusLabel(project.status)}
+            </span>
+            {project.openSource && (
+              <span
+                className="inline-block w-fit rounded-md px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap uppercase tracking-wider text-zinc-300"
+                style={{ background: brand.colors.surface[3] }}
+              >
+                <span className="xs:hidden">OSS</span>
+                <span className="hidden xs:inline">Open Source</span>
+              </span>
+            )}
+          </div>
           <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
             {project.name}
           </h1>
@@ -150,21 +172,39 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         {/* Liens */}
-        {project.projectUrl && (
-          <div className="mt-8">
-            <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
-              style={{
-                backgroundColor: `${color}18`,
-                color,
-                border: `1px solid ${color}30`,
-              }}
-            >
-              Voir le produit <ExternalLink size={12} />
-            </a>
+        {(project.projectUrl || project.repositoryUrl) && (
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {project.projectUrl && (
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                style={{
+                  backgroundColor: `${color}18`,
+                  color,
+                  border: `1px solid ${color}30`,
+                }}
+              >
+                Voir le produit <ExternalLink size={12} />
+              </a>
+            )}
+            {project.repositoryUrl && (
+              <a
+                href={project.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                style={{
+                  backgroundColor: `${color}18`,
+                  color,
+                  border: `1px solid ${color}30`,
+                }}
+              >
+                <GitHubIcon size={12} />
+                GitHub
+              </a>
+            )}
           </div>
         )}
       </div>

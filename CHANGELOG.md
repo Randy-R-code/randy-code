@@ -9,6 +9,25 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.11.0] — 2026-09-11
+
+### Added
+
+- **NativeProbe joins the portfolio** as the third flagship project
+  alongside Liflow and InfraLens — an open-source React Native/Expo
+  playground for exploring real device capabilities, currently in beta
+  ahead of Google Play testing. Linked from the homepage, Projects City
+  and its own project page, with a GitHub link only (no store link until
+  public release).
+- Project cards can show a logo and an "Open Source" badge (shortened to
+  "OSS" below 420px to avoid wrapping) — applied to InfraLens and
+  NativeProbe. Liflow's card also gained its logo.
+
+### Changed
+
+- Homepage hero tagline now reads "TypeScript, React et React Native — du
+  prototype au produit déployé." to reflect the portfolio's mobile work.
+
 ## [1.10.1] — 2026-09-10
 
 ### Added
