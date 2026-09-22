@@ -106,6 +106,24 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "flonexa",
+    name: "Flonexa",
+    type: "product",
+    status: "beta",
+    tagline:
+      "Un briefing sportif personnalisé qui réunit calendrier, classements et actus résumées par IA, pour le tennis et la Formule 1.",
+    problem:
+      "Suivre le tennis et la Formule 1 oblige à jongler entre plusieurs sites et applications, sans jamais avoir une vue synthétique de ce qui compte vraiment chaque jour.",
+    solution:
+      "Application qui centralise calendrier en direct, classements ATP/WTA et F1, et actus résumées par IA toujours reliées à leur source originale, personnalisées selon les favoris (joueurs, écuries).",
+    result:
+      "Application web disponible et testée sur flonexa.app, gratuite ; application Android en préparation pour le Play Store.",
+    technologies: ["TanStack Start", "React", "TypeScript", "Convex", "Gemini"],
+    projectUrl: "https://flonexa.app",
+    logo: { src: "/projects/logos/flonexa.png", alt: "" },
+    featured: true,
+  },
+  {
     slug: "nativeprobe",
     name: "NativeProbe",
     type: "product",

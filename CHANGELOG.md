@@ -9,6 +9,18 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.12.0] — 2026-09-22
+
+### Added
+
+- **Flonexa joins the portfolio** as a flagship project, ranked ahead of
+  NativeProbe — a personalized sports briefing for tennis and Formula 1
+  combining a live calendar, ATP/WTA and F1 rankings, and AI-summarized
+  news always linked back to their original source. Web app is live and
+  tested at flonexa.app; Android app in preparation for the Play Store,
+  no iOS release planned yet. Linked from the homepage, Projects and its
+  own project page.
+
 ## [1.11.0] — 2026-09-11
 
 ### Added
