@@ -84,7 +84,7 @@ jobs:
     # Version must match the resolved `@playwright/test` version exactly
     # (pnpm-lock.yaml) or Playwright refuses to run — bump both together.
     container:
-      image: mcr.microsoft.com/playwright:v1.62.1-noble
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
     steps:
       - uses: actions/checkout@v7
 
@@ -111,7 +111,7 @@ jobs:
     # webkit's own dependency tree (media/audio/video libs) is far larger
     # than chromium's.
     container:
-      image: mcr.microsoft.com/playwright:v1.62.1-noble
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
     steps:
       - uses: actions/checkout@v7
 

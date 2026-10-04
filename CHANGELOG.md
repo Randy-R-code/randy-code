@@ -9,6 +9,21 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.13.1] — 2026-10-04
+
+### Security
+
+- Updated Next.js to 16.3.8, picking up the fixes for the critical
+  advisories affecting 16.2.x and the patched `postcss`, `nanoid` and
+  `sharp` it bundles.
+- Updated `undici` and `ip-address`, used by the InfraLens and MetaLens
+  SSRF protections, to their patched releases.
+
+### Changed
+
+- Refreshed the remaining dependencies (React 19.3, Playwright 1.63,
+  Upstash, Resend, lucide-react, shadcn and type packages).
+
 ## [1.13.0] — 2026-10-04
 
 ### Added
