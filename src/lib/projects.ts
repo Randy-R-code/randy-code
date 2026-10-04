@@ -124,6 +124,29 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "kidarys",
+    name: "Kidarys",
+    type: "product",
+    status: "beta",
+    tagline:
+      "Le lien quotidien entre parents et personnes qui gardent leur enfant. Suivi de la journée, organisation et informations essentielles, synchronisés entre mobile et web.",
+    problem:
+      "Les informations importantes de la journée d'un enfant (repas, sommeil, activités, consignes, changements d'organisation) se perdent entre messages, échanges oraux et habitudes difficiles à suivre, ce qui casse la continuité entre les parents et la personne qui le garde.",
+    solution:
+      "Une expérience centrée sur l'enfant, avec une interface pour les parents et une pour la personne en charge de la garde : suivi quotidien rapide (repas et biberons, sommeil, activités), informations importantes, calendrier des jours de garde et partage de photos. Mobile et web sont synchronisés, sur une architecture qui gère les familles et leurs membres.",
+    result:
+      "Application web en développement ; application Android en préparation pour le Play Store, avec une expérience synchronisée entre les deux plateformes.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "TanStack Start",
+      "Convex",
+    ],
+    logo: { src: "/projects/logos/kidarys.png", alt: "" },
+    featured: true,
+  },
+  {
     slug: "nativeprobe",
     name: "NativeProbe",
     type: "product",
@@ -139,7 +162,7 @@ export const projects: Project[] = [
     repositoryUrl: "https://github.com/Randy-R-code/nativeprobe",
     logo: { src: "/projects/logos/nativeprobe.png", alt: "" },
     openSource: true,
-    featured: true,
+    featured: false,
   },
   {
     slug: "specialiste-automobile",

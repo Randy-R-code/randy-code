@@ -34,6 +34,14 @@ const experiments = [
     tags: ["Expo", "React Native", "Convex", "Better Auth"],
     desc: "Deuxième starter interne, pensé mobile et réutilisé sur les mêmes projets : React Native (Expo) sur le même socle Convex/Better Auth que le boilerplate web, pour lancer une app aussi vite qu'un SaaS.",
   },
+  {
+    id: "04",
+    title: "Game Development — Mobile",
+    status: "En développement",
+    statusColor: brand.colors.blue[400],
+    tags: ["React Native", "Expo", "TypeScript"],
+    desc: "Exploration du développement de jeux mobiles à travers un premier projet complet : gameplay, physique, progression, game feel, identité visuelle et préparation à la publication sur les stores. L'objectif est d'explorer les contraintes propres au jeu mobile et de construire une expérience complète, de la boucle de gameplay jusqu'au produit publié.",
+  },
 ];
 
 const radarItems = [

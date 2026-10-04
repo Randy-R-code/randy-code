@@ -9,6 +9,28 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.13.0] — 2026-10-04
+
+### Added
+
+- **Kidarys joins the portfolio** as the fourth flagship project, ranked
+  after Flonexa — a daily link between parents and the people who care
+  for their child, with meals, sleep, activities, key information and the
+  care schedule kept in sync between mobile and web. In beta: web app in
+  development, Android app in preparation for the Play Store, no public
+  link yet. Shown on the homepage and Projects City, and in its own
+  project page.
+- **Lab Zone gains a mobile game experiment** — a first mobile game in
+  development, presented as an exploration of mobile game development
+  without naming the project or revealing its concept.
+
+### Changed
+
+- NativeProbe leaves the homepage and article footers to make room for
+  Kidarys; it remains in Projects City and keeps its own project page.
+- Project logos (Flonexa, NativeProbe, Kidarys) now have rounded corners
+  matching Liflow's.
+
 ## [1.12.0] — 2026-09-22
 
 ### Added
