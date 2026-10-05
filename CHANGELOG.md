@@ -9,6 +9,20 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.13.2] — 2026-10-05
+
+### Added
+
+- **New article: "9 mois plus tard : l'IA est devenue mon copilote"** — a
+  follow-up to the January article on AI-assisted development, covering how
+  the workflow evolved from "assistant" to "copilot": specs, context and
+  skills as the new control points, and the different roles of each AI tool.
+
+### Changed
+
+- Refreshed the cover images of all blog articles with a new visual set,
+  now 16:9 and about 80 % lighter on average.
+
 ## [1.13.1] — 2026-10-04
 
 ### Security
