@@ -9,6 +9,12 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.14.2] — 2026-10-11
+
+### Changed
+
+- The footer links now include Flonexa and Kidarys alongside Liflow.
+
 ## [1.14.1] — 2026-10-11
 
 ### Changed

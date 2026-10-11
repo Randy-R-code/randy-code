@@ -148,6 +148,28 @@ export function SiteFooter() {
                   Liflow
                 </a>
               </li>
+              <li className="flex">
+                <a
+                  href="https://flonexa.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                >
+                  <ExternalLink size={13} />
+                  Flonexa
+                </a>
+              </li>
+              <li className="flex">
+                <a
+                  href="https://kidarys.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                >
+                  <ExternalLink size={13} />
+                  Kidarys
+                </a>
+              </li>
             </ul>
           </div>
         </div>
