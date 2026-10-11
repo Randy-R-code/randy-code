@@ -26,9 +26,12 @@ export const metadata: Metadata = {
       "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, en phase de test.",
     url: "/games/as-it-should-be",
     type: "website",
-    images: [
-      { url: "/games/as-it-should-be/og.jpg", width: 1200, height: 630 },
-    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "As It Should Be — Puzzle mobile",
+    description:
+      "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, en phase de test.",
   },
 };
 

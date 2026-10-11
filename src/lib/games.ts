@@ -15,7 +15,6 @@ export interface Game {
   symbol: { src: string; alt: string };
   technologies: string[];
   banner: { src: string; width: number; height: number };
-  ogImage: string;
   stores: { googlePlay?: string; appStore?: string };
   privacyReviewed: boolean;
 }
@@ -43,7 +42,6 @@ export const games: Game[] = [
       width: 1932,
       height: 814,
     },
-    ogImage: "/games/as-it-should-be/og.jpg",
     stores: {},
     privacyReviewed: false,
   },

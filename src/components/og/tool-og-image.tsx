@@ -6,7 +6,10 @@ import type { ReactNode } from "react";
 const SIZE = { width: 1200, height: 630 };
 
 /** A single Lucide `__iconNode` entry, stripped of its internal `key` field — see the note in each tool's opengraph-image.tsx. */
-export type IconNode = readonly ["circle" | "path", Record<string, string>];
+export type IconNode = readonly [
+  "circle" | "path" | "line",
+  Record<string, string>,
+];
 
 /**
  * Renders a Lucide icon from its raw node data rather than the React
@@ -38,13 +41,23 @@ export function Icon({
       strokeLinejoin="round"
       style={{ display: "flex" }}
     >
-      {nodes.map(([tag, attrs], index) =>
-        tag === "circle" ? (
-          <circle key={index} cx={attrs.cx} cy={attrs.cy} r={attrs.r} />
-        ) : (
-          <path key={index} d={attrs.d} />
-        ),
-      )}
+      {nodes.map(([tag, attrs], index) => {
+        if (tag === "circle") {
+          return <circle key={index} cx={attrs.cx} cy={attrs.cy} r={attrs.r} />;
+        }
+        if (tag === "line") {
+          return (
+            <line
+              key={index}
+              x1={attrs.x1}
+              y1={attrs.y1}
+              x2={attrs.x2}
+              y2={attrs.y2}
+            />
+          );
+        }
+        return <path key={index} d={attrs.d} />;
+      })}
     </svg>
   );
 }
@@ -64,6 +77,7 @@ export async function renderToolOgImage({
   iconNodes,
   label,
   preview,
+  previewWidth = 380,
 }: {
   title: string;
   tagline: string;
@@ -79,6 +93,7 @@ export async function renderToolOgImage({
    * without a preview yet keep the original full-width single-column
    * layout. */
   preview?: ReactNode;
+  previewWidth?: number;
 }) {
   const [fontBold, fontRegular] = await Promise.all([
     readFile(join(process.cwd(), "assets/Inter-Bold.woff")),
@@ -238,7 +253,7 @@ export async function renderToolOgImage({
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              width: 380,
+              width: previewWidth,
               flexShrink: 0,
             }}
           >

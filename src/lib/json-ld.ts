@@ -87,7 +87,7 @@ export function buildVideoGameSchema(game: Game) {
     name: game.name,
     description: game.summary.fr,
     url: `https://randy-code.dev/games/${game.slug}`,
-    image: `https://randy-code.dev${game.ogImage}`,
+    image: `https://randy-code.dev/games/${game.slug}/opengraph-image`,
     genre: game.genre.en,
     inLanguage: ["fr", "en"],
     author: {

@@ -23,6 +23,9 @@ InfraLens changes since its native migration are recorded here.
   one exists.
 - **Privacy page for As It Should Be** — bilingual, provisional, and kept out
   of search indexing until its content is verified against the final build.
+- **Generated social card for As It Should Be** — same visual language as
+  the tool cards, with the game banner shown uncropped, and matching Twitter
+  title and description.
 
 ### Changed
 
