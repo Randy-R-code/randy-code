@@ -9,6 +9,14 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.14.1] — 2026-10-11
+
+### Changed
+
+- Project case studies and the As It Should Be privacy page now use the same
+  content width as the rest of the site, so headings stay aligned with the
+  header and listing pages; paragraphs keep a readable line length.
+
 ## [1.14.0] — 2026-10-11
 
 ### Added

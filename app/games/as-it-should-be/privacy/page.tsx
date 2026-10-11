@@ -44,7 +44,7 @@ export default function AsItShouldBePrivacyPage() {
   return (
     <GameLanguageProvider>
       <main className="flex-1 px-6 pt-8 pb-16">
-        <div className="mx-auto w-full max-w-3xl">
+        <div className="mx-auto w-full max-w-5xl">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/games/as-it-should-be"
@@ -71,7 +71,7 @@ export default function AsItShouldBePrivacyPage() {
           {!game.privacyReviewed && (
             <p
               role="note"
-              className="mt-6 rounded-xl border p-4 text-sm leading-relaxed text-zinc-300"
+              className="mt-6 max-w-3xl rounded-xl border p-4 text-sm leading-relaxed text-zinc-300"
               style={{
                 borderColor: `${color}40`,
                 background: `${color}0d`,

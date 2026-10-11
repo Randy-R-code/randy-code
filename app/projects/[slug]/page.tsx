@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
           }}
         />
       )}
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-5xl">
         {/* Breadcrumbs */}
         <nav
           aria-label="Fil d'Ariane"
@@ -152,7 +152,9 @@ export default async function ProjectPage({ params }: Props) {
               <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-zinc-400">
                 {label}
               </h2>
-              <p className="text-sm leading-relaxed text-zinc-300">{text}</p>
+              <p className="max-w-3xl text-sm leading-relaxed text-zinc-300">
+                {text}
+              </p>
             </section>
           ))}
         </div>
