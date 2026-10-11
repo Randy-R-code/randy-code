@@ -18,6 +18,9 @@ for (const route of [
   "/about",
   "/lab",
   "/contact",
+  "/games",
+  "/games/as-it-should-be",
+  "/games/as-it-should-be/privacy",
 ]) {
   test(`${route} loads with a visible title`, async ({ page }) => {
     await page.goto(route);

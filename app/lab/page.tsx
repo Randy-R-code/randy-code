@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/page-shell";
 import { brand } from "@/lib/brand";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Lab Zone — Randy Code",
@@ -37,10 +38,14 @@ const experiments = [
   {
     id: "04",
     title: "Game Development — Mobile",
-    status: "En développement",
+    status: "En phase de test",
     statusColor: brand.colors.blue[400],
     tags: ["React Native", "Expo", "TypeScript"],
-    desc: "Exploration du développement de jeux mobiles à travers un premier projet complet : gameplay, physique, progression, game feel, identité visuelle et préparation à la publication sur les stores. L'objectif est d'explorer les contraintes propres au jeu mobile et de construire une expérience complète, de la boucle de gameplay jusqu'au produit publié.",
+    desc: "Exploration du développement de jeux mobiles à travers un premier projet complet : gameplay, progression, game feel, identité visuelle et préparation à la publication sur les stores. Ce premier jeu est en phase de test et d'autres suivront.",
+    link: {
+      href: "/games/as-it-should-be",
+      label: "Découvrir As It Should Be",
+    },
   },
 ];
 
@@ -121,6 +126,15 @@ export default function LabPage() {
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {exp.desc}
             </p>
+            {exp.link && (
+              <Link
+                href={exp.link.href}
+                className="mt-3 inline-block text-xs font-medium"
+                style={{ color: brand.colors.violet[400] }}
+              >
+                {exp.link.label} →
+              </Link>
+            )}
           </article>
         ))}
       </div>

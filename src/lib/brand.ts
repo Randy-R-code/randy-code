@@ -44,6 +44,11 @@ export const brand = {
       900: "#104D40",
       950: "#072F28",
     },
+    violet: {
+      300: "#C4B5FD",
+      400: "#A78BFA",
+      500: "#8B5CF6",
+    },
     functional: {
       success: "#22C55E",
       warning: "#F59E0B",

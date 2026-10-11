@@ -1,4 +1,5 @@
 import { posts } from "@/lib/blog";
+import { games } from "@/lib/games";
 import { projects } from "@/lib/projects";
 import type { MetadataRoute } from "next";
 
@@ -20,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/lab`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/games`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -69,6 +76,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.7,
   }));
+
+  const gameRoutes: MetadataRoute.Sitemap = games.flatMap((game) => [
+    {
+      url: `${BASE_URL}/games/${game.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    ...(game.privacyReviewed
+      ? [
+          {
+            url: `${BASE_URL}/games/${game.slug}/privacy`,
+            lastModified: new Date(),
+            changeFrequency: "yearly" as const,
+            priority: 0.4,
+          },
+        ]
+      : []),
+  ]);
 
   const infralensRoutes: MetadataRoute.Sitemap = [
     {
@@ -137,6 +163,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...articleRoutes,
     ...projectRoutes,
+    ...gameRoutes,
     ...infralensRoutes,
     ...apiStudioRoutes,
     ...cronBuilderRoutes,

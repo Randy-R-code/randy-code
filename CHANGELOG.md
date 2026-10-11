@@ -9,6 +9,26 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.14.0] — 2026-10-11
+
+### Added
+
+- **Games Arcade** — a new zone for independent mobile games, with its own
+  index page, navigation and footer entries, home map node and landing
+  section, in a violet identity distinct from tools (green) and projects
+  (blue). Built to host several games.
+- **As It Should Be** — dedicated page for the first game (currently in
+  testing): gameplay, parts, worlds, features and availability, in French
+  and English, with room reserved for screenshots and no store link until
+  one exists.
+- **Privacy page for As It Should Be** — bilingual, provisional, and kept out
+  of search indexing until its content is verified against the final build.
+
+### Changed
+
+- The home map now has six zones in a hexagon layout.
+- The Lab "Game Development — Mobile" entry now points to the game page.
+
 ## [1.13.2] — 2026-10-05
 
 ### Added

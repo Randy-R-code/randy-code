@@ -1,4 +1,5 @@
 import { posts } from "@/lib/blog";
+import { games } from "@/lib/games";
 import { projects } from "@/lib/projects";
 import { tools } from "@/lib/tools";
 
@@ -21,6 +22,13 @@ export async function GET() {
     )
     .join("\n");
 
+  const gameLines = games
+    .map(
+      (game) =>
+        `- [${game.name}](${BASE_URL}/games/${game.slug}): ${game.summary.fr}`,
+    )
+    .join("\n");
+
   const articleLines = posts
     .map(
       (post) =>
@@ -39,6 +47,9 @@ ${toolLines}
 
 ## Projets
 ${projectLines}
+
+## Jeux
+${gameLines}
 
 ## Articles
 ${articleLines}

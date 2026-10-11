@@ -1,4 +1,5 @@
 import type { BlogPost } from "./blog";
+import type { Game } from "./games";
 import type { Project } from "./projects";
 
 export function buildPersonSchema() {
@@ -74,6 +75,24 @@ export function buildSoftwareApplicationSchema(project: Project) {
     author: {
       "@type": "Person",
       name: "Randy Rimbault",
+      url: "https://randy-code.dev",
+    },
+  };
+}
+
+export function buildVideoGameSchema(game: Game) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: game.name,
+    description: game.summary.fr,
+    url: `https://randy-code.dev/games/${game.slug}`,
+    image: `https://randy-code.dev${game.ogImage}`,
+    genre: game.genre.en,
+    inLanguage: ["fr", "en"],
+    author: {
+      "@type": "Organization",
+      name: "Randy Code",
       url: "https://randy-code.dev",
     },
   };

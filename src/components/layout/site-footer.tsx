@@ -1,4 +1,5 @@
 import { GitHubIcon } from "@/components/github-icon";
+import { games } from "@/lib/games";
 import { primaryNav } from "@/lib/nav";
 import { tools } from "@/lib/tools";
 import { ExternalLink } from "lucide-react";
@@ -6,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const exploreNav = primaryNav.filter((item) =>
-  ["/projects", "/tools", "/lab"].includes(item.href),
+  ["/projects", "/games", "/tools", "/lab"].includes(item.href),
 );
 const siteNav = primaryNav.filter((item) =>
   ["/articles", "/about", "/contact"].includes(item.href),
@@ -47,7 +48,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 sm:gap-x-10">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-5">
           <nav aria-label="Explorer">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               Explorer
@@ -78,6 +79,24 @@ export function SiteFooter() {
                     className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
                   >
                     <span>{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Jeux">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
+              Jeux
+            </p>
+            <ul className="flex flex-col gap-2">
+              {games.map((game) => (
+                <li key={game.slug} className="flex">
+                  <Link
+                    href={`/games/${game.slug}`}
+                    className="inline-flex items-center text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                  >
+                    <span>{game.name}</span>
                   </Link>
                 </li>
               ))}

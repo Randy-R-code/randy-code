@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import type { BlogPost } from "../blog";
-import { buildArticleSchema, buildPersonSchema } from "../json-ld";
+import { games } from "../games";
+import {
+  buildArticleSchema,
+  buildPersonSchema,
+  buildVideoGameSchema,
+} from "../json-ld";
 
 describe("buildPersonSchema", () => {
   it("returns a valid schema.org Person", () => {
@@ -38,5 +43,15 @@ describe("buildArticleSchema", () => {
     const schema = buildArticleSchema(post);
     const parsed = JSON.parse(JSON.stringify(schema));
     expect(parsed.headline).toBe(post.title);
+  });
+});
+
+describe("buildVideoGameSchema", () => {
+  it("describes the game without store, rating or price claims", () => {
+    const schema = buildVideoGameSchema(games[0]);
+    expect(schema["@type"]).toBe("VideoGame");
+    expect(schema.url).toBe(`https://randy-code.dev/games/${games[0].slug}`);
+    expect(schema).not.toHaveProperty("offers");
+    expect(schema).not.toHaveProperty("aggregateRating");
   });
 });

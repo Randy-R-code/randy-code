@@ -1,6 +1,13 @@
 import { brand } from "@/lib/brand";
 import type { LucideIcon } from "lucide-react";
-import { BookOpen, Building2, FlaskConical, User, Wrench } from "lucide-react";
+import {
+  BookOpen,
+  Building2,
+  FlaskConical,
+  Gamepad2,
+  User,
+  Wrench,
+} from "lucide-react";
 
 export interface Zone {
   id: string;
@@ -32,7 +39,7 @@ export const zones: Zone[] = [
     route: "/projects",
     Icon: Building2,
     color: brand.colors.blue[400],
-    position: { x: 80, y: 37 },
+    position: { x: 80, y: 30 },
   },
   {
     id: "articles",
@@ -41,7 +48,16 @@ export const zones: Zone[] = [
     route: "/articles",
     Icon: BookOpen,
     color: brand.colors.blue[400],
-    position: { x: 69, y: 77 },
+    position: { x: 80, y: 66 },
+  },
+  {
+    id: "games",
+    label: "Games Arcade",
+    tagline: "Jeux mobiles indépendants",
+    route: "/games",
+    Icon: Gamepad2,
+    color: brand.colors.violet[400],
+    position: { x: 50, y: 84 },
   },
   {
     id: "about",
@@ -50,7 +66,7 @@ export const zones: Zone[] = [
     route: "/about",
     Icon: User,
     color: brand.colors.blue[400],
-    position: { x: 31, y: 77 },
+    position: { x: 20, y: 66 },
   },
   {
     id: "lab",
@@ -59,7 +75,7 @@ export const zones: Zone[] = [
     route: "/lab",
     Icon: FlaskConical,
     color: brand.colors.blue[400],
-    position: { x: 20, y: 37 },
+    position: { x: 20, y: 30 },
   },
 ];
 
@@ -70,6 +86,7 @@ export const connections: Array<[ZoneId, "__hub__"]> = [
   ["tools", "__hub__"],
   ["projects", "__hub__"],
   ["articles", "__hub__"],
+  ["games", "__hub__"],
   ["about", "__hub__"],
   ["lab", "__hub__"],
 ];

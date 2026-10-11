@@ -1,7 +1,9 @@
+import { GameCard } from "@/components/games/game-card";
 import { GitHubIcon } from "@/components/github-icon";
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
 import { brand } from "@/lib/brand";
+import { games } from "@/lib/games";
 import { getFeaturedProjects, statusLabel } from "@/lib/projects";
 import { tools } from "@/lib/tools";
 import { ExternalLink, Wrench } from "lucide-react";
@@ -164,6 +166,16 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Jeux */}
+        <section className="mt-16">
+          <h2 className="mb-6 text-xl font-semibold text-white">Jeux</h2>
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            {games.map((game) => (
+              <GameCard key={game.slug} game={game} />
+            ))}
           </div>
         </section>
 
