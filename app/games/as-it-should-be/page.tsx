@@ -3,10 +3,11 @@ import {
   L,
   LanguageSwitch,
 } from "@/components/games/game-language";
+import { GameScreenshots } from "@/components/games/game-screenshots";
 import { brand } from "@/lib/brand";
 import { gameStatusLabel, getGame } from "@/lib/games";
 import { buildVideoGameSchema } from "@/lib/json-ld";
-import { ArrowLeft, ImageIcon } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ const color = brand.colors.violet[400];
 export const metadata: Metadata = {
   title: "As It Should Be — Puzzle mobile | Randy Code",
   description:
-    "As It Should Be est un puzzle mobile de logique : placer quelques pièces, lancer la réaction en chaîne et atteindre chaque cible. Huit mondes de 25 niveaux, en phase de test.",
+    "As It Should Be est un jeu de réflexion mobile : guidez des billes à travers des mécanismes en plaçant les bonnes pièces. 200 puzzles, 8 mondes, sans publicité. En phase de test.",
   alternates: { canonical: "/games/as-it-should-be" },
   openGraph: {
     title: "As It Should Be — Puzzle mobile",
@@ -96,6 +97,33 @@ const parts = [
       fr: "Une case libre qui n'accepte que certaines pièces.",
       en: "A free cell that only accepts certain parts.",
     },
+  },
+];
+
+const features = [
+  {
+    fr: "Placez des pièces pour guider les billes jusqu'à leur destination.",
+    en: "Place pieces to guide marbles toward their destinations.",
+  },
+  {
+    fr: "Explorez 8 mondes et 200 puzzles conçus et sélectionnés avec soin.",
+    en: "Explore 8 worlds with 200 handcrafted and carefully selected puzzles.",
+  },
+  {
+    fr: "Maîtrisez les trajectoires, le timing, la synchronisation et les portes.",
+    en: "Master routing, timing, synchronization, gates, and more.",
+  },
+  {
+    fr: "Trouvez les solutions les plus efficaces avec un minimum de mouvements.",
+    en: "Find efficient solutions with as few moves as possible.",
+  },
+  {
+    fr: "Relevez des défis experts facultatifs.",
+    en: "Take on optional expert challenges when you're ready.",
+  },
+  {
+    fr: "Progressez à votre rythme, sans chronomètre ni pression.",
+    en: "Progress at your own pace, without timers or pressure.",
   },
 ];
 
@@ -179,13 +207,29 @@ export default function AsItShouldBePage() {
             <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
               {game.name}
             </h1>
+            <p className="max-w-2xl text-lg font-medium leading-snug text-white">
+              <L
+                fr="Chaque pièce a sa place. Chaque mouvement a son importance."
+                en="Everything has its place. Every move has a purpose."
+              />
+            </p>
             <p className="max-w-2xl text-base leading-relaxed text-zinc-300">
               <L
-                fr="Un puzzle de logique pour préparer une réaction en chaîne. On étudie le plateau, on place quelques pièces, on lance la machine : chaque bille doit atteindre une cible, et moins on utilise de pièces, plus on se rapproche du par du niveau."
-                en="A logic puzzle about preparing a chain reaction. Study the board, place a few parts, run the machine: every ball must reach a target, and the fewer parts you use, the closer you get to the level's par."
+                fr="As It Should Be est un jeu de réflexion où la précision, le timing et la logique se rencontrent. Guidez des billes à travers des mécanismes ingénieux en plaçant les bonnes pièces, en construisant leurs trajectoires et en faisant fonctionner chaque élément ensemble."
+                en="As It Should Be is a thoughtfully crafted logic puzzle game about precision, timing, and finding the perfect arrangement. Guide marbles through intricate mechanisms by placing pieces, shaping their paths, and making every interaction work together."
+              />
+            </p>
+            <p className="max-w-2xl text-base leading-relaxed text-zinc-400">
+              <L
+                fr="Ici, rien ne presse. Observez le plateau, anticipez les mouvements, expérimentez et découvrez la solution qui remet tout à sa place."
+                en="There's no need to rush. Observe the board, think ahead, experiment, and discover the solution that makes everything fall into place."
               />
             </p>
           </div>
+
+          <Section title={<L fr="Captures d'écran" en="Screenshots" />}>
+            <GameScreenshots game={game} />
+          </Section>
 
           <Section title={<L fr="Le principe" en="How it plays" />}>
             <p className="mb-5 max-w-2xl text-sm leading-relaxed text-zinc-400">
@@ -248,9 +292,18 @@ export default function AsItShouldBePage() {
 
           <Section
             title={
-              <L fr="Huit mondes, 200 niveaux" en="Eight worlds, 200 levels" />
+              <L
+                fr="200 puzzles. 8 mondes distincts."
+                en="200 puzzles. 8 distinct worlds."
+              />
             }
           >
+            <p className="mb-5 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              <L
+                fr="Commencez par des mécanismes simples, puis découvrez progressivement de nouveaux défis. Chaque monde introduit ses propres subtilités : aiguillages, rythme, synchronisation, portes et interactions de plus en plus complexes."
+                en="Begin with simple arrangements and gradually uncover more challenging mechanics. Each world introduces new ideas, from routing and timing to synchronization, gates, and complex interactions."
+              />
+            </p>
             <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {worlds.map((world, i) => (
                 <li
@@ -287,26 +340,16 @@ export default function AsItShouldBePage() {
             </p>
           </Section>
 
-          <Section title={<L fr="Caractéristiques" en="Features" />}>
+          <Section
+            title={
+              <L
+                fr="Une expérience pensée pour le plaisir de réfléchir"
+                en="A puzzle experience built around discovery"
+              />
+            }
+          >
             <ul className="grid gap-3 sm:grid-cols-2">
-              {[
-                {
-                  fr: "Entièrement déterministe : le même placement donne toujours le même résultat.",
-                  en: "Fully deterministic: the same placement always gives the same result.",
-                },
-                {
-                  fr: "Un par par niveau : le nombre minimal de pièces, démontré par recherche exhaustive.",
-                  en: "A par for every level: the minimum number of parts, proven by exhaustive search.",
-                },
-                {
-                  fr: "Un thème visuel propre à chaque monde.",
-                  en: "One visual theme per world.",
-                },
-                {
-                  fr: "Jeu bilingue français et anglais.",
-                  en: "Bilingual game, French and English.",
-                },
-              ].map((feature) => (
+              {features.map((feature) => (
                 <li
                   key={feature.en}
                   className="rounded-xl border p-4 text-sm leading-relaxed text-zinc-300"
@@ -319,21 +362,18 @@ export default function AsItShouldBePage() {
                 </li>
               ))}
             </ul>
-          </Section>
-
-          <Section title={<L fr="Captures d'écran" en="Screenshots" />}>
-            <div
-              className="flex flex-col items-center gap-2 rounded-xl border border-dashed p-10 text-center"
-              style={{ borderColor: `${color}30` }}
-            >
-              <ImageIcon size={20} aria-hidden="true" style={{ color }} />
-              <p className="text-sm text-zinc-400">
-                <L
-                  fr="Les captures arriveront avec la prochaine version de test."
-                  en="Screenshots will come with the next test build."
-                />
-              </p>
-            </div>
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              <L
+                fr="Juste vous et le puzzle. Sans publicité. Sans distraction. Sans complexité inutile."
+                en="Just you and the puzzle. No ads. No distractions. No unnecessary complexity."
+              />
+            </p>
+            <p className="mt-4 text-sm font-medium text-white">
+              <L
+                fr="As It Should Be. Chaque chose à sa place."
+                en="As It Should Be. Everything in its right place."
+              />
+            </p>
           </Section>
 
           <Section title={<L fr="Disponibilité" en="Availability" />}>

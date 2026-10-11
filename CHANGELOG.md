@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.14.3] — 2026-10-11
+
+### Added
+
+- **As It Should Be screenshots** — eight store screenshots, in French and
+  English following the language toggle, in a swipeable gallery on the game
+  page.
+
+### Changed
+
+- The game page now uses the Play Store description and its key points.
+- The game's privacy policy is written from the cleaned-up mobile app (no
+  account, ads, purchases or analytics, only progress and language stored
+  locally), now final: the review banner and `noindex` are gone and the page
+  is listed in the sitemap.
+
 ## [1.14.2] — 2026-10-11
 
 ### Changed

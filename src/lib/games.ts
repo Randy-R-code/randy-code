@@ -15,6 +15,7 @@ export interface Game {
   symbol: { src: string; alt: string };
   technologies: string[];
   banner: { src: string; width: number; height: number };
+  screenshots: { file: string; caption: Localized }[];
   stores: { googlePlay?: string; appStore?: string };
   privacyReviewed: boolean;
 }
@@ -42,8 +43,60 @@ export const games: Game[] = [
       width: 1932,
       height: 814,
     },
+    screenshots: [
+      {
+        file: "01-gameplay.webp",
+        caption: { fr: "Chaque pièce compte.", en: "Every piece matters." },
+      },
+      {
+        file: "02-place-pieces.webp",
+        caption: {
+          fr: "Observez. Placez. Résolvez.",
+          en: "Observe. Place. Solve.",
+        },
+      },
+      {
+        file: "03-timing.webp",
+        caption: {
+          fr: "Le timing change tout.",
+          en: "Timing changes everything.",
+        },
+      },
+      {
+        file: "04-synchronization.webp",
+        caption: {
+          fr: "Tout doit s'aligner.",
+          en: "Everything must align.",
+        },
+      },
+      {
+        file: "05-gates.webp",
+        caption: {
+          fr: "Déclenchez la bonne réaction.",
+          en: "Trigger the right reaction.",
+        },
+      },
+      {
+        file: "06-worlds.webp",
+        caption: { fr: "8 mondes à explorer.", en: "8 worlds to explore." },
+      },
+      {
+        file: "07-expert.webp",
+        caption: {
+          fr: "Repoussez votre logique.",
+          en: "Push your logic further.",
+        },
+      },
+      {
+        file: "08-victory.webp",
+        caption: {
+          fr: "La satisfaction du déclic.",
+          en: "The satisfaction of solving.",
+        },
+      },
+    ],
     stores: {},
-    privacyReviewed: false,
+    privacyReviewed: true,
   },
 ];
 
