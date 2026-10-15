@@ -8,7 +8,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const SOFTWARE_APPLICATION_SLUGS = new Set(["liflow", "infralens"]);
+const SOFTWARE_APPLICATION_SLUGS = new Set([
+  "liflow",
+  "infralens",
+  "flonexa",
+  "kidarys",
+]);
 
 type Props = { params: Promise<{ slug: string }> };
 

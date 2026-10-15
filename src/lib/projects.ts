@@ -117,11 +117,36 @@ export const projects: Project[] = [
     solution:
       "Application qui centralise calendrier en direct, classements ATP/WTA et F1, et actus résumées par IA toujours reliées à leur source originale, personnalisées selon les favoris (joueurs, écuries).",
     result:
-      "Application web disponible et testée sur flonexa.app, gratuite ; application Android en préparation pour le Play Store.",
-    technologies: ["TanStack Start", "React", "TypeScript", "Convex", "Gemini"],
+      "Application web disponible sur flonexa.app, gratuite ; application Android en test fermé sur Google Play avant sa publication.",
+    technologies: [
+      "TanStack Start",
+      "React",
+      "TypeScript",
+      "Convex",
+      "Mistral AI",
+    ],
     projectUrl: "https://flonexa.app",
     logo: { src: "/projects/logos/flonexa.png", alt: "" },
     featured: true,
+    caseStudy: {
+      context:
+        "Suivre le tennis et la Formule 1 oblige à ouvrir plusieurs sites et applications, chacun noyé dans un flux d'informations qui ne concerne pas vraiment ce qu'on suit. Flonexa part d'un besoin simple : savoir en deux minutes, chaque matin, ce qui compte pour les joueurs et les écuries qu'on suit déjà.",
+      objectives:
+        "Un briefing, pas un flux. Pas de score en direct point par point, pas de forum, pas de notification insistante : une page Today construite autour des favoris de chacun, rapide à lire, qu'on rouvre le lendemain parce qu'elle valait le coup.",
+      role: "Je conçois, développe et maintiens Flonexa seul : pipeline de données, backend, application web et application mobile.",
+      solution:
+        "Flonexa croise des données structurées (calendrier, résultats, classements ATP/WTA et F1) et des actus résumées par IA, regroupées en Stories toujours reliées à leur source d'origine. L'utilisateur choisit ses joueurs et ses écuries ; la page Today ne montre que ce qui les concerne. Le tout est gratuit, en français, sur le web et sur Android.",
+      architecture:
+        "Un backend Convex partagé entre une application web TanStack Start et une application mobile Expo, avec Better Auth pour la connexion par code email. Les données sont récupérées par des tâches planifiées dont la fréquence suit la volatilité de chaque source (calendrier F1 toutes les 12 h, résultats toutes les 3 h, actus toutes les 30 min). Chaque fournisseur reste derrière un adaptateur : aucun format externe n'atteint l'interface.",
+      technicalChoices:
+        "Le pipeline va de la source brute à la Story : normalisation, classification par sport et par entité, déduplication, résumé par Mistral, puis personnalisation. La Story, et non l'article d'éditeur, est l'objet affiché. Les quotas gratuits des fournisseurs ont dicté les cadences de synchronisation plutôt que l'inverse.",
+      difficulties:
+        "Les offres gratuites de données sportives sont limitées : couverture partielle, quotas serrés, résultats parfois incomplets. J'ai dû accepter un périmètre volontairement réduit (un briefing, pas un Flashscore) et concevoir l'application pour dégrader proprement quand une donnée manque.",
+      security:
+        "Résumés toujours attribués : l'IA synthétise, elle n'invente ni faits ni scores, et la source d'origine reste visible sur chaque Story. Authentification par code email, données utilisateur limitées aux favoris et au compte.",
+      learnings:
+        "Un produit de briefing se juge à ce qu'il retire. Chaque fois que j'ai résisté à l'envie d'ajouter un flux ou une statistique, l'application est devenue plus claire. Et traiter la source comme une partie du produit, pas comme une note de bas de page, change la confiance qu'on peut lui accorder.",
+    },
   },
   {
     slug: "kidarys",
@@ -129,13 +154,13 @@ export const projects: Project[] = [
     type: "product",
     status: "beta",
     tagline:
-      "Le lien quotidien entre parents et personnes qui gardent leur enfant. Suivi de la journée, organisation et informations essentielles, synchronisés entre mobile et web.",
+      "Le lien quotidien entre parents et personnes qui gardent leur enfant : une vue calme de la journée, sur mobile et sur le web.",
     problem:
       "Les informations importantes de la journée d'un enfant (repas, sommeil, activités, consignes, changements d'organisation) se perdent entre messages, échanges oraux et habitudes difficiles à suivre, ce qui casse la continuité entre les parents et la personne qui le garde.",
     solution:
-      "Une expérience centrée sur l'enfant, avec une interface pour les parents et une pour la personne en charge de la garde : suivi quotidien rapide (repas et biberons, sommeil, activités), informations importantes, calendrier des jours de garde et partage de photos. Mobile et web sont synchronisés, sur une architecture qui gère les familles et leurs membres.",
+      "Une expérience centrée sur l'enfant, avec une interface pour les parents et une pour la personne en charge de la garde : un fil du jour où le prévu et le réel vivent ensemble, un calendrier des jours de garde, des messages et des photos. Mobile et web sont synchronisés, sur une architecture qui gère les familles et leurs membres.",
     result:
-      "Application web en développement ; application Android en préparation pour le Play Store, avec une expérience synchronisée entre les deux plateformes.",
+      "Application web disponible sur kidarys.com ; application Android en test fermé sur Google Play avant sa publication.",
     technologies: [
       "React Native",
       "Expo",
@@ -143,8 +168,28 @@ export const projects: Project[] = [
       "TanStack Start",
       "Convex",
     ],
+    projectUrl: "https://kidarys.com",
     logo: { src: "/projects/logos/kidarys.png", alt: "" },
     featured: true,
+    caseStudy: {
+      context:
+        "Quand on confie un enfant, la journée se raconte par morceaux : un message le midi, un mot sur un papier, un récit oral le soir. Les parents veulent savoir comment s'est passée la journée sans avoir à demander ; la personne qui garde n'a pas le temps de tout rédiger. Kidarys est né de cet écart.",
+      objectives:
+        "Remplacer le mélange de SMS, de papiers et de récits oraux par une seule vue partagée. Règle produit : chaque fonctionnalité doit apporter plus de valeur au parent qu'elle ne coûte d'effort à la personne qui garde. Kidarys n'est ni un outil de paie, ni un baby tracker obsédé par les statistiques, ni un logiciel de crèche.",
+      role: "Je conçois, développe et maintiens Kidarys seul : produit, design, backend, application web et application mobile.",
+      solution:
+        "Trois surfaces autour de l'enfant : Today (le prévu et le réel d'une même journée), un calendrier (jours de garde, historique) et des messages, plus un historique privé de moments et de photos. La personne qui garde note un repas ou une sieste en quelques secondes, souvent d'une main ; le parent ouvre l'application et comprend la journée d'un coup d'œil. Les invitations passent par un lien, et l'application Android les ouvre directement.",
+      architecture:
+        "Un backend Convex unique, partagé entre une application Expo (mobile) et une application TanStack Start (landing, espace connecté, administration). Un fichier de configuration commun alimente les deux applications. Authentification Better Auth par code email, notifications push, stockage des photos sur un stockage compatible S3.",
+      technicalChoices:
+        "La famille est la frontière de sécurité, l'enfant la frontière d'expérience : le modèle de données isole strictement chaque famille et distingue deux rôles (parent, personne qui garde) avec leurs droits propres, mais l'interface ne parle jamais de \"famille\" ou d'\"organisation\", seulement de l'enfant par son prénom. Les couleurs fonctionnelles des événements portent toujours une icône ou un libellé, jamais la couleur seule.",
+      difficulties:
+        "Faire tenir deux usages très différents dans un même produit : la personne qui garde, pressée et souvent les mains prises, et le parent, qui veut une lecture rassurante. Chaque écran a dû être arbitré au profit de la rapidité de saisie, et plusieurs fonctionnalités ont été simplifiées ou retirées parce qu'elles demandaient trop de temps à celui qui note.",
+      security:
+        "Données d'enfants : accès strictement limité aux membres de la famille, rôles contrôlés côté serveur, suppression de compte intégrée, en-têtes de sécurité sur le web et permissions Android réduites au strict nécessaire (pas d'accès global aux photos ni aux vidéos).",
+      learnings:
+        "Un produit pour les parents se juge au calme qu'il apporte, pas aux fonctionnalités qu'il liste. Dire non (pas de paie, pas de courbes de croissance, pas de marketplace) est ce qui a permis de garder une application assez simple pour être utilisée une main occupée.",
+    },
   },
   {
     slug: "nativeprobe",

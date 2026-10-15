@@ -9,6 +9,24 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.15.0] — 2026-10-15
+
+### Added
+
+- **Full case studies for Flonexa and Kidarys** — context, objectives,
+  solution, architecture, technical choices, difficulties, security and
+  learnings, at the same depth as Liflow.
+- **"Voir le produit" for Kidarys** — the web app is live, so its card and
+  project page now link to it like Flonexa's.
+- Both projects now expose `SoftwareApplication` structured data.
+
+### Changed
+
+- Kidarys's tagline and solution are reframed around the daily link between
+  parents and caregivers rather than activity tracking.
+- Flonexa and Kidarys results now reflect the web apps being live and the
+  Android apps being in closed testing on Google Play.
+
 ## [1.14.3] — 2026-10-11
 
 ### Added
