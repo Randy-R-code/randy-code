@@ -22,8 +22,10 @@ export interface Project {
   technologies: string[];
   projectUrl?: string;
   repositoryUrl?: string;
+  privacyUrl?: string;
   image?: string;
   logo?: { src: string; alt: string };
+  screenshots?: { src: string; alt: string }[];
   openSource?: boolean;
   featured: boolean;
   caseStudy?: ProjectCaseStudy;
@@ -195,17 +197,39 @@ export const projects: Project[] = [
     slug: "nativeprobe",
     name: "NativeProbe",
     type: "product",
-    status: "beta",
+    status: "active",
     tagline:
       "Un playground mobile open source pour explorer, tester et comprendre les capacités réelles d'un appareil.",
     problem:
-      "Les développeurs React Native n'ont pas de terrain de jeu pour tester en direct les capacités réelles d'un appareil — capteurs, permissions, réseau, biométrie — sans écrire un projet de test à chaque fois.",
+      "Découvrir et tester les API natives, capteurs et permissions d'un appareil oblige souvent à préparer un projet et à coder des écrans de diagnostic à chaque fois.",
     solution:
-      "Playground mobile open source avec des probes interactifs qui déclenchent chaque capacité en direct (capteurs, réseau, localisation, biométrie, haptique...) et montrent l'API Expo derrière chaque test.",
-    result: "Application en beta, en approche de la phase de test Google Play.",
-    technologies: ["React Native", "Expo", "TypeScript", "iOS", "Android"],
+      "Application React Native / Expo qui rassemble 13 probes interactives (capteurs, réseau, localisation, biométrie, haptique, permissions...), chacune accompagnée d'une explication et de l'API Expo utilisée. Sans compte, sans backend ni télémétrie.",
+    result:
+      "Application Android open source publiée sur Google Play, avec 13 modules interactifs pour explorer les capacités natives d'un appareil.",
+    technologies: ["React Native", "Expo", "TypeScript", "Android"],
+    projectUrl:
+      "https://play.google.com/store/apps/details?id=com.randycode.nativeprobe",
     repositoryUrl: "https://github.com/Randy-R-code/nativeprobe",
+    privacyUrl: "/privacy/nativeprobe",
     logo: { src: "/projects/logos/nativeprobe.png", alt: "" },
+    screenshots: [
+      {
+        src: "/projects/nativeprobe/screenshots/nativeprobe-home.webp",
+        alt: "Accueil de NativeProbe : la liste des 13 sondes, regroupées par appareil, capteurs et API système.",
+      },
+      {
+        src: "/projects/nativeprobe/screenshots/nativeprobe-magnetometer.webp",
+        alt: "Sonde Magnétomètre : mesures du champ magnétique X/Y/Z en direct, avec choix de la fréquence d'échantillonnage.",
+      },
+      {
+        src: "/projects/nativeprobe/screenshots/nativeprobe-biometrics.webp",
+        alt: "Sonde Biométrie : disponibilité matérielle, enrôlement et bouton de test d'authentification.",
+      },
+      {
+        src: "/projects/nativeprobe/screenshots/nativeprobe-network.webp",
+        alt: "Sonde Réseau : type de connexion, accessibilité d'Internet et journal d'événements en direct.",
+      },
+    ],
     openSource: true,
     featured: false,
   },

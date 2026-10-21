@@ -1,4 +1,5 @@
 import { GitHubIcon } from "@/components/github-icon";
+import { ScreenshotRail } from "@/components/screenshot-rail";
 import { brand } from "@/lib/brand";
 import { buildSoftwareApplicationSchema } from "@/lib/json-ld";
 import { getProject, projects, statusLabel } from "@/lib/projects";
@@ -164,6 +165,19 @@ export default async function ProjectPage({ params }: Props) {
           ))}
         </div>
 
+        {project.screenshots && (
+          <section className="mt-6">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              Captures d&apos;écran
+            </h2>
+            <ScreenshotRail
+              label="Captures d'écran"
+              shots={project.screenshots}
+              height={1085}
+            />
+          </section>
+        )}
+
         {/* Stack */}
         <div className="mt-6 flex flex-wrap items-center gap-2">
           <span className="text-xs text-zinc-400">Stack :</span>
@@ -213,6 +227,17 @@ export default async function ProjectPage({ params }: Props) {
               </a>
             )}
           </div>
+        )}
+
+        {project.privacyUrl && (
+          <p className="mt-6 text-xs text-zinc-400">
+            <Link
+              href={project.privacyUrl}
+              className="underline underline-offset-2 transition-colors hover:text-zinc-300"
+            >
+              Politique de confidentialité
+            </Link>
+          </p>
         )}
       </div>
     </main>

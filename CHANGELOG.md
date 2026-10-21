@@ -9,6 +9,22 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.15.1] — 2026-10-21
+
+### Added
+
+- **NativeProbe privacy policy** — a dedicated French/English page at
+  `/privacy/nativeprobe`, replacing the README section as the Google Play
+  privacy link.
+- **NativeProbe screenshots** — four real screenshots in a swipeable gallery
+  on its case study, which also links to the privacy policy.
+
+### Changed
+
+- NativeProbe is now available on Google Play: the beta label is gone, and
+  its card and case study link to the store listing.
+- The screenshot gallery is a shared component, also used by the game page.
+
 ## [1.15.0] — 2026-10-15
 
 ### Added
