@@ -9,6 +9,14 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.16.0] — 2026-10-26
+
+### Added
+
+- **Nymelya project card** — a new product on `/projects`: audio stories for
+  children told in the voices of relatives, currently in construction ahead of
+  its Android launch. Listed as beta, without a public link yet.
+
 ## [1.15.1] — 2026-10-21
 
 ### Added

@@ -194,6 +194,29 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "nymelya",
+    name: "Nymelya",
+    type: "product",
+    status: "beta",
+    tagline:
+      "Des histoires audio pour enfants, racontées par les voix de ceux qui les aiment, même à distance.",
+    problem:
+      "Les enfants écoutent des histoires, mais rarement dans la voix de leurs grands-parents ou de leurs proches, surtout quand ils vivent loin, et les parents n'ont aucune garantie sur ce que leur enfant entend.",
+    solution:
+      "Une application qui réunit un catalogue éditorial d'histoires, de berceuses et de comptines, des histoires personnalisées générées par IA, des narrations enregistrées par les proches et une bibliothèque familiale privée, avec validation par les parents.",
+    result:
+      "Application en cours de construction, en phase de pré-lancement : Android d'abord, via les tests Google Play.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "TanStack Start",
+      "Convex",
+    ],
+    logo: { src: "/projects/logos/nymelya.png", alt: "" },
+    featured: false,
+  },
+  {
     slug: "nativeprobe",
     name: "NativeProbe",
     type: "product",
