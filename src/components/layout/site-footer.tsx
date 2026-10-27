@@ -170,6 +170,17 @@ export function SiteFooter() {
                   Kidarys
                 </a>
               </li>
+              <li className="flex">
+                <a
+                  href="https://nymelya.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                >
+                  <ExternalLink size={13} />
+                  Nymelya
+                </a>
+              </li>
             </ul>
           </div>
         </div>

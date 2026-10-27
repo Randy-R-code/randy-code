@@ -9,6 +9,13 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.16.1] — 2026-10-27
+
+### Added
+
+- **Nymelya website link** — the project card and case page now link to
+  nymelya.com, which is also listed in the footer alongside the other apps.
+
 ## [1.16.0] — 2026-10-26
 
 ### Added

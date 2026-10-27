@@ -213,6 +213,7 @@ export const projects: Project[] = [
       "TanStack Start",
       "Convex",
     ],
+    projectUrl: "https://nymelya.com",
     logo: { src: "/projects/logos/nymelya.png", alt: "" },
     featured: false,
   },

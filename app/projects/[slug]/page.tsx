@@ -14,6 +14,7 @@ const SOFTWARE_APPLICATION_SLUGS = new Set([
   "infralens",
   "flonexa",
   "kidarys",
+  "nymelya",
 ]);
 
 type Props = { params: Promise<{ slug: string }> };
