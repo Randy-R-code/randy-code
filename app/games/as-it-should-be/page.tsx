@@ -4,6 +4,7 @@ import {
   LanguageSwitch,
 } from "@/components/games/game-language";
 import { GameScreenshots } from "@/components/games/game-screenshots";
+import { PlayStoreIcon } from "@/components/play-store-icon";
 import { brand } from "@/lib/brand";
 import { gameStatusLabel, getGame } from "@/lib/games";
 import { buildVideoGameSchema } from "@/lib/json-ld";
@@ -19,12 +20,12 @@ const color = brand.colors.violet[400];
 export const metadata: Metadata = {
   title: "As It Should Be — Puzzle mobile | Randy Code",
   description:
-    "As It Should Be est un jeu de réflexion mobile : guidez des billes à travers des mécanismes en plaçant les bonnes pièces. 200 puzzles, 8 mondes, sans publicité. En phase de test.",
+    "As It Should Be est un jeu de réflexion mobile : guidez des billes à travers des mécanismes en plaçant les bonnes pièces. 200 puzzles, 8 mondes, sans publicité. Disponible sur Google Play.",
   alternates: { canonical: "/games/as-it-should-be" },
   openGraph: {
     title: "As It Should Be — Puzzle mobile",
     description:
-      "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, en phase de test.",
+      "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, disponible sur Google Play.",
     url: "/games/as-it-should-be",
     type: "website",
   },
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "As It Should Be — Puzzle mobile",
     description:
-      "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, en phase de test.",
+      "Placer les pièces, lancer la réaction. Un puzzle tactile de logique, disponible sur Google Play.",
   },
 };
 
@@ -386,13 +387,22 @@ export default function AsItShouldBePage() {
             >
               <p className="text-sm leading-relaxed text-zinc-300">
                 <L
-                  fr="As It Should Be est en phase de test. Il est prévu sur Google Play, puis éventuellement sur l'App Store. Aucune date de sortie n'est annoncée pour le moment."
-                  en="As It Should Be is in testing. It is planned for Google Play, and possibly the App Store afterwards. No release date has been announced yet."
+                  fr="As It Should Be est disponible sur Google Play. Une version App Store pourra suivre."
+                  en="As It Should Be is available on Google Play. An App Store version may follow."
                 />
               </p>
-              <p className="text-xs font-medium" style={{ color }}>
-                <L fr="Google Play — bientôt" en="Google Play — coming soon" />
-              </p>
+              {game.stores.googlePlay && (
+                <a
+                  href={game.stores.googlePlay}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit items-center gap-1.5 text-xs font-medium transition-opacity hover:opacity-80"
+                  style={{ color }}
+                >
+                  <PlayStoreIcon size={11} />
+                  Google Play
+                </a>
+              )}
             </div>
           </Section>
 

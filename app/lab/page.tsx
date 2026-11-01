@@ -38,10 +38,10 @@ const experiments = [
   {
     id: "04",
     title: "Game Development — Mobile",
-    status: "En phase de test",
+    status: "Disponible",
     statusColor: brand.colors.blue[400],
     tags: ["React Native", "Expo", "TypeScript"],
-    desc: "Exploration du développement de jeux mobiles à travers un premier projet complet : gameplay, progression, game feel, identité visuelle et préparation à la publication sur les stores. Ce premier jeu est en phase de test et d'autres suivront.",
+    desc: "Exploration du développement de jeux mobiles à travers un premier projet complet : gameplay, progression, game feel, identité visuelle et publication sur les stores. Ce premier jeu est disponible sur Google Play et d'autres suivront.",
     link: {
       href: "/games/as-it-should-be",
       label: "Découvrir As It Should Be",

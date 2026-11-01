@@ -4,8 +4,10 @@ import { games } from "../games";
 import {
   buildArticleSchema,
   buildPersonSchema,
+  buildSoftwareApplicationSchema,
   buildVideoGameSchema,
 } from "../json-ld";
+import { projects } from "../projects";
 
 describe("buildPersonSchema", () => {
   it("returns a valid schema.org Person", () => {
@@ -47,11 +49,26 @@ describe("buildArticleSchema", () => {
 });
 
 describe("buildVideoGameSchema", () => {
-  it("describes the game without store, rating or price claims", () => {
+  it("links the store listing without rating or price claims", () => {
     const schema = buildVideoGameSchema(games[0]);
     expect(schema["@type"]).toBe("VideoGame");
     expect(schema.url).toBe(`https://randy-code.dev/games/${games[0].slug}`);
+    expect(schema.downloadUrl).toBe(games[0].stores.googlePlay);
     expect(schema).not.toHaveProperty("offers");
     expect(schema).not.toHaveProperty("aggregateRating");
+  });
+});
+
+describe("buildSoftwareApplicationSchema", () => {
+  it("exposes the Google Play listing as downloadUrl when there is one", () => {
+    const flonexa = projects.find((p) => p.slug === "flonexa");
+    const liflow = projects.find((p) => p.slug === "liflow");
+    if (!flonexa || !liflow) throw new Error("fixture projects missing");
+    expect(buildSoftwareApplicationSchema(flonexa).downloadUrl).toBe(
+      flonexa.playStoreUrl,
+    );
+    expect(buildSoftwareApplicationSchema(liflow)).not.toHaveProperty(
+      "downloadUrl",
+    );
   });
 });

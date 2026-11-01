@@ -9,6 +9,25 @@ InfraLens's history as a standalone product (2026-01-06 to 2026-08-10) is
 frozen in [`docs/infralens/CHANGELOG.md`](docs/infralens/CHANGELOG.md).
 InfraLens changes since its native migration are recorded here.
 
+## [1.17.0] — 2026-11-01
+
+### Added
+
+- **Google Play links** — Flonexa, Kidarys and NativeProbe link to their store
+  listings from the home page, the projects page and their case studies, on
+  their own line with a dedicated Play icon. The store URL is also exposed
+  to search engines as `downloadUrl` for projects and the game.
+- **Flonexa and Kidarys screenshots** — four real screenshots each in the
+  swipeable gallery of their case studies, plus a link to each app's own
+  privacy policy.
+
+### Changed
+
+- Flonexa, Kidarys and As It Should Be are now available on Google Play: the
+  beta and in-testing labels are gone, and the game page, Games Arcade and Lab
+  Zone reflect the release. Kidarys is now noted as available in French and
+  English.
+
 ## [1.16.1] — 2026-10-27
 
 ### Added

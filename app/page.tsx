@@ -2,6 +2,7 @@ import { GameCard } from "@/components/games/game-card";
 import { GitHubIcon } from "@/components/github-icon";
 import { HeroText } from "@/components/hero-text";
 import { WorldMap } from "@/components/map/world-map";
+import { PlayStoreIcon } from "@/components/play-store-icon";
 import { brand } from "@/lib/brand";
 import { games } from "@/lib/games";
 import { getFeaturedProjects, statusLabel } from "@/lib/projects";
@@ -163,6 +164,22 @@ export default function Home() {
                       </a>
                     )}
                   </div>
+                  {project.playStoreUrl && (
+                    <a
+                      href={project.playStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1.5 self-start rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:brightness-125"
+                      style={{
+                        borderColor: `${cardColor}30`,
+                        backgroundColor: `${cardColor}0d`,
+                        color: cardColor,
+                      }}
+                    >
+                      <PlayStoreIcon size={11} />
+                      Google Play
+                    </a>
+                  )}
                 </div>
               );
             })}

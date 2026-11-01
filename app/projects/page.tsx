@@ -1,5 +1,6 @@
 import { GitHubIcon } from "@/components/github-icon";
 import { PageShell } from "@/components/layout/page-shell";
+import { PlayStoreIcon } from "@/components/play-store-icon";
 import { brand } from "@/lib/brand";
 import { openSourceProjects } from "@/lib/open-source";
 import { projects, statusLabel } from "@/lib/projects";
@@ -156,6 +157,18 @@ export default function ProjectsPage() {
                     </a>
                   )}
                 </div>
+                {project.playStoreUrl && (
+                  <a
+                    href={project.playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-fit items-center gap-1.5 text-xs font-medium"
+                    style={{ color: cardColor }}
+                  >
+                    <PlayStoreIcon size={11} />
+                    Google Play
+                  </a>
+                )}
                 {project.relatedArticleSlug && (
                   <Link
                     href={`/articles/${project.relatedArticleSlug}`}

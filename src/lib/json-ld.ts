@@ -72,6 +72,7 @@ export function buildSoftwareApplicationSchema(project: Project) {
       project.projectUrl ?? `https://randy-code.dev/projects/${project.slug}`,
     applicationCategory:
       project.type === "tool" ? "DeveloperApplication" : "WebApplication",
+    ...(project.playStoreUrl && { downloadUrl: project.playStoreUrl }),
     author: {
       "@type": "Person",
       name: "Randy Rimbault",
@@ -90,6 +91,7 @@ export function buildVideoGameSchema(game: Game) {
     image: `https://randy-code.dev/games/${game.slug}/opengraph-image`,
     genre: game.genre.en,
     inLanguage: ["fr", "en"],
+    ...(game.stores.googlePlay && { downloadUrl: game.stores.googlePlay }),
     author: {
       "@type": "Organization",
       name: "Randy Code",

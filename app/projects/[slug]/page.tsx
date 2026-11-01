@@ -1,4 +1,5 @@
 import { GitHubIcon } from "@/components/github-icon";
+import { PlayStoreIcon } from "@/components/play-store-icon";
 import { ScreenshotRail } from "@/components/screenshot-rail";
 import { brand } from "@/lib/brand";
 import { buildSoftwareApplicationSchema } from "@/lib/json-ld";
@@ -174,7 +175,7 @@ export default async function ProjectPage({ params }: Props) {
             <ScreenshotRail
               label="Captures d'écran"
               shots={project.screenshots}
-              height={1085}
+              height={project.screenshotHeight ?? 1085}
             />
           </section>
         )}
@@ -230,14 +231,44 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         )}
 
+        {project.playStoreUrl && (
+          <div className="mt-3">
+            <a
+              href={project.playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+              style={{
+                backgroundColor: `${color}18`,
+                color,
+                border: `1px solid ${color}30`,
+              }}
+            >
+              <PlayStoreIcon size={12} />
+              Google Play
+            </a>
+          </div>
+        )}
+
         {project.privacyUrl && (
           <p className="mt-6 text-xs text-zinc-400">
-            <Link
-              href={project.privacyUrl}
-              className="underline underline-offset-2 transition-colors hover:text-zinc-300"
-            >
-              Politique de confidentialité
-            </Link>
+            {project.privacyUrl.startsWith("http") ? (
+              <a
+                href={project.privacyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-zinc-300"
+              >
+                Politique de confidentialité
+              </a>
+            ) : (
+              <Link
+                href={project.privacyUrl}
+                className="underline underline-offset-2 transition-colors hover:text-zinc-300"
+              >
+                Politique de confidentialité
+              </Link>
+            )}
           </p>
         )}
       </div>

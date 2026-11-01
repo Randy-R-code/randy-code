@@ -21,11 +21,13 @@ export interface Project {
   result: string;
   technologies: string[];
   projectUrl?: string;
+  playStoreUrl?: string;
   repositoryUrl?: string;
   privacyUrl?: string;
   image?: string;
   logo?: { src: string; alt: string };
   screenshots?: { src: string; alt: string }[];
+  screenshotHeight?: number;
   openSource?: boolean;
   featured: boolean;
   caseStudy?: ProjectCaseStudy;
@@ -111,7 +113,7 @@ export const projects: Project[] = [
     slug: "flonexa",
     name: "Flonexa",
     type: "product",
-    status: "beta",
+    status: "active",
     tagline:
       "Un briefing sportif personnalisé qui réunit calendrier, classements et actus résumées par IA, pour le tennis et la Formule 1.",
     problem:
@@ -119,7 +121,7 @@ export const projects: Project[] = [
     solution:
       "Application qui centralise calendrier en direct, classements ATP/WTA et F1, et actus résumées par IA toujours reliées à leur source originale, personnalisées selon les favoris (joueurs, écuries).",
     result:
-      "Application web disponible sur flonexa.app, gratuite ; application Android en test fermé sur Google Play avant sa publication.",
+      "Application gratuite, disponible sur le web (flonexa.app) et sur Android via Google Play.",
     technologies: [
       "TanStack Start",
       "React",
@@ -128,6 +130,26 @@ export const projects: Project[] = [
       "Mistral AI",
     ],
     projectUrl: "https://flonexa.app",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=app.flonexa",
+    privacyUrl: "https://flonexa.app/privacy",
+    screenshots: [
+      {
+        src: "/projects/flonexa/screenshots/flonexa-today.webp",
+        alt: "Page Aujourd'hui de Flonexa : le briefing du jour, avec les actus F1 et tennis à retenir.",
+      },
+      {
+        src: "/projects/flonexa/screenshots/flonexa-news.webp",
+        alt: "Onglet Actus : des histoires résumées par IA, filtrables par sport, chacune reliée à sa source.",
+      },
+      {
+        src: "/projects/flonexa/screenshots/flonexa-standings.webp",
+        alt: "Classement du championnat de Formule 1 : pilotes, points et favoris repérés par une étoile.",
+      },
+      {
+        src: "/projects/flonexa/screenshots/flonexa-favorites.webp",
+        alt: "Page Favoris : les pilotes, écuries et joueurs suivis, qui personnalisent le briefing.",
+      },
+    ],
     logo: { src: "/projects/logos/flonexa.png", alt: "" },
     featured: true,
     caseStudy: {
@@ -154,7 +176,7 @@ export const projects: Project[] = [
     slug: "kidarys",
     name: "Kidarys",
     type: "product",
-    status: "beta",
+    status: "active",
     tagline:
       "Le lien quotidien entre parents et personnes qui gardent leur enfant : une vue calme de la journée, sur mobile et sur le web.",
     problem:
@@ -162,7 +184,7 @@ export const projects: Project[] = [
     solution:
       "Une expérience centrée sur l'enfant, avec une interface pour les parents et une pour la personne en charge de la garde : un fil du jour où le prévu et le réel vivent ensemble, un calendrier des jours de garde, des messages et des photos. Mobile et web sont synchronisés, sur une architecture qui gère les familles et leurs membres.",
     result:
-      "Application web disponible sur kidarys.com ; application Android en test fermé sur Google Play avant sa publication.",
+      "Application disponible en français et en anglais, sur le web (kidarys.com) et sur Android via Google Play.",
     technologies: [
       "React Native",
       "Expo",
@@ -171,6 +193,27 @@ export const projects: Project[] = [
       "Convex",
     ],
     projectUrl: "https://kidarys.com",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.kidarys",
+    privacyUrl: "https://kidarys.com/privacy",
+    screenshotHeight: 1202,
+    screenshots: [
+      {
+        src: "/projects/kidarys/screenshots/kidarys-today.webp",
+        alt: "Écran Aujourd'hui de Kidarys : une consigne importante et les moments prévus de la journée de l'enfant, à compléter.",
+      },
+      {
+        src: "/projects/kidarys/screenshots/kidarys-rhythm.webp",
+        alt: "Écran du rythme de la journée en mode sombre : repas, activité et sommeil prévus à heure fixe.",
+      },
+      {
+        src: "/projects/kidarys/screenshots/kidarys-calendar.webp",
+        alt: "Calendrier des jours de garde du mois, avec les gardes prévues et les exceptions.",
+      },
+      {
+        src: "/projects/kidarys/screenshots/kidarys-messages.webp",
+        alt: "Messagerie entre le parent et la personne qui garde l'enfant, en mode sombre.",
+      },
+    ],
     logo: { src: "/projects/logos/kidarys.png", alt: "" },
     featured: true,
     caseStudy: {
@@ -231,7 +274,7 @@ export const projects: Project[] = [
     result:
       "Application Android open source publiée sur Google Play, avec 13 modules interactifs pour explorer les capacités natives d'un appareil.",
     technologies: ["React Native", "Expo", "TypeScript", "Android"],
-    projectUrl:
+    playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.randycode.nativeprobe",
     repositoryUrl: "https://github.com/Randy-R-code/nativeprobe",
     privacyUrl: "/privacy/nativeprobe",

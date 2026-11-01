@@ -6,7 +6,7 @@ export interface Localized {
 export interface Game {
   slug: string;
   name: string;
-  status: "testing";
+  status: "available";
   tagline: Localized;
   summary: Localized;
   genre: Localized;
@@ -24,7 +24,7 @@ export const games: Game[] = [
   {
     slug: "as-it-should-be",
     name: "As It Should Be",
-    status: "testing",
+    status: "available",
     tagline: {
       fr: "Placer les pièces, lancer la réaction.",
       en: "Place the parts, run the reaction.",
@@ -95,7 +95,10 @@ export const games: Game[] = [
         },
       },
     ],
-    stores: {},
+    stores: {
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=com.randycode.asitshouldbe",
+    },
     privacyReviewed: true,
   },
 ];
@@ -106,7 +109,7 @@ export function getGame(slug: string): Game | undefined {
 
 export function gameStatusLabel(status: Game["status"]): Localized {
   const labels: Record<Game["status"], Localized> = {
-    testing: { fr: "En phase de test", en: "In testing" },
+    available: { fr: "Disponible", en: "Available" },
   };
   return labels[status];
 }

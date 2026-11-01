@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Games Arcade — Randy Code",
   description:
-    "Les jeux mobiles indépendants de Randy Code. As It Should Be, un puzzle tactile de logique et de réactions en chaîne, est en phase de test.",
+    "Les jeux mobiles indépendants de Randy Code. As It Should Be, un puzzle tactile de logique et de réactions en chaîne, est disponible sur Google Play.",
   alternates: { canonical: "/games" },
 };
 
@@ -18,7 +18,7 @@ export default function GamesPage() {
     <PageShell
       label="Games Arcade"
       title="Jeux mobiles"
-      tagline="Des jeux indépendants, pensés et développés de A à Z. Le premier est en phase de test, d'autres suivront."
+      tagline="Des jeux indépendants, pensés et développés de A à Z. Le premier est disponible sur Google Play, d'autres suivront."
       color={color}
       icon="gamepad"
     >
