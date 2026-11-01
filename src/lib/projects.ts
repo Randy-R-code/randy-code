@@ -132,22 +132,23 @@ export const projects: Project[] = [
     projectUrl: "https://flonexa.app",
     playStoreUrl: "https://play.google.com/store/apps/details?id=app.flonexa",
     privacyUrl: "https://flonexa.app/privacy",
+    screenshotHeight: 1200,
     screenshots: [
       {
         src: "/projects/flonexa/screenshots/flonexa-today.webp",
-        alt: "Page Aujourd'hui de Flonexa : le briefing du jour, avec les actus F1 et tennis à retenir.",
+        alt: "Page Aujourd'hui de Flonexa : le briefing du jour, avec une actu tennis à retenir et sa source.",
       },
       {
         src: "/projects/flonexa/screenshots/flonexa-news.webp",
-        alt: "Onglet Actus : des histoires résumées par IA, filtrables par sport, chacune reliée à sa source.",
+        alt: "Onglet Actus filtré sur la Formule 1 : des histoires résumées par IA, chacune reliée à sa source.",
       },
       {
         src: "/projects/flonexa/screenshots/flonexa-standings.webp",
-        alt: "Classement du championnat de Formule 1 : pilotes, points et favoris repérés par une étoile.",
+        alt: "Classement des pilotes de Formule 1 : points et favoris repérés par une étoile.",
       },
       {
         src: "/projects/flonexa/screenshots/flonexa-favorites.webp",
-        alt: "Page Favoris : les pilotes, écuries et joueurs suivis, qui personnalisent le briefing.",
+        alt: "Page Favoris : les joueurs de tennis, pilotes et écuries suivis, qui personnalisent le briefing.",
       },
     ],
     logo: { src: "/projects/logos/flonexa.png", alt: "" },
